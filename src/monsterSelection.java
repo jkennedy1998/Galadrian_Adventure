@@ -106,7 +106,7 @@ public class monsterSelection {
         beastStats[1] = 40;
         beastStats[2] = 20;
         beastStats[3] = 8;
-        beastStats[4] = (0);
+        beastStats[4] = (3);
         beastStats[5] = (100);
     }
     public static void selectSkeleton(){

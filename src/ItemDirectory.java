@@ -12,6 +12,8 @@ public class ItemDirectory {
                 return healthPotion();
         if (itemNumber == 2)
             return poison();
+        if (itemNumber == 3)
+            return curse();
 
             return noItem(); //should NEVER return this from this line of code.
         }
@@ -50,6 +52,18 @@ public class ItemDirectory {
         ItemReturn[2] = "-25";                  //health modifier
         ItemReturn[3] = "0";                  //attack modifier
         ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "10";                 //accuracy
+        ItemReturn[6] = "0";                  //effect # on
+        ItemReturn[7] = "0";                  //effect # off
+
+        return ItemReturn;
+    }
+    public String[] curse (){
+        ItemReturn[0] = "Curse";           //name
+        ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+        ItemReturn[2] = "-15";                  //health modifier
+        ItemReturn[3] = "-5";                  //attack modifier
+        ItemReturn[4] = "-2";                  //accuracy modifier
         ItemReturn[5] = "10";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off
