@@ -42,19 +42,27 @@ public class monsterSelection {
         if (grouping == 1) {
 
             int monsterNumber = subSelect();
-            if (monsterNumber == 1) {
+            if (monsterNumber == 1)
                 selectDog();
-            } else if (monsterNumber == 2) {
+            else if (monsterNumber == 2)
                 selectBat();
-            } else if (monsterNumber == 3)
+            else if (monsterNumber == 3)
                 selectGoblin();
-            else
+            else if (monsterNumber == 4)
                 selectWarlock();
+            else if (monsterNumber == 5)
+                selectVampire();
+            else if (monsterNumber == 6)
+                selectSkeleton();
+            else if (monsterNumber == 7)
+                selectCultist();
+            else
+                selectDrunkDwarf();
         }
     }
     public static int subSelect(){
         //here are the amount of monsters
-        int monsterCount = 4;
+        int monsterCount = 8;
         return (int)(Math.round(Math.random()*monsterCount));
     }
 
@@ -94,10 +102,50 @@ public class monsterSelection {
     public static void selectWarlock(){
         beast = "Warlock";
         capital = false;
-        beastStats[0] = 15;
+        beastStats[0] = 20;
         beastStats[1] = 40;
         beastStats[2] = 20;
         beastStats[3] = 8;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+    }
+    public static void selectSkeleton(){
+        beast = "Skeleton";
+        capital = false;
+        beastStats[0] = 15;
+        beastStats[1] = 12;
+        beastStats[2] = 3;
+        beastStats[3] = 8;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+    }
+    public static void selectVampire(){
+        beast = "Vampire";
+        capital = false;
+        beastStats[0] = 50;
+        beastStats[1] = 30;
+        beastStats[2] = 25;
+        beastStats[3] = 9;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+    }
+    public static void selectCultist(){
+        beast = "Cultist";
+        capital = false;
+        beastStats[0] = 20;
+        beastStats[1] = 12;
+        beastStats[2] = 9;
+        beastStats[3] = 8;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+    }
+    public static void selectDrunkDwarf(){
+        beast = "Drunk Dwarf";
+        capital = false;
+        beastStats[0] = 35;
+        beastStats[1] = 35;
+        beastStats[2] = 30;
+        beastStats[3] = 6;
         beastStats[4] = (0);
         beastStats[5] = (100);
     }
