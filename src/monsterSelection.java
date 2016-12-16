@@ -46,13 +46,15 @@ public class monsterSelection {
                 selectDog();
             } else if (monsterNumber == 2) {
                 selectBat();
-            } else
+            } else if (monsterNumber == 3)
                 selectGoblin();
+            else
+                selectWarlock();
         }
     }
     public static int subSelect(){
         //here are the amount of monsters
-        int monsterCount = 3;
+        int monsterCount = 4;
         return (int)(Math.round(Math.random()*monsterCount));
     }
 
@@ -87,6 +89,16 @@ public class monsterSelection {
         beastStats[2] = 17;
         beastStats[3] = 3;
         beastStats[4] = (1);
+        beastStats[5] = (100);
+    }
+    public static void selectWarlock(){
+        beast = "Warlock";
+        capital = false;
+        beastStats[0] = 15;
+        beastStats[1] = 40;
+        beastStats[2] = 20;
+        beastStats[3] = 8;
+        beastStats[4] = (0);
         beastStats[5] = (100);
     }
 }
