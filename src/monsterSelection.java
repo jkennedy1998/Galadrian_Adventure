@@ -123,8 +123,8 @@ public class monsterSelection {
         beast = "Vampire";
         capital = false;
         beastStats[0] = 50;
-        beastStats[1] = 30;
-        beastStats[2] = 25;
+        beastStats[1] = 40;
+        beastStats[2] = 35;
         beastStats[3] = 9;
         beastStats[4] = (0);
         beastStats[5] = (100);
