@@ -26,8 +26,8 @@ public class ItemDirectory {
             ItemReturn[0] = "No Items";           //name
             ItemReturn[1] = "0";                  //self as 0 or enemy as 1
             ItemReturn[2] = "0";                  //health modifier
-            ItemReturn[3] = "0";                  //attack modifier
-            ItemReturn[4] = "0";                  //accuracy modifier
+            ItemReturn[3] = "1";                  //attack modifier
+            ItemReturn[4] = "1";                  //accuracy modifier
             ItemReturn[5] = "10";                 //accuracy
             ItemReturn[6] = "0";                  //effect # on
             ItemReturn[7] = "0";                  //effect # off
@@ -38,8 +38,8 @@ public class ItemDirectory {
             ItemReturn[0] = "health potion";      //name
             ItemReturn[1] = "0";                  //self as 0 or enemy as 1
             ItemReturn[2] = "25";                 //health modifier
-            ItemReturn[3] = "0";                  //attack modifier
-            ItemReturn[4] = "0";                  //accuracy modifier
+            ItemReturn[3] = "1";                  //attack modifier
+            ItemReturn[4] = "1";                  //accuracy modifier
             ItemReturn[5] = "10";                 //accuracy
             ItemReturn[6] = "0";                  //effect # on
             ItemReturn[7] = "0";                  //effect # off
@@ -50,8 +50,8 @@ public class ItemDirectory {
         ItemReturn[0] = "Poison";           //name
         ItemReturn[1] = "1";                  //self as 0 or enemy as 1
         ItemReturn[2] = "-25";                  //health modifier
-        ItemReturn[3] = "0";                  //attack modifier
-        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[3] = "1";                  //attack modifier
+        ItemReturn[4] = "1";                  //accuracy modifier
         ItemReturn[5] = "10";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off
@@ -62,8 +62,8 @@ public class ItemDirectory {
         ItemReturn[0] = "Curse";           //name
         ItemReturn[1] = "1";                  //self as 0 or enemy as 1
         ItemReturn[2] = "-15";                  //health modifier
-        ItemReturn[3] = "-50";                  //attack modifier
-        ItemReturn[4] = "-20";                  //accuracy modifier
+        ItemReturn[3] = "-.5";                  //attack modifier
+        ItemReturn[4] = "-.8";                  //accuracy modifier
         ItemReturn[5] = "10";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off
@@ -74,8 +74,8 @@ public class ItemDirectory {
         ItemReturn[0] = "Mead";           //name
         ItemReturn[1] = "0";                  //self as 0 or enemy as 1
         ItemReturn[2] = "20";                  //health modifier
-        ItemReturn[3] = "10";                  //attack modifier
-        ItemReturn[4] = "-25";                  //accuracy modifier
+        ItemReturn[3] = "1.5";                  //attack modifier
+        ItemReturn[4] = "-.75";                  //accuracy modifier
         ItemReturn[5] = "10";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off

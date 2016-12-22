@@ -20,7 +20,7 @@ public class adventurerework {
         score = 0;
         accuracyMultiplier = 1;
         attackMultiplier = 1;
-        defensiveMultiplier = 1;  //make these do things
+        defensiveMultiplier = 1;  //make this do things
         live();
     }
 
