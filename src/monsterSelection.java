@@ -5,6 +5,7 @@ public class monsterSelection {
     public static int beastStats[]= {0,0,0,0,0,0};
     public static int grouping = 1;
     public static boolean capital = false;
+    public static int monsterCount = 0;
 
 
     public static int[] main (int round){
@@ -18,9 +19,15 @@ public class monsterSelection {
         return beastStats;
     }
     public static void setGrouping(int round){
-        if (round>=10){              //make more groupings
+        if (round<20){
             grouping=2;
+            //caves
         }
+        if (round<10){
+            grouping=1;
+            //forest
+        }
+
     }
     public static void selection_1(){
 //   standard variables:
@@ -35,30 +42,48 @@ public class monsterSelection {
 
 
 
-        if (grouping == 1) {
+        {if (grouping == 1) {
 
+            monsterCount = 6;
             int monsterNumber = subSelect();
+            monsterCount = 6;
             if (monsterNumber == 1)
                 selectDog();
             else if (monsterNumber == 2)
-                selectBat();
+                selectCultist();
             else if (monsterNumber == 3)
                 selectGoblin();
             else if (monsterNumber == 4)
                 selectWarlock();
             else if (monsterNumber == 5)
                 selectVampire();
-            else if (monsterNumber == 6)
-                selectSkeleton();
-            else if (monsterNumber == 7)
-                selectCultist();
             else
+                selectBat();
+
+        }}
+        {if (grouping == 2) {
+
+            monsterCount = 5;
+            int monsterNumber = subSelect();
+            monsterCount = 6;
+            if (monsterNumber == 1)
                 selectDrunkDwarf();
-        }
+            else if (monsterNumber == 2)
+                selectSkeleton();
+            else if (monsterNumber == 3)
+                selectVampire();
+            else if (monsterNumber == 4)
+                selectBat();
+            else if (monsterNumber == 5)
+                selectWarlock();
+            else
+                selectGoblin();
+
+        }}
     }
     public static int subSelect(){
         //here are the amount of monsters
-        int monsterCount = 8;
+
         return (int)(Math.round(Math.random()*monsterCount));
     }
 
