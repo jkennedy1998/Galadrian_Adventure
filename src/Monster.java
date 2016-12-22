@@ -5,6 +5,7 @@ public class Monster {
     public int[] itemDrop = {0,0};
     public double accuracyMult = 1;
     public double damageMult  = 1;
+    public String name = "";
 
     public Monster(int h, int max, int min, int acc, int item, int dropRate)
     {
@@ -31,8 +32,7 @@ public class Monster {
             return randomNum;
         }
         else {
-            System.out.println("The beast has missed!");
-            return "Miss";
+            return ("The beast has missed!");
         }
 
     }

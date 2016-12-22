@@ -13,6 +13,8 @@ public class adventurerework {
     public static int itemSlot1 = 0;
     public static int itemSlot2 = 0;
     public static int itemSlot3 = 0;
+    public static String tempBeastName = "";
+    public static String tempUserString = "";
 
     public static void main(String args[]) {
         health = 100;
@@ -53,7 +55,7 @@ public class adventurerework {
         startEncounter();
         live();
     }
-    public static void getItem(int itemValue) {
+    public static String getItem(int itemValue) {
         Items refreshInventory = new Items();
         refreshInventory.initializeItems(itemSlot0, itemSlot1, itemSlot2, itemSlot3);
         int tempValue = refreshInventory.receiveItem(itemValue);
@@ -61,19 +63,19 @@ public class adventurerework {
         if (tempValue != 4) {
             if (tempValue == 0) {
                 itemSlot0 = itemValue;
-                System.out.println(itemTemp[0] + " has been stored in slot 1!");
+                return (itemTemp[0] + " has been stored in slot 1!");
             }
             if (tempValue == 1) {
                 itemSlot1 = itemValue;
-                System.out.println(itemTemp[0] + " has been stored in slot 2!");
+                return (itemTemp[0] + " has been stored in slot 2!");
             }
             if (tempValue == 2) {
                 itemSlot2 = itemValue;
-                System.out.println(itemTemp[0] + " has been stored in slot 3!");
+                return (itemTemp[0] + " has been stored in slot 3!");
             }
             if (tempValue == 3) {
                 itemSlot3 = itemValue;
-                System.out.println(itemTemp[0] + " has been stored in slot 4!");
+                return (itemTemp[0] + " has been stored in slot 4!");
             }
         } else {
             String[] buttons = {"yes", "no"};
@@ -106,79 +108,104 @@ public class adventurerework {
                     System.out.println(itemTemp[0] + " has been stored in slot 4!");
                 }
             } else  {
-                System.out.println("you have chosen to discard the item.");
+                return ("you have chosen to discard the item.");
 
             }
         }
+        return "OH SHIT THIS SHOULDN'T RETURN";
     }
 
 
     public static void startEncounter() {
 
         int beastStats[];
-        System.out.println("\n\nyour health is at " + health + ".\nYou are on round " + roundCount + ".");
+        JOptionPane.showMessageDialog(null,"your health is at " + health + ".\nYou are on round " + roundCount + ".");
+
         beastStats = monsterSelection.main(roundCount);
         Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5]);
         Encounter playerRefresh = new Encounter();
         playerRefresh.initialize(attack1, attack2, attack3, attack4);
         while (monsterRefresh.questionlife()) {
-            System.out.println("The beast attacks!");
+            String tempDialog = "";
+            tempDialog += ("The beast attacks!\n");
                String tempMAttack = monsterRefresh.calculateHit();
-            if (tempMAttack.equalsIgnoreCase("Miss")){}//does nothing on purpose
+            if (tempMAttack.equalsIgnoreCase("The beast has missed!")){
+                tempDialog += ("The beast has missed!\n");
+            }
             else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 health -= tempMAttack2;
-                System.out.println("the beast attacks for " + tempMAttack2 + " damage!\nyour current health is at " + (health));
+                tempDialog += ("the beast attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health)+"\n");
             }
             if (health <= 0) {
                 health = 0;
                 adventurerework.death();}
-            System.out.println("It's your turn to attack!");
-            String attackStorage = playerRefresh.PlayerAttack();
+            tempDialog += ("It's your turn to attack!\n");
+            String attackStorage = playerRefresh.PlayerAttack(tempDialog);
             if (!(attackStorage.equalsIgnoreCase("item"))) {
                 if (attackStorage.equalsIgnoreCase("Miss")) {
                 }//does nothing on purpose
                 else {
                     int tempPAttack = Integer.parseInt(attackStorage);
                     monsterRefresh.receiveHit(tempPAttack);
-                    System.out.println("Its current health is at " + (monsterRefresh.health));
+                    tempUserString += ("Its current health is at " + (monsterRefresh.health)+"\n");
+                    JOptionPane.showMessageDialog(null,tempUserString);
+                    tempUserString = "";
                 }
             }else{
+                boolean questionHit = true;
                 String[] tempData = playerRefresh.PlayerItem();
-                System.out.println("You used the "+tempData[0]);
-                if (tempData[1].equalsIgnoreCase("0")){
-                    health += Integer.parseInt(tempData[2]);
-                    playerRefresh.damageMult = Double.parseDouble(tempData[3]);
-                    playerRefresh.accuracyMult = Double.parseDouble(tempData[4]);
-                    //make effects toggle on (make effects in the first place. ie: burning, frozen, wet)
-                    //make effects toggle off
-                } else {
-                    monsterRefresh.health =+ Integer.parseInt(tempData[2]);
-                    monsterRefresh.damageMult = Double.parseDouble(tempData[3]);
-                    monsterRefresh.accuracyMult = Double.parseDouble(tempData[4]);
-                    //make effects toggle on for monster
-                    //make effects toggle off for monster
-                }
+                JOptionPane.showMessageDialog(null,"You used the "+tempData[0]);
+                if (Math.round(Integer.parseInt(tempData[5])) >= Math.round(Math.random() * 10)){
+                    questionHit = true;
+                    if (tempData[1].equalsIgnoreCase("0")){
+                        health += Integer.parseInt(tempData[2]);
+                        playerRefresh.damageMult = Double.parseDouble(tempData[3]);
+                        playerRefresh.accuracyMult = Double.parseDouble(tempData[4]);
+                        //make effects toggle on (make effects in the first place. ie: burning, frozen, wet)
+                        //make effects toggle off
 
+                    } else {
+                        monsterRefresh.health =+ Integer.parseInt(tempData[2]);
+                        monsterRefresh.damageMult = Double.parseDouble(tempData[3]);
+                        monsterRefresh.accuracyMult = Double.parseDouble(tempData[4]);
+                        //make effects toggle on for monster
+                        //make effects toggle off for monster
+                    }
+                }else{ questionHit = false;}
+                String tempOutput = "";
+                if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the "+tempData[0]+" on yourself\n";
+                else tempOutput += "You use the "+tempData[0]+" on "+ monsterRefresh.name+".\n";
+                if (questionHit) {
+                if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
+                else tempOutput += "This causes "+tempData[1]+" points of damage.\n";
+                if (Integer.parseInt(tempData[3]) == 0) tempOutput += "";
+                else if (Integer.parseInt(tempData[3]) > 0) tempOutput += "The "+tempData[0]+" seems to make the receiving end stronger!\n";
+                else tempOutput += "The "+tempData[0]+" weakens the receiving end!\n";
+                if (Integer.parseInt(tempData[4]) == 0) tempOutput += "";
+                else if (Integer.parseInt(tempData[4]) < 0) tempOutput += "The "+tempData[0]+" discombobulates the receiving end!\n";
+                else tempOutput += "The " + tempData[0] + " focuses the receiving end!\n";
 
-
-
-
+            }else {
+            tempOutput += "It fails.\n";}
+                JOptionPane.showMessageDialog(null,tempOutput);
             }
         }
-        System.out.println("you have defeated the beast!");
+        String endEncounterDialog = "";
+        endEncounterDialog += ("you have defeated the beast!");
         roundCount += 1;
         score += 15;
         if(monsterRefresh.questionItem()!= 0){
-            getItem(beastStats[4]);
+            endEncounterDialog += getItem(beastStats[4]);
+            JOptionPane.showMessageDialog(null,endEncounterDialog);
         }
-        if ((health<maxHealth)&&(roundCount%10==0)){
+        if ((health<maxHealth)&&(roundCount%5==0)){
             int tempHealth = (int)(Math.round(Math.random()*20));
             health += tempHealth;
             if (health > maxHealth){
                 health = maxHealth;
             }
-            System.out.println("\nYou feel your past wounds begin to heal.");
+            JOptionPane.showMessageDialog(null,"You feel your past wounds begin to heal.\nYou regain "+tempHealth+" health.");
         }
         adventurerework.live();
     }

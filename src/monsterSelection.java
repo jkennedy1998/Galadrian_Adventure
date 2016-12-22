@@ -1,3 +1,4 @@
+import javax.swing.*;
 
 // make a pool of monsters to choose from based on the round
 public class monsterSelection {
@@ -12,10 +13,11 @@ public class monsterSelection {
         setGrouping(round);
         selection();
         if (capital) {
-            System.out.println("You have encountered a " + beast + "!");
+            JOptionPane.showMessageDialog(null,"You have encountered a " + beast + "!");
         } else{
-            System.out.println("You have encountered an " + beast + "!");
+            JOptionPane.showMessageDialog(null,"You have encountered an " + beast + "!");
         }
+        beastNameGen.main(beast);
         return beastStats;
     }
     public static void setGrouping(int round){

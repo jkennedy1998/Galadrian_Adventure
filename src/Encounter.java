@@ -9,6 +9,7 @@ public class Encounter {
     public String attackChoice;
     double damageMult = 1;
     double accuracyMult = 1;
+    String tempDialogStored = "";
 
     public void initialize(String a1, String a2, String a3, String a4) {
         attack1 = a1;
@@ -52,16 +53,15 @@ public class Encounter {
             ItemReturn = directoryRefresh.findItemValues(adventurerework.itemSlot3);
             adventurerework.itemSlot3=0;
         }
-        else PlayerAttack();
+        else PlayerAttack(tempDialogStored);
         return ItemReturn;
     }
 
-    public String PlayerAttack() {
-
+    public String PlayerAttack(String tempDialog) {
+        tempDialogStored = tempDialog;
         String[] buttons = {attack1, attack2, attack3, attack4,"Items"};
 
-
-        int choice = JOptionPane.showOptionDialog(null, "Which move would you like to use?", "",
+        int choice = JOptionPane.showOptionDialog(null, tempDialog+"Which move would you like to use?\n", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
 
         if (choice == 0) {
@@ -89,11 +89,11 @@ public class Encounter {
     public String calculateHit(int min, int max, int acc) {
         if (Math.round(accuracyMult*acc) >= Math.round(Math.random() * 10)) {
             String randomNum = "" +Math.round(damageMult*(Math.random()*(max-min)+min));
-            System.out.println("you "+attackChoice+" for "+randomNum+" damage!");
+            adventurerework.tempUserString = ("you "+attackChoice+" for "+randomNum+" damage!\n");
             return randomNum;
         }
         else {
-            System.out.println(attackChoice+" has missed!");
+            adventurerework.tempUserString = (attackChoice+" has missed!\n");
             return "Miss";
         }
 
