@@ -26,7 +26,7 @@ public class Monster {
     }
 
     public String calculateHit() {
-        if (accuracyMult*accuracy >= Math.round(Math.random() * 10)) {
+        if (Math.round(accuracyMult*accuracy) >= Math.round(Math.random() * 10)) {
             String randomNum = "" +Math.round(damageMult*(Math.random()*(maxHit-minHit)+minHit));
             return randomNum;
         }

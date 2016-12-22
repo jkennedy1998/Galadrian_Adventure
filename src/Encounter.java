@@ -7,6 +7,8 @@ public class Encounter {
     String attack4;
     public int attackData[] = {0, 0, 0};
     public String attackChoice;
+    double damageMult = 1;
+    double accuracyMult = 1;
 
     public void initialize(String a1, String a2, String a3, String a4) {
         attack1 = a1;
@@ -85,8 +87,8 @@ public class Encounter {
     }
 
     public String calculateHit(int min, int max, int acc) {
-        if (acc >= Math.round(Math.random() * 10)) {
-            String randomNum = "" +Math.round(Math.random()*(max-min)+min);
+        if (Math.round(accuracyMult*acc) >= Math.round(Math.random() * 10)) {
+            String randomNum = "" +Math.round(damageMult*(Math.random()*(max-min)+min));
             System.out.println("you "+attackChoice+" for "+randomNum+" damage!");
             return randomNum;
         }
