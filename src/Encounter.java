@@ -1,11 +1,5 @@
 import javax.swing.*;
 
-
-/**
- * Created by Jared on 11/23/2016.
- */
-
-
 public class Encounter {
     String attack1;
     String attack2;

@@ -1,7 +1,3 @@
-/**
- * Created by Jared on 10/18/2016.
- */
-
 
 // make a pool of monsters to choose from based on the round
 public class monsterSelection {

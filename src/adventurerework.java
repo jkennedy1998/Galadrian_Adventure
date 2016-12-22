@@ -1,9 +1,4 @@
-/**
- * Created by student5 on 9/23/16.
- */
-
 import javax.swing.*;
-
 
 public class adventurerework {
     public static int health, maxHealth;
@@ -154,12 +149,12 @@ public class adventurerework {
                     health += Integer.parseInt(tempData[2]);
                     //make attack modifier
                     //make accuracy modifier
-                    //make effects toggle on
+                    //make effects toggle on (make effects in the first place. ie: burning, frozen, wet)
                     //make effects toggle off
                 } else {
                     monsterRefresh.health =+ Integer.parseInt(tempData[2]);
-                    //make attack modifier for monster
-                    //make accuracy modifier for monster
+                    monsterRefresh.damageMult = Double.parseDouble(tempData[3]);
+                    monsterRefresh.accuracyMult = Double.parseDouble(tempData[4]);
                     //make effects toggle on for monster
                     //make effects toggle off for monster
                 }

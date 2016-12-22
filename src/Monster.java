@@ -1,12 +1,10 @@
-import java.util.Random;
 
-/**
- * Created by student5 on 10/27/16.
- */
 public class Monster {
     public int health;
     public int maxHit, minHit, accuracy;
     public int[] itemDrop = {0,0};
+    public double accuracyMult = 1;
+    public double damageMult  = 1;
 
     public Monster(int h, int max, int min, int acc, int item, int dropRate)
     {
@@ -16,6 +14,7 @@ public class Monster {
         accuracy = acc;
         itemDrop[0] = item;
         itemDrop[1] = dropRate;
+
 
     }
     public int questionItem(){
@@ -27,8 +26,8 @@ public class Monster {
     }
 
     public String calculateHit() {
-        if (accuracy >= Math.round(Math.random() * 10)) {
-            String randomNum = "" +Math.round(Math.random()*(maxHit-minHit)+minHit);
+        if (accuracyMult*accuracy >= Math.round(Math.random() * 10)) {
+            String randomNum = "" +Math.round(damageMult*(Math.random()*(maxHit-minHit)+minHit));
             return randomNum;
         }
         else {

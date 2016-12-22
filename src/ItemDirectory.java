@@ -1,6 +1,4 @@
-/**
- * Created by Jared on 11/28/2016.
- */
+
 public class ItemDirectory {
 
     public String ItemReturn[] = {"0", "0", "0", "0", "10", "0", "0", "0"};
@@ -14,6 +12,8 @@ public class ItemDirectory {
             return poison();
         if (itemNumber == 3)
             return curse();
+        if (itemNumber == 4)
+            return mead();
 
             return noItem(); //should NEVER return this from this line of code.
         }
@@ -60,10 +60,22 @@ public class ItemDirectory {
     }
     public String[] curse (){
         ItemReturn[0] = "Curse";           //name
-        ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+        ItemReturn[1] = "1";                  //self as 0 or enemy as 1
         ItemReturn[2] = "-15";                  //health modifier
-        ItemReturn[3] = "-5";                  //attack modifier
-        ItemReturn[4] = "-2";                  //accuracy modifier
+        ItemReturn[3] = "-50";                  //attack modifier
+        ItemReturn[4] = "-20";                  //accuracy modifier
+        ItemReturn[5] = "10";                 //accuracy
+        ItemReturn[6] = "0";                  //effect # on
+        ItemReturn[7] = "0";                  //effect # off
+
+        return ItemReturn;
+    }
+    public String[] mead () {
+        ItemReturn[0] = "Mead";           //name
+        ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+        ItemReturn[2] = "20";                  //health modifier
+        ItemReturn[3] = "10";                  //attack modifier
+        ItemReturn[4] = "-25";                  //accuracy modifier
         ItemReturn[5] = "10";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off

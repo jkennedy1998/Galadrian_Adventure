@@ -1,6 +1,4 @@
-/**
- * Created by Jared on 11/28/2016.
- */
+
 public class Items{
     public int itemStorage[] = {0,0,0,0};
 
