@@ -14,6 +14,8 @@ public class ItemDirectory {
             return curse();
         if (itemNumber == 4)
             return mead();
+        if (itemNumber == 5)
+            return unknownFlesh();
 
             return noItem(); //should NEVER return this from this line of code.
         }
@@ -50,9 +52,9 @@ public class ItemDirectory {
         ItemReturn[0] = "Poison";           //name
         ItemReturn[1] = "1";                  //self as 0 or enemy as 1
         ItemReturn[2] = "-25";                  //health modifier
-        ItemReturn[3] = "1";                  //attack modifier
+        ItemReturn[3] = ".8";                  //attack modifier
         ItemReturn[4] = "1";                  //accuracy modifier
-        ItemReturn[5] = "10";                 //accuracy
+        ItemReturn[5] = "7";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off
 
@@ -64,7 +66,7 @@ public class ItemDirectory {
         ItemReturn[2] = "-15";                  //health modifier
         ItemReturn[3] = "-.5";                  //attack modifier
         ItemReturn[4] = "-.8";                  //accuracy modifier
-        ItemReturn[5] = "10";                 //accuracy
+        ItemReturn[5] = "9";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off
 
@@ -76,6 +78,18 @@ public class ItemDirectory {
         ItemReturn[2] = "20";                  //health modifier
         ItemReturn[3] = "1.5";                  //attack modifier
         ItemReturn[4] = "-.75";                  //accuracy modifier
+        ItemReturn[5] = "10";                 //accuracy
+        ItemReturn[6] = "0";                  //effect # on
+        ItemReturn[7] = "0";                  //effect # off
+
+        return ItemReturn;
+    }
+    public String[] unknownFlesh () {
+        ItemReturn[0] = "Unknown Flesh";           //name
+        ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+        ItemReturn[2] = "20";                  //health modifier
+        ItemReturn[3] = "1";                  //attack modifier
+        ItemReturn[4] = ".8";                  //accuracy modifier
         ItemReturn[5] = "10";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off

@@ -10,7 +10,7 @@ public class monsterSelection {
 
     public static int[] main (int round){
         setGrouping(round);
-        selection_1();
+        selection();
         if (capital) {
             System.out.println("You have encountered a " + beast + "!");
         } else{
@@ -29,7 +29,13 @@ public class monsterSelection {
         }
 
     }
-    public static void selection_1(){
+    public static int outOfTwo(int first, int second){
+        if (Math.ceil(Math.random())*2==1){
+            return first;
+        }else
+            return second;
+    }
+    public static void selection(){
 //   standard variables:
 //        beast = "rabid dog";
 //        capital = false;
@@ -97,28 +103,28 @@ public class monsterSelection {
         beastStats[2] = 10;
         beastStats[3] = 8;
         beastStats[4] = (0);
-        beastStats[5] = (100);
+        beastStats[5] = (0);
     }
     public static void selectBat(){
         beast = "small bat";
         capital = false;
-        beastStats[0] = 20;
+        beastStats[0] = 15;
         beastStats[1] = 10;
         beastStats[2] = 5;
         beastStats[3] = 9;
         beastStats[4] = (2);
-        beastStats[5] = (100);
+        beastStats[5] = (20);
     }
 
     public static void selectGoblin(){
         beast = "goblin";
         capital = false;
-        beastStats[0] = 30;
+        beastStats[0] = 20;
         beastStats[1] = 20;
         beastStats[2] = 17;
-        beastStats[3] = 3;
+        beastStats[3] = 5;
         beastStats[4] = (1);
-        beastStats[5] = (100);
+        beastStats[5] = (30);
     }
     public static void selectWarlock(){
         beast = "Warlock";
@@ -127,8 +133,8 @@ public class monsterSelection {
         beastStats[1] = 40;
         beastStats[2] = 20;
         beastStats[3] = 8;
-        beastStats[4] = (3);
-        beastStats[5] = (100);
+        beastStats[4] = (outOfTwo(1,3));
+        beastStats[5] = (20);
     }
     public static void selectSkeleton(){
         beast = "Skeleton";
@@ -138,36 +144,46 @@ public class monsterSelection {
         beastStats[2] = 3;
         beastStats[3] = 8;
         beastStats[4] = (0);
-        beastStats[5] = (100);
+        beastStats[5] = (0);
     }
     public static void selectVampire(){
         beast = "Vampire";
         capital = false;
-        beastStats[0] = 50;
-        beastStats[1] = 40;
+        beastStats[0] = 40;
+        beastStats[1] = 20;
         beastStats[2] = 35;
-        beastStats[3] = 9;
-        beastStats[4] = (0);
-        beastStats[5] = (100);
+        beastStats[3] = 8;
+        beastStats[4] = (5);
+        beastStats[5] = (30);
     }
     public static void selectCultist(){
         beast = "Cultist";
         capital = false;
         beastStats[0] = 20;
-        beastStats[1] = 12;
+        beastStats[1] = 20;
         beastStats[2] = 9;
         beastStats[3] = 8;
-        beastStats[4] = (0);
-        beastStats[5] = (100);
+        beastStats[4] = (3);
+        beastStats[5] = (90);
     }
     public static void selectDrunkDwarf(){
         beast = "Drunk Dwarf";
         capital = false;
         beastStats[0] = 35;
-        beastStats[1] = 35;
+        beastStats[1] = 40;
         beastStats[2] = 30;
-        beastStats[3] = 6;
-        beastStats[4] = (0);
-        beastStats[5] = (100);
+        beastStats[3] = 2;
+        beastStats[4] = (4);
+        beastStats[5] = (90);
+    }
+    public static void selectSpiderling() {
+        beast = "Spiderling";
+        capital = false;
+        beastStats[0] = (10);
+        beastStats[1] = (18);
+        beastStats[2] = (10);
+        beastStats[3] = (7);
+        beastStats[4] = (2);
+        beastStats[5] = (70);
     }
 }
