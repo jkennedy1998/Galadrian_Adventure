@@ -114,6 +114,7 @@ public class adventurerework {
 
 
     public static void startEncounter() {
+
         int beastStats[];
         System.out.println("\n\nyour health is at " + health + ".\nYou are on round " + roundCount + ".");
         beastStats = monsterSelection.main(roundCount);
@@ -147,8 +148,8 @@ public class adventurerework {
                 System.out.println("You used the "+tempData[0]);
                 if (tempData[1].equalsIgnoreCase("0")){
                     health += Integer.parseInt(tempData[2]);
-                    //make attack modifier
-                    //make accuracy modifier
+                    playerRefresh.damageMult = Double.parseDouble(tempData[3]);
+                    playerRefresh.accuracyMult = Double.parseDouble(tempData[4]);
                     //make effects toggle on (make effects in the first place. ie: burning, frozen, wet)
                     //make effects toggle off
                 } else {
