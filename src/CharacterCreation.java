@@ -3,15 +3,16 @@
  */
 public class CharacterCreation {
 
-    public  void create()
+    public static void create()
+    {
+        CharacterCreation.race();
+        CharacterCreation.role();
+    }
+    public static void race()
     {
 
     }
-    private void race()
-    {
-
-    }
-    private void role()
+    public static void role()
     {
 
     }
