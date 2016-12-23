@@ -2,10 +2,15 @@
  * Created by jnebl on 12/22/2016.
  */
 public class CharacterCreation {
-    public static void race()
+    public static void create()
     {
+
     }
-    public static void role()
+    private void race()
+    {
+
+    }
+    private void role()
     {
 
     }
