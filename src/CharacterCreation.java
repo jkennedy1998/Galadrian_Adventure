@@ -3,7 +3,7 @@
  */
 public class CharacterCreation {
 
-
+    public static int attackMultiplier, accuracyMultiplier, defensiveMultiplier;
     public static String race()
     {
         int x = 0;
