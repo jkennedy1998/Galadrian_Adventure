@@ -18,9 +18,10 @@ public class CharacterCreation {
         if (choice == 1){
             race = "Elf";
         }
-        if (choice == 2){
+        if (choice == 2) {
             race = "Dwarf";
         }
+
         return race;
     }
     public static String role()
@@ -40,5 +41,7 @@ public class CharacterCreation {
             role = "Warlock";
         }
         return role;
-            }
+        }
+
     }
+

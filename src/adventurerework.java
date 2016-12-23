@@ -15,6 +15,7 @@ public class adventurerework {
     public static int itemSlot3 = 0;
     public static String tempBeastName = "";
     public static String tempUserString = "";
+    public static int speed;
 
     public static void main(String args[]) {
         health = 100;
@@ -23,6 +24,8 @@ public class adventurerework {
         accuracyMultiplier = 1;
         attackMultiplier = 1;
         defensiveMultiplier = 1;  //make this do things
+        speed = 1; // i want the attacks to be based on the speed of the character and the speed on the enemy
+        System.out.println("You're decision to enter this retched dungeon is valiant, but foolish.\nDo you have what it takes to get your lost sister back from His unholiness?\nFight long enough and maybe you'll find Margret!");
         CharacterCreation character = new CharacterCreation();
         character.race();
         character.role();
@@ -30,16 +33,16 @@ public class adventurerework {
     }
 
     public static void live() {
-        String[] buttons = {"yes", "no"};
+        String[] buttons = {"Indeed", "I REFUSE"};
 
         int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         if (answer==0) {
             striveOn();
         } else if (answer==1) {
-            System.out.println("you have chosen to stop adventuring.");
+            System.out.println("You have chosen to stop adventuring.\nI knew you were a Coward!");
             score = health + score;
-            System.out.println("your score is " + score);
+            System.out.println("Your score is " + score);
             System.exit(0);
         } else {
             live();
@@ -47,14 +50,18 @@ public class adventurerework {
     }
 
     public static void death() {
-        System.out.println("you have died while adventuring.");
+        System.out.println("You have died while adventuring!\nHuh, quite the savior you are.");
         score = health + score;
-        System.out.println("your score is " + score);
+        System.out.println("Your score is " + score);
+        if (score>=200)
+        {
+            System.out.println("You have fared well in this unholy place, but this is not enough to recover your lost sister");
+        }
         System.exit(0);
     }
 
     public static void striveOn() {
-        System.out.println("you strive on.");
+        System.out.println("You strive on.");
         startEncounter();
         live();
     }
@@ -92,7 +99,7 @@ public class adventurerework {
                 String slot4 = ("Slot 4 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[3])[0]);
                 String[] moreButtons = {slot1,slot2,slot3,slot4};
 
-                int otherAnswer = JOptionPane.showOptionDialog(null, "which item would you like to be replaced?", "",
+                int otherAnswer = JOptionPane.showOptionDialog(null, "Which item would you like to be replaced?", "",
                         JOptionPane.PLAIN_MESSAGE, 1, null, moreButtons, null);
                 if (otherAnswer == 0) {
                     itemSlot0 = itemValue;
@@ -111,7 +118,7 @@ public class adventurerework {
                     System.out.println(itemTemp[0] + " has been stored in slot 4!");
                 }
             } else  {
-                return ("you have chosen to discard the item.");
+                return ("You have chosen to discard the item.");
 
             }
         }
@@ -138,7 +145,7 @@ public class adventurerework {
             else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 health -= tempMAttack2;
-                tempDialog += ("the beast attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health)+"\n");
+                tempDialog += ("The beast attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health)+"\n");
             }
             if (health <= 0) {
                 health = 0;
@@ -195,7 +202,7 @@ public class adventurerework {
             }
         }
         String endEncounterDialog = "";
-        endEncounterDialog += ("you have defeated the beast!");
+        endEncounterDialog += ("You have vanquished the beast!");
         roundCount += 1;
         score += 15;
         if(monsterRefresh.questionItem()!= 0){
