@@ -37,6 +37,29 @@ public class CharacterCreation {
     }
     public static void role()
     {
-
+        int x = 0;
+        int y = 0;
+        do {
+            if (y == 0)
+                System.out.println("When given the option enter your desired class");
+            else
+                System.out.println("When given the option enter your desired class not some random shit like you apparently did");
+            String role = "Your class options are Warrior, Ranger, or Warlock";
+            String standard =" please enter the exact name of your desired class";
+            System.out.println(role);
+            String rac = IO.getString(standard);
+            if (rac.equalsIgnoreCase("Warrior")){
+                x = 1;
+            }
+            else if (rac.equalsIgnoreCase("Ranger")){
+                x = 1;
+            }
+            else if (rac.equalsIgnoreCase("Warlock")){
+                x = 1;
+            }
+            else{
+                y = 1;
+            }
+        }while (x == 0);
     }
 }
