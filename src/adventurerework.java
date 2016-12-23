@@ -23,7 +23,9 @@ public class adventurerework {
         accuracyMultiplier = 1;
         attackMultiplier = 1;
         defensiveMultiplier = 1;  //make this do things
-        CharacterCreation.create();
+        CharacterCreation character = new CharacterCreation();
+        character.race();
+        character.role();
         live();
     }
 
