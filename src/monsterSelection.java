@@ -13,9 +13,9 @@ public class monsterSelection {
         setGrouping(round);
         selection();
         if (capital) {
-            JOptionPane.showMessageDialog(null,"You have encountered a " + beast + "!");
+            System.out.println("You have encountered a " + beast + "!");
         } else{
-            JOptionPane.showMessageDialog(null,"You have encountered an " + beast + "!");
+            System.out.println("You have encountered an " + beast + "!");
         }
         beastNameGen.main(beast);
         return beastStats;

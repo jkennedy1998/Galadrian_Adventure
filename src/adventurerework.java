@@ -33,7 +33,7 @@ public class adventurerework {
     }
 
     public static void live() {
-        String[] buttons = {"Indeed", "I REFUSE"};
+        String[] buttons = {"Yes", "I REFUSE"};
 
         int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
@@ -54,9 +54,6 @@ public class adventurerework {
         score = health + score;
         System.out.println("Your score is " + score);
         if (score>=200)
-        {
-            System.out.println("You have fared well in this unholy place, but this is not enough to recover your lost sister");
-        }
         System.exit(0);
     }
 
@@ -122,14 +119,14 @@ public class adventurerework {
 
             }
         }
-        return "OH SHIT THIS SHOULDN'T RETURN";
+        return "RETURN FOR THE SAKE OF HAVING TO RETURN A STRING.";
     }
 
 
     public static void startEncounter() {
 
         int beastStats[];
-        JOptionPane.showMessageDialog(null,"your health is at " + health + ".\nYou are on round " + roundCount + ".");
+        System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
 
         beastStats = monsterSelection.main(roundCount);
         Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5]);
@@ -137,20 +134,20 @@ public class adventurerework {
         playerRefresh.initialize(attack1, attack2, attack3, attack4);
         while (monsterRefresh.questionlife()) {
             String tempDialog = "";
-            tempDialog += ("The beast attacks!\n");
+            System.out.println ("The beast attacks!");
                String tempMAttack = monsterRefresh.calculateHit();
             if (tempMAttack.equalsIgnoreCase("The beast has missed!")){
-                tempDialog += ("The beast has missed!\n");
+                System.out.println ("The beast has missed!");
             }
             else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 health -= tempMAttack2;
-                tempDialog += ("The beast attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health)+"\n");
+                System.out.println ("The beast attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health)+"");
             }
             if (health <= 0) {
                 health = 0;
                 adventurerework.death();}
-            tempDialog += ("It's your turn to attack!\n");
+            System.out.println("It's your turn to attack!\n");
             String attackStorage = playerRefresh.PlayerAttack(tempDialog);
             if (!(attackStorage.equalsIgnoreCase("item"))) {
                 if (attackStorage.equalsIgnoreCase("Miss")) {
@@ -158,14 +155,12 @@ public class adventurerework {
                 else {
                     int tempPAttack = Integer.parseInt(attackStorage);
                     monsterRefresh.receiveHit(tempPAttack);
-                    tempUserString += ("Its current health is at " + (monsterRefresh.health)+"\n");
-                    JOptionPane.showMessageDialog(null,tempUserString);
-                    tempUserString = "";
+                    System.out.println("Its current health is at " + (monsterRefresh.health));
                 }
             }else{
                 boolean questionHit = true;
                 String[] tempData = playerRefresh.PlayerItem();
-                JOptionPane.showMessageDialog(null,"You used the "+tempData[0]);
+                System.out.println("You used the "+tempData[0]);
                 if (Math.round(Integer.parseInt(tempData[5])) >= Math.round(Math.random() * 10)){
                     questionHit = true;
                     if (tempData[1].equalsIgnoreCase("0")){
@@ -189,16 +184,16 @@ public class adventurerework {
                 if (questionHit) {
                 if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
                 else tempOutput += "This causes "+tempData[1]+" points of damage.\n";
-                if (Integer.parseInt(tempData[3]) == 0) tempOutput += "";
-                else if (Integer.parseInt(tempData[3]) > 0) tempOutput += "The "+tempData[0]+" seems to make the receiving end stronger!\n";
+                if (Double.parseDouble(tempData[3]) == 0) tempOutput += "";
+                else if (Double.parseDouble(tempData[3]) > 0) tempOutput += "The "+tempData[0]+" seems to make the receiving end stronger!\n";
                 else tempOutput += "The "+tempData[0]+" weakens the receiving end!\n";
-                if (Integer.parseInt(tempData[4]) == 0) tempOutput += "";
-                else if (Integer.parseInt(tempData[4]) < 0) tempOutput += "The "+tempData[0]+" discombobulates the receiving end!\n";
+                if (Double.parseDouble(tempData[4]) == 0) tempOutput += "";
+                else if (Double.parseDouble(tempData[4]) < 0) tempOutput += "The "+tempData[0]+" discombobulates the receiving end!\n";
                 else tempOutput += "The " + tempData[0] + " focuses the receiving end!\n";
 
             }else {
             tempOutput += "It fails.\n";}
-                JOptionPane.showMessageDialog(null,tempOutput);
+                System.out.println(tempOutput);
             }
         }
         String endEncounterDialog = "";
@@ -207,7 +202,7 @@ public class adventurerework {
         score += 15;
         if(monsterRefresh.questionItem()!= 0){
             endEncounterDialog += getItem(beastStats[4]);
-            JOptionPane.showMessageDialog(null,endEncounterDialog);
+            System.out.println(endEncounterDialog);
         }
         if ((health<maxHealth)&&(roundCount%5==0)){
             int tempHealth = (int)(Math.round(Math.random()*20));
@@ -215,7 +210,7 @@ public class adventurerework {
             if (health > maxHealth){
                 health = maxHealth;
             }
-            JOptionPane.showMessageDialog(null,"You feel your past wounds begin to heal.\nYou regain "+tempHealth+" health.");
+            System.out.println("You feel your past wounds begin to heal.\nYou regain "+tempHealth+" health.");
         }
         adventurerework.live();
     }
