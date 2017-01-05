@@ -30,6 +30,7 @@ public class adventurerework {
         CharacterCreation character = new CharacterCreation();
         String race = character.race();
         String role = character.role();
+        accuracyMultiplier += character.getAccuracyMultiplier(race, role);
         live(role);
     }
 
