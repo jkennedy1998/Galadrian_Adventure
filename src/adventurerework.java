@@ -160,6 +160,7 @@ public class adventurerework {
             playerRefresh.initialize(attack1 ="Shapechange", attack2="MoonBeam", attack3="Thunderwave", attack4);
         else
             playerRefresh.initialize(attack1="Slash", attack2="Jab", attack3="Punch", attack4);
+        System.out.println("Its current health is at " + (monsterRefresh.health));
         while (monsterRefresh.questionlife()) {
             String tempDialog = "";
             System.out.println ("The beast attacks!");
