@@ -25,10 +25,15 @@ public class attackDatabase {
     }
 //      This is the formatting
 //    public static void slash(){
-//        attackData[0] = 5;
-//        attackData[1] = 30;
-//        attackData[2] = 9;
+//        attackData[0] = min attack (int);
+//        attackData[1] = max attack (int);
+//        attackData[2] = accuracy (0 to 10);
 //    }
+    public static void intaKill(){ //for testing purposes only!
+        attackData[0] = 100;
+        attackData[1] = 100;
+        attackData[2] = 10;
+    }
     public static void jab(){
         attackData[0] = 25;
         attackData[1] = 30;
@@ -39,10 +44,10 @@ public class attackDatabase {
         attackData[1] = 15;
         attackData[2] = 9;
     }
-    public static void slash(){ //set for testing
-        attackData[0] = 100;
-        attackData[1] = 100;
-        attackData[2] = 10;
+    public static void slash(){
+        attackData[0] = 5;
+        attackData[1] = 30;
+        attackData[2] = 9;
     }
     public static void Shoot(){
         attackData[0] = 10;
