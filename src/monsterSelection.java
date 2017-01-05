@@ -52,9 +52,9 @@ public class monsterSelection {
 
         {if (grouping == 1) {
 
-            monsterCount = 6;
+            monsterCount = 7;
             int monsterNumber = subSelect();
-            monsterCount = 6;
+            monsterCount = 7;
             if (monsterNumber == 1)
                 selectDog();
             else if (monsterNumber == 2)
@@ -65,6 +65,8 @@ public class monsterSelection {
                 selectWarlock();
             else if (monsterNumber == 5)
                 selectVampire();
+            else if (monsterNumber == 6)
+                selectSpiderling();
             else
                 selectBat();
 
@@ -181,10 +183,10 @@ public class monsterSelection {
     public static void selectSpiderling() {
         beast = "Spiderling";
         capital = false;
-        beastStats[0] = (10);
-        beastStats[1] = (18);
-        beastStats[2] = (10);
-        beastStats[3] = (7);
+        beastStats[0] = 10;
+        beastStats[1] = 18;
+        beastStats[2] = 10;
+        beastStats[3] = 7;
         beastStats[4] = (2);
         beastStats[5] = (70);
     }
