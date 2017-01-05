@@ -32,7 +32,9 @@ public class adventurerework {
         String role = character.role();
         System.out.println(race);
         System.out.println(role);
-        accuracyMultiplier += character.getAccuracyMultiplier(race, role);
+        accuracyMultiplier += character.getAccuracyMultiplier();
+        attackMultiplier += character.getAttackMultiplier();
+        defensiveMultiplier += character.getDefensiveMultiplier();
         live(role,accuracyMultiplier);
     }
 

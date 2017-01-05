@@ -5,7 +5,7 @@ import javax.swing.*;
  */
 
 public class CharacterCreation {
-    public static int attackMultiplier, defensiveMultiplier;
+    public static double attackMultiplier,accuracyMultiplier, defensiveMultiplier;
 
     public static String race() {
         String[] buttons = {"Human", "High Elf", "Dwarf", "Wood Elf", "Dark Elf"};
@@ -19,23 +19,24 @@ public class CharacterCreation {
         if (choice == 1) {
             race = "High Elf";
             attackMultiplier -= .2;
-
-
+            accuracyMultiplier+= .2;
         }
         if (choice == 2) {
             race = "Dwarf";
             attackMultiplier += .1;
             defensiveMultiplier += .2;
-
+            accuracyMultiplier-= .3;
         }
         if (choice == 3) {
             race = "Wood Elf";
             attackMultiplier -= .1;
+            accuracyMultiplier +=.1;
         }
         if (choice == 4) {
             race = "Dark Elf";
             attackMultiplier += .1;
             defensiveMultiplier -= .2;
+            accuracyMultiplier +=.1;
         }
 
         return race;
@@ -53,6 +54,7 @@ public class CharacterCreation {
         }
         if (choice == 1) {
             role = "Ranger";
+            accuracyMultiplier += .3;
         }
         if (choice == 2) {
             role = "Warlock";
@@ -62,33 +64,19 @@ public class CharacterCreation {
             role = "Druid";
             defensiveMultiplier += .1;
             attackMultiplier += .1;
+            accuracyMultiplier += .1;
         }
         return role;
 
     }
 
-    public static double getAccuracyMultiplier(String race,String role) {
-        double x =0;
-        if (race.equalsIgnoreCase("High Elf"))
-            x+=.2;
-        else if (race.equalsIgnoreCase("Dwarf"))
-            x-=.3;
-        else if (race.equalsIgnoreCase("Wood Elf"))
-            x+=.1;
-        else if (race.equalsIgnoreCase("Dark Elf"))
-            x+=.1;
-        else
-            x+=0;
-        if (role.equalsIgnoreCase("Warrior"))
-            x+=0;
-        else if (role.equalsIgnoreCase("Ranger"))
-            x+=.2;
-        else if (role.equalsIgnoreCase("Warlock"))
-            x+=0;
-        else if (role.equalsIgnoreCase("Druid"))
-            x+=.1;
-        else
-            x+=0;
-        return x;
+    public static double getAccuracyMultiplier() {
+        return accuracyMultiplier;
+    }
+    public static double getAttackMultiplier(){
+        return attackMultiplier;
+    }
+    public static double getDefensiveMultiplier(){
+        return defensiveMultiplier;
     }
 }
