@@ -41,7 +41,7 @@ public class Monster {
         return health;
     }
     public boolean questionlife(){
-        if (health >= 0){
+        if (health > 0){
             return true;
         }
         else
