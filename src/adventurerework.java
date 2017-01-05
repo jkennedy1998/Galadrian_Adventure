@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class adventurerework {
     public static int health, maxHealth;
-    public static int attackMultiplier, accuracyMultiplier, defensiveMultiplier;
+    public static double attackMultiplier, accuracyMultiplier, defensiveMultiplier;
     public static int score;
     public static int roundCount = 1;
     public static String attack1 = "";

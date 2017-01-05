@@ -67,7 +67,7 @@ public class CharacterCreation {
 
     }
 
-    public static int getAccuracyMultiplier(String race,String role) {
+    public static double getAccuracyMultiplier(String race,String role) {
         int x =0;
         if (race.equalsIgnoreCase("High Elf"))
             x+=.2;
