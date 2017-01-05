@@ -29,11 +29,13 @@ public class Encounter {
         String item3 = Item3[0];
         String Item4[] = directoryRefresh.findItemValues(adventurerework.itemSlot3);
         String item4 = Item4[0];
+        String Item5[] = directoryRefresh.findItemValues(adventurerework.itemSlot4);
+        String item5 = Item5[0];
 
-        String[] buttons = {item1, item2, item3, item4};
+        String[] buttons = {item1, item2, item3, item4, item5};
 
 
-        int choice = JOptionPane.showOptionDialog(null, "Which item would you like to use?", "",
+        int choice = JOptionPane.showOptionDialog(null, "\nWhich item would you like to use?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
 
         if (choice == 0) {
@@ -53,6 +55,11 @@ public class Encounter {
             ItemReturn = directoryRefresh.findItemValues(adventurerework.itemSlot3);
             adventurerework.itemSlot3=0;
         }
+        else if (choice == 4) {
+            ItemReturn = directoryRefresh.findItemValues(adventurerework.itemSlot4);
+            adventurerework.itemSlot4=0;
+        }
+
         else PlayerAttack(tempDialogStored);
         return ItemReturn;
     }

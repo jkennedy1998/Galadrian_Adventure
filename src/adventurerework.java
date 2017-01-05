@@ -13,6 +13,7 @@ public class adventurerework {
     public static int itemSlot1 = 0;
     public static int itemSlot2 = 0;
     public static int itemSlot3 = 0;
+    public static int itemSlot4 = 0;
     public static String tempBeastName = "";
     public static String tempUserString = "";
     public static int speed;
@@ -44,9 +45,12 @@ public class adventurerework {
             score = health + score;
             System.out.println("Your score is " + score);
             System.exit(0);
-        } else {
+        } else  {
             live();
         }
+        //System.exit(0);
+
+
     }
 
     public static void death() {
@@ -54,7 +58,12 @@ public class adventurerework {
         score = health + score;
         System.out.println("Your score is " + score);
         if (score>=200)
-        System.exit(0);
+        {
+
+        }
+        if(health<= 0) {
+            System.exit(0);
+        }
     }
 
     public static void striveOn() {
@@ -64,10 +73,10 @@ public class adventurerework {
     }
     public static String getItem(int itemValue) {
         Items refreshInventory = new Items();
-        refreshInventory.initializeItems(itemSlot0, itemSlot1, itemSlot2, itemSlot3);
+        refreshInventory.initializeItems(itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
         int tempValue = refreshInventory.receiveItem(itemValue);
         String[] itemTemp = refreshInventory.getItemValues(itemValue);
-        if (tempValue != 4) {
+        if (tempValue != 5) {
             if (tempValue == 0) {
                 itemSlot0 = itemValue;
                 return (itemTemp[0] + " has been stored in slot 1!");
@@ -84,6 +93,10 @@ public class adventurerework {
                 itemSlot3 = itemValue;
                 return (itemTemp[0] + " has been stored in slot 4!");
             }
+            if(tempValue == 4) {
+                itemSlot4 = itemValue;
+                return (itemTemp[0] + " has been stored in slot 5!");
+            }
         } else {
             String[] buttons = {"yes", "no"};
             String prompt = (itemTemp[0] + " has no available storage slot. Would you like to empty another slot for it?");
@@ -94,7 +107,9 @@ public class adventurerework {
                 String slot2 = ("Slot 2 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[1])[0]);
                 String slot3 = ("Slot 3 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[2])[0]);
                 String slot4 = ("Slot 4 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[3])[0]);
-                String[] moreButtons = {slot1,slot2,slot3,slot4};
+                String slot5 = ("Slot 5 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[4])[0]);
+
+                String[] moreButtons = {slot1,slot2,slot3,slot4,slot5};
 
                 int otherAnswer = JOptionPane.showOptionDialog(null, "Which item would you like to be replaced?", "",
                         JOptionPane.PLAIN_MESSAGE, 1, null, moreButtons, null);
@@ -113,6 +128,10 @@ public class adventurerework {
                 if (otherAnswer == 3) {
                     itemSlot3 = itemValue;
                     System.out.println(itemTemp[0] + " has been stored in slot 4!");
+                }
+                if(otherAnswer == 4) {
+                    itemSlot4 = itemValue;
+                    System.out.println(itemTemp[0]+ " has been stored in slot 5!");
                 }
             } else  {
                 return ("You have chosen to discard the item.");
@@ -177,21 +196,33 @@ public class adventurerework {
                         //make effects toggle on for monster
                         //make effects toggle off for monster
                     }
-                }else{ questionHit = false;}
+                } else {
+                    questionHit = false;
+                }
                 String tempOutput = "";
-                if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the "+tempData[0]+" on yourself\n";
-                else tempOutput += "You use the "+tempData[0]+" on "+ monsterRefresh.name+".\n";
+                if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the " + tempData[0] + " on yourself\n";
+                else tempOutput += "You use the " + tempData[0] + " on " + monsterRefresh.name + ".\n";
                 if (questionHit) {
-                if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
-                else tempOutput += "This causes "+tempData[1]+" points of damage.\n";
-                if (Double.parseDouble(tempData[3]) == 0) tempOutput += "";
-                else if (Double.parseDouble(tempData[3]) > 0) tempOutput += "The "+tempData[0]+" seems to make the receiving end stronger!\n";
-                else tempOutput += "The "+tempData[0]+" weakens the receiving end!\n";
-                if (Double.parseDouble(tempData[4]) == 0) tempOutput += "";
-                else if (Double.parseDouble(tempData[4]) < 0) tempOutput += "The "+tempData[0]+" discombobulates the receiving end!\n";
-                else tempOutput += "The " + tempData[0] + " focuses the receiving end!\n";
+                    if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
+                    else tempOutput += "This causes " + tempData[1] + " points of damage.\n";
+                    if (Double.parseDouble(tempData[3]) == 0) tempOutput += "";
+                    else if (Double.parseDouble(tempData[3]) > 0)
+                        tempOutput += "The " + tempData[0] + " seems to make the receiving end stronger!\n";
+                    else tempOutput += "The " + tempData[0] + " weakens the receiving end!\n";
+                    if (Double.parseDouble(tempData[4]) == 0) tempOutput += "";
+                    else if (Double.parseDouble(tempData[4]) < 0)
+                        tempOutput += "The " + tempData[0] + " discombobulates the receiving end!\n";
+                    else tempOutput += "The " + tempData[0] + " focuses the receiving end!\n";
+                    if (Double.parseDouble(tempData[5]) == 0) tempOutput += "";
+                    else if (Double.parseDouble(tempData[5]) < 0)
+                        tempOutput += "The " + tempData[0] + " enrages the soul!\n";
+                    else tempOutput += "The " + tempData[0] + " weakens the soul.\n";
 
-            }else {
+
+
+
+
+                }else {
             tempOutput += "It fails.\n";}
                 System.out.println(tempOutput);
             }
