@@ -25,6 +25,12 @@ public class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("Thirsting Blade")) {Thirsting_Blade();
             return attackData;}
+        if (attack.equalsIgnoreCase("Shapechange")) {Shapechange();
+            return attackData;}
+        if (attack.equalsIgnoreCase("MoonBeam")) {MoonBeam();
+            return attackData;}
+        if (attack.equalsIgnoreCase("Thunderwave")) {Thunderwave();
+            return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
         return attackData;
@@ -83,6 +89,21 @@ public class attackDatabase {
     public static void Thirsting_Blade(){
         attackData[0] = 20;
         attackData[1] = 25;
+        attackData[2] = 7;
+    }
+    public static void Shapechange() {
+        attackData[0] = 20;
+        attackData[1] = 25;
+        attackData[2] = 8;
+    }
+    public static void MoonBeam() {
+        attackData[0] = 5;
+        attackData[1] = 15;
+        attackData[2] = 9;
+    }
+    public static void Thunderwave() {
+        attackData[0] = 20;
+        attackData[1] = 30;
         attackData[2] = 7;
     }
 }
