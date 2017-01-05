@@ -68,7 +68,7 @@ public class CharacterCreation {
     }
 
     public static double getAccuracyMultiplier(String race,String role) {
-        int x =0;
+        double x =0;
         if (race.equalsIgnoreCase("High Elf"))
             x+=.2;
         else if (race.equalsIgnoreCase("Dwarf"))
@@ -79,13 +79,13 @@ public class CharacterCreation {
             x+=.1;
         else
             x+=0;
-        if (race.equalsIgnoreCase("Warrior"))
+        if (role.equalsIgnoreCase("Warrior"))
             x+=0;
-        else if (race.equalsIgnoreCase("Ranger"))
-            x-=.3;
-        else if (race.equalsIgnoreCase("Warlock"))
+        else if (role.equalsIgnoreCase("Ranger"))
+            x+=.2;
+        else if (role.equalsIgnoreCase("Warlock"))
             x+=0;
-        else if (race.equalsIgnoreCase("Druid"))
+        else if (role.equalsIgnoreCase("Druid"))
             x+=.1;
         else
             x+=0;

@@ -26,10 +26,12 @@ public class adventurerework {
         attackMultiplier = 1;
         defensiveMultiplier = 1;  //make this do things
         speed = 1; // i want the attacks to be based on the speed of the character and the speed on the enemy
-        System.out.println("You're decision to enter this retched dungeon is valiant, but foolish.\nDo you have what it takes to get your lost sister back from His unholiness?\nFight long enough and maybe you'll find Margret!");
+        System.out.println("You're decision to enter this retched dungeon is valiant, but foolish.\n");
         CharacterCreation character = new CharacterCreation();
         String race = character.race();
         String role = character.role();
+        System.out.println(race);
+        System.out.println(role);
         accuracyMultiplier += character.getAccuracyMultiplier(race, role);
         live(role,accuracyMultiplier);
     }
