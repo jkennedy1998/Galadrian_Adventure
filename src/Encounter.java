@@ -53,7 +53,8 @@ public class Encounter {
             ItemReturn = directoryRefresh.findItemValues(adventurerework.itemSlot3);
             adventurerework.itemSlot3=0;
         }
-        else PlayerAttack(tempDialogStored);
+        else
+            PlayerAttack(tempDialogStored);
         return ItemReturn;
     }
 
