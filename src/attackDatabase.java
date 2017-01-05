@@ -47,12 +47,12 @@ public class attackDatabase {
     public static void Shoot(){
         attackData[0] = 10;
         attackData[1] = 20;
-        attackData[2] = 8;
+        attackData[2] = 9;
     }
     public static void Surprise_Shot(){
-        attackData[0] = 20;
+        attackData[0] = 35;
         attackData[1] = 45;
-        attackData[2] = 5;
+        attackData[2] = 7;
     }
     public static void Stab(){
         attackData[0] = 5;
