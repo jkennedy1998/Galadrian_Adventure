@@ -60,11 +60,11 @@ public class Encounter {
             adventurerework.itemSlot4=0;
         }
 
-        else PlayerAttack(tempDialogStored);
+        else PlayerAttack(tempDialogStored,accuracyMult);
         return ItemReturn;
     }
 
-    public String PlayerAttack(String tempDialog) {
+    public String PlayerAttack(String tempDialog,double accuracyMultiplier) {
         tempDialogStored = tempDialog;
         String[] buttons = {attack1, attack2, attack3, attack4,"Items"};
 
@@ -89,11 +89,12 @@ public class Encounter {
         }else
            return "Item";
 
-        return calculateHit(attackData[0], attackData[1], attackData[2]);
+        return calculateHit(attackData[0], attackData[1], attackData[2],accuracyMultiplier);
 
     }
 
-    public String calculateHit(int min, int max, int acc) {
+    public String calculateHit(int min, int max, int acc,double accuracyMultiplier) {
+        accuracyMult += accuracyMultiplier;
         if (Math.round(accuracyMult*acc) >= Math.round(Math.random() * 10)) {
             String randomNum = "" +Math.round(damageMult*(Math.random()*(max-min)+min));
             adventurerework.tempUserString = ("you "+attackChoice+" for "+randomNum+" damage!\n");

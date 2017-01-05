@@ -31,23 +31,23 @@ public class adventurerework {
         String race = character.race();
         String role = character.role();
         accuracyMultiplier += character.getAccuracyMultiplier(race, role);
-        live(role);
+        live(role,accuracyMultiplier);
     }
 
-    public static void live(String rolec) {
+    public static void live(String rolec,double accuracyMultiplier) {
         String[] buttons = {"Yes", "I REFUSE"};
         String role =rolec;
         int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         if (answer==0) {
-            striveOn(role);
+            striveOn(role,accuracyMultiplier);
         } else if (answer==1) {
             System.out.println("You have chosen to stop adventuring.\nI knew you were a Coward!");
             score = health + score;
             System.out.println("Your score is " + score);
             System.exit(0);
         } else  {
-            live(role);
+            live(role,accuracyMultiplier);
         }
         //System.exit(0);
 
@@ -67,11 +67,11 @@ public class adventurerework {
         }
     }
 
-    public static void striveOn(String rolec) {
+    public static void striveOn(String rolec,double accuracyMultiplier) {
         String role = rolec;
         System.out.println("You strive on.");
-        startEncounter(role);
-        live(role);
+        startEncounter(role,accuracyMultiplier);
+        live(role,accuracyMultiplier);
     }
     public static String getItem(int itemValue) {
         Items refreshInventory = new Items();
@@ -144,7 +144,7 @@ public class adventurerework {
     }
 
 
-    public static void startEncounter(String role) {
+    public static void startEncounter(String role,double accuracyMultiplier) {
 
         int beastStats[];
         System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
@@ -172,7 +172,7 @@ public class adventurerework {
                 health = 0;
                 adventurerework.death();}
             System.out.println("It's your turn to attack!\n");
-            String attackStorage = playerRefresh.PlayerAttack(tempDialog);
+            String attackStorage = playerRefresh.PlayerAttack(tempDialog,accuracyMultiplier);
             if (!(attackStorage.equalsIgnoreCase("item"))) {
                 if (attackStorage.equalsIgnoreCase("Miss")) {
                 }//does nothing on purpose
@@ -248,7 +248,7 @@ public class adventurerework {
             }
             System.out.println("You feel your past wounds begin to heal.\nYou regain "+tempHealth+" health.");
         }
-        adventurerework.live(role);
+        adventurerework.live(role,accuracyMultiplier);
     }
 }
 //random comment to see if this commit and push works
