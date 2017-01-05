@@ -5,9 +5,9 @@ public class adventurerework {
     public static int attackMultiplier, accuracyMultiplier, defensiveMultiplier;
     public static int score;
     public static int roundCount = 1;
-    public static String attack1 = "Slash";
-    public static String attack2 = "Jab";
-    public static String attack3 = "Punch";
+    public static String attack1 = "";
+    public static String attack2 = "";
+    public static String attack3 = "";
     public static String attack4 = "";
     public static int itemSlot0 = 0;
     public static int itemSlot1 = 0;
@@ -28,25 +28,25 @@ public class adventurerework {
         speed = 1; // i want the attacks to be based on the speed of the character and the speed on the enemy
         System.out.println("You're decision to enter this retched dungeon is valiant, but foolish.\nDo you have what it takes to get your lost sister back from His unholiness?\nFight long enough and maybe you'll find Margret!");
         CharacterCreation character = new CharacterCreation();
-        character.race();
-        character.role();
-        live();
+        String race = character.race();
+        String role = character.role();
+        live(role);
     }
 
-    public static void live() {
+    public static void live(String rolec) {
         String[] buttons = {"Yes", "I REFUSE"};
-
+        String role =rolec;
         int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         if (answer==0) {
-            striveOn();
+            striveOn(role);
         } else if (answer==1) {
             System.out.println("You have chosen to stop adventuring.\nI knew you were a Coward!");
             score = health + score;
             System.out.println("Your score is " + score);
             System.exit(0);
         } else  {
-            live();
+            live(role);
         }
         //System.exit(0);
 
@@ -66,10 +66,11 @@ public class adventurerework {
         }
     }
 
-    public static void striveOn() {
+    public static void striveOn(String rolec) {
+        String role = rolec;
         System.out.println("You strive on.");
-        startEncounter();
-        live();
+        startEncounter(role);
+        live(role);
     }
     public static String getItem(int itemValue) {
         Items refreshInventory = new Items();
@@ -142,7 +143,7 @@ public class adventurerework {
     }
 
 
-    public static void startEncounter() {
+    public static void startEncounter(String role) {
 
         int beastStats[];
         System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
@@ -150,7 +151,10 @@ public class adventurerework {
         beastStats = monsterSelection.main(roundCount);
         Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5]);
         Encounter playerRefresh = new Encounter();
-        playerRefresh.initialize(attack1, attack2, attack3, attack4);
+        if (role.equalsIgnoreCase("Ranger"))
+            playerRefresh.initialize(attack1 ="Shot", attack2="Surprise Shot", attack3="Stab", attack4);
+        else
+            playerRefresh.initialize(attack1="Slash", attack2="Jab", attack3="Punch", attack4);
         while (monsterRefresh.questionlife()) {
             String tempDialog = "";
             System.out.println ("The beast attacks!");
@@ -243,7 +247,7 @@ public class adventurerework {
             }
             System.out.println("You feel your past wounds begin to heal.\nYou regain "+tempHealth+" health.");
         }
-        adventurerework.live();
+        adventurerework.live(role);
     }
 }
 //random comment to see if this commit and push works

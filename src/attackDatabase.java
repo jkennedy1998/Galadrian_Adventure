@@ -13,6 +13,12 @@ public class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("jab")) {jab();
             return attackData;}
+        if (attack.equalsIgnoreCase("Shoot")) {Shoot();
+            return attackData;}
+        if (attack.equalsIgnoreCase("Surprise shot")) {Surprise_Shot();
+            return attackData;}
+        if (attack.equalsIgnoreCase("Stab")) {Stab();
+            return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
         return attackData;
