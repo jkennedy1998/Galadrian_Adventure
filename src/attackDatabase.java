@@ -38,5 +38,20 @@ public class attackDatabase {
         attackData[1] = 100;
         attackData[2] = 10;
     }
+    public static void Shoot(){
+        attackData[0] = 10;
+        attackData[1] = 20;
+        attackData[2] = 8;
+    }
+    public static void Surprise_Shot(){
+        attackData[0] = 20;
+        attackData[1] = 45;
+        attackData[2] = 5;
+    }
+    public static void Stab(){
+        attackData[0] = 5;
+        attackData[1] = 10;
+        attackData[2] = 9;
+    }
 
 }
