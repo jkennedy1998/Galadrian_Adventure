@@ -59,7 +59,7 @@ public class CharacterCreation {
             defensiveMultiplier += .3;
         }
         if (choice == 3) {
-            role = "Drud";
+            role = "Druid";
             defensiveMultiplier += .1;
             attackMultiplier += .1;
         }

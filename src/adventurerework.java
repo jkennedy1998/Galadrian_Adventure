@@ -156,6 +156,8 @@ public class adventurerework {
             playerRefresh.initialize(attack1 ="Shot", attack2="Surprise Shot", attack3="Stab", attack4);
         else if (role.equalsIgnoreCase("Warlock"))
             playerRefresh.initialize(attack1 ="Hex", attack2="Dark Ones Blessing", attack3="Thirsting Blade", attack4);
+        else if (role.equalsIgnoreCase("Druid"))
+            playerRefresh.initialize(attack1 ="Shapechange", attack2="MoonBeam", attack3="Thunderwave", attack4);
         else
             playerRefresh.initialize(attack1="Slash", attack2="Jab", attack3="Punch", attack4);
         while (monsterRefresh.questionlife()) {
