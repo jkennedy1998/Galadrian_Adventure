@@ -66,8 +66,8 @@ public class ItemDirectory {
         ItemReturn[0] = "Curse";           //name
         ItemReturn[1] = "1";                  //self as 0 or enemy as 1
         ItemReturn[2] = "-15";                  //health modifier
-        ItemReturn[3] = "-.5";                  //attack modifier
-        ItemReturn[4] = "-.8";                  //accuracy modifier
+        ItemReturn[3] = ".5";                  //attack modifier
+        ItemReturn[4] = ".8";                  //accuracy modifier
         ItemReturn[5] = "9";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off
@@ -79,7 +79,7 @@ public class ItemDirectory {
         ItemReturn[1] = "0";                  //self as 0 or enemy as 1
         ItemReturn[2] = "20";                  //health modifier
         ItemReturn[3] = "1.5";                  //attack modifier
-        ItemReturn[4] = "-.75";                  //accuracy modifier
+        ItemReturn[4] = ".75";                  //accuracy modifier
         ItemReturn[5] = "10";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off
@@ -103,7 +103,7 @@ public class ItemDirectory {
         ItemReturn[0] = "Nail";           //name
         ItemReturn[1] = "0";               //self as 0; enemy as 1
         ItemReturn[3] = "-25";              // health mod
-        ItemReturn[4] ="4";              //att mod
+        ItemReturn[4] = "4";              //att mod
         ItemReturn[5] = "13";             //acc mod
         ItemReturn[6] = "0";              //effects # on
         ItemReturn[7] = "0";              // effects # off
