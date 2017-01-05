@@ -154,6 +154,8 @@ public class adventurerework {
         Encounter playerRefresh = new Encounter();
         if (role.equalsIgnoreCase("Ranger"))
             playerRefresh.initialize(attack1 ="Shot", attack2="Surprise Shot", attack3="Stab", attack4);
+        else if (role.equalsIgnoreCase("Warlock"))
+            playerRefresh.initialize(attack1 ="Hex", attack2="Dark Ones Blessing", attack3="Thirsting Blade", attack4);
         else
             playerRefresh.initialize(attack1="Slash", attack2="Jab", attack3="Punch", attack4);
         while (monsterRefresh.questionlife()) {
