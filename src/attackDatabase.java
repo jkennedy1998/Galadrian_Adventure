@@ -19,6 +19,12 @@ public class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("Stab")) {Stab();
             return attackData;}
+        if (attack.equalsIgnoreCase("Hex")) {Hex();
+            return attackData;}
+        if (attack.equalsIgnoreCase("Dark Ones Blessing")) {Dark_Ones_Blessing();
+            return attackData;}
+        if (attack.equalsIgnoreCase("Thirsting Blade")) {Thirsting_Blade();
+            return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
         return attackData;
@@ -64,5 +70,19 @@ public class attackDatabase {
         attackData[1] = 10;
         attackData[2] = 9;
     }
-
+    public static void Hex(){
+        attackData[0] = 5;
+        attackData[1] = 15;
+        attackData[2] = 9;
+    }
+    public static void Dark_Ones_Blessing(){
+        attackData[0] = 5;
+        attackData[1] = 35;
+        attackData[2] = 7;
+    }
+    public static void Thirsting_Blade(){
+        attackData[0] = 20;
+        attackData[1] = 25;
+        attackData[2] = 7;
+    }
 }
