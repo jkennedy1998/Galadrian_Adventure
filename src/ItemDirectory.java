@@ -102,9 +102,9 @@ public class ItemDirectory {
     {
         ItemReturn[0] = "Nail";           //name
         ItemReturn[1] = "0";               //self as 0; enemy as 1
-        ItemReturn[3] = "-25";              // health mod
-        ItemReturn[4] = "4";              //att mod
-        ItemReturn[5] = "13";             //acc mod
+        ItemReturn[3] = "-10";              // health mod
+        ItemReturn[4] = "1.5";              //att mod
+        ItemReturn[5] = "1.5";             //acc mod
         ItemReturn[6] = "0";              //effects # on
         ItemReturn[7] = "0";              // effects # off
 
