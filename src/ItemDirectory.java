@@ -7,7 +7,7 @@ public class ItemDirectory {
         if (itemNumber == 0)
             return noItem();
         if (itemNumber == 1)
-                return healthPotion();
+            return healthPotion();
         if (itemNumber == 2)
             return poison();
         if (itemNumber == 3)
@@ -16,6 +16,8 @@ public class ItemDirectory {
             return mead();
         if (itemNumber == 5)
             return unknownFlesh();
+        if (itemNumber == 6)
+            return  nail();
 
             return noItem(); //should NEVER return this from this line of code.
         }
@@ -93,6 +95,18 @@ public class ItemDirectory {
         ItemReturn[5] = "10";                 //accuracy
         ItemReturn[6] = "0";                  //effect # on
         ItemReturn[7] = "0";                  //effect # off
+
+        return ItemReturn;
+    }
+    public String[] nail()
+    {
+        ItemReturn[0] = "Nail";           //name
+        ItemReturn[1] = "0";               //self as 0; enemy as 1
+        ItemReturn[3] = "-25";              // health mod
+        ItemReturn[4] ="4";              //att mod
+        ItemReturn[5] = "13";             //acc mod
+        ItemReturn[6] = "0";              //effects # on
+        ItemReturn[7] = "0";              // effects # off
 
         return ItemReturn;
     }
