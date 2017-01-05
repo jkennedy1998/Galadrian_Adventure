@@ -184,7 +184,7 @@ public class adventurerework {
                 else {
                     int tempPAttack = Integer.parseInt(attackStorage);
                     monsterRefresh.receiveHit(tempPAttack);
-                    System.out.println("Its current health is at " + (monsterRefresh.health));
+                    System.out.println("You attack for " + tempPAttack + " damage!\nIts current health is at " + (monsterRefresh.health));
                 }
             }else{
                 boolean questionHit = true;
