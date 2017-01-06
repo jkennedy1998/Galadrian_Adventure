@@ -1,6 +1,4 @@
-import javax.swing.*;
 
-// make a pool of monsters to choose from based on the round
 public class monsterSelection {
     public static String beast;
     public static int beastStats[]= {0,0,0,0,0,0,0};
@@ -13,9 +11,9 @@ public class monsterSelection {
         setGrouping(round);
         selection();
         if (capital) {
-            System.out.println("You have encountered a " + beast + "!");
+            System.out.println("\n\nYou have encountered a " + beast + "!");
         } else{
-            System.out.println("You have encountered an " + beast + "!");
+            System.out.println("\n\nYou have encountered an " + beast + "!");
         }
         beastNameGen.main(beast);
         return beastStats;
@@ -57,11 +55,10 @@ public class monsterSelection {
 
 
 
-        {if (grouping == 1) {
-
+        if (grouping == 1) {
             monsterCount = 7;
             int monsterNumber = subSelect();
-            monsterCount = 7;
+
             if (monsterNumber == 1)
                 selectDog();
             else if (monsterNumber == 2)
@@ -76,9 +73,8 @@ public class monsterSelection {
                 selectSpiderling();
             else
                 selectBat();
-
-        }}
-        {if (grouping == 2) {
+        }
+        if (grouping == 2) {
 
             monsterCount = 6;
             int monsterNumber = subSelect();
@@ -96,15 +92,15 @@ public class monsterSelection {
             else
                 selectGoblin();
 
-        }}
-        {if (grouping == 3) {
+        }
+        if (grouping == 3) {
 
             monsterCount = 1;
             int monsterNumber = subSelect();
             monsterCount = 1;
             if (monsterNumber == 1)
                 selectDragon();
-        }}
+        }
     }
     public static int subSelect(){
         //here are the amount of monsters
@@ -226,9 +222,9 @@ public class monsterSelection {
     public static void selectDragon(){
         beast = "Dragon";
         capital = false;
-        beastStats[0] = 50;
-        beastStats[1] = 40;
-        beastStats[2] = 50;
+        beastStats[0] = 40;
+        beastStats[1] = 20;
+        beastStats[2] = 45;
         beastStats[3] = 7;
         beastStats[4] = (0);
         beastStats[5] = (100);
