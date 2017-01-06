@@ -16,7 +16,7 @@ public class adventurerework {
     public static int itemSlot4 = 0;
     public static String tempBeastName = "";
     public static String tempUserString = "";
-    public static int speed;
+    public static double speed;
 
     public static void main(String args[]) {
         health = 100;

@@ -1,14 +1,15 @@
 
 public class Monster {
     public int health;
-    public int maxHit, minHit, accuracy, speed;
+    public int maxHit, minHit, accuracy;
     public int[] itemDrop = {0,0};
     public double accuracyMult = 1;
     public double damageMult  = 1;
+    public double speed;
     public String name = "";
     public double speedMult = 1;
 
-    public Monster(int h, int max, int min, int acc, int item, int dropRate, int spd)
+    public Monster(int h, int max, int min, int acc, int item, int dropRate, double spd)
     {
         health = h;
         maxHit = max;
