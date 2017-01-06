@@ -15,21 +15,21 @@ public class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("Shoot")) {Shoot();
             return attackData;}
-        if (attack.equalsIgnoreCase("Surprise shot")) {Surprise_Shot();
+        if (attack.equalsIgnoreCase("SurpriseShot")) {SurpriseShot();
             return attackData;}
         if (attack.equalsIgnoreCase("Stab")) {Stab();
             return attackData;}
         if (attack.equalsIgnoreCase("Hex")) {Hex();
             return attackData;}
-        if (attack.equalsIgnoreCase("Dark Ones Blessing")) {Dark_Ones_Blessing();
+        if (attack.equalsIgnoreCase("DarkOnesBlessing")) {DarkOnesBlessing();
             return attackData;}
-        if (attack.equalsIgnoreCase("Thirsting Blade")) {Thirsting_Blade();
+        if (attack.equalsIgnoreCase("ThirstingBlade")) {ThirstingBlade();
             return attackData;}
-        if (attack.equalsIgnoreCase("Shapechange")) {Shapechange();
+        if (attack.equalsIgnoreCase("ShapeChange")) {ShapeChange();
             return attackData;}
         if (attack.equalsIgnoreCase("MoonBeam")) {MoonBeam();
             return attackData;}
-        if (attack.equalsIgnoreCase("Thunderwave")) {Thunderwave();
+        if (attack.equalsIgnoreCase("ThunderWave")) {ThunderWave();
             return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
@@ -66,7 +66,7 @@ public class attackDatabase {
         attackData[1] = 20;
         attackData[2] = 9;
     }
-    public static void Surprise_Shot(){
+    public static void SurpriseShot(){
         attackData[0] = 35;
         attackData[1] = 45;
         attackData[2] = 7;
@@ -81,17 +81,17 @@ public class attackDatabase {
         attackData[1] = 15;
         attackData[2] = 9;
     }
-    public static void Dark_Ones_Blessing(){
+    public static void DarkOnesBlessing(){
         attackData[0] = 5;
         attackData[1] = 35;
         attackData[2] = 7;
     }
-    public static void Thirsting_Blade(){
+    public static void ThirstingBlade(){
         attackData[0] = 20;
         attackData[1] = 25;
         attackData[2] = 7;
     }
-    public static void Shapechange() {
+    public static void ShapeChange() {
         attackData[0] = 20;
         attackData[1] = 25;
         attackData[2] = 8;
@@ -101,7 +101,7 @@ public class attackDatabase {
         attackData[1] = 15;
         attackData[2] = 9;
     }
-    public static void Thunderwave() {
+    public static void ThunderWave() {
         attackData[0] = 20;
         attackData[1] = 30;
         attackData[2] = 7;

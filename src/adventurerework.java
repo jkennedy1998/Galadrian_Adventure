@@ -31,8 +31,6 @@ public class adventurerework {
         CharacterCreation character = new CharacterCreation();
         String race = character.race();
         String role = character.role();
-        System.out.println(race);
-        System.out.println(role);
         accuracyMultiplier += character.getAccuracyMultiplier();
         attackMultiplier += character.getAttackMultiplier();
         defensiveMultiplier += character.getDefensiveMultiplier();
@@ -89,23 +87,23 @@ public class adventurerework {
         if (tempValue != 5) {
             if (tempValue == 0) {
                 itemSlot0 = itemValue;
-                return (itemTemp[0] + " has been stored in slot 1!");
+                return ("\n"+itemTemp[0] + " has been stored in slot 1!");
             }
             if (tempValue == 1) {
                 itemSlot1 = itemValue;
-                return (itemTemp[0] + " has been stored in slot 2!");
+                return ("\n"+itemTemp[0] + " has been stored in slot 2!");
             }
             if (tempValue == 2) {
                 itemSlot2 = itemValue;
-                return (itemTemp[0] + " has been stored in slot 3!");
+                return ("\n"+itemTemp[0] + " has been stored in slot 3!");
             }
             if (tempValue == 3) {
                 itemSlot3 = itemValue;
-                return (itemTemp[0] + " has been stored in slot 4!");
+                return ("\n"+itemTemp[0] + " has been stored in slot 4!");
             }
             if(tempValue == 4) {
                 itemSlot4 = itemValue;
-                return (itemTemp[0] + " has been stored in slot 5!");
+                return ("\n"+itemTemp[0] + " has been stored in slot 5!");
             }
         } else {
             String[] buttons = {"yes", "no"};
