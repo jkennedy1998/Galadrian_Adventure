@@ -41,23 +41,22 @@ public class adventurerework {
         attack2 = character.getAttack2();
         attack3 = character.getAttack3();
         attack4 = character.getAttack4();
-        live(role,accuracyMultiplier);
+        live();
     }
 
-    public static void live(String rolec,double accuracyMultiplier) {
+    public static void live() {
         String[] buttons = {"Yes", "I REFUSE"};
-        String role =rolec;
         int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         if (answer==0) {
-            striveOn(role,accuracyMultiplier);
+            striveOn();
         } else if (answer==1) {
             System.out.println("You have chosen to stop adventuring.\nI knew you were a Coward!");
             score = health + score;
             System.out.println("Your score is " + score);
             System.exit(0);
         } else  {
-            live(role,accuracyMultiplier);
+            live();
         }
         //System.exit(0);
 
@@ -77,11 +76,10 @@ public class adventurerework {
         }
     }
 
-    public static void striveOn(String rolec,double accuracyMultiplier) {
-        String role = rolec;
+    public static void striveOn() {
         System.out.println("You strive on.");
-        startEncounter(role,accuracyMultiplier);
-        live(role,accuracyMultiplier);
+        startEncounter();
+        live();
     }
     public static String getItem(int itemValue) {
         Items refreshInventory = new Items();
@@ -154,7 +152,7 @@ public class adventurerework {
     }
 
 
-    public static void startEncounter(String role,double accuracyMultiplier) {
+    public static void startEncounter() {
 
         int beastStats[];
         System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
@@ -256,7 +254,7 @@ public class adventurerework {
             }
             System.out.println("You feel your past wounds begin to heal.\nYou regain "+tempHealth+" health.");
         }
-        adventurerework.live(role,accuracyMultiplier);
+        adventurerework.live();
     }
 }
 //random comment to see if this commit and push works
