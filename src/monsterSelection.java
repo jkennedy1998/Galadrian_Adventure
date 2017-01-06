@@ -21,6 +21,10 @@ public class monsterSelection {
         return beastStats;
     }
     public static void setGrouping(int round){
+        if (round<30){
+            grouping=3;
+            //Mountain
+        }
         if (round<20){
             grouping=2;
             //caves
@@ -47,7 +51,7 @@ public class monsterSelection {
 //        beastStats[3] = (accuracy value);
 //        beastStats[4] = (item value);
 //        beastStats[5] = (item drop rate %);
-        //        beastStats[6] = (speed value);
+//        beastStats[6] = (speed value);
 
 
 
@@ -76,7 +80,7 @@ public class monsterSelection {
         }}
         {if (grouping == 2) {
 
-            monsterCount = 5;
+            monsterCount = 6;
             int monsterNumber = subSelect();
             monsterCount = 6;
             if (monsterNumber == 1)
@@ -92,6 +96,14 @@ public class monsterSelection {
             else
                 selectGoblin();
 
+        }}
+        {if (grouping == 3) {
+
+            monsterCount = 1;
+            int monsterNumber = subSelect();
+            monsterCount = 1;
+            if (monsterNumber == 1)
+                selectDragon();
         }}
     }
     public static int subSelect(){
@@ -210,5 +222,16 @@ public class monsterSelection {
         beastStats[5] = (70);
         beastStats[6] = (22);
 
+    }
+    public static void selectDragon(){
+        beast = "Dragon";
+        capital = false;
+        beastStats[0] = 50;
+        beastStats[1] = 40;
+        beastStats[2] = 50;
+        beastStats[3] = 7;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+        beastStats[6] = (16);
     }
 }
