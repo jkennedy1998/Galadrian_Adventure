@@ -37,6 +37,10 @@ public class adventurerework {
         attackMultiplier += character.getAttackMultiplier();
         defensiveMultiplier += character.getDefensiveMultiplier();
         speedMultiplier += character.getSpeedMultiplier();
+        attack1 = character.getAttack1();
+        attack2 = character.getAttack2();
+        attack3 = character.getAttack3();
+        attack4 = character.getAttack4();
         live(role,accuracyMultiplier);
     }
 
@@ -158,14 +162,7 @@ public class adventurerework {
         beastStats = monsterSelection.main(roundCount);
         Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5], beastStats[6]);
         Encounter playerRefresh = new Encounter();
-        if (role.equalsIgnoreCase("Ranger"))
-            playerRefresh.initialize(attack1 ="Shot", attack2="Surprise Shot", attack3="Stab", attack4);
-        else if (role.equalsIgnoreCase("Warlock"))
-            playerRefresh.initialize(attack1 ="Hex", attack2="Dark Ones Blessing", attack3="Thirsting Blade", attack4);
-        else if (role.equalsIgnoreCase("Druid"))
-            playerRefresh.initialize(attack1 ="Shapechange", attack2="MoonBeam", attack3="Thunderwave", attack4);
-        else
-            playerRefresh.initialize(attack1="Slash", attack2="Jab", attack3="Punch", attack4);
+        playerRefresh.initialize(attack1, attack2, attack3, attack4);
         System.out.println("Its current health is at " + (monsterRefresh.health));
         while (monsterRefresh.questionlife()) {
             String tempDialog = "";

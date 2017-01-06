@@ -6,6 +6,10 @@ import javax.swing.*;
 
 public class CharacterCreation {
     public static double attackMultiplier,accuracyMultiplier, defensiveMultiplier, speedMultiplier;
+    public static String attack1 = "";
+    public static String attack2 = "";
+    public static String attack3 = "";
+    public static String attack4 = "";
 
     public static String race() {
         String[] buttons = {"Human", "Orc", "Dwarf", "Wood Elf", "Giant"};
@@ -55,23 +59,38 @@ public class CharacterCreation {
         if (choice == 0) {
             role = "Warrior";
             attackMultiplier += .3;
+            attack1 = "Slash";
+            attack2 = "Punch";
+            attack3 = "Jab";
+            attack4 = "";
         }
         if (choice == 1) {
             role = "Ranger";
             accuracyMultiplier += .3;
+            attack1 = "Shoot";
+            attack2 = "Surprise Shot";
+            attack3 = "Stab";
+            attack4 = "";
         }
         if (choice == 2) {
             role = "Warlock";
             defensiveMultiplier += .3;
+            attack1 = "Hex";
+            attack2 = "Dark Ones Blessing";
+            attack3 = "Thirsting Blade";
+            attack4 = "";
         }
         if (choice == 3) {
             role = "Druid";
             defensiveMultiplier += .1;
             attackMultiplier += .1;
             accuracyMultiplier += .1;
+            attack1 = "Shapechange";
+            attack2 = "MoonBeam";
+            attack3 = "Thunderwave";
+            attack4 = "";
         }
         return role;
-
     }
 
     public static double getAccuracyMultiplier() {
@@ -83,7 +102,19 @@ public class CharacterCreation {
     public static double getDefensiveMultiplier(){
         return defensiveMultiplier;
     }
-    public static double getSpeedMultiplier(){return speedMultiplier;
+    public static double getSpeedMultiplier(){
+        return speedMultiplier;
     }
-
+    public static String getAttack1(){
+        return  attack1;
+    }
+    public static String getAttack2(){
+        return attack2;
+    }
+    public static String getAttack3(){
+        return attack3;
+    }
+    public static String getAttack4(){
+        return attack4;
+    }
 }
