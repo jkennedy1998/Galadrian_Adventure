@@ -215,7 +215,11 @@ public class adventurerework {
                 else tempOutput += "You use the " + tempData[0] + " on " + "the Beast " + ".\n";//monsterRefresh.name isnt working so im changing it to "the beast"
                 if (questionHit) {
                     if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
-                    else tempOutput += "This causes " + tempData[1] + " points of damage.\n";
+                    else if (Integer.parseInt(tempData[2]) < 0){
+                        tempOutput += "This causes " + tempData[1] + " points of damage.\n";
+                    }else{
+                        tempOutput += "This heals " + tempData[1] + " points of damage.\n";
+                    }
                     if (Double.parseDouble(tempData[3]) == 0) tempOutput += "";
                     else if (Double.parseDouble(tempData[3]) > 0)
                         tempOutput += "The " + tempData[0] + " seems to make the receiving end stronger!\n";
