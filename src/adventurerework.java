@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class adventurerework {
     public static int health, maxHealth;
-    public static double attackMultiplier, accuracyMultiplier, defensiveMultiplier;
+    public static double attackMultiplier, accuracyMultiplier, defensiveMultiplier, speedMultiplier;
     public static int score;
     public static int roundCount = 1;
     public static String attack1 = "";
@@ -25,7 +25,8 @@ public class adventurerework {
         accuracyMultiplier = 1;
         attackMultiplier = 1;
         defensiveMultiplier = 1;  //make this do things
-        speed = 1; // i want the attacks to be based on the speed of the character and the speed on the enemy
+        speedMultiplier = 1;
+        //speed = 1; // i want the attacks to be based on the speed of the character and the speed on the enemy
         System.out.println("You're decision to enter this retched dungeon is valiant, but foolish.\n");
         CharacterCreation character = new CharacterCreation();
         String race = character.race();
@@ -35,6 +36,7 @@ public class adventurerework {
         accuracyMultiplier += character.getAccuracyMultiplier();
         attackMultiplier += character.getAttackMultiplier();
         defensiveMultiplier += character.getDefensiveMultiplier();
+        speedMultiplier += character.getSpeedMultiplier();
         live(role,accuracyMultiplier);
     }
 
@@ -154,7 +156,7 @@ public class adventurerework {
         System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
 
         beastStats = monsterSelection.main(roundCount);
-        Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5]);
+        Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5], beastStats[6]);
         Encounter playerRefresh = new Encounter();
         if (role.equalsIgnoreCase("Ranger"))
             playerRefresh.initialize(attack1 ="Shot", attack2="Surprise Shot", attack3="Stab", attack4);

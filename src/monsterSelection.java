@@ -3,7 +3,7 @@ import javax.swing.*;
 // make a pool of monsters to choose from based on the round
 public class monsterSelection {
     public static String beast;
-    public static int beastStats[]= {0,0,0,0,0,0};
+    public static int beastStats[]= {0,0,0,0,0,0,0};
     public static int grouping = 1;
     public static boolean capital = false;
     public static int monsterCount = 0;
@@ -47,6 +47,9 @@ public class monsterSelection {
 //        beastStats[3] = (accuracy value);
 //        beastStats[4] = (item value);
 //        beastStats[5] = (item drop rate %);
+        //        beastStats[6] = (speed value);
+
+
 
 
 
@@ -108,6 +111,8 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (0);
         beastStats[5] = (0);
+        beastStats[6] = (20);
+
     }
     public static void selectBat(){
         beast = "small bat";
@@ -118,6 +123,8 @@ public class monsterSelection {
         beastStats[3] = 9;
         beastStats[4] = (2);
         beastStats[5] = (20);
+        beastStats[6] = (5);
+
     }
 
     public static void selectGoblin(){
@@ -129,6 +136,8 @@ public class monsterSelection {
         beastStats[3] = 5;
         beastStats[4] = (1);
         beastStats[5] = (30);
+        beastStats[6] = (15);
+
     }
     public static void selectWarlock(){
         beast = "Warlock";
@@ -139,6 +148,8 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (outOfTwo(1,3));
         beastStats[5] = (20);
+        beastStats[6] = (5);
+
     }
     public static void selectSkeleton(){
         beast = "Skeleton";
@@ -149,6 +160,8 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (0);
         beastStats[5] = (0);
+        beastStats[6] = (10);
+
     }
     public static void selectVampire(){
         beast = "Vampire";
@@ -159,6 +172,8 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (5);
         beastStats[5] = (30);
+        beastStats[6] = (30);
+
     }
     public static void selectCultist(){
         beast = "Cultist";
@@ -169,6 +184,8 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (3);
         beastStats[5] = (90);
+        beastStats[6] = (15);
+
     }
     public static void selectDrunkDwarf(){
         beast = "Drunk Dwarf";
@@ -179,6 +196,8 @@ public class monsterSelection {
         beastStats[3] = 2;
         beastStats[4] = (4);
         beastStats[5] = (90);
+        beastStats[6] = (5);
+
     }
     public static void selectSpiderling() {
         beast = "Spiderling";
@@ -189,5 +208,7 @@ public class monsterSelection {
         beastStats[3] = 7;
         beastStats[4] = (2);
         beastStats[5] = (70);
+        beastStats[6] = (22);
+
     }
 }

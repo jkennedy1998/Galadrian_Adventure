@@ -5,7 +5,7 @@ import javax.swing.*;
  */
 
 public class CharacterCreation {
-    public static double attackMultiplier,accuracyMultiplier, defensiveMultiplier;
+    public static double attackMultiplier,accuracyMultiplier, defensiveMultiplier, speedMultiplier;
 
     public static String race() {
         String[] buttons = {"Human", "Orc", "Dwarf", "Wood Elf", "Giant"};
@@ -20,23 +20,27 @@ public class CharacterCreation {
             race = "Orc";
             attackMultiplier -= .2;
             accuracyMultiplier+= .2;
+            speedMultiplier += .2;
         }
         if (choice == 2) {
             race = "Dwarf";
             attackMultiplier += .1;
             defensiveMultiplier += .2;
             accuracyMultiplier-= .3;
+            speedMultiplier-=.05;
         }
         if (choice == 3) {
             race = "Wood Elf";
             attackMultiplier -= .1;
             accuracyMultiplier +=.1;
+            speedMultiplier +=.25;
         }
         if (choice == 4) {
             race = "Giant";
             attackMultiplier += .3;
             defensiveMultiplier += .05;
             accuracyMultiplier -=.2;
+            speedMultiplier -=.1;
         }
 
         return race;
@@ -79,4 +83,7 @@ public class CharacterCreation {
     public static double getDefensiveMultiplier(){
         return defensiveMultiplier;
     }
+    public static double getSpeedMultiplier(){return speedMultiplier;
+    }
+
 }
