@@ -8,7 +8,7 @@ public class CharacterCreation {
     public static double attackMultiplier,accuracyMultiplier, defensiveMultiplier;
 
     public static String race() {
-        String[] buttons = {"Human", "High Elf", "Dwarf", "Wood Elf", "Dark Elf"};
+        String[] buttons = {"Human", "Orc", "Dwarf", "Wood Elf", "Giant"};
 
         int choice = JOptionPane.showOptionDialog(null, "Which race would you like to play as?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
@@ -17,7 +17,7 @@ public class CharacterCreation {
             race = "Human";
         }
         if (choice == 1) {
-            race = "High Elf";
+            race = "Orc";
             attackMultiplier -= .2;
             accuracyMultiplier+= .2;
         }
@@ -33,10 +33,10 @@ public class CharacterCreation {
             accuracyMultiplier +=.1;
         }
         if (choice == 4) {
-            race = "Dark Elf";
-            attackMultiplier += .1;
-            defensiveMultiplier -= .2;
-            accuracyMultiplier +=.1;
+            race = "Giant";
+            attackMultiplier += .3;
+            defensiveMultiplier += .05;
+            accuracyMultiplier -=.2;
         }
 
         return race;

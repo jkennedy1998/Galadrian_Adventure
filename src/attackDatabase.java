@@ -41,7 +41,7 @@ public class attackDatabase {
 //        attackData[1] = max attack (int);
 //        attackData[2] = accuracy (0 to 10);
 //    }
-    public static void intaKill(){ //for testing purposes only!
+    public static void instaKill(){ //for testing purposes only!
         attackData[0] = 100;
         attackData[1] = 100;
         attackData[2] = 10;

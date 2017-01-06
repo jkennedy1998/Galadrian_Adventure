@@ -64,7 +64,7 @@ public class adventurerework {
         System.out.println("Your score is " + score);
         if (score>=200)
         {
-
+            // lets add an easter egg here!
         }
         if(health<= 0) {
             System.exit(0);
@@ -215,7 +215,7 @@ public class adventurerework {
                 }
                 String tempOutput = "";
                 if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the " + tempData[0] + " on yourself\n";
-                else tempOutput += "You use the " + tempData[0] + " on " + monsterRefresh.name + ".\n";
+                else tempOutput += "You use the " + tempData[0] + " on " + "the Beast " + ".\n";//monsterRefresh.name isnt working so im changing it to "the beast"
                 if (questionHit) {
                     if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
                     else tempOutput += "This causes " + tempData[1] + " points of damage.\n";
