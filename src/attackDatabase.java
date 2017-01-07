@@ -35,7 +35,7 @@ public class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("Toxic Pierce")) {ToxicPierce();
             return attackData;}
-        if (attack.equalsIgnoreCase("C-4 Pellets")) {C4Pellets();
+        if (attack.equalsIgnoreCase("Explosive Pellets")) {ExplosivePellets();
             return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
@@ -122,7 +122,7 @@ public class attackDatabase {
         attackData[1] = 25;
         attackData[2] = 7;
     }
-    public static void C4Pellets() {
+    public static void ExplosivePellets() {
         attackData[0] = 1;
         attackData[1] = 50;
         attackData[2] = 7;

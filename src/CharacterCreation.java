@@ -111,7 +111,7 @@ public class CharacterCreation {
             accuracyMultiplier += .1;
             attack1 = "Pure Rend";
             attack2 = "Toxic Pierce";
-            attack3 = "C-4 Pellets";
+            attack3 = "Explosive Pellets";
             attack4 = "";
         }
         return role;

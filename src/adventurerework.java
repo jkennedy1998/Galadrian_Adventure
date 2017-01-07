@@ -47,7 +47,7 @@ public class adventurerework {
     }
 
     public static void live() {
-        if (exp >= expLim){
+        if (exp <= expLim){
             levelUp();
         }
         String[] buttons = {"Yes", "I REFUSE"};
@@ -333,8 +333,13 @@ public class adventurerework {
         defensiveMultiplier += Leveler.defensiveMultiplierLevel();
         speedMultiplier += Leveler.speedMultiplierLevel();
         level += 1;
-        System.out.println("Your new health stats are health = "+health+" MaxHealth = "+maxHealth);
-        System.out.println("AttackMultiplier = "+attackMultiplier+" AccuracyMultiplier = "+accuracyMultiplier+" DefensiveMultiplier = "
-        + defensiveMultiplier+" SpeedMultiplier = "+speedMultiplier);
+        if(level == 1)
+        {
+        }
+        else
+        System.out.println("Level Up! You're level " + level);
+        //System.out.println("Your new health stats are health = "+health+" MaxHealth = "+maxHealth);
+        //System.out.println("AttackMultiplier = "+attackMultiplier+" AccuracyMultiplier = "+accuracyMultiplier+" DefensiveMultiplier = "
+        //+ defensiveMultiplier+" SpeedMultiplier = "+speedMultiplier);
     }
 }
