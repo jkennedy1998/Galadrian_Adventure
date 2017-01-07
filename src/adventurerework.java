@@ -3,6 +3,9 @@ import javax.swing.*;
 public class adventurerework {
     public static int health, maxHealth;
     public static int speed = 60;
+    public static int exp = 0;
+    public static int expLim = 5;
+    public static int level = 0;
     public static double attackMultiplier, accuracyMultiplier, defensiveMultiplier, speedMultiplier;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int score;
@@ -44,6 +47,9 @@ public class adventurerework {
     }
 
     public static void live() {
+        if (exp >= expLim){
+            levelUp();
+        }
         String[] buttons = {"Yes", "I REFUSE"};
         int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
@@ -79,6 +85,7 @@ public class adventurerework {
         System.out.println("You strive on.");
         startEncounter();
         live();
+        exp += 1;
     }
     public static String getItem(int itemValue) {
         Items refreshInventory = new Items();
@@ -318,6 +325,16 @@ public class adventurerework {
 //        //to those specific functions. it will store the data from the moves and determine who goes next. also will check for deaths.
 //
 //
+    public static void levelUp(){
+        exp = 0;
+        expLim *= 2;
+        health += Leveler.healthLevel();
+        maxHealth += Leveler.maxHealthLevel();
+        attackMultiplier += Leveler.attackMultiplierLevel();
+        accuracyMultiplier += Leveler.accuracyMultiplierLevel();
+        defensiveMultiplier += Leveler.defensiveMultiplierLevel();
+        speedMultiplier += Leveler.speedMultiplierLevel();
+        level += 1;
+        System.out.println("Your new health stats are health = "+health+" MaxHealth = "+maxHealth);
+    }
 }
-
-
