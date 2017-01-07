@@ -25,7 +25,7 @@ public class adventurerework {
         score = 0;
         accuracyMultiplier = 1;
         attackMultiplier = 1;
-        defensiveMultiplier = 1;  //make this do things
+        defensiveMultiplier = 1;
         speedMultiplier = 1;
         System.out.println("You're decision to enter this retched dungeon is valiant, but foolish.\n");
         CharacterCreation character = new CharacterCreation();
@@ -57,8 +57,6 @@ public class adventurerework {
         } else  {
             live();
         }
-        //System.exit(0);
-
 
     }
 
