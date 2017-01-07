@@ -3,13 +3,13 @@ import javax.swing.*;
 public class adventurerework {
     public static int health, maxHealth;
     public static int speed = 60;
-    public static int exp = 0;
     public static int expLim = 5;
     public static int level = 0;
     public static double attackMultiplier, accuracyMultiplier, defensiveMultiplier, speedMultiplier;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int score;
     public static int roundCount = 1;
+    public static int exp = roundCount;
     public static String attack1 = "";
     public static String attack2 = "";
     public static String attack3 = "";
@@ -47,7 +47,7 @@ public class adventurerework {
     }
 
     public static void live() {
-        if (exp <= expLim){
+        if (exp >= expLim){
             levelUp();
         }
         String[] buttons = {"Yes", "I REFUSE"};
@@ -83,7 +83,6 @@ public class adventurerework {
         System.out.println("You strive on.");
         startEncounter();
         live();
-        exp += 1;
     }
     public static String getItem(int itemValue) {
         Items refreshInventory = new Items();
