@@ -256,6 +256,7 @@ public class monsterSelection {
         beastStats[5] = (100);
         beastStats[6] = (50);
     }
+
 }
 //        beastStats[0] = (health value);
 //        beastStats[1] = (maxAttack value);

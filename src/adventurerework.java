@@ -332,4 +332,5 @@ public class adventurerework {
         if (leveledStats[2].equalsIgnoreCase("speed")) speedMultiplierLocked+=Double.parseDouble(leveledStats[3]);
         if (leveledStats[2].equalsIgnoreCase("defence")) defensiveMultiplierLocked+=Double.parseDouble(leveledStats[3]);
     }
+    
 }

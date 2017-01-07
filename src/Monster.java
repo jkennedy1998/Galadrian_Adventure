@@ -19,8 +19,6 @@ public class Monster {
         itemDrop[1] = dropRate;
         speed = spd;
 
-
-
     }
     public int questionItem(){
         if (itemDrop[1] >= Math.round(Math.random() * 100)){

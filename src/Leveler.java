@@ -50,7 +50,6 @@ public class Leveler {
                 System.out.println("You bind your wounds.\nYou Have "+(health+10)+"health points.");
             }
         }
-
         return returningLevelStats;
     }
 }
