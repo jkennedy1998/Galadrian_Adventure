@@ -2,8 +2,9 @@ import javax.swing.*;
 
 public class adventurerework {
     public static int health, maxHealth;
-    public static int speed = 50;
+    public static int speed = 60;
     public static double attackMultiplier, accuracyMultiplier, defensiveMultiplier, speedMultiplier;
+    public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int score;
     public static int roundCount = 1;
     public static String attack1 = "";
@@ -26,16 +27,15 @@ public class adventurerework {
         attackMultiplier = 1;
         defensiveMultiplier = 1;  //make this do things
         speedMultiplier = 1;
-        //speed = 1; // i want the attacks to be based on the speed of the character and the speed on the enemy
         System.out.println("You're decision to enter this retched dungeon is valiant, but foolish.\n");
         CharacterCreation character = new CharacterCreation();
-        String race = character.race();
-        String role = character.role();
-        accuracyMultiplier += character.getAccuracyMultiplier();
-        attackMultiplier += character.getAttackMultiplier();
-        defensiveMultiplier += character.getDefensiveMultiplier();
-        speedMultiplier += character.getSpeedMultiplier();
-        speed =  (int)Math.round(speed*speedMultiplier);
+        CharacterCreation.race();
+        CharacterCreation.role();
+        accuracyMultiplierLocked += character.getAccuracyMultiplier();
+        attackMultiplierLocked += character.getAttackMultiplier();
+        defensiveMultiplierLocked += character.getDefensiveMultiplier();
+        speedMultiplierLocked += character.getSpeedMultiplier();
+        speed =  (int)Math.round(speed*speedMultiplierLocked);
         attack1 = character.getAttack1();
         attack2 = character.getAttack2();
         attack3 = character.getAttack3();
@@ -151,14 +151,16 @@ public class adventurerework {
     }
 
     public static void startEncounter(){
-        int playerSpeed; //works as the temporary speed of the player so it can be modified in battle.
-        playerSpeed = speed;
+        accuracyMultiplier = accuracyMultiplierLocked;
+        attackMultiplier = attackMultiplierLocked;
+        defensiveMultiplier = defensiveMultiplierLocked;
+        speedMultiplier = speedMultiplierLocked;
         int beastStats[], beastStatsSolid[];
         beastStatsSolid = monsterSelection.main(roundCount);
         beastStats = beastStatsSolid;
         boolean lifeStatus = true;
         do {
-            if (playerSpeed >= beastStats[6]) {
+            if (speed*speedMultiplier >= beastStats[6]) {
                 String[] tempData = playerTurn();
                 if (tempData==null){}
                 else if (tempData[0].equalsIgnoreCase("A")){
@@ -237,7 +239,7 @@ public class adventurerework {
 
         String tempDialog = "";
         Encounter playerRefresh = new Encounter();
-        playerRefresh.initialize(attack1, attack2, attack3, attack4);
+        playerRefresh.initialize(attack1, attack2, attack3, attack4, attackMultiplier, accuracyMultiplier);
         System.out.println("It's your turn to attack!\n");
             String attackStorage = playerRefresh.PlayerAttack(tempDialog,accuracyMultiplier);
             if (!(attackStorage.equalsIgnoreCase("item"))) { //not using item

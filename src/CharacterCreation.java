@@ -5,11 +5,15 @@ import javax.swing.*;
  */
 
 public class CharacterCreation {
-    public static double attackMultiplier,accuracyMultiplier, defensiveMultiplier, speedMultiplier;
+    public static double accuracyMultiplier = 1;
+    public static double attackMultiplier = 1;
+    public static double defensiveMultiplier = 1;
+    public static double speedMultiplier = 1;
     public static String attack1 = "";
     public static String attack2 = "";
     public static String attack3 = "";
     public static String attack4 = "";
+
 
     public static String race() {
         String[] buttons = {"Human", "Orc", "Dwarf", "Wood Elf", "Giant"};

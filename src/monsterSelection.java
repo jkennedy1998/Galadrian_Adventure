@@ -49,7 +49,7 @@ public class monsterSelection {
 //        beastStats[3] = (accuracy value);
 //        beastStats[4] = (item value);
 //        beastStats[5] = (item drop rate %);
-//        beastStats[6] = (speed value);
+//        beastStats[6] = (speed value); (positive numbers. unmodded character speed is 60)
 
 
 
@@ -119,7 +119,7 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (0);
         beastStats[5] = (0);
-        beastStats[6] = (20);
+        beastStats[6] = (60);
 
     }
     public static void selectBat(){
@@ -131,7 +131,7 @@ public class monsterSelection {
         beastStats[3] = 9;
         beastStats[4] = (2);
         beastStats[5] = (20);
-        beastStats[6] = (5);
+        beastStats[6] = (70);
 
     }
 
@@ -144,7 +144,7 @@ public class monsterSelection {
         beastStats[3] = 5;
         beastStats[4] = (1);
         beastStats[5] = (30);
-        beastStats[6] = (15);
+        beastStats[6] = (55);
 
     }
     public static void selectWarlock(){
@@ -156,7 +156,7 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (outOfTwo(1,3));
         beastStats[5] = (20);
-        beastStats[6] = (5);
+        beastStats[6] = (56);
 
     }
     public static void selectSkeleton(){
@@ -168,7 +168,7 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (0);
         beastStats[5] = (0);
-        beastStats[6] = (10);
+        beastStats[6] = (45);
 
     }
     public static void selectVampire(){
@@ -180,7 +180,7 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (5);
         beastStats[5] = (30);
-        beastStats[6] = (30);
+        beastStats[6] = (60);
 
     }
     public static void selectCultist(){
@@ -192,7 +192,7 @@ public class monsterSelection {
         beastStats[3] = 8;
         beastStats[4] = (3);
         beastStats[5] = (90);
-        beastStats[6] = (15);
+        beastStats[6] = (60);
 
     }
     public static void selectDrunkDwarf(){
@@ -204,7 +204,7 @@ public class monsterSelection {
         beastStats[3] = 2;
         beastStats[4] = (4);
         beastStats[5] = (90);
-        beastStats[6] = (5);
+        beastStats[6] = (30);
 
     }
     public static void selectSpiderling() {
@@ -216,7 +216,7 @@ public class monsterSelection {
         beastStats[3] = 7;
         beastStats[4] = (2);
         beastStats[5] = (70);
-        beastStats[6] = (22);
+        beastStats[6] = (67);
 
     }
     public static void selectDragon(){
@@ -228,6 +228,6 @@ public class monsterSelection {
         beastStats[3] = 7;
         beastStats[4] = (0);
         beastStats[5] = (100);
-        beastStats[6] = (16);
+        beastStats[6] = (40);
     }
 }

@@ -8,14 +8,16 @@ public class Encounter {
     public int attackData[] = {0, 0, 0};
     public String attackChoice;
     double damageMult = 1;
-    double accuracyMult = 0;
+    double accuracyMult = 1;
     String tempDialogStored = "";
 
-    public void initialize(String a1, String a2, String a3, String a4) {
+    public void initialize(String a1, String a2, String a3, String a4, double damageMultiplier, double accuracyMultiplier) {
         attack1 = a1;
         attack2 = a2;
         attack3 = a3;
         attack4 = a4;
+        damageMult = damageMultiplier;
+        accuracyMult = accuracyMultiplier;
 
     }
     public String[] PlayerItem() {
@@ -94,16 +96,15 @@ public class Encounter {
     }
 
     public String calculateHit(int min, int max, int acc,double accuracyMultiplier) {
-        accuracyMult += accuracyMultiplier;
+        accuracyMult = accuracyMultiplier;
         if (Math.round(accuracyMult*acc) >= Math.round(Math.random() * 10)) {
             String randomNum = "" +Math.round(damageMult*(Math.random()*(max-min)+min));
             adventurerework.tempUserString = ("you "+attackChoice+" for "+randomNum+" damage!\n");
-            accuracyMult = 0;
+
             return randomNum;
         }
         else {
-            adventurerework.tempUserString = (attackChoice+" has missed!\n");
-            accuracyMult = 0;
+            System.out.print(attackChoice+" has missed!\n");
             return "Miss";
         }
 
