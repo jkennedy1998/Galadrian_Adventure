@@ -3,13 +3,13 @@ import javax.swing.*;
 public class adventurerework {
     public static int health, maxHealth;
     public static int speed = 60;
-    public static int expLim = 5;
     public static int level = 0;
     public static double attackMultiplier, accuracyMultiplier, defensiveMultiplier, speedMultiplier;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int score;
     public static int roundCount = 1;
-    public static int exp = roundCount;
+    public static int exp = 0;
+    public static int expLim = 5;
     public static String attack1 = "";
     public static String attack2 = "";
     public static String attack3 = "";
@@ -195,6 +195,7 @@ public class adventurerework {
 
         roundCount += 1;
         score += 15;
+        exp += 5;
         System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
         String endEncounterDialog = "";
         endEncounterDialog += ("You have vanquished the beast!");
@@ -277,9 +278,9 @@ public class adventurerework {
                 if (questionHit) {
                     if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
                     else if (Integer.parseInt(tempData[2]) < 0){
-                        tempOutput += "This causes " + tempData[1] + " points of damage.\n";
+                        tempOutput += "This causes " + tempData[2] + " points of damage.\n";
                     }else{
-                        tempOutput += "This heals " + tempData[1] + " points of damage.\n";
+                        tempOutput += "This heals " + tempData[2] + " points of damage.\n";
                     }
                     if (Double.parseDouble(tempData[3]) == 0) tempOutput += "";
                     else if (Double.parseDouble(tempData[3]) > 0)
@@ -318,27 +319,17 @@ public class adventurerework {
             } return null;
     }
 
-//    public static void startEncounter() { //need to break up the function into three. one for the monsters move and one for the players. also another to call
-//        //to those specific functions. it will store the data from the moves and determine who goes next. also will check for deaths.
-//
-//
     public static void levelUp(){
-        exp = 0;
-        expLim *= 2;
-        health += Leveler.healthLevel();
-        maxHealth += Leveler.maxHealthLevel();
-        attackMultiplier += Leveler.attackMultiplierLevel();
-        accuracyMultiplier += Leveler.accuracyMultiplierLevel();
-        defensiveMultiplier += Leveler.defensiveMultiplierLevel();
-        speedMultiplier += Leveler.speedMultiplierLevel();
-        level += 1;
-        if(level == 1)
-        {
-        }
-        else
-        System.out.println("Level Up! You're level " + level);
-        //System.out.println("Your new health stats are health = "+health+" MaxHealth = "+maxHealth);
-        //System.out.println("AttackMultiplier = "+attackMultiplier+" AccuracyMultiplier = "+accuracyMultiplier+" DefensiveMultiplier = "
-        //+ defensiveMultiplier+" SpeedMultiplier = "+speedMultiplier);
+        exp = expLim-exp;
+        expLim = (int)Math.round(expLim*1.5);
+        level++;
+        String[] leveledStats;
+        leveledStats = Leveler.levelUp(health,maxHealth);
+        health = Integer.parseInt(leveledStats[0]);
+        maxHealth = Integer.parseInt(leveledStats[1]);
+        if (leveledStats[2].equalsIgnoreCase("damage")) attackMultiplierLocked+=Double.parseDouble(leveledStats[3]);
+        if (leveledStats[2].equalsIgnoreCase("accuracy")) accuracyMultiplierLocked+=Double.parseDouble(leveledStats[3]);
+        if (leveledStats[2].equalsIgnoreCase("speed")) speedMultiplierLocked+=Double.parseDouble(leveledStats[3]);
+        if (leveledStats[2].equalsIgnoreCase("defence")) defensiveMultiplierLocked+=Double.parseDouble(leveledStats[3]);
     }
 }
