@@ -16,102 +16,102 @@ public class CharacterCreation {
 
 
     public static String race() {
-        String[] buttons = {"Human", "Orc", "Dwarf", "Wood Elf", "Giant"};
+        String[] buttons = {"Human", "Orc", "Dwarf", "Elf", "Halfling"};
 
         int choice = JOptionPane.showOptionDialog(null, "Which race would you like to play as?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         String race = "";
-        if (choice == 0) {
+        if (choice == 0) {//generic human. stats based on human
             race = "Human";
         }
-        if (choice == 1) {
+        if (choice == 1) {//strong but brute-like
             race = "Orc";
-            attackMultiplier -= .2;
-            accuracyMultiplier+= .2;
-            speedMultiplier += .2;
+            attackMultiplier += .2;
+            accuracyMultiplier -= .1;
+            speedMultiplier += 0;
             defensiveMultiplier += .05;
 
         }
-        if (choice == 2) {
+        if (choice == 2) {//hardy and good with armor, clumsy.
             race = "Dwarf";
             attackMultiplier += .1;
-            defensiveMultiplier += .2;
-            accuracyMultiplier-= .3;
-            speedMultiplier-=.05;
+            defensiveMultiplier += .3;
+            accuracyMultiplier-= .2;
+            speedMultiplier-=.1;
         }
-        if (choice == 3) {
-            race = "Wood Elf";
-            attackMultiplier -= .1;
-            accuracyMultiplier +=.1;
+        if (choice == 3) {//your friendly neighborhood stealth archer
+            race = "Elf";
+            attackMultiplier -= .2;
+            accuracyMultiplier +=.3;
             speedMultiplier +=.25;
-            defensiveMultiplier += .05;
+            defensiveMultiplier -= 0;
 
         }
-        if (choice == 4) {
-            race = "Giant";
-            attackMultiplier += .3;
-            defensiveMultiplier += .05;
-            accuracyMultiplier -=.2;
-            speedMultiplier -=.1;
+        if (choice == 4) {//a breed between an elf an a human
+            race = "Halfling";
+            attackMultiplier -= .1;
+            defensiveMultiplier -= .1;
+            accuracyMultiplier +=.15;
+            speedMultiplier +=.1;
         }
 
         return race;
     }
 
-    public static String role() {
-        String[] buttons = {"Warrior", "Ranger", "Warlock", "Druid", "Witcher"};
+    public static String role() {//should change stats by plus two to three to keep balance
+        String[] buttons = {"Swordsman", "Ranger", "Mage", "Barbarian", "Tinker"};
 
         int choice = JOptionPane.showOptionDialog(null, "Which type of Savior would you like to play as?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         String role = "";
         if (choice == 0) {
-            role = "Warrior";
+            role = "Warrior"; //blade and physical attacks
             attackMultiplier += .2;
-            defensiveMultiplier += .2;
-            accuracyMultiplier += .2;
+            defensiveMultiplier += .1;
+            accuracyMultiplier += 0;
             attack1 = "Slash";
-            attack2 = "One-Ton Punch";
-            attack3 = "Shield Batter";
+            attack2 = "Stab";
+            attack3 = "Shield Bash";
             attack4 = "";
         }
         if (choice == 1) {
-            role = "Ranger";
-            accuracyMultiplier += .4;
-            attackMultiplier += .05;
-            defensiveMultiplier += .05;
-            attack1 = "Perfect Shot";
-            attack2 = "QuadShot";
-            attack3 = "Hidden Shank";
+            role = "Ranger"; //ranged attacks and weaker physical attacks
+            accuracyMultiplier += .3;
+            attackMultiplier += .1;
+            defensiveMultiplier -= .1;
+            attack1 = "Bow Shot";
+            attack2 = "Marksman's Shot";
+            attack3 = "Stab";
             attack4 = "";
         }
         if (choice == 2) {
-            role = "Warlock";
+            role = "Mage"; //magic and some weaker physical attacks
             defensiveMultiplier += .1;
             attackMultiplier += .3;
             accuracyMultiplier += .1;
             attack1 = "Hex";
-            attack2 = "Dark Ones Blessing";
-            attack3 = "Pyro Assault";
+            attack2 = "Shadow Bolt";
+            attack3 = "Sparks";
             attack4 = "";
         }
         if (choice == 3) {
-            role = "Druid";
-            defensiveMultiplier += .2;
-            attackMultiplier += .1;
-            accuracyMultiplier += .3;
-            attack1 = "SunSpot";
-            attack2 = "MoonBeam";
-            attack3 = "ThunderWave";
+            role = "Barbarian"; //brute force!
+            defensiveMultiplier -= .1;
+            attackMultiplier += .4;
+            accuracyMultiplier -= .1;
+            attack1 = "Punch";
+            attack2 = "Body Slam";
+            attack3 = "Club";
             attack4 = "";
         }
         if (choice == 4) {
-            role = "Witcher";
-            defensiveMultiplier += .3;
+            role = "Monk"; //self healing and attacking people with physical attacks
+            defensiveMultiplier -= .2;
             attackMultiplier += .2;
-            accuracyMultiplier += .1;
-            attack1 = "Pure Rend";
-            attack2 = "Toxic Pierce";
-            attack3 = "Explosive Pellets";
+            accuracyMultiplier += .3;
+            attack1 = "Meditation";
+            attack2 = "Punch";
+            attack3 = "Uppercut";
             attack4 = "";
         }
         return role;
