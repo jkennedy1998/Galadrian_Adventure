@@ -231,7 +231,7 @@ public class adventurerework {
 
             }
         }else return monsterRefresh.questionItem();
-        return 5318008; //returns but does nothing.
+        return 5318008; //returns but does nothing. such savagery
     }
 
     public static String[] playerTurn(){

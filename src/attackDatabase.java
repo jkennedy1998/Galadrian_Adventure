@@ -9,27 +9,33 @@ public class attackDatabase {
     public static int[] getAttackData(String attack) {
         if (attack.equalsIgnoreCase("Slash")) {slash();
             return attackData;}
-        if (attack.equalsIgnoreCase("punch")) {punch();
+        if (attack.equalsIgnoreCase("One-Ton Punch")) {onetonpunch();
             return attackData;}
-        if (attack.equalsIgnoreCase("jab")) {jab();
+        if (attack.equalsIgnoreCase("Shield Batter")) {ShieldBatter();
             return attackData;}
-        if (attack.equalsIgnoreCase("Shoot")) {Shoot();
+        if (attack.equalsIgnoreCase("Perfect Shot")) {PerfectShot();
             return attackData;}
-        if (attack.equalsIgnoreCase("SurpriseShot")) {SurpriseShot();
+        if (attack.equalsIgnoreCase("QuadShot")) {QuadShot();
             return attackData;}
-        if (attack.equalsIgnoreCase("Stab")) {Stab();
+        if (attack.equalsIgnoreCase("Hidden Shank")) {HiddenShank();
             return attackData;}
         if (attack.equalsIgnoreCase("Hex")) {Hex();
             return attackData;}
-        if (attack.equalsIgnoreCase("DarkOnesBlessing")) {DarkOnesBlessing();
+        if (attack.equalsIgnoreCase("Dark Ones Blessing")) {DarkOnesBlessing();
             return attackData;}
-        if (attack.equalsIgnoreCase("ThirstingBlade")) {ThirstingBlade();
+        if (attack.equalsIgnoreCase("Pyro Assault")) {PyroAssault();
             return attackData;}
-        if (attack.equalsIgnoreCase("ShapeChange")) {ShapeChange();
+        if (attack.equalsIgnoreCase("SunSpot")) {SunSpot();
             return attackData;}
         if (attack.equalsIgnoreCase("MoonBeam")) {MoonBeam();
             return attackData;}
         if (attack.equalsIgnoreCase("ThunderWave")) {ThunderWave();
+            return attackData;}
+        if (attack.equalsIgnoreCase("Pure Rend")) {PureRend();
+            return attackData;}
+        if (attack.equalsIgnoreCase("Toxic Pierce")) {ToxicPierce();
+            return attackData;}
+        if (attack.equalsIgnoreCase("C-4 Pellets")) {C4Pellets();
             return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
@@ -46,32 +52,32 @@ public class attackDatabase {
         attackData[1] = 100;
         attackData[2] = 10;
     }
-    public static void jab(){
+    public static void ShieldBatter(){
         attackData[0] = 25;
         attackData[1] = 30;
         attackData[2] = 7;
     }
-    public static void punch(){
+    public static void onetonpunch(){
         attackData[0] = 10;
         attackData[1] = 15;
-        attackData[2] = 9;
+        attackData[2] = 10;
     }
     public static void slash(){
         attackData[0] = 5;
         attackData[1] = 30;
         attackData[2] = 9;
     }
-    public static void Shoot(){
+    public static void PerfectShot(){
         attackData[0] = 10;
         attackData[1] = 20;
         attackData[2] = 9;
     }
-    public static void SurpriseShot(){
+    public static void QuadShot(){
         attackData[0] = 35;
-        attackData[1] = 45;
-        attackData[2] = 7;
+        attackData[1] = 40;
+        attackData[2] = 4;
     }
-    public static void Stab(){
+    public static void HiddenShank(){
         attackData[0] = 5;
         attackData[1] = 10;
         attackData[2] = 9;
@@ -86,12 +92,12 @@ public class attackDatabase {
         attackData[1] = 35;
         attackData[2] = 7;
     }
-    public static void ThirstingBlade(){
+    public static void PyroAssault(){
         attackData[0] = 20;
         attackData[1] = 25;
         attackData[2] = 7;
     }
-    public static void ShapeChange() {
+    public static void SunSpot() {
         attackData[0] = 20;
         attackData[1] = 25;
         attackData[2] = 8;
@@ -106,4 +112,22 @@ public class attackDatabase {
         attackData[1] = 30;
         attackData[2] = 7;
     }
+    public static void PureRend() {
+        attackData[0] = 25;
+        attackData[1] = 30;
+        attackData[2] = 6;
+    }
+    public static void ToxicPierce() {
+        attackData[0] = 15;
+        attackData[1] = 25;
+        attackData[2] = 7;
+    }
+    public static void C4Pellets() {
+        attackData[0] = 1;
+        attackData[1] = 50;
+        attackData[2] = 7;
+    }
 }
+//        attackData[0] = min attack (int);
+//        attackData[1] = max attack (int);
+//        attackData[2] = accuracy (0 to 10);

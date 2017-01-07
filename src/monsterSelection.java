@@ -100,6 +100,10 @@ public class monsterSelection {
             monsterCount = 1;
             if (monsterNumber == 1)
                 selectDragon();
+            else if(monsterNumber == 2)
+                selectDemon();
+            else if(monsterNumber == 3)
+                selectCAngel();
         }
     }
     public static int subSelect(){
@@ -111,7 +115,7 @@ public class monsterSelection {
     // Past this point should only contain beast selections.
 
     public static void selectDog(){
-        beast = "rabid dog";
+        beast = "Rabid Dog";
         capital = false;
         beastStats[0] = 25;
         beastStats[1] = 15;
@@ -123,7 +127,7 @@ public class monsterSelection {
 
     }
     public static void selectBat(){
-        beast = "small bat";
+        beast = "Small Bat";
         capital = false;
         beastStats[0] = 15;
         beastStats[1] = 10;
@@ -136,7 +140,7 @@ public class monsterSelection {
     }
 
     public static void selectGoblin(){
-        beast = "goblin";
+        beast = "Goblin";
         capital = false;
         beastStats[0] = 20;
         beastStats[1] = 20;
@@ -175,8 +179,8 @@ public class monsterSelection {
         beast = "Vampire";
         capital = false;
         beastStats[0] = 40;
-        beastStats[1] = 20;
-        beastStats[2] = 35;
+        beastStats[1] = 35;
+        beastStats[2] = 20;
         beastStats[3] = 8;
         beastStats[4] = (5);
         beastStats[5] = (30);
@@ -223,11 +227,40 @@ public class monsterSelection {
         beast = "Dragon";
         capital = false;
         beastStats[0] = 40;
-        beastStats[1] = 20;
-        beastStats[2] = 45;
+        beastStats[1] = 45;
+        beastStats[2] = 20;
         beastStats[3] = 7;
         beastStats[4] = (0);
         beastStats[5] = (100);
         beastStats[6] = (40);
     }
+    public static void selectDemon(){
+        beast = "Demon";
+        capital = false;
+        beastStats[0] = 35;
+        beastStats[1] = 45;
+        beastStats[2] = 35;
+        beastStats[3] = 8;
+        beastStats[4] = (0);
+        beastStats[5] = (99);
+        beastStats[6] = (30);
+    }
+    public static void selectCAngel(){
+        beast = "Corrupted Angel";
+        capital = false;
+        beastStats[0] = 50;
+        beastStats[1] = 50;
+        beastStats[2] = 25;
+        beastStats[3] = 3;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+        beastStats[6] = (50);
+    }
 }
+//        beastStats[0] = (health value);
+//        beastStats[1] = (maxAttack value);
+//        beastStats[2] = (minAttack value);
+//        beastStats[3] = (accuracy value);
+//        beastStats[4] = (item value);
+//        beastStats[5] = (item drop rate %);
+//        beastStats[6] = (speed value); (positive numbers. unmodded character speed is 60)
