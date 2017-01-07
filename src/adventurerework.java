@@ -175,7 +175,7 @@ public class adventurerework {
                     beastStats[1]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see below)
                     beastStats[2]+=Integer.parseInt(tempData[3]);
                 }
-                System.out.println("Its current health is at " + (beastStats[0]));
+                System.out.println("the current health of "+tempBeastName+" is at " + (beastStats[0]));
                 if (beastStats[0]>0){ monsterTurn(beastStats,lifeStatus);}
             } else {
                 monsterTurn(beastStats,lifeStatus);
@@ -189,7 +189,7 @@ public class adventurerework {
                     beastStats[1]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see above)
                     beastStats[2]+=Integer.parseInt(tempData[3]);
                 }
-                System.out.println("Its current health is at " + (beastStats[0]));
+                System.out.println("the current health of "+tempBeastName+" is at " + (beastStats[0]));
             }
         }while (health>0&&beastStats[0]>0);
 
@@ -198,7 +198,7 @@ public class adventurerework {
         exp+=5;
         System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
         String endEncounterDialog = "";
-        endEncounterDialog += ("You have vanquished the beast!");
+        endEncounterDialog += ("You have vanquished "+tempBeastName+"!");
         lifeStatus = false;
         if(monsterTurn(beastStats,lifeStatus)==1){
             endEncounterDialog += getItem(beastStats[4]);
@@ -221,14 +221,14 @@ public class adventurerework {
 
         Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5], beastStats[6]);
         if ( lifeStatus== true) {
-            System.out.println("The beast attacks!");
+            System.out.println(tempBeastName+" attacks!");
             String tempMAttack = monsterRefresh.calculateHit();
-            if (tempMAttack.equalsIgnoreCase("The beast has missed!")) {
-                System.out.println("The beast has missed!");
+            if (tempMAttack.equalsIgnoreCase(tempBeastName+" has missed!")) {
+                System.out.println(tempBeastName+" has missed!");
             } else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 health -= tempMAttack2;
-                System.out.println("The beast attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health) + "");
+                System.out.println(tempBeastName+" attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health) + "");
             }
             if (health <= 0) {
                 health = 0;
@@ -271,7 +271,7 @@ public class adventurerework {
                 //prints regardless (below)
                 String tempOutput = "";
                 if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the " + tempData[0] + " on yourself\n";
-                else tempOutput += "You use the " + tempData[0] + " on " + "the Beast " + ".\n";//monsterRefresh.name isnt working so im changing it to "the beast"
+                else tempOutput += "You use the " + tempData[0] + " on " + tempBeastName + ".\n";//monsterRefresh.name isnt working so im changing it to "the beast"
 
                 //prints if hits or misses (below)
 
