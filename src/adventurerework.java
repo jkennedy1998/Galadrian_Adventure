@@ -336,5 +336,7 @@ public class adventurerework {
         speedMultiplier += Leveler.speedMultiplierLevel();
         level += 1;
         System.out.println("Your new health stats are health = "+health+" MaxHealth = "+maxHealth);
+        System.out.println("AttackMultiplier = "+attackMultiplier+" AccuracyMultiplier = "+accuracyMultiplier+" DefensiveMultiplier = "
+        + defensiveMultiplier+" SpeedMultiplier = "+speedMultiplier);
     }
 }
