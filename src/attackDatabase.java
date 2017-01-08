@@ -9,33 +9,29 @@ public class attackDatabase {
     public static int[] getAttackData(String attack) {
         if (attack.equalsIgnoreCase("Slash")) {slash();
             return attackData;}
-        if (attack.equalsIgnoreCase("One-Ton Punch")) {onetonpunch();
+        if (attack.equalsIgnoreCase("Stab")) {Stab();
             return attackData;}
-        if (attack.equalsIgnoreCase("Shield Batter")) {ShieldBatter();
+        if (attack.equalsIgnoreCase("Shield Bash")) {ShieldBash();
             return attackData;}
-        if (attack.equalsIgnoreCase("Perfect Shot")) {PerfectShot();
+        if (attack.equalsIgnoreCase("Bow Shot")) {BowShot();
             return attackData;}
-        if (attack.equalsIgnoreCase("QuadShot")) {QuadShot();
+        if (attack.equalsIgnoreCase("Marksman's Shot")) {MarksmansShot();
             return attackData;}
-        if (attack.equalsIgnoreCase("Hidden Shank")) {HiddenShank();
+        if (attack.equalsIgnoreCase("Shadow Bolt")) {ShadowBolt();
             return attackData;}
         if (attack.equalsIgnoreCase("Hex")) {Hex();
             return attackData;}
-        if (attack.equalsIgnoreCase("Dark Ones Blessing")) {DarkOnesBlessing();
+        if (attack.equalsIgnoreCase("Sparks")) {Sparks();
             return attackData;}
-        if (attack.equalsIgnoreCase("Pyro Assault")) {PyroAssault();
+        if (attack.equalsIgnoreCase("Punch")) {Punch();
             return attackData;}
-        if (attack.equalsIgnoreCase("SunSpot")) {SunSpot();
+        if (attack.equalsIgnoreCase("Body Slam")) {BodySlam();
             return attackData;}
-        if (attack.equalsIgnoreCase("MoonBeam")) {MoonBeam();
+        if (attack.equalsIgnoreCase("Club")) {Club();
             return attackData;}
-        if (attack.equalsIgnoreCase("ThunderWave")) {ThunderWave();
+        if (attack.equalsIgnoreCase("Meditation")) {Meditation();
             return attackData;}
-        if (attack.equalsIgnoreCase("Pure Rend")) {PureRend();
-            return attackData;}
-        if (attack.equalsIgnoreCase("Toxic Pierce")) {ToxicPierce();
-            return attackData;}
-        if (attack.equalsIgnoreCase("Explosive Pellets")) {ExplosivePellets();
+        if (attack.equalsIgnoreCase("Uppercut")) {Uppercut();
             return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
@@ -52,79 +48,69 @@ public class attackDatabase {
         attackData[1] = 100;
         attackData[2] = 10;
     }
-    public static void ShieldBatter(){
-        attackData[0] = 25;
-        attackData[1] = 30;
+    public static void ShieldBash(){ //certain mid damage, lacking accuracy
+        attackData[0] = 20;
+        attackData[1] = 25;
         attackData[2] = 7;
     }
-    public static void onetonpunch(){
-        attackData[0] = 10;
+    public static void Punch(){ //certain hit, lacking damage
+        attackData[0] = 14;
         attackData[1] = 15;
         attackData[2] = 10;
     }
-    public static void slash(){
+    public static void slash(){ //moderate hit, questionable damage
         attackData[0] = 5;
         attackData[1] = 30;
-        attackData[2] = 9;
-    }
-    public static void PerfectShot(){
-        attackData[0] = 10;
-        attackData[1] = 20;
-        attackData[2] = 9;
-    }
-    public static void QuadShot(){
-        attackData[0] = 35;
-        attackData[1] = 40;
-        attackData[2] = 4;
-    }
-    public static void HiddenShank(){
-        attackData[0] = 5;
-        attackData[1] = 10;
-        attackData[2] = 9;
-    }
-    public static void Hex(){
-        attackData[0] = 5;
-        attackData[1] = 15;
-        attackData[2] = 9;
-    }
-    public static void DarkOnesBlessing(){
-        attackData[0] = 5;
-        attackData[1] = 35;
-        attackData[2] = 7;
-    }
-    public static void PyroAssault(){
-        attackData[0] = 20;
-        attackData[1] = 25;
-        attackData[2] = 7;
-    }
-    public static void SunSpot() {
-        attackData[0] = 20;
-        attackData[1] = 25;
         attackData[2] = 8;
     }
-    public static void MoonBeam() {
-        attackData[0] = 5;
-        attackData[1] = 15;
+    public static void BowShot(){ //questionable damage, decent accuracy
+        attackData[0] = 15;
+        attackData[1] = 40;
+        attackData[2] = 7;
+    }
+    public static void MarksmansShot(){ //certain moderate damage, certain accuracy
+        attackData[0] = 25;
+        attackData[1] = 27;
+        attackData[2] = 8;
+    }
+    public static void Stab(){ //certain hit, low damage
+        attackData[0] = 15;
+        attackData[1] = 18;
         attackData[2] = 9;
     }
-    public static void ThunderWave() {
-        attackData[0] = 20;
-        attackData[1] = 30;
-        attackData[2] = 7;
-    }
-    public static void PureRend() {
+    public static void Hex(){ //ok accuracy, good damage
         attackData[0] = 25;
-        attackData[1] = 30;
+        attackData[1] = 32;
         attackData[2] = 6;
     }
-    public static void ToxicPierce() {
+    public static void ShadowBolt(){ //good accuracy, ok damage
         attackData[0] = 15;
-        attackData[1] = 25;
-        attackData[2] = 7;
+        attackData[1] = 19;
+        attackData[2] = 8;
     }
-    public static void ExplosivePellets() {
-        attackData[0] = 1;
-        attackData[1] = 50;
+    public static void Sparks(){ //high damage, low accuracy
+        attackData[0] = 30;
+        attackData[1] = 35;
+        attackData[2] = 5;
+    }
+    public static void BodySlam(){ //ok accuracy, high damage
+        attackData[0] = 29;
+        attackData[1] = 35;
+        attackData[2] = 6;
+    }
+    public static void Club() { //decent accuracy, uncertain damage damage
+        attackData[0] = 15;
+        attackData[1] = 29;
+        attackData[2] = 8;
+    }
+    public static void Meditation() { //make this heal the user and always hit
+        attackData[0] = 0;
+        attackData[1] = 0;
+        attackData[2] = 10;
+    }
+    public static void Uppercut() { //decent accuracy, certain damage
+        attackData[0] = 19;
+        attackData[1] = 25;
         attackData[2] = 7;
     }
 }
