@@ -333,4 +333,3 @@ public static void levelUp() {
     if (leveledStats[2].equalsIgnoreCase("defence")) defensiveMultiplierLocked += Double.parseDouble(leveledStats[3]);
 }
 }
-//comment
