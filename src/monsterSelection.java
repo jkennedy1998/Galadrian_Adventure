@@ -10,39 +10,11 @@ public class monsterSelection {
     public static int[] main (int round){
         setGrouping(round);
         selection();
-        // this makes it easier to correctly use "a" and "an"
-        if(beast.equals("Rabid Dog"))
-            System.out.println("\n\nYou have encountered a Rabid Dog!");
-        if(beast.equals("Small Bat"))
-            System.out.println("\n\nYou have encountered a Small Bat!");
-        if(beast.equals("Goblin"))
-            System.out.println("\n\nYou have encountered a Goblin!");
-        if(beast.equals("Warlock"))
-            System.out.println("\n\nYou have encountered a Warlock!");
-        if(beast.equals("Skeleton"))
-            System.out.println("\n\nYou have encountered a Skeleton!");
-        if(beast.equals("Vampire"))
-            System.out.println("\n\nYou have encountered a Vampire!");
-        if(beast.equals("Cultist"))
-            System.out.println("\n\nYou have encountered a Cultist!");
-        if(beast.equals("Drunk Dwarf"))
-            System.out.println("\n\nYou have encountered a Drunk Dwarf!");
-        if(beast.equals("Spiderling"))
-            System.out.println("\n\nYou have encountered a Spiderling!");
-        if(beast.equals("Dragon"))
-            System.out.println("\n\nYou have encountered a Dragon!");
-        if(beast.equals("Demon"))
-            System.out.println("\n\nYou have encountered a Demon!");
-        if(beast.equals("Corrupted Angel"))
-            System.out.println("\n\nYou have encountered a Corrupted Angel!");
-        if(beast.equals("Lich"))
-            System.out.println("\n\nYou have encountered a Lich!");
-
-//        if (capital) {
-//            System.out.println("\n\nYou have encountered a " + beast + "!");
-//        } else{
-//            System.out.println("\n\nYou have encountered an " + beast + "!");
-//        }
+        if (capital) {
+            System.out.println("\n\nYou have encountered a " + beast + "!");
+        } else{
+            System.out.println("\n\nYou have encountered an " + beast + "!");
+        }
         beastNameGen.main(beast);
         return beastStats;
     }
