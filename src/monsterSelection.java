@@ -11,9 +11,9 @@ public class monsterSelection {
         setGrouping(round);
         selection();
         if (capital) {
-            System.out.println("\n\nYou have encountered a " + beast + "!");
-        } else{
             System.out.println("\n\nYou have encountered an " + beast + "!");
+        } else{
+            System.out.println("\n\nYou have encountered a " + beast + "!");
         }
         beastNameGen.main(beast);
         return beastStats;
