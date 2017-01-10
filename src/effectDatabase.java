@@ -9,6 +9,6 @@ public class effectDatabase {
     // defence mult mod
     // accuracy mult mod
     //health effected each turn
-    
+
 
 }
