@@ -47,7 +47,7 @@ public class Leveler {
                 System.out.println("\nYou bind the last of your wounds.\nYou Have full health with "+maxHealth+" points.");
             }else {
             returningLevelStats[0] = ""+(health+10);
-                System.out.println("You bind your wounds.\nYou Have "+(health+10)+"health points.");
+                System.out.println("You bind your wounds.\nYou Have "+(health+10)+" health points.");
             }
         }
 
