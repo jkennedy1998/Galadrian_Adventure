@@ -169,7 +169,7 @@ class attackDatabase {
     }
     private static void Uppercut() { //decent accuracy, certain damage
         attackData[0] = 19;
-        attackData[1] = 25;
+        attackData[1] = 20;
         attackData[2] = 7;
         attackData[3] = 0;
         attackData[4] = 0;
