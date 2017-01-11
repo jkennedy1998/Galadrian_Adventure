@@ -2,17 +2,24 @@
 public class effectDatabase {
 
     private static String[] effectData = {"","","","","","",""};
+    final static String[] blankSlate = {"0","0","0","0","0","0","0"};//just for returning 0 as an effect
 
     public static String[] getEffectData(int effect) {
+
         if (effect == 1) { poison();
             return effectData;
         }
         if (effect == 2) { meditation();
             return effectData;
         }
+        if (effect == 0) {
+            System.out.println("hey");
+            return blankSlate;
+        }
 
 
-        return null; //this is bad if this does this!
+
+        return blankSlate; //this is bad if this does this!
     }
 
 //      past this point should only be effects!
@@ -30,19 +37,19 @@ public class effectDatabase {
         effectData[0] = "poison";
         effectData[1] = ""+(-3);
         effectData[2] = ""+(3);
-        effectData[3] = ""+(1);
-        effectData[4] = ""+(1);
-        effectData[5] = ""+(1);
-        effectData[6] = ""+(1);
+        effectData[3] = ""+(0);
+        effectData[4] = ""+(0);
+        effectData[5] = ""+(0);
+        effectData[6] = ""+(0);
     }
     public static void meditation(){ //2
         effectData[0] = "meditation";
         effectData[1] = ""+(+4);
-        effectData[2] = ""+(2);
-        effectData[3] = ""+(.5);
-        effectData[4] = ""+(.5);
-        effectData[5] = ""+(1);
-        effectData[6] = ""+(1.2);
+        effectData[2] = ""+(4);
+        effectData[3] = ""+(-.5);
+        effectData[4] = ""+(-.5);
+        effectData[5] = ""+(0);
+        effectData[6] = ""+(.2);
     }
 
 

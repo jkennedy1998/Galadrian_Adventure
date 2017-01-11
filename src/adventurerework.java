@@ -164,7 +164,10 @@ public class adventurerework {
         beastStats = beastStatsSolid;
         boolean lifeStatus = true;
         int turn = 0;
-        int turnOfPlayerEffect, turnOfMonsterEffect;
+        boolean playerMultipliersChanged = false;
+        boolean monsterMultipliersChanged = false;
+        int turnOfPlayerEffect = 0;
+        int turnOfMonsterEffect = 0;
         int monsterEffect = 0;
         int playerEffect = 0;
         do {
@@ -187,10 +190,10 @@ public class adventurerework {
                 if (tempData==null){}
                 else if (tempData[0].equalsIgnoreCase("A")){
                     beastStats[0]-=Integer.parseInt(tempData[1]);
-
+                    System.out.println("hey");
                     if (Integer.parseInt(tempData[2])!=0){ //for effect 1
                         if (Integer.parseInt(tempData[3])==1) { //self on
-                            if (Integer.parseInt(tempData[2]) == playerEffect) {
+                            if (Integer.parseInt(tempData[2]) != playerEffect) {
                                 turnOfPlayerEffect = turn;
                                 playerEffect = Integer.parseInt(tempData[2]);
                             }
@@ -198,7 +201,7 @@ public class adventurerework {
                         if (Integer.parseInt(tempData[3])==2){ //self off
                             if (Integer.parseInt(tempData[2])==playerEffect) {
                                 turnOfPlayerEffect = turn;
-                                playerEffect = Integer.parseInt(tempData[2]);
+                                playerEffect = 0;
                             }
                         }
                         if (Integer.parseInt(tempData[3])==3){ //monster on
@@ -251,6 +254,33 @@ public class adventurerework {
             }
             //make effects happen here
 
+            if (playerEffect!=0) {
+                if (turn - turnOfPlayerEffect <= Integer.parseInt(effectDatabase.getEffectData(playerEffect)[2])) {
+                    health += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[1]);
+                    System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + (effectDatabase.getEffectData(playerEffect)[1]) + " points of damage!");
+                    if (!playerMultipliersChanged) {
+                        System.out.println("\nYou are now " + (effectDatabase.getEffectData(playerEffect)[0]) + "!");
+                        if (Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]) != 0)
+                            System.out.println("your attack has been affected!");
+                        attackMultiplier += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[3]);
+                        if (Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]) != 0)
+                            System.out.println("your speed has been affected!");
+                        speedMultiplier += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[4]);
+                        if (Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]) != 0)
+                            System.out.println("your defence has been affected!");
+                        defensiveMultiplier += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[5]);
+                        if (Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]) != 0)
+                            System.out.println("your accuracy has been affected!");
+                        accuracyMultiplier += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[6]);
+                    }
+                } else {
+                    playerMultipliersChanged = false;
+                    attackMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
+                    speedMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
+                    defensiveMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
+                    accuracyMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
+                }
+            }
             turn++;
         }while (health>0&&beastStats[0]>0);
 
