@@ -1,7 +1,7 @@
 
 public class ItemDirectory {
 
-    public String ItemReturn[] = {"0", "0", "0", "0", "10", "0", "0", "0"};
+    public String ItemReturn[] = {"0", "0", "0", "0", "0", "0", "0", "0","0","0"};
 
     public String[] findItemValues(int itemNumber) {
         if (itemNumber == 0)
@@ -30,11 +30,13 @@ public class ItemDirectory {
             ItemReturn[0] = "No Items";           //name
             ItemReturn[1] = "0";                  //self as 0 or enemy as 1
             ItemReturn[2] = "0";                  //health modifier
-            ItemReturn[3] = "1";                  //attack modifier
-            ItemReturn[4] = "1";                  //accuracy modifier
-            ItemReturn[5] = "10";                 //accuracy
-            ItemReturn[6] = "0";                  //effect # on
-            ItemReturn[7] = "0";                  //effect # off
+            ItemReturn[3] = "0";                  //attack modifier
+            ItemReturn[4] = "0";                  //accuracy modifier
+            ItemReturn[5] = "0";                  //defence modifier
+            ItemReturn[6] = "0";                  //speed modifier
+            ItemReturn[7] = "0";                 //accuracy
+            ItemReturn[8] = "0";                  //effect # on
+            ItemReturn[9] = "0";                  //effect # off
 
             return ItemReturn;
         }
@@ -42,11 +44,13 @@ public class ItemDirectory {
             ItemReturn[0] = "health potion";      //name
             ItemReturn[1] = "0";                  //self as 0 or enemy as 1
             ItemReturn[2] = "25";                 //health modifier
-            ItemReturn[3] = "1";                  //attack modifier
-            ItemReturn[4] = "1";                  //accuracy modifier
-            ItemReturn[5] = "10";                 //accuracy
-            ItemReturn[6] = "0";                  //effect # on
-            ItemReturn[7] = "0";                  //effect # off
+            ItemReturn[3] = "0";                  //attack modifier
+            ItemReturn[4] = "0";                  //accuracy modifier
+            ItemReturn[5] = "0";                  //defence modifier
+            ItemReturn[6] = "0";                  //speed modifier
+            ItemReturn[7] = "5";                 //accuracy
+            ItemReturn[8] = "0";                  //effect # on
+            ItemReturn[9] = "0";                  //effect # off
 
             return ItemReturn;
         }
@@ -54,23 +58,27 @@ public class ItemDirectory {
         ItemReturn[0] = "Poison";           //name
         ItemReturn[1] = "1";                  //self as 0 or enemy as 1
         ItemReturn[2] = "-25";                  //health modifier
-        ItemReturn[3] = ".8";                  //attack modifier
-        ItemReturn[4] = "1";                  //accuracy modifier
-        ItemReturn[5] = "7";                 //accuracy
-        ItemReturn[6] = "0";                  //effect # on
-        ItemReturn[7] = "0";                  //effect # off
+        ItemReturn[3] = "-.2";                  //attack modifier
+        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "-.1";                  //speed modifier
+        ItemReturn[7] = "25";                 //accuracy
+        ItemReturn[8] = "0";                  //effect # on
+        ItemReturn[9] = "0";                  //effect # off
 
         return ItemReturn;
     }
     public String[] curse (){
         ItemReturn[0] = "Curse";           //name
-        ItemReturn[1] = "1";                  //self as 0 or enemy as 1
-        ItemReturn[2] = "-15";                  //health modifier
+        ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+        ItemReturn[2] = "0";                  //health modifier
         ItemReturn[3] = ".5";                  //attack modifier
-        ItemReturn[4] = ".8";                  //accuracy modifier
-        ItemReturn[5] = "9";                 //accuracy
-        ItemReturn[6] = "0";                  //effect # on
-        ItemReturn[7] = "0";                  //effect # off
+        ItemReturn[4] = "-.5";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "0";                  //speed modifier
+        ItemReturn[7] = "32";                 //accuracy
+        ItemReturn[8] = "0";                  //effect # on
+        ItemReturn[9] = "0";                  //effect # off
 
         return ItemReturn;
     }
@@ -78,35 +86,42 @@ public class ItemDirectory {
         ItemReturn[0] = "Mead";           //name
         ItemReturn[1] = "0";                  //self as 0 or enemy as 1
         ItemReturn[2] = "20";                  //health modifier
-        ItemReturn[3] = "1.5";                  //attack modifier
-        ItemReturn[4] = ".75";                  //accuracy modifier
-        ItemReturn[5] = "10";                 //accuracy
-        ItemReturn[6] = "0";                  //effect # on
-        ItemReturn[7] = "0";                  //effect # off
+        ItemReturn[3] = ".3";                  //attack modifier
+        ItemReturn[4] = "-.25";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "-.2";                  //speed modifier
+        ItemReturn[7] = "13";                 //accuracy
+        ItemReturn[8] = "0";                  //effect # on
+        ItemReturn[9] = "0";                  //effect # off
 
         return ItemReturn;
     }
     public String[] unknownFlesh () {
         ItemReturn[0] = "Unknown Flesh";           //name
         ItemReturn[1] = "0";                  //self as 0 or enemy as 1
-        ItemReturn[2] = "20";                  //health modifier
-        ItemReturn[3] = "1";                  //attack modifier
-        ItemReturn[4] = ".8";                  //accuracy modifier
-        ItemReturn[5] = "10";                 //accuracy
-        ItemReturn[6] = "0";                  //effect # on
-        ItemReturn[7] = "0";                  //effect # off
+        ItemReturn[2] = "25";                  //health modifier
+        ItemReturn[3] = "-.1";                  //attack modifier
+        ItemReturn[4] = "-.1";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "0";                  //speed modifier
+        ItemReturn[7] = "11";                 //accuracy
+        ItemReturn[8] = "0";                  //effect # on
+        ItemReturn[9] = "0";                  //effect # off
 
         return ItemReturn;
     }
     public String[] nail()
     {
-        ItemReturn[0] = "Nail";           //name
-        ItemReturn[1] = "0";               //self as 0; enemy as 1
-        ItemReturn[3] = "-10";              // health mod
-        ItemReturn[4] = "1.5";              //att mod
-        ItemReturn[5] = "1.5";             //acc mod
-        ItemReturn[6] = "0";              //effects # on
-        ItemReturn[7] = "0";              // effects # off
+        ItemReturn[0] = "Nail";          //name
+        ItemReturn[1] = "0";                  //self as 0; enemy as 1
+        ItemReturn[2] = "-10";                //health modifier
+        ItemReturn[3] = ".2";                 //attack modifier
+        ItemReturn[4] = ".3";                //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = ".1";                  //speed modifier
+        ItemReturn[7] = "10";                //acc
+        ItemReturn[8] = "0";                  //effects # on
+        ItemReturn[9] = "0";                  // effects # off
 
         return ItemReturn;
     }

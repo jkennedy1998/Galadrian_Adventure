@@ -30,7 +30,6 @@ public class adventurerework {
         attackMultiplier = 1;
         defensiveMultiplier = 1;
         speedMultiplier = 1;
-        System.out.println("You're decision to enter this retched dungeon is valiant, but foolish.\n");
         CharacterCreation character = new CharacterCreation();
         CharacterCreation.race();
         CharacterCreation.role();
@@ -230,10 +229,11 @@ public class adventurerework {
                         }
                     }
                 }else{ //if tempData[0] == "I" (for clarification)
-                    beastStats[0]+=Integer.parseInt(tempData[0]);
-                    beastStats[1]+=Integer.parseInt(tempData[1]);
-                    beastStats[1]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see below)
-                    beastStats[2]+=Integer.parseInt(tempData[3]);
+                    beastStats[0]+=Integer.parseInt(tempData[1]);
+                    beastStats[7]+=Integer.parseInt(tempData[6]);
+                    beastStats[8]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see below)
+                    beastStats[9]+=Integer.parseInt(tempData[4]);
+                    beastStats[10]+=Integer.parseInt(tempData[5]);
                 }
                 System.out.println("the current health of "+tempBeastName+" is at " + (beastStats[0]));
                 if (beastStats[0]>0){ monsterTurn(beastStats,lifeStatus);}
@@ -298,10 +298,11 @@ public class adventurerework {
                     }
 
                 }else{ //if tempData[0] == "I" (for clarification)
-                    beastStats[0]+=Integer.parseInt(tempData[0]);
-                    beastStats[1]+=Integer.parseInt(tempData[1]);
-                    beastStats[1]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see above)
-                    beastStats[2]+=Integer.parseInt(tempData[3]);
+                    beastStats[0]+=Integer.parseInt(tempData[1]);
+                    beastStats[7]+=Integer.parseInt(tempData[6]);
+                    beastStats[8]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see above)
+                    beastStats[9]+=Integer.parseInt(tempData[4]);
+                    beastStats[10]+=Integer.parseInt(tempData[5]);
                 }
                 System.out.println("the current health of "+tempBeastName+" is at " + (beastStats[0]));
             }
@@ -469,7 +470,7 @@ public class adventurerework {
         Encounter playerRefresh = new Encounter();
         playerRefresh.initialize(attack1, attack2, attack3, attack4, attackMultiplier, accuracyMultiplier);
         System.out.println("It's your turn to attack!\n");
-            String attackStorage[] = playerRefresh.PlayerAttack(tempDialog,accuracyMultiplier);
+            String attackStorage[] = playerRefresh.PlayerAttack(tempDialog);
             if (!(attackStorage[0].equalsIgnoreCase("item"))) { //not using item
                 if (attackStorage[0].equalsIgnoreCase("Miss")) {
                 }//does nothing on purpose
@@ -488,10 +489,10 @@ public class adventurerework {
                     return returningString;
                 }
             }else{                                            //using item (start)
-                boolean questionHit = true;
+                boolean questionHit;
                 String[] tempData = playerRefresh.PlayerItem();
                 System.out.println("You used the "+tempData[0]);
-                if (Math.round(Integer.parseInt(tempData[5])) >= Math.round(Math.random() * 10)){
+                if (Math.round(Integer.parseInt(tempData[7])) <= Math.round(Math.random() * 100*accuracyMultiplier)){
                     questionHit = true;
 
                 } else {
@@ -501,7 +502,7 @@ public class adventurerework {
                 //prints regardless (below)
                 String tempOutput = "";
                 if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the " + tempData[0] + " on yourself\n";
-                else tempOutput += "You use the " + tempData[0] + " on " + tempBeastName + ".\n";//monsterRefresh.name isnt working so im changing it to "the beast"
+                else tempOutput += "You use the " + tempData[0] + " on " + tempBeastName + ".\n";
 
                 //prints if hits or misses (below)
 
@@ -531,18 +532,23 @@ public class adventurerework {
 
                 if (tempData[1].equalsIgnoreCase("0")){
                     health += Integer.parseInt(tempData[2]);
-                    playerRefresh.damageMult = Double.parseDouble(tempData[3]);
-                    playerRefresh.accuracyMult = Double.parseDouble(tempData[4]);
-                    //make effects toggle on (make effects in the first place. ie: burning, frozen, wet)
-                    //make effects toggle off
+                    attackMultiplier += Double.parseDouble(tempData[3]);
+                    accuracyMultiplier += Double.parseDouble(tempData[4]);
+                    speedMultiplier += Double.parseDouble(tempData[6]);
+                    accuracyMultiplier += Double.parseDouble(tempData[5]);
+                    //make effects toggle on with items
+                    //make effects toggle off with items
 
                 } else {
                     returningString[0] = "I";
                     returningString[1] = ""+Integer.parseInt(tempData[2]); //damage or healing
                     returningString[2] = ""+Double.parseDouble(tempData[3]); //damage mult
                     returningString[3] = ""+Double.parseDouble(tempData[4]); //accuracy mult
+                    returningString[4] = ""+Double.parseDouble(tempData[6]); //speed mult
+                    returningString[5] = ""+Double.parseDouble(tempData[5]); //defence mult
                     //make effects toggle on for monster
                     //make effects toggle off for monster
+                    return returningString;
                 }
 
                 //using item (end)

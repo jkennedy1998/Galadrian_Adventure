@@ -43,7 +43,7 @@ class attackDatabase {
 //    public static void attackName(){
 //        attackData[0] = min attack (int);
 //        attackData[1] = max attack (int);
-//        attackData[2] = accuracy (0 to 10);
+//        attackData[2] = accuracy (0 to 100); lower numbers hit more
 //        attackData[3] = effect status calling number (0 as no status)      //comment which effect is changed if applicable
 //        attackData[4] = effect status state (NA as 0, on self as 1, off self as 2, on enemy as 3, off enemy as 4)
 //        attackData[5] = effect status calling number (0 as no status)      //comment which effect is changed if applicable (second effect)
@@ -52,7 +52,7 @@ class attackDatabase {
     private static void instaKill(){ //for testing purposes only!
         attackData[0] = 100;
         attackData[1] = 100;
-        attackData[2] = 10;
+        attackData[2] = 0;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -61,7 +61,7 @@ class attackDatabase {
     private static void ShieldBash(){ //certain mid damage, lacking accuracy
         attackData[0] = 20;
         attackData[1] = 25;
-        attackData[2] = 7;
+        attackData[2] = 35;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -70,7 +70,7 @@ class attackDatabase {
     private static void Punch(){ //certain hit, lacking damage
         attackData[0] = 14;
         attackData[1] = 15;
-        attackData[2] = 10;
+        attackData[2] = 5;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -79,7 +79,7 @@ class attackDatabase {
     private static void slash(){ //moderate hit, questionable damage
         attackData[0] = 5;
         attackData[1] = 30;
-        attackData[2] = 8;
+        attackData[2] = 28;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -89,7 +89,7 @@ class attackDatabase {
     private static void BowShot(){ //questionable damage, decent accuracy
         attackData[0] = 15;
         attackData[1] = 40;
-        attackData[2] = 7;
+        attackData[2] = 28;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -98,7 +98,7 @@ class attackDatabase {
     private static void MarksmansShot(){ //certain moderate damage, certain accuracy
         attackData[0] = 25;
         attackData[1] = 27;
-        attackData[2] = 8;
+        attackData[2] = 10;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -107,7 +107,7 @@ class attackDatabase {
     private static void Stab(){ //certain hit, low damage
         attackData[0] = 15;
         attackData[1] = 18;
-        attackData[2] = 9;
+        attackData[2] = 5;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -116,7 +116,7 @@ class attackDatabase {
     private static void Hex(){ //ok accuracy, good damage
         attackData[0] = 25;
         attackData[1] = 32;
-        attackData[2] = 6;
+        attackData[2] = 45;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -125,7 +125,7 @@ class attackDatabase {
     private static void ShadowBolt(){ //good accuracy, ok damage
         attackData[0] = 15;
         attackData[1] = 19;
-        attackData[2] = 8;
+        attackData[2] = 24;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -134,7 +134,7 @@ class attackDatabase {
     private static void Sparks(){ //high damage, low accuracy
         attackData[0] = 30;
         attackData[1] = 35;
-        attackData[2] = 5;
+        attackData[2] = 70;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -143,7 +143,7 @@ class attackDatabase {
     private static void BodySlam(){ //ok accuracy, high damage
         attackData[0] = 29;
         attackData[1] = 35;
-        attackData[2] = 6;
+        attackData[2] = 60;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -152,7 +152,7 @@ class attackDatabase {
     private static void Club() { //decent accuracy, uncertain damage damage
         attackData[0] = 15;
         attackData[1] = 29;
-        attackData[2] = 8;
+        attackData[2] = 36;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -161,7 +161,7 @@ class attackDatabase {
     private static void Meditation() { //make this heal the user and always hit
         attackData[0] = 0;
         attackData[1] = 0;
-        attackData[2] = 10;
+        attackData[2] = 5;
         attackData[3] = 2; //meditation
         attackData[4] = 1;
         attackData[5] = 0;
@@ -170,7 +170,7 @@ class attackDatabase {
     private static void Uppercut() { //decent accuracy, certain damage
         attackData[0] = 19;
         attackData[1] = 20;
-        attackData[2] = 7;
+        attackData[2] = 40;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
