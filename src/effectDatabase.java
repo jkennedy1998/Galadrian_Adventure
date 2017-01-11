@@ -11,4 +11,6 @@ public class effectDatabase {
     //health effected each turn
 
 
+
+
 }
