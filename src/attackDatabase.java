@@ -1,6 +1,7 @@
 
 public
 class attackDatabase {
+
     //attackData contains min,max,accuracy
 
     private static int attackData[]= {0,0,0,0,0};
@@ -43,8 +44,8 @@ class attackDatabase {
 //        attackData[1] = max attack (int);
 //        attackData[2] = accuracy (0 to 10);
 //        attackData[3] = effect status calling number (0 as no status)
-//        attackData[3] = effect status state (on as 1, off as 0, on enemy as 4, off enemy as 3)9
-//    }
+//        attackData[4] = effect status state (on as 1, off as 0, on enemy as 4, off enemy as 3)9
+//
     private static void instaKill(){ //for testing purposes only!
         attackData[0] = 100;
         attackData[1] = 100;
@@ -147,3 +148,5 @@ class attackDatabase {
 //        attackData[0] = min attack (int);
 //        attackData[1] = max attack (int);
 //        attackData[2] = accuracy (0 to 10);
+//        attackData[3] = effect status calling number (0 as no status)
+//        attackData[4] = effect status state (on as 1, off as 0, on enemy as 4, off enemy as 3)9
