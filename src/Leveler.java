@@ -22,22 +22,22 @@ public class Leveler {
         }
         if (choice ==1){
             returningLevelStats[2] = "damage";
-            returningLevelStats[3] = ".3";
+            returningLevelStats[3] = ".1";
             System.out.println("\nTarget dummies fear you!\nYou need to replace them more often due to your increased strength!");
         }
         if (choice ==2){
             returningLevelStats[2] = "accuracy";
-            returningLevelStats[3] = ".3";
+            returningLevelStats[3] = ".1";
             System.out.println("\nYou begin to hit more when in target practice!");
         }
         if (choice ==3){
             returningLevelStats[2] = "speed";
-            returningLevelStats[3] = ".3";
+            returningLevelStats[3] = ".1";
             System.out.println("\nYou find that you cover more distance when running!");
         }
         if (choice ==4){
             returningLevelStats[2] = "defence";
-            returningLevelStats[3] = ".3";
+            returningLevelStats[3] = ".1";
             System.out.println("\nYou find something to improve in your armor!");
         }
         if (choice ==5){

@@ -1,7 +1,7 @@
 
 public class monsterSelection {
     public static String beast;
-    public static int beastStats[]= {0,0,0,0,0,0,0};
+    public static int beastStats[]= {0,0,0,0,0,0,0,1,1,1,1};
     public static int grouping = 1;
     public static boolean capital = false;
     public static int monsterCount = 0;
@@ -14,6 +14,14 @@ public class monsterSelection {
             System.out.println("\n\nYou have encountered an " + beast + "!");
         } else{
             System.out.println("\n\nYou have encountered a " + beast + "!");
+        }
+
+        for (int pointsToGive = round; pointsToGive>0; pointsToGive--){ //this scales monsters per how many
+            int rand = (int)Math.ceil(Math.random()*4);
+            if (rand == 1)  beastStats[7]+=.05;
+            if (rand == 2)  beastStats[8]+=.05;
+            if (rand == 3)  beastStats[9]+=.05;
+            if (rand == 4)  beastStats[10]+=.05;
         }
         beastNameGen.main(beast);
         return beastStats;
@@ -46,7 +54,7 @@ public class monsterSelection {
 //        beastStats[0] = (health value);
 //        beastStats[1] = (maxAttack value);
 //        beastStats[2] = (minAttack value);
-//        beastStats[3] = (accuracy value);
+//        beastStats[3] = (accuracy value out of 100); (number needed by the equation accMod*(a number1-100) (lower numbers hit more)
 //        beastStats[4] = (item value);
 //        beastStats[5] = (item drop rate %);
 //        beastStats[6] = (speed value); (positive numbers. unmodded character speed is 60)
@@ -120,7 +128,7 @@ public class monsterSelection {
         beastStats[0] = 25;
         beastStats[1] = 15;
         beastStats[2] = 10;
-        beastStats[3] = 8;
+        beastStats[3] = 60;
         beastStats[4] = (0);
         beastStats[5] = (0);
         beastStats[6] = (60);
@@ -132,7 +140,7 @@ public class monsterSelection {
         beastStats[0] = 15;
         beastStats[1] = 10;
         beastStats[2] = 5;
-        beastStats[3] = 9;
+        beastStats[3] = 20;
         beastStats[4] = (2);
         beastStats[5] = (20);
         beastStats[6] = (70);
@@ -145,7 +153,7 @@ public class monsterSelection {
         beastStats[0] = 20;
         beastStats[1] = 20;
         beastStats[2] = 17;
-        beastStats[3] = 5;
+        beastStats[3] = 50;
         beastStats[4] = (1);
         beastStats[5] = (30);
         beastStats[6] = (55);
@@ -157,7 +165,7 @@ public class monsterSelection {
         beastStats[0] = 20;
         beastStats[1] = 40;
         beastStats[2] = 20;
-        beastStats[3] = 8;
+        beastStats[3] = 25;
         beastStats[4] = (outOfTwo(1,3));
         beastStats[5] = (20);
         beastStats[6] = (56);
@@ -169,7 +177,7 @@ public class monsterSelection {
         beastStats[0] = 15;
         beastStats[1] = 12;
         beastStats[2] = 3;
-        beastStats[3] = 8;
+        beastStats[3] = 35;
         beastStats[4] = (0);
         beastStats[5] = (0);
         beastStats[6] = (45);
@@ -181,7 +189,7 @@ public class monsterSelection {
         beastStats[0] = 40;
         beastStats[1] = 35;
         beastStats[2] = 20;
-        beastStats[3] = 8;
+        beastStats[3] = 35;
         beastStats[4] = (5);
         beastStats[5] = (30);
         beastStats[6] = (60);
@@ -193,7 +201,7 @@ public class monsterSelection {
         beastStats[0] = 20;
         beastStats[1] = 20;
         beastStats[2] = 9;
-        beastStats[3] = 8;
+        beastStats[3] = 35;
         beastStats[4] = (3);
         beastStats[5] = (90);
         beastStats[6] = (60);
@@ -205,7 +213,7 @@ public class monsterSelection {
         beastStats[0] = 35;
         beastStats[1] = 40;
         beastStats[2] = 30;
-        beastStats[3] = 2;
+        beastStats[3] = 70;
         beastStats[4] = (4);
         beastStats[5] = (90);
         beastStats[6] = (30);
@@ -217,7 +225,7 @@ public class monsterSelection {
         beastStats[0] = 10;
         beastStats[1] = 18;
         beastStats[2] = 10;
-        beastStats[3] = 7;
+        beastStats[3] = 28;
         beastStats[4] = (2);
         beastStats[5] = (70);
         beastStats[6] = (67);
@@ -229,7 +237,7 @@ public class monsterSelection {
         beastStats[0] = 40;
         beastStats[1] = 45;
         beastStats[2] = 20;
-        beastStats[3] = 7;
+        beastStats[3] = 34;
         beastStats[4] = (0);
         beastStats[5] = (100);
         beastStats[6] = (40);
@@ -240,21 +248,21 @@ public class monsterSelection {
         beastStats[0] = 35;
         beastStats[1] = 45;
         beastStats[2] = 35;
-        beastStats[3] = 8;
+        beastStats[3] = 20;
         beastStats[4] = (0);
         beastStats[5] = (99);
         beastStats[6] = (30);
     }
     public static void selectCAngel(){
         beast = "Corrupted Angel";
-        capital = false;
+        capital = true;
         beastStats[0] = 50;
         beastStats[1] = 50;
         beastStats[2] = 25;
-        beastStats[3] = 3;
+        beastStats[3] = 78;
         beastStats[4] = (0);
         beastStats[5] = (100);
-        beastStats[6] = (50);
+        beastStats[6] = (60);
     }
     public static void selectLich(){
         beast = "Lich";
@@ -262,7 +270,7 @@ public class monsterSelection {
         beastStats[0] = 35;
         beastStats[1] = 30;
         beastStats[2] = 25;
-        beastStats[3] = 9;
+        beastStats[3] = 25;
         beastStats[4] = (0);
         beastStats[5] = (100);
         beastStats[6] = (35);

@@ -5,7 +5,7 @@ public class Encounter {
     String attack2;
     String attack3;
     String attack4;
-    public int attackData[] = {0, 0, 0};
+    public int attackData[] = {0, 0, 0, 0, 0, 0, 0};
     public String attackChoice;
     double damageMult = 1;
     double accuracyMult = 1;
@@ -62,13 +62,14 @@ public class Encounter {
             adventurerework.itemSlot4=0;
         }
 
-        else PlayerAttack(tempDialogStored,accuracyMult);
+        else PlayerAttack(tempDialogStored);
         return ItemReturn;
     }
 
-    public String PlayerAttack(String tempDialog,double accuracyMultiplier) {
+    public String[] PlayerAttack(String tempDialog) {
         tempDialogStored = tempDialog;
         String[] buttons = {attack1, attack2, attack3, attack4,"Items"};
+        String[] returningData = {"","","","",""};
 
         int choice = JOptionPane.showOptionDialog(null, tempDialog+"Which move would you like to use?\n", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
@@ -88,25 +89,32 @@ public class Encounter {
         else if (choice == 3) {
             attackData = attackDatabase.getAttackData(attack4);
             attackChoice = attack4;
-        }else
-           return "Item";
+        }else {
+            returningData[0] = "Item";
+            return returningData;
+        }
 
-        return calculateHit(attackData[0], attackData[1], attackData[2],accuracyMultiplier);
+        returningData[0] = calculateHit(attackData[0], attackData[1], attackData[2]);
+        returningData[1] = ""+(attackData[3]);
+        returningData[2] = ""+(attackData[4]);
+        returningData[3] = ""+(attackData[5]);
+        returningData[4] = ""+(attackData[6]);
+        return returningData;
 
     }
 
-    public String calculateHit(int min, int max, int acc,double accuracyMultiplier) {
-        accuracyMult = accuracyMultiplier;
-        if (Math.round(accuracyMult*acc) >= Math.round(Math.random() * 10)) {
+    public String calculateHit(int min, int max, int acc) {
+        if (Math.round(acc) <= Math.round(Math.random() * 100*accuracyMult)) {
             String randomNum = "" +Math.round(damageMult*(Math.random()*(max-min)+min));
-            adventurerework.tempUserString = ("you "+attackChoice+" for "+randomNum+" damage!\n");
-
+            if (Integer.parseInt(randomNum) > 0) {
+                adventurerework.tempUserString = ("you " + attackChoice + " for " + randomNum + " damage!\n");
+            }else
+                adventurerework.tempUserString = ("you " + attackChoice + " with vigor!\n");
             return randomNum;
         }
         else {
             System.out.print(attackChoice+" has missed!\n");
             return "Miss";
         }
-
     }
 }
