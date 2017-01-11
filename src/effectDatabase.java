@@ -13,7 +13,6 @@ public class effectDatabase {
             return effectData;
         }
         if (effect == 0) {
-            System.out.println("hey");
             return blankSlate;
         }
 

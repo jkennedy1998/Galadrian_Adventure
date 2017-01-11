@@ -176,21 +176,7 @@ public class adventurerework {
                 if (tempData==null){}
                 else if (tempData[0].equalsIgnoreCase("A")){
                     beastStats[0]-=Integer.parseInt(tempData[1]);
-                }else{ //if tempData[0] == "I" (for clarification)
-                    beastStats[0]+=Integer.parseInt(tempData[0]);
-                    beastStats[1]+=Integer.parseInt(tempData[1]);
-                    beastStats[1]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see below)
-                    beastStats[2]+=Integer.parseInt(tempData[3]);
-                }
-                System.out.println("the current health of "+tempBeastName+" is at " + (beastStats[0]));
-                if (beastStats[0]>0){ monsterTurn(beastStats,lifeStatus);}
-            } else {
-                monsterTurn(beastStats,lifeStatus);
-                String[] tempData = playerTurn();
-                if (tempData==null){}
-                else if (tempData[0].equalsIgnoreCase("A")){
-                    beastStats[0]-=Integer.parseInt(tempData[1]);
-                    System.out.println("hey");
+
                     if (Integer.parseInt(tempData[2])!=0){ //for effect 1
                         if (Integer.parseInt(tempData[3])==1) { //self on
                             if (Integer.parseInt(tempData[2]) != playerEffect) {
@@ -217,7 +203,74 @@ public class adventurerework {
                             }
                         }
                     }
-                    if (Integer.parseInt(tempData[4])!=0){ //for effect 1
+                    if (Integer.parseInt(tempData[4])!=0){ //for effect 2
+                        if (Integer.parseInt(tempData[5])==1) { //self on
+                            if (Integer.parseInt(tempData[4]) == playerEffect) {
+                                turnOfPlayerEffect = turn;
+                                playerEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[5])==2){ //self off
+                            if (Integer.parseInt(tempData[4])==playerEffect) {
+                                turnOfPlayerEffect = turn;
+                                playerEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[5])==3){ //monster on
+                            if (Integer.parseInt(tempData[4])!=monsterEffect) {
+                                turnOfMonsterEffect = turn;
+                                monsterEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[5])==4){ //monster off
+                            if (Integer.parseInt(tempData[4])==monsterEffect) {
+                                turnOfMonsterEffect = turn;
+                                monsterEffect = 0;
+                            }
+                        }
+                    }
+                }else{ //if tempData[0] == "I" (for clarification)
+                    beastStats[0]+=Integer.parseInt(tempData[0]);
+                    beastStats[1]+=Integer.parseInt(tempData[1]);
+                    beastStats[1]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see below)
+                    beastStats[2]+=Integer.parseInt(tempData[3]);
+                }
+                System.out.println("the current health of "+tempBeastName+" is at " + (beastStats[0]));
+                if (beastStats[0]>0){ monsterTurn(beastStats,lifeStatus);}
+            } else {
+                monsterTurn(beastStats,lifeStatus);
+                String[] tempData = playerTurn();
+                if (tempData==null){}
+                else if (tempData[0].equalsIgnoreCase("A")){
+                    beastStats[0]-=Integer.parseInt(tempData[1]);
+
+                    if (Integer.parseInt(tempData[2])!=0){ //for effect 1
+                        if (Integer.parseInt(tempData[3])==1) { //self on
+                            if (Integer.parseInt(tempData[2]) != playerEffect) {
+                                turnOfPlayerEffect = turn;
+                                playerEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[3])==2){ //self off
+                            if (Integer.parseInt(tempData[2])==playerEffect) {
+                                turnOfPlayerEffect = turn;
+                                playerEffect = 0;
+                            }
+                        }
+                        if (Integer.parseInt(tempData[3])==3){ //monster on
+                            if (Integer.parseInt(tempData[2])!=monsterEffect) {
+                                turnOfMonsterEffect = turn;
+                                monsterEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[3])==4){ //monster off
+                            if (Integer.parseInt(tempData[2])==monsterEffect) {
+                                turnOfMonsterEffect = turn;
+                                monsterEffect = 0;
+                            }
+                        }
+                    }
+                    if (Integer.parseInt(tempData[4])!=0){ //for effect 2
                         if (Integer.parseInt(tempData[5])==1) { //self on
                             if (Integer.parseInt(tempData[4]) == playerEffect) {
                                 turnOfPlayerEffect = turn;
@@ -256,22 +309,47 @@ public class adventurerework {
 
             if (playerEffect!=0) {
                 if (turn - turnOfPlayerEffect <= Integer.parseInt(effectDatabase.getEffectData(playerEffect)[2])) {
-                    health += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[1]);
-                    System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + (effectDatabase.getEffectData(playerEffect)[1]) + " points of damage!");
+                    int tempDam = Integer.parseInt(effectDatabase.getEffectData(playerEffect)[1]);
+                    health += tempDam;
+                    if (tempDam<0)
+                    System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + tempDam + " points of damage!");
+                    if (tempDam>0)
+                        System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " healed " + tempDam + " points of damage!");
                     if (!playerMultipliersChanged) {
+                        playerMultipliersChanged = true;
+                        double tempDaMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
+                        double tempSpMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
+                        double tempDeMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
+                        double tempAcMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
                         System.out.println("\nYou are now " + (effectDatabase.getEffectData(playerEffect)[0]) + "!");
-                        if (Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]) != 0)
-                            System.out.println("your attack has been affected!");
-                        attackMultiplier += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[3]);
-                        if (Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]) != 0)
-                            System.out.println("your speed has been affected!");
-                        speedMultiplier += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[4]);
-                        if (Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]) != 0)
-                            System.out.println("your defence has been affected!");
-                        defensiveMultiplier += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[5]);
-                        if (Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]) != 0)
-                            System.out.println("your accuracy has been affected!");
-                        accuracyMultiplier += Integer.parseInt(effectDatabase.getEffectData(playerEffect)[6]);
+                        if (tempDaMod != 0) {
+                            if (tempDaMod > 0)
+                            System.out.println("You feel stronger!");
+                            if (tempDaMod > 0)
+                                System.out.println("Your attacks seem lessened!");
+                            attackMultiplier += tempDaMod;
+                        }
+                        if (tempSpMod != 0) {
+                            if (tempSpMod > 0)
+                            System.out.println("Your feel a rush of adrenaline!");
+                            if (tempSpMod < 0)
+                                System.out.println("You feel sluggish!");
+                            speedMultiplier += tempSpMod;
+                        }
+                        if (tempDeMod != 0) {
+                            if (tempDeMod > 0)
+                            System.out.println("You feel more accustomed to your armor!");
+                            if (tempDeMod < 0)
+                                System.out.println("your enemy has noticed a weak point in your armor");
+                            defensiveMultiplier += tempDeMod;
+                        }
+                        if (tempAcMod != 0) {
+                            if (tempAcMod > 0)
+                            System.out.println("You feel focused!");
+                            if (tempAcMod < 0)
+                                System.out.println("You have become distracted in the chaos of battle");
+                            accuracyMultiplier += tempAcMod;
+                        }
                     }
                 } else {
                     playerMultipliersChanged = false;
