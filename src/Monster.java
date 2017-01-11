@@ -3,13 +3,11 @@ public class Monster {
     public int health;
     public int maxHit, minHit, accuracy;
     public int[] itemDrop = {0,0};
-    public double accuracyMult = 1;
-    public double damageMult  = 1;
+    public double accuracyMult,defenceMult,damageMult,speedMult;
     public double speed;
     public String name = "";
-    public double speedMult = 1;
 
-    public Monster(int h, int max, int min, int acc, int item, int dropRate, double spd)
+    public Monster(int h, int max, int min, int acc, int item, int dropRate, double spd, double daM,double spM, double acM, double deM)
     {
         health = h;
         maxHit = max;
@@ -18,8 +16,10 @@ public class Monster {
         itemDrop[0] = item;
         itemDrop[1] = dropRate;
         speed = spd;
-
-
+        damageMult = daM;
+        speedMult = spM;
+        accuracyMult = acM;
+        defenceMult = deM;
 
     }
     public int questionItem(){
@@ -40,18 +40,4 @@ public class Monster {
         }
 
     }
-    public int receiveHit(int hit){
-        health -= hit;
-        return health;
-    }
-    public boolean questionlife(){
-        if (health > 0){
-            return true;
-        }
-        else
-            return false;
-    }
-//    public int calculateSpeed() {
-//
-//    }
 }
