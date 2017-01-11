@@ -163,6 +163,10 @@ public class adventurerework {
         beastStatsSolid = monsterSelection.main(roundCount);
         beastStats = beastStatsSolid;
         boolean lifeStatus = true;
+        int turn = 0;
+        int turnOfPlayerEffect, turnOfMonsterEffect;
+        int monsterEffect = 0;
+        int playerEffect = 0;
         do {
             if (speed*speedMultiplier >= beastStats[6]) {
                 String[] tempData = playerTurn();
@@ -183,6 +187,60 @@ public class adventurerework {
                 if (tempData==null){}
                 else if (tempData[0].equalsIgnoreCase("A")){
                     beastStats[0]-=Integer.parseInt(tempData[1]);
+
+                    if (Integer.parseInt(tempData[2])!=0){ //for effect 1
+                        if (Integer.parseInt(tempData[3])==1) { //self on
+                            if (Integer.parseInt(tempData[2]) == playerEffect) {
+                                turnOfPlayerEffect = turn;
+                                playerEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[3])==2){ //self off
+                            if (Integer.parseInt(tempData[2])==playerEffect) {
+                                turnOfPlayerEffect = turn;
+                                playerEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[3])==3){ //monster on
+                            if (Integer.parseInt(tempData[2])!=monsterEffect) {
+                                turnOfMonsterEffect = turn;
+                                monsterEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[3])==4){ //monster off
+                            if (Integer.parseInt(tempData[2])==monsterEffect) {
+                                turnOfMonsterEffect = turn;
+                                monsterEffect = 0;
+                            }
+                        }
+                    }
+                    if (Integer.parseInt(tempData[4])!=0){ //for effect 1
+                        if (Integer.parseInt(tempData[5])==1) { //self on
+                            if (Integer.parseInt(tempData[4]) == playerEffect) {
+                                turnOfPlayerEffect = turn;
+                                playerEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[5])==2){ //self off
+                            if (Integer.parseInt(tempData[4])==playerEffect) {
+                                turnOfPlayerEffect = turn;
+                                playerEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[5])==3){ //monster on
+                            if (Integer.parseInt(tempData[4])!=monsterEffect) {
+                                turnOfMonsterEffect = turn;
+                                monsterEffect = Integer.parseInt(tempData[2]);
+                            }
+                        }
+                        if (Integer.parseInt(tempData[5])==4){ //monster off
+                            if (Integer.parseInt(tempData[4])==monsterEffect) {
+                                turnOfMonsterEffect = turn;
+                                monsterEffect = 0;
+                            }
+                        }
+                    }
+
                 }else{ //if tempData[0] == "I" (for clarification)
                     beastStats[0]+=Integer.parseInt(tempData[0]);
                     beastStats[1]+=Integer.parseInt(tempData[1]);
@@ -191,6 +249,9 @@ public class adventurerework {
                 }
                 System.out.println("the current health of "+tempBeastName+" is at " + (beastStats[0]));
             }
+            //make effects happen here
+
+            turn++;
         }while (health>0&&beastStats[0]>0);
 
         roundCount += 1;
@@ -223,7 +284,7 @@ public class adventurerework {
         if ( lifeStatus== true) {
             System.out.println(tempBeastName+" attacks!");
             String tempMAttack = monsterRefresh.calculateHit();
-            if (tempMAttack.equalsIgnoreCase(tempBeastName+" has missed!")) {
+            if (tempMAttack.equalsIgnoreCase("The beast has missed!")) {
                 System.out.println(tempBeastName+" has missed!");
             } else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);

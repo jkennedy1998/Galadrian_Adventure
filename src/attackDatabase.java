@@ -45,9 +45,9 @@ class attackDatabase {
 //        attackData[1] = max attack (int);
 //        attackData[2] = accuracy (0 to 10);
 //        attackData[3] = effect status calling number (0 as no status)      //comment which effect is changed if applicable
-//        attackData[4] = effect status state (on as 1, off as 0, on enemy as 4, off enemy as 3)9
+//        attackData[4] = effect status state (NA as 0, on self as 1, off self as 2, on enemy as 3, off enemy as 4)
 //        attackData[5] = effect status calling number (0 as no status)      //comment which effect is changed if applicable (second effect)
-//        attackData[6] = effect status state (on as 1, off as 0, on enemy as 4, off enemy as 3)9   (second effect)
+//        attackData[6] = effect status state (NA as 0, on as 1, off as 2, on enemy as 3, off enemy as 4)9   (second effect)
 //
     private static void instaKill(){ //for testing purposes only!
         attackData[0] = 100;
@@ -162,7 +162,7 @@ class attackDatabase {
         attackData[0] = 0;
         attackData[1] = 0;
         attackData[2] = 10;
-        attackData[3] = 1; //meditation
+        attackData[3] = 2; //meditation
         attackData[4] = 1;
         attackData[5] = 0;
         attackData[6] = 0;
@@ -181,6 +181,6 @@ class attackDatabase {
 //        attackData[1] = max attack (int);
 //        attackData[2] = accuracy (0 to 10);
 //        attackData[3] = effect status calling number (0 as no status)      //comment which effect is changed if applicable
-//        attackData[4] = effect status state (on self as 1, off self as 0, on enemy as 4, off enemy as 3)
+//        attackData[4] = effect status state (NA as 0, on self as 1, off self as 2, on enemy as 3, off enemy as 4)
 //        attackData[5] = effect status calling number (0 as no status)      //comment which effect is changed if applicable (second effect)
-//        attackData[6] = effect status state (on as 1, off as 0, on enemy as 4, off enemy as 3)9   (second effect)
+//        attackData[6] = effect status state (NA as 0, on as 1, off as 2, on enemy as 3, off enemy as 4)9   (second effect)
