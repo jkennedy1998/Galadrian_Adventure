@@ -3,11 +3,11 @@ public class effectDatabase {
 
     private static String[] effectData = {"","","","","","",""};
 
-    public static String[] getAttackData(String effect) {
-        if (effect.equalsIgnoreCase("Poison")) { poison();
+    public static String[] getAttackData(int effect) {
+        if (effect == 0) { poison();
             return effectData;
         }
-        if (effect.equalsIgnoreCase("Meditation")) { meditation();
+        if (effect == 1) { meditation();
             return effectData;
         }
 
