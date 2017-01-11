@@ -17,7 +17,7 @@ public class effectDatabase {
 
 //      past this point should only be effects!
 
-//    public static void poison(){
+//    public static void poison(){ //id number of the effect
 //        effectData[0] = "Name of the effect to be displayed as a String";
 //        effectData[1] = ""+(effected health each turn as an integer);
 //        effectData[2] = ""+(turns in which the effect is in place as an integer);
@@ -26,7 +26,7 @@ public class effectDatabase {
 //        effectData[5] = ""+(defence multiplier as a double.);
 //        effectData[6] = ""+(accuracy multiplier as a double.);
 //    }
-    public static void poison(){
+    public static void poison(){ //1
         effectData[0] = "poison";
         effectData[1] = ""+(-3);
         effectData[2] = ""+(3);
@@ -35,7 +35,7 @@ public class effectDatabase {
         effectData[5] = ""+(1);
         effectData[6] = ""+(1);
     }
-    public static void meditation(){
+    public static void meditation(){ //2
         effectData[0] = "meditation";
         effectData[1] = ""+(+4);
         effectData[2] = ""+(2);

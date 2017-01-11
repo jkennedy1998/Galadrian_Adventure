@@ -240,21 +240,28 @@ public class adventurerework {
     }
 
     public static String[] playerTurn(){
-        String[] returningString = {"","","",""};
+        String[] returningString = {"","","","","",""};
 
         String tempDialog = "";
         Encounter playerRefresh = new Encounter();
         playerRefresh.initialize(attack1, attack2, attack3, attack4, attackMultiplier, accuracyMultiplier);
         System.out.println("It's your turn to attack!\n");
-            String attackStorage = playerRefresh.PlayerAttack(tempDialog,accuracyMultiplier);
-            if (!(attackStorage.equalsIgnoreCase("item"))) { //not using item
-                if (attackStorage.equalsIgnoreCase("Miss")) {
+            String attackStorage[] = playerRefresh.PlayerAttack(tempDialog,accuracyMultiplier);
+            if (!(attackStorage[0].equalsIgnoreCase("item"))) { //not using item
+                if (attackStorage[0].equalsIgnoreCase("Miss")) {
                 }//does nothing on purpose
                 else {
-                    int tempPAttack = Integer.parseInt(attackStorage);
-                    System.out.println("You attack for " + tempPAttack + " damage!");
+                    int[] tempPAttack = {0,0,0,0,0};
+                    tempPAttack[0] = Integer.parseInt(attackStorage[0]);
+                    System.out.println("You attack for " + tempPAttack[0] + " damage!");
                     returningString[0] = "A";
-                    returningString[1] = ""+tempPAttack;
+                    returningString[1] = ""+tempPAttack[0];
+                    returningString[2] = ""+(attackStorage[1]);
+                    returningString[3] = ""+(attackStorage[2]);
+                    returningString[4] = ""+(attackStorage[3]);
+                    returningString[5] = ""+(attackStorage[4]);
+
+
                     return returningString;
                 }
             }else{                                            //using item (start)
