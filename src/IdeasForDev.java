@@ -20,3 +20,6 @@
 //changing accuracy
 //  changing to accuracy percentages as a double. or an int out of 100
 //      would make it easier to scale monsters and players. makes modifiers do more and less in extreem cases.
+
+//Changing Variable
+//    Making an object where all variables are tied to the single object to make it more condensed
