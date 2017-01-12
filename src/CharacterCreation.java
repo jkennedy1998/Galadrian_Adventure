@@ -13,7 +13,22 @@ public class CharacterCreation {
     public static String attack2 = "";
     public static String attack3 = "";
     public static String attack4 = "";
-
+//    private int health, maxHealth, speed, level, score, exp, expLim;
+//    private double attackMultiplier, accuracyMultiplier, defensiveMultiplier, speedMultiplier;
+//    private double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
+//    public CharacterCreation(){
+//        health = 100;
+//        maxHealth = 100;
+//        speed = 60;
+//        level = 0;
+//        score = 100;
+//        exp = 0;
+//        expLim = 5;
+//        attackMultiplier = 1;
+//        accuracyMultiplier = 1;
+//        defensiveMultiplier = 1;
+//        speedMultiplier = 1;
+//    }
 
     public static String race() {
         String[] buttons = {"Human", "Orc", "Dwarf", "Elf", "Halfling"};
