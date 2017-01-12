@@ -61,7 +61,7 @@ public class monsterSelection {
 
 
         if (grouping == 1) {
-            monsterCount = 7;
+            monsterCount = 9;
             int monsterNumber = subSelect();
 
             if (monsterNumber == 1)
@@ -76,14 +76,18 @@ public class monsterSelection {
                 selectVampire();
             else if (monsterNumber == 6)
                 selectSpiderling();
+            else if (monsterNumber == 7)
+                selectYaunTiMalison();
+            else if (monsterNumber == 8)
+                selectYaunTiPureBlood();
             else
                 selectBat();
         }
         if (grouping == 2) {
 
-            monsterCount = 6;
+            monsterCount = 7;
             int monsterNumber = subSelect();
-            monsterCount = 6;
+            monsterCount = 7;
             if (monsterNumber == 1)
                 selectDrunkDwarf();
             else if (monsterNumber == 2)
@@ -94,6 +98,8 @@ public class monsterSelection {
                 selectBat();
             else if (monsterNumber == 5)
                 selectWarlock();
+            else if (monsterNumber == 6)
+                selectYaunTiAbonimation();
             else
                 selectGoblin();
 
@@ -271,6 +277,39 @@ public class monsterSelection {
         beastStats[1] = 30;
         beastStats[2] = 25;
         beastStats[3] = 25;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+        beastStats[6] = (35);
+    }
+    public static void selectYaunTiMalison(){
+        beast = "Yaun-Ti Malison";
+        capital = false;
+        beastStats[0] = 10;
+        beastStats[1] = 15;
+        beastStats[2] = 5;
+        beastStats[3] = 25;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+        beastStats[6] = (35);
+    }
+    public static void selectYaunTiAbonimation(){
+        beast = "Yaun-Ti Abonimation";
+        capital = false;
+        beastStats[0] = 25;
+        beastStats[1] = 25;
+        beastStats[2] = 15;
+        beastStats[3] = 35;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+        beastStats[6] = (45);
+    }
+    public static void selectYaunTiPureBlood(){
+        beast = "Yaun-Ti PureBlood";
+        capital = false;
+        beastStats[0] = 5;
+        beastStats[1] = 15;
+        beastStats[2] = 5;
+        beastStats[3] = 50;
         beastStats[4] = (0);
         beastStats[5] = (100);
         beastStats[6] = (35);
