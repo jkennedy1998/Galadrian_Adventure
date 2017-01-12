@@ -16,7 +16,7 @@ public class beastNameGen {
 
 
     public static String preName(){
-        int precount = 4;
+        int precount = 5;
         int rand = (int)Math.ceil(Math.random()*precount);
 
         if (rand == 1){
@@ -30,6 +30,9 @@ public class beastNameGen {
         }
         if (rand == 4){
             return "Earth";
+        }
+        if (rand == 5){
+            return "Darth";
         }
         return "error";
     }
