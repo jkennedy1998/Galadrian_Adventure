@@ -59,7 +59,7 @@ public class CharacterCreation {
     }
 
     public static String role() {//should change stats by plus two to three to keep balance
-        String[] buttons = {"Swordsman", "Ranger", "Mage", "Barbarian", "Tinker"};
+        String[] buttons = {"Swordsman", "Ranger", "Mage", "Barbarian", "Monk"};
 
         int choice = JOptionPane.showOptionDialog(null, "Which type of Savior would you like to play as?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
