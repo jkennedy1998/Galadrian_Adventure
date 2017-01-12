@@ -16,7 +16,3 @@
 //  bug like creatures (snakes spiders and bats) will be affected by an item more than a giant. (more dam)
 //  new arg in monster where we do a integer id of a monster type. (ie 1 = bugLike, 2 = largeHumanoid)
 //      would make a higher level of tactical thinking for the player.
-
-//changing accuracy
-//  changing to accuracy percentages as a double. or an int out of 100
-//      would make it easier to scale monsters and players. makes modifiers do more and less in extreem cases.
