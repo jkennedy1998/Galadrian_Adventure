@@ -59,7 +59,7 @@ public class CharacterCreation {
     }
 
     public static String role() {//should change stats by plus two to three to keep balance
-        String[] buttons = {"Swordsman", "Ranger", "Mage", "Barbarian", "Monk"};
+        String[] buttons = {"Swordsman", "Ranger", "Mage", "Berserker", "Monk"};
 
         int choice = JOptionPane.showOptionDialog(null, "Which type of Savior would you like to play as?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
@@ -79,7 +79,7 @@ public class CharacterCreation {
             accuracyMultiplier += .3;
             attackMultiplier += .1;
             defensiveMultiplier -= .1;
-            attack1 = "Bow Shot";
+            attack1 = "Dual Shot";
             attack2 = "Marksman's Shot";
             attack3 = "Stab";
             attack4 = "";
@@ -95,13 +95,13 @@ public class CharacterCreation {
             attack4 = "";
         }
         if (choice == 3) {
-            role = "Barbarian"; //brute force!
+            role = "Berserker"; //brute force!
             defensiveMultiplier -= .1;
             attackMultiplier += .4;
             accuracyMultiplier -= .1;
             attack1 = "Punch";
-            attack2 = "Body Slam";
-            attack3 = "Club";
+            attack2 = "Blood Lust";
+            attack3 = "Rend";
             attack4 = "";
         }
         if (choice == 4) {
@@ -111,7 +111,7 @@ public class CharacterCreation {
             accuracyMultiplier += .3;
             attack1 = "Meditation";
             attack2 = "Punch";
-            attack3 = "Uppercut";
+            attack3 = "Flying Jump Kick";
             attack4 = "";
         }
         return role;

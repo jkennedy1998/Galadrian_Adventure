@@ -16,7 +16,7 @@ class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("Bow Shot")) {BowShot();
             return attackData;}
-        if (attack.equalsIgnoreCase("Marksman's Shot")) {MarksmansShot();
+        if (attack.equalsIgnoreCase("DUal Shot")) {DualShot();
             return attackData;}
         if (attack.equalsIgnoreCase("Shadow Bolt")) {ShadowBolt();
             return attackData;}
@@ -26,13 +26,13 @@ class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("Punch")) {Punch();
             return attackData;}
-        if (attack.equalsIgnoreCase("Body Slam")) {BodySlam();
+        if (attack.equalsIgnoreCase("Blood Lust")) {BloodLust();
             return attackData;}
-        if (attack.equalsIgnoreCase("Club")) {Club();
+        if (attack.equalsIgnoreCase("Rend")) {Rend();
             return attackData;}
         if (attack.equalsIgnoreCase("Meditation")) {Meditation();
             return attackData;}
-        if (attack.equalsIgnoreCase("Uppercut")) {Uppercut();
+        if (attack.equalsIgnoreCase("Flying Jump Kick")) {FlyingJumpKick();
             return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
@@ -87,18 +87,18 @@ class attackDatabase {
 
     }
     private static void BowShot(){ //questionable damage, decent accuracy
-        attackData[0] = 15;
-        attackData[1] = 40;
-        attackData[2] = 28;
+        attackData[0] = 25;
+        attackData[1] = 27;
+        attackData[2] = 10;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
         attackData[6] = 0;
     }
-    private static void MarksmansShot(){ //certain moderate damage, certain accuracy
-        attackData[0] = 25;
-        attackData[1] = 27;
-        attackData[2] = 10;
+    private static void DualShot(){ //certain moderate damage, certain accuracy
+        attackData[0] = 37;
+        attackData[1] = 41;
+        attackData[2] = 39;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
@@ -140,7 +140,7 @@ class attackDatabase {
         attackData[5] = 0;
         attackData[6] = 0;
     }
-    private static void BodySlam(){ //ok accuracy, high damage
+    private static void BloodLust(){ //ok accuracy, high damage
         attackData[0] = 29;
         attackData[1] = 35;
         attackData[2] = 60;
@@ -149,7 +149,7 @@ class attackDatabase {
         attackData[5] = 0;
         attackData[6] = 0;
     }
-    private static void Club() { //decent accuracy, uncertain damage damage
+    private static void Rend() { //decent accuracy, uncertain damage damage
         attackData[0] = 15;
         attackData[1] = 29;
         attackData[2] = 36;
@@ -167,7 +167,7 @@ class attackDatabase {
         attackData[5] = 0;
         attackData[6] = 0;
     }
-    private static void Uppercut() { //decent accuracy, certain damage
+    private static void FlyingJumpKick() { //decent accuracy, certain damage
         attackData[0] = 19;
         attackData[1] = 20;
         attackData[2] = 40;

@@ -27,6 +27,11 @@ public class monsterSelection {
         return beastStats;
     }
     public static void setGrouping(int round){
+        if(round < 50){
+            grouping = 4;
+            //Middle of ocean
+        }
+
         if (round<30){
             grouping=3;
             //Mountain
@@ -47,7 +52,7 @@ public class monsterSelection {
         }else
             return second;
     }
-    public static void selection(){
+    public static void selection() {
 //   standard variables:
 //        beast = "rabid dog";
 //        capital = false;
@@ -111,12 +116,20 @@ public class monsterSelection {
             monsterCount = 4;
             if (monsterNumber == 1)
                 selectDragon();
-            else if(monsterNumber == 2)
+            else if (monsterNumber == 2)
                 selectDemon();
-            else if(monsterNumber == 3)
+            else if (monsterNumber == 3)
                 selectCAngel();
             else
                 selectLich();
+        }
+        if (grouping == 4) {
+
+            monsterCount = 1;
+            int monsterNumber = subSelect();
+            monsterCount = 1;
+            if (monsterNumber == 1)
+                selectCthulu();
 
         }
     }
@@ -265,7 +278,7 @@ public class monsterSelection {
         beastStats[0] = 50;
         beastStats[1] = 50;
         beastStats[2] = 25;
-        beastStats[3] = 78;
+        beastStats[3] = 25;
         beastStats[4] = (0);
         beastStats[5] = (100);
         beastStats[6] = (60);
@@ -313,6 +326,17 @@ public class monsterSelection {
         beastStats[4] = (0);
         beastStats[5] = (100);
         beastStats[6] = (35);
+    }
+    public static void selectCthulu(){
+        beast = "Cthulu";
+        capital = false;
+        beastStats[0] = 100;
+        beastStats[1] = 100;
+        beastStats[2] = 95;
+        beastStats[3] = 10;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+        beastStats[6] = (1);
     }
 }
 //        beastStats[0] = (health value);
