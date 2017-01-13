@@ -26,3 +26,6 @@
 
 //Endri
 //Give endri 10$ dolars justin do not forget
+
+//Meta game time
+//real time effects monsters who show up
