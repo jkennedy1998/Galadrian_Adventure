@@ -488,7 +488,7 @@ public class adventurerework {
         String[] returningString = {"", "", "", "", "", "", "", ""};
 
         String tempDialog = "";
-        Encounter playerRefresh = new Encounter();
+        Player playerRefresh = new Player();
         playerRefresh.initialize(attack1, attack2, attack3, attack4, attackMultiplier, accuracyMultiplier);
         System.out.println("It's your turn to attack!\n");
         String attackStorage[] = playerRefresh.PlayerAttack(tempDialog);
