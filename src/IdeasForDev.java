@@ -31,7 +31,7 @@
 //end of day you can level up.
 //resting at end of day.
 //chances to get raided based on if you set up traps or ate.
-//eating and setting up traps would cause you to sleep less and therefore gain less health. 
+//eating and setting up traps would cause you to sleep less and therefore gain less health.
 
 //locations based off of character.
 //mage light or sparks would give you ability to access caves.
