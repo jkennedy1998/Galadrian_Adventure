@@ -16,7 +16,7 @@ class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("Bow Shot")) {BowShot();
             return attackData;}
-        if (attack.equalsIgnoreCase("DUal Shot")) {DualShot();
+        if (attack.equalsIgnoreCase("Dual Shot")) {DualShot();
             return attackData;}
         if (attack.equalsIgnoreCase("Shadow Bolt")) {ShadowBolt();
             return attackData;}

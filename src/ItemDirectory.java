@@ -63,7 +63,7 @@ public class ItemDirectory {
         ItemReturn[5] = "0";                  //defence modifier
         ItemReturn[6] = "-.1";                  //speed modifier
         ItemReturn[7] = "25";                 //accuracy
-        ItemReturn[8] = "0";                  //effect # on
+        ItemReturn[8] = "1";//poison                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
 
         return ItemReturn;

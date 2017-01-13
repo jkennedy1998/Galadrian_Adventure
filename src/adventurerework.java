@@ -14,8 +14,8 @@ public class adventurerework {
     public static String attack2 = "";
     public static String attack3 = "";
     public static String attack4 = "";
-    public static int itemSlot0 = 0;
-    public static int itemSlot1 = 0;
+    public static int itemSlot0 = 1;
+    public static int itemSlot1 = 1;
     public static int itemSlot2 = 0;
     public static int itemSlot3 = 0;
     public static int itemSlot4 = 0;
@@ -37,7 +37,7 @@ public class adventurerework {
         attackMultiplierLocked += character.getAttackMultiplier();
         defensiveMultiplierLocked += character.getDefensiveMultiplier();
         speedMultiplierLocked += character.getSpeedMultiplier();
-        speed =  (int)Math.round(speed*speedMultiplierLocked);
+        speed = (int) Math.round(speed * speedMultiplierLocked);
         attack1 = character.getAttack1();
         attack2 = character.getAttack2();
         attack3 = character.getAttack3();
@@ -46,20 +46,20 @@ public class adventurerework {
     }
 
     public static void live() {
-        if (exp >= expLim){
+        if (exp >= expLim) {
             levelUp();
         }
         String[] buttons = {"Yes", "I REFUSE"};
         int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-        if (answer==0) {
+        if (answer == 0) {
             striveOn();
-        } else if (answer==1) {
+        } else if (answer == 1) {
             System.out.println("You have chosen to stop adventuring.\nI knew you were a Coward!");
             score = health + score;
             System.out.println("Your score is " + score);
             System.exit(0);
-        } else  {
+        } else {
             live();
         }
 
@@ -69,11 +69,10 @@ public class adventurerework {
         System.out.println("You have died while adventuring!\nHuh, quite the savior you are.");
         score = health + score;
         System.out.println("Your score is " + score);
-        if (score>=200)
-        {
+        if (score >= 200) {
             // lets add an easter egg here!
         }
-        if(health<= 0) {
+        if (health <= 0) {
             System.exit(0);
         }
     }
@@ -83,6 +82,7 @@ public class adventurerework {
         startEncounter();
         live();
     }
+
     public static String getItem(int itemValue) {
         Items refreshInventory = new Items();
         refreshInventory.initializeItems(itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
@@ -91,23 +91,23 @@ public class adventurerework {
         if (tempValue != 5) {
             if (tempValue == 0) {
                 itemSlot0 = itemValue;
-                return ("\n"+itemTemp[0] + " has been stored in slot 1!");
+                return ("\n" + itemTemp[0] + " has been stored in slot 1!");
             }
             if (tempValue == 1) {
                 itemSlot1 = itemValue;
-                return ("\n"+itemTemp[0] + " has been stored in slot 2!");
+                return ("\n" + itemTemp[0] + " has been stored in slot 2!");
             }
             if (tempValue == 2) {
                 itemSlot2 = itemValue;
-                return ("\n"+itemTemp[0] + " has been stored in slot 3!");
+                return ("\n" + itemTemp[0] + " has been stored in slot 3!");
             }
             if (tempValue == 3) {
                 itemSlot3 = itemValue;
-                return ("\n"+itemTemp[0] + " has been stored in slot 4!");
+                return ("\n" + itemTemp[0] + " has been stored in slot 4!");
             }
-            if(tempValue == 4) {
+            if (tempValue == 4) {
                 itemSlot4 = itemValue;
-                return ("\n"+itemTemp[0] + " has been stored in slot 5!");
+                return ("\n" + itemTemp[0] + " has been stored in slot 5!");
             }
         } else {
             String[] buttons = {"yes", "no"};
@@ -121,7 +121,7 @@ public class adventurerework {
                 String slot4 = ("Slot 4 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[3])[0]);
                 String slot5 = ("Slot 5 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[4])[0]);
 
-                String[] moreButtons = {slot1,slot2,slot3,slot4,slot5};
+                String[] moreButtons = {slot1, slot2, slot3, slot4, slot5};
 
                 int otherAnswer = JOptionPane.showOptionDialog(null, "Which item would you like to be replaced?", "",
                         JOptionPane.PLAIN_MESSAGE, 1, null, moreButtons, null);
@@ -141,11 +141,11 @@ public class adventurerework {
                     itemSlot3 = itemValue;
                     System.out.println(itemTemp[0] + " has been stored in slot 4!");
                 }
-                if(otherAnswer == 4) {
+                if (otherAnswer == 4) {
                     itemSlot4 = itemValue;
-                    System.out.println(itemTemp[0]+ " has been stored in slot 5!");
+                    System.out.println(itemTemp[0] + " has been stored in slot 5!");
                 }
-            } else  {
+            } else {
                 return ("You have chosen to discard the item.");
 
             }
@@ -153,7 +153,7 @@ public class adventurerework {
         return "RETURN FOR THE SAKE OF HAVING TO RETURN A STRING.";
     }
 
-    public static void startEncounter(){
+    public static void startEncounter() {
         accuracyMultiplier = accuracyMultiplierLocked;
         attackMultiplier = attackMultiplierLocked;
         defensiveMultiplier = defensiveMultiplierLocked;
@@ -170,151 +170,172 @@ public class adventurerework {
         int monsterEffect = 0;
         int playerEffect = 0;
         do {
-            if (speed*speedMultiplier >= beastStats[6]) {
+            if (speed * speedMultiplier >= beastStats[6]) {
                 String[] tempData = playerTurn();
-                if (tempData==null){}
-                else if (tempData[0].equalsIgnoreCase("A")){
-                    beastStats[0]-=Integer.parseInt(tempData[1]);
+                if (tempData == null) {
+                } else if (tempData[0].equalsIgnoreCase("A")) {
+                    beastStats[0] -= Integer.parseInt(tempData[1]);
 
-                    if (Integer.parseInt(tempData[2])!=0){ //for effect 1
-                        if (Integer.parseInt(tempData[3])==1) { //self on
+                    if (Integer.parseInt(tempData[2]) != 0) { //for effect 1
+                        if (Integer.parseInt(tempData[3]) == 1) { //self on
                             if (Integer.parseInt(tempData[2]) != playerEffect) {
                                 turnOfPlayerEffect = turn;
                                 playerEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[3])==2){ //self off
-                            if (Integer.parseInt(tempData[2])==playerEffect) {
+                        if (Integer.parseInt(tempData[3]) == 2) { //self off
+                            if (Integer.parseInt(tempData[2]) == playerEffect) {
                                 turnOfPlayerEffect = turn;
                                 playerEffect = 0;
                             }
                         }
-                        if (Integer.parseInt(tempData[3])==3){ //monster on
-                            if (Integer.parseInt(tempData[2])!=monsterEffect) {
+                        if (Integer.parseInt(tempData[3]) == 3) { //monster on
+                            if (Integer.parseInt(tempData[2]) != monsterEffect) {
                                 turnOfMonsterEffect = turn;
                                 monsterEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[3])==4){ //monster off
-                            if (Integer.parseInt(tempData[2])==monsterEffect) {
+                        if (Integer.parseInt(tempData[3]) == 4) { //monster off
+                            if (Integer.parseInt(tempData[2]) == monsterEffect) {
                                 turnOfMonsterEffect = turn;
                                 monsterEffect = 0;
                             }
                         }
                     }
-                    if (Integer.parseInt(tempData[4])!=0){ //for effect 2
-                        if (Integer.parseInt(tempData[5])==1) { //self on
+                    if (Integer.parseInt(tempData[4]) != 0) { //for effect 2
+                        if (Integer.parseInt(tempData[5]) == 1) { //self on
                             if (Integer.parseInt(tempData[4]) == playerEffect) {
                                 turnOfPlayerEffect = turn;
                                 playerEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[5])==2){ //self off
-                            if (Integer.parseInt(tempData[4])==playerEffect) {
+                        if (Integer.parseInt(tempData[5]) == 2) { //self off
+                            if (Integer.parseInt(tempData[4]) == playerEffect) {
                                 turnOfPlayerEffect = turn;
                                 playerEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[5])==3){ //monster on
-                            if (Integer.parseInt(tempData[4])!=monsterEffect) {
+                        if (Integer.parseInt(tempData[5]) == 3) { //monster on
+                            if (Integer.parseInt(tempData[4]) != monsterEffect) {
                                 turnOfMonsterEffect = turn;
                                 monsterEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[5])==4){ //monster off
-                            if (Integer.parseInt(tempData[4])==monsterEffect) {
+                        if (Integer.parseInt(tempData[5]) == 4) { //monster off
+                            if (Integer.parseInt(tempData[4]) == monsterEffect) {
                                 turnOfMonsterEffect = turn;
                                 monsterEffect = 0;
                             }
                         }
                     }
-                }else{ //if tempData[0] == "I" (for clarification)
-                    beastStats[0]+=Integer.parseInt(tempData[1]);
-                    beastStats[7]+=Integer.parseInt(tempData[6]);
-                    beastStats[8]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see below)
-                    beastStats[9]+=Integer.parseInt(tempData[4]);
-                    beastStats[10]+=Integer.parseInt(tempData[5]);
+                } else if (tempData[0].equalsIgnoreCase("I")) {
+                    beastStats[0] += Integer.parseInt(tempData[1]);
+                    beastStats[7] += Double.parseDouble(tempData[2]);
+                    beastStats[8] += Double.parseDouble(tempData[4]); //if you edit this data edit that one too! (see below)
+                    beastStats[9] += Double.parseDouble(tempData[3]);
+                    beastStats[10] += Double.parseDouble(tempData[5]);
+                    if (monsterEffect != Integer.parseInt(tempData[6])) {
+                        monsterEffect = Integer.parseInt(tempData[6]);
+                        turnOfMonsterEffect = turn;
+                    }
+                }else{//if tempData[0] == IS
+                    if (playerEffect != Integer.parseInt(tempData[1])) {
+                        playerEffect = Integer.parseInt(tempData[1]);
+                        turnOfPlayerEffect = turn;
+                    }
+                    if (playerEffect == Integer.parseInt(tempData[2])){
+                        playerEffect = 0;
+                        turnOfPlayerEffect = 0;
+                    }
+
                 }
-                System.out.println("the current health of "+tempBeastName+" is at " + (beastStats[0]));
-                if (beastStats[0]>0){ monsterTurn(beastStats,lifeStatus);}
+                System.out.println("the current health of " + tempBeastName + " is at " + (beastStats[0]));
+                if (beastStats[0] > 0) {
+                    monsterTurn(beastStats, lifeStatus);
+                }
             } else {
-                monsterTurn(beastStats,lifeStatus);
+                monsterTurn(beastStats, lifeStatus);
                 String[] tempData = playerTurn();
-                if (tempData==null){}//does nothing on purpose
-                else if (tempData[0].equalsIgnoreCase("A")){
-                    beastStats[0]-=Integer.parseInt(tempData[1]);
+                if (tempData == null) {
+                }//does nothing on purpose
+                else if (tempData[0].equalsIgnoreCase("A")) {
+                    beastStats[0] -= Integer.parseInt(tempData[1]);
 
-                    if (Integer.parseInt(tempData[2])!=0){ //for effect 1
-                        if (Integer.parseInt(tempData[3])==1) { //self on
+                    if (Integer.parseInt(tempData[2]) != 0) { //for effect 1
+                        if (Integer.parseInt(tempData[3]) == 1) { //self on
                             if (Integer.parseInt(tempData[2]) != playerEffect) {
                                 turnOfPlayerEffect = turn;
                                 playerEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[3])==2){ //self off
-                            if (Integer.parseInt(tempData[2])==playerEffect) {
+                        if (Integer.parseInt(tempData[3]) == 2) { //self off
+                            if (Integer.parseInt(tempData[2]) == playerEffect) {
                                 turnOfPlayerEffect = turn;
                                 playerEffect = 0;
                             }
                         }
-                        if (Integer.parseInt(tempData[3])==3){ //monster on
-                            if (Integer.parseInt(tempData[2])!=monsterEffect) {
+                        if (Integer.parseInt(tempData[3]) == 3) { //monster on
+                            if (Integer.parseInt(tempData[2]) != monsterEffect) {
                                 turnOfMonsterEffect = turn;
                                 monsterEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[3])==4){ //monster off
-                            if (Integer.parseInt(tempData[2])==monsterEffect) {
+                        if (Integer.parseInt(tempData[3]) == 4) { //monster off
+                            if (Integer.parseInt(tempData[2]) == monsterEffect) {
                                 turnOfMonsterEffect = turn;
                                 monsterEffect = 0;
                             }
                         }
                     }
-                    if (Integer.parseInt(tempData[4])!=0){ //for effect 2
-                        if (Integer.parseInt(tempData[5])==1) { //self on
+                    if (Integer.parseInt(tempData[4]) != 0) { //for effect 2
+                        if (Integer.parseInt(tempData[5]) == 1) { //self on
                             if (Integer.parseInt(tempData[4]) == playerEffect) {
                                 turnOfPlayerEffect = turn;
                                 playerEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[5])==2){ //self off
-                            if (Integer.parseInt(tempData[4])==playerEffect) {
+                        if (Integer.parseInt(tempData[5]) == 2) { //self off
+                            if (Integer.parseInt(tempData[4]) == playerEffect) {
                                 turnOfPlayerEffect = turn;
                                 playerEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[5])==3){ //monster on
-                            if (Integer.parseInt(tempData[4])!=monsterEffect) {
+                        if (Integer.parseInt(tempData[5]) == 3) { //monster on
+                            if (Integer.parseInt(tempData[4]) != monsterEffect) {
                                 turnOfMonsterEffect = turn;
                                 monsterEffect = Integer.parseInt(tempData[2]);
                             }
                         }
-                        if (Integer.parseInt(tempData[5])==4){ //monster off
-                            if (Integer.parseInt(tempData[4])==monsterEffect) {
+                        if (Integer.parseInt(tempData[5]) == 4) { //monster off
+                            if (Integer.parseInt(tempData[4]) == monsterEffect) {
                                 turnOfMonsterEffect = turn;
                                 monsterEffect = 0;
                             }
                         }
                     }
 
-                }else{ //if tempData[0] == "I" (for clarification)
-                    beastStats[0]+=Integer.parseInt(tempData[1]);
-                    beastStats[7]+=Integer.parseInt(tempData[6]);
-                    beastStats[8]+=Integer.parseInt(tempData[2]); //if you edit this data edit that one too! (see above)
-                    beastStats[9]+=Integer.parseInt(tempData[4]);
-                    beastStats[10]+=Integer.parseInt(tempData[5]);
+                } else { //if tempData[0] == "I" (for clarification)
+                    beastStats[0] += Integer.parseInt(tempData[1]);
+                    beastStats[7] += Double.parseDouble(tempData[2]);
+                    beastStats[8] += Double.parseDouble(tempData[4]); //if you edit this data edit that one too! (see above)
+                    beastStats[9] += Double.parseDouble(tempData[3]);
+                    beastStats[10] += Double.parseDouble(tempData[5]);
+                    if (monsterEffect != Integer.parseInt(tempData[6])) {
+                        monsterEffect = Integer.parseInt(tempData[6]);
+                        turnOfMonsterEffect = turn;
+                    }
                 }
-                System.out.println("the current health of "+tempBeastName+" is at " + (beastStats[0]));
+                System.out.println("the current health of " + tempBeastName + " is at " + (beastStats[0]));
             }
             //make effects taking place start
 
-            if (playerEffect!=0) {
+            if (playerEffect != 0) {
                 if (turn - turnOfPlayerEffect <= Integer.parseInt(effectDatabase.getEffectData(playerEffect)[2])) {
                     int tempDam = Integer.parseInt(effectDatabase.getEffectData(playerEffect)[1]);
                     health += tempDam;
-                    if (tempDam<0)
-                    System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + tempDam + " points of damage!");
-                    if (tempDam>0)
+                    if (tempDam < 0)
+                        System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + tempDam + " points of damage!");
+                    if (tempDam > 0)
                         System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " healed " + tempDam + " points of damage!");
                     if (!playerMultipliersChanged) {
                         playerMultipliersChanged = true;
@@ -325,28 +346,28 @@ public class adventurerework {
                         System.out.println("\nYou are now " + (effectDatabase.getEffectData(playerEffect)[0]) + "!");
                         if (tempDaMod != 0) {
                             if (tempDaMod > 0)
-                            System.out.println("You feel stronger!");
+                                System.out.println("You feel stronger!");
                             if (tempDaMod > 0)
                                 System.out.println("Your attacks seem lessened!");
                             attackMultiplier += tempDaMod;
                         }
                         if (tempSpMod != 0) {
                             if (tempSpMod > 0)
-                            System.out.println("Your feel a rush of adrenaline!");
+                                System.out.println("Your feel a rush of adrenaline!");
                             if (tempSpMod < 0)
                                 System.out.println("You feel sluggish!");
                             speedMultiplier += tempSpMod;
                         }
                         if (tempDeMod != 0) {
                             if (tempDeMod > 0)
-                            System.out.println("You feel more accustomed to your armor!");
+                                System.out.println("You feel more accustomed to your armor!");
                             if (tempDeMod < 0)
                                 System.out.println("your enemy has noticed a weak point in your armor");
                             defensiveMultiplier += tempDeMod;
                         }
                         if (tempAcMod != 0) {
                             if (tempAcMod > 0)
-                            System.out.println("You feel focused!");
+                                System.out.println("You feel focused!");
                             if (tempAcMod < 0)
                                 System.out.println("You have become distracted in the chaos of battle");
                             accuracyMultiplier += tempAcMod;
@@ -360,13 +381,13 @@ public class adventurerework {
                     accuracyMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
                 }
             }
-            if (monsterEffect!=0) {
+            if (monsterEffect != 0) {
                 if (turn - turnOfMonsterEffect <= Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[2])) {
                     int tempDam = Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[1]);
                     beastStats[0] += tempDam;
-                    if (tempDam<0)
+                    if (tempDam < 0)
                         System.out.println("\nThe monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " caused " + tempDam + " points of damage!");
-                    if (tempDam>0)
+                    if (tempDam > 0)
                         System.out.println("\nThe monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " healed " + tempDam + " points of damage!");
                     if (!monsterMultipliersChanged) {
                         monsterMultipliersChanged = true;
@@ -413,147 +434,152 @@ public class adventurerework {
                 }
             }
             turn++;
-        }while (health>0&&beastStats[0]>0);
-        if (health<=0)
+        } while (health > 0 && beastStats[0] > 0);
+        if (health <= 0)
             adventurerework.death();
 
         roundCount += 1;
         score += 15;
-        exp+=5;
+        exp += 5;
         System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
         String endEncounterDialog = "";
-        endEncounterDialog += ("You have vanquished "+tempBeastName+"!");
+        endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
         lifeStatus = false;
-        if(monsterTurn(beastStats,lifeStatus)==1){
+        if (monsterTurn(beastStats, lifeStatus) == 1) {
             endEncounterDialog += getItem(beastStats[4]);
             System.out.println(endEncounterDialog);
         }
-        if ((health<maxHealth)&&(roundCount%5==0)){
-            int tempHealth = (int)(Math.round(Math.random()*20));
+        if ((health < maxHealth) && (roundCount % 5 == 0)) {
+            int tempHealth = (int) (Math.round(Math.random() * 20));
             health += tempHealth;
-            if (health > maxHealth){
+            if (health > maxHealth) {
                 health = maxHealth;
             }
-            System.out.println("You feel your past wounds begin to heal.\nYou regain "+tempHealth+" health.");
+            System.out.println("You feel your past wounds begin to heal.\nYou regain " + tempHealth + " health.");
         }
         adventurerework.live();
     }
 
 
-    public static int monsterTurn(int[] beastStats, boolean lifeStatus){
+    public static int monsterTurn(int[] beastStats, boolean lifeStatus) {
 
 
-        Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5], beastStats[6],beastStats[7],beastStats[8],beastStats[9],beastStats[10]);
-        if ( lifeStatus== true) {
-            System.out.println(tempBeastName+" attacks!");
+        Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5], beastStats[6], beastStats[7], beastStats[8], beastStats[9], beastStats[10]);
+        if (lifeStatus == true) {
+            System.out.println(tempBeastName + " attacks!");
             String tempMAttack = monsterRefresh.calculateHit();
             if (tempMAttack.equalsIgnoreCase("The beast has missed!")) {
-                System.out.println(tempBeastName+" has missed!");
+                System.out.println(tempBeastName + " has missed!");
             } else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 health -= tempMAttack2;
-                System.out.println(tempBeastName+" attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health) + "");
+                System.out.println(tempBeastName + " attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health) + "");
             }
             if (health <= 0) {
                 health = 0;
                 adventurerework.death();
 
             }
-        }else return monsterRefresh.questionItem();
+        } else return monsterRefresh.questionItem();
         return 5318008; //returns but does nothing. such savagery
     }
 
-    public static String[] playerTurn(){
-        String[] returningString = {"","","","","",""};
+    public static String[] playerTurn() {
+        String[] returningString = {"", "", "", "", "", "", "", ""};
 
         String tempDialog = "";
         Encounter playerRefresh = new Encounter();
         playerRefresh.initialize(attack1, attack2, attack3, attack4, attackMultiplier, accuracyMultiplier);
         System.out.println("It's your turn to attack!\n");
-            String attackStorage[] = playerRefresh.PlayerAttack(tempDialog);
-            if (!(attackStorage[0].equalsIgnoreCase("item"))) { //not using item
-                if (attackStorage[0].equalsIgnoreCase("Miss")) {
-                }//does nothing on purpose
-                else {
-                    int[] tempPAttack = {0,0,0,0,0};
-                    tempPAttack[0] = Integer.parseInt(attackStorage[0]);
-                    System.out.println("You attack for " + tempPAttack[0] + " damage!");
-                    returningString[0] = "A";
-                    returningString[1] = ""+tempPAttack[0];
-                    returningString[2] = ""+(attackStorage[1]);
-                    returningString[3] = ""+(attackStorage[2]);
-                    returningString[4] = ""+(attackStorage[3]);
-                    returningString[5] = ""+(attackStorage[4]);
+        String attackStorage[] = playerRefresh.PlayerAttack(tempDialog);
+        if (!(attackStorage[0].equalsIgnoreCase("item"))) { //not using item
+            if (attackStorage[0].equalsIgnoreCase("Miss")) {
+            }//does nothing on purpose
+            else {
+                int[] tempPAttack = {0, 0, 0, 0, 0};
+                tempPAttack[0] = Integer.parseInt(attackStorage[0]);
+                System.out.println("You attack for " + tempPAttack[0] + " damage!");
+                returningString[0] = "A";
+                returningString[1] = "" + tempPAttack[0];
+                returningString[2] = "" + (attackStorage[1]);
+                returningString[3] = "" + (attackStorage[2]);
+                returningString[4] = "" + (attackStorage[3]);
+                returningString[5] = "" + (attackStorage[4]);
 
 
-                    return returningString;
-                }
-            }else{                                            //using item (start)
-                boolean questionHit;
-                String[] tempData = playerRefresh.PlayerItem();
-                System.out.println("You used the "+tempData[0]);
-                if (Math.round(Integer.parseInt(tempData[7])) <= Math.round(Math.random() * 100*accuracyMultiplier)){
-                    questionHit = true;
+                return returningString;
+            }
+        } else {                                            //using item (start)
+            boolean questionHit;
+            String[] tempData = playerRefresh.PlayerItem();
+            System.out.println("You used the " + tempData[0]);
+            if (Math.round(Integer.parseInt(tempData[7])) <= Math.round(Math.random() * 100 * accuracyMultiplier)) {
+                questionHit = true;
 
+            } else {
+                questionHit = false;
+            }
+
+            //prints regardless (below)
+            String tempOutput = "";
+            if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the " + tempData[0] + " on yourself\n";
+            else tempOutput += "You use the " + tempData[0] + " on " + tempBeastName + ".\n";
+
+            //prints if hits or misses (below)
+
+            if (questionHit) {
+                if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
+                else if (Integer.parseInt(tempData[2]) < 0) {
+                    tempOutput += "This causes " + tempData[2] + " points of damage.\n";
                 } else {
-                    questionHit = false;
+                    tempOutput += "This heals " + tempData[2] + " points of damage.\n";
                 }
+                if (Double.parseDouble(tempData[3]) == 0) tempOutput += "";
+                else if (Double.parseDouble(tempData[3]) > 0)
+                    tempOutput += "The " + tempData[0] + " seems to make the receiving end stronger!\n";
+                else tempOutput += "The " + tempData[0] + " weakens the receiving end!\n";
+                if (Double.parseDouble(tempData[4]) == 0) tempOutput += "";
+                else if (Double.parseDouble(tempData[4]) < 0)
+                    tempOutput += "The " + tempData[0] + " discombobulates the receiving end!\n";
+                else tempOutput += "The " + tempData[0] + " focuses the receiving end!\n";
+                if (Double.parseDouble(tempData[5]) == 0) tempOutput += "";
+                else if (Double.parseDouble(tempData[5]) < 0)
+                    tempOutput += "The " + tempData[0] + " enrages the soul!\n";
+                else tempOutput += "The " + tempData[0] + " weakens the soul.\n";
 
-                //prints regardless (below)
-                String tempOutput = "";
-                if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the " + tempData[0] + " on yourself\n";
-                else tempOutput += "You use the " + tempData[0] + " on " + tempBeastName + ".\n";
+            } else {
+                tempOutput += "It fails.\n";
+            }
+            System.out.println(tempOutput);
 
-                //prints if hits or misses (below)
+            if (tempData[1].equalsIgnoreCase("0")) {
+                health += Integer.parseInt(tempData[2]);
+                attackMultiplier += Double.parseDouble(tempData[3]);
+                accuracyMultiplier += Double.parseDouble(tempData[4]);
+                defensiveMultiplier += Double.parseDouble(tempData[5]);
+                speedMultiplier += Double.parseDouble(tempData[6]);
+                returningString[0] = "IS";
+                returningString[1] = "" + Integer.parseInt(tempData[8]); //eff on
+                returningString[2] = "" + Integer.parseInt(tempData[9]); //eff off
+                return returningString;
 
-                if (questionHit) {
-                    if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
-                    else if (Integer.parseInt(tempData[2]) < 0){
-                        tempOutput += "This causes " + tempData[2] + " points of damage.\n";
-                    }else{
-                        tempOutput += "This heals " + tempData[2] + " points of damage.\n";
-                    }
-                    if (Double.parseDouble(tempData[3]) == 0) tempOutput += "";
-                    else if (Double.parseDouble(tempData[3]) > 0)
-                        tempOutput += "The " + tempData[0] + " seems to make the receiving end stronger!\n";
-                    else tempOutput += "The " + tempData[0] + " weakens the receiving end!\n";
-                    if (Double.parseDouble(tempData[4]) == 0) tempOutput += "";
-                    else if (Double.parseDouble(tempData[4]) < 0)
-                        tempOutput += "The " + tempData[0] + " discombobulates the receiving end!\n";
-                    else tempOutput += "The " + tempData[0] + " focuses the receiving end!\n";
-                    if (Double.parseDouble(tempData[5]) == 0) tempOutput += "";
-                    else if (Double.parseDouble(tempData[5]) < 0)
-                        tempOutput += "The " + tempData[0] + " enrages the soul!\n";
-                    else tempOutput += "The " + tempData[0] + " weakens the soul.\n";
+            } else {
+                returningString[0] = "I";
+                returningString[1] = "" + Integer.parseInt(tempData[2]); //damage or healing
+                returningString[2] = "" + Double.parseDouble(tempData[3]); //damage mult
+                returningString[3] = "" + Double.parseDouble(tempData[4]); //accuracy mult
+                returningString[4] = "" + Double.parseDouble(tempData[6]); //speed mult
+                returningString[5] = "" + Double.parseDouble(tempData[5]); //defence mult
+                returningString[6] = "" + Integer.parseInt(tempData[8]); //eff on
+                returningString[7] = "" + Integer.parseInt(tempData[9]); //eff off
+                return returningString;
+            }
 
-                }else {
-            tempOutput += "It fails.\n";}
-                System.out.println(tempOutput);
-
-                if (tempData[1].equalsIgnoreCase("0")){
-                    health += Integer.parseInt(tempData[2]);
-                    attackMultiplier += Double.parseDouble(tempData[3]);
-                    accuracyMultiplier += Double.parseDouble(tempData[4]);
-                    speedMultiplier += Double.parseDouble(tempData[6]);
-                    accuracyMultiplier += Double.parseDouble(tempData[5]);
-                    //make effects toggle on with items
-                    //make effects toggle off with items
-
-                } else {
-                    returningString[0] = "I";
-                    returningString[1] = ""+Integer.parseInt(tempData[2]); //damage or healing
-                    returningString[2] = ""+Double.parseDouble(tempData[3]); //damage mult
-                    returningString[3] = ""+Double.parseDouble(tempData[4]); //accuracy mult
-                    returningString[4] = ""+Double.parseDouble(tempData[6]); //speed mult
-                    returningString[5] = ""+Double.parseDouble(tempData[5]); //defence mult
-                    //make effects toggle on for monster
-                    //make effects toggle off for monster
-                    return returningString;
-                }
-
-                //using item (end)
-            } return null;
+            //using item (end)
+        }
+        return null;
     }
+
 
 public static void levelUp() {
     exp = expLim - exp;
@@ -568,4 +594,5 @@ public static void levelUp() {
     if (leveledStats[2].equalsIgnoreCase("speed")) speedMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("defence")) defensiveMultiplierLocked += Double.parseDouble(leveledStats[3]);
 }
+
 }

@@ -95,7 +95,7 @@ public class CharacterCreation {
             attackMultiplier += .1;
             defensiveMultiplier -= .1;
             attack1 = "Dual Shot";
-            attack2 = "Marksman's Shot";
+            attack2 = "Bow Shot";
             attack3 = "Stab";
             attack4 = "";
         }
