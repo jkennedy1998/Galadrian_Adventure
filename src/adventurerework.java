@@ -21,8 +21,12 @@ public class adventurerework {
     public static int itemSlot4 = 0;
     public static String tempBeastName = "";
     public static String tempUserString = "";
+    public static double time;
+    public static int day;
 
     public static void main(String args[]) {
+        time = 12.0;
+        day = 0;
         health = 100;
         maxHealth = 100;
         score = 0;
@@ -46,6 +50,10 @@ public class adventurerework {
     }
 
     public static void live() {
+        while (time >=24){
+            day ++;
+            time = time-24;
+        }
         if (exp >= expLim) {
             levelUp();
         }
@@ -434,11 +442,13 @@ public class adventurerework {
                 }
             }
             turn++;
+            time+=0.1;
         } while (health > 0 && beastStats[0] > 0);
         if (health <= 0)
             adventurerework.death();
 
         roundCount += 1;
+        time +=1;
         score += 15;
         exp += 5;
         System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
