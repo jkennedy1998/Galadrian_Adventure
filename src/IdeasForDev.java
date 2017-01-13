@@ -23,3 +23,6 @@
 
 //Changing Variable
 //    Making an object where all variables are tied to the single object to make it more condensed
+
+//Endri
+//Give endri 10$ dolars justin do not forget
