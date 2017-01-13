@@ -24,8 +24,14 @@
 //Changing Variable
 //    Making an object where all variables are tied to the single object to make it more condensed
 
-//Endri
-//Give endri 10$ dolars justin do not forget
-
-//Meta game time
+//time
 //real time effects monsters who show up
+// or in game time does. in game time could be 0 to 24 as a double. each turn would add .1 to the counter.
+//each round would add half an hour (.5 to 1)
+//end of day you can level up.
+//resting at end of day.
+//chances to get raided based on if you set up traps or ate.
+//eating and setting up traps would cause you to sleep less and therefore gain less health. 
+
+//locations based off of character.
+//mage light or sparks would give you ability to access caves.
