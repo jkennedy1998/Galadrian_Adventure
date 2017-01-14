@@ -8,7 +8,11 @@ public class monsterSelection {
 
 
     public static int[] main (int round){
-        setGrouping(round);
+        if (round%10 == 0 ) {
+            Story.refresh(adventurerework.attack1, adventurerework.attack2, adventurerework.attack3, adventurerework.attack4, adventurerework.itemSlot0, adventurerework.itemSlot1, adventurerework.itemSlot2, adventurerework.itemSlot3, adventurerework.itemSlot4);
+            //that's the shortest line of code ever!
+            Story.setDestination();
+        }
         selection();
         if (capital) {
             System.out.println("\n\nYou have encountered an " + beast + "!");
@@ -26,26 +30,7 @@ public class monsterSelection {
         beastNameGen.main(beast);
         return beastStats;
     }
-    public static void setGrouping(int round){
-        if(round < 50){
-            grouping = 4;
-            //Middle of ocean
-        }
 
-        if (round<30){
-            grouping=3;
-            //Mountain
-        }
-        if (round<20){
-            grouping=2;
-            //caves
-        }
-        if (round<10){
-            grouping=1;
-            //forest
-        }
-
-    }
     public static int outOfTwo(int first, int second){
         if (Math.ceil(Math.random())*2==1){
             return first;
@@ -65,7 +50,7 @@ public class monsterSelection {
 //        beastStats[6] = (speed value); (positive numbers. unmodded character speed is 60)
 
 
-        if (grouping == 1) {
+        if (Story.location.equalsIgnoreCase("Forest")) {
             monsterCount = 9;
             int monsterNumber = subSelect();
 
@@ -88,7 +73,53 @@ public class monsterSelection {
             else
                 selectBat();
         }
-        if (grouping == 2) {
+        if (Story.location.equalsIgnoreCase("DeepForest")) {
+            monsterCount = 9;
+            int monsterNumber = subSelect();
+
+            if (monsterNumber == 1)
+                selectDog();
+            else if (monsterNumber == 2)
+                selectCultist();
+            else if (monsterNumber == 3)
+                selectGoblin();
+            else if (monsterNumber == 4)
+                selectWarlock();
+            else if (monsterNumber == 5)
+                selectVampire();
+            else if (monsterNumber == 6)
+                selectSpiderling();
+            else if (monsterNumber == 7)
+                selectYaunTiMalison();
+            else if (monsterNumber == 8)
+                selectYaunTiPureBlood();
+            else
+                selectBat();
+        }
+        if (Story.location.equalsIgnoreCase("Plains")) {
+            monsterCount = 9;
+            int monsterNumber = subSelect();
+
+            if (monsterNumber == 1)
+                selectDog();
+            else if (monsterNumber == 2)
+                selectCultist();
+            else if (monsterNumber == 3)
+                selectGoblin();
+            else if (monsterNumber == 4)
+                selectWarlock();
+            else if (monsterNumber == 5)
+                selectVampire();
+            else if (monsterNumber == 6)
+                selectSpiderling();
+            else if (monsterNumber == 7)
+                selectYaunTiMalison();
+            else if (monsterNumber == 8)
+                selectYaunTiPureBlood();
+            else
+                selectBat();
+        }
+        if (Story.location.equalsIgnoreCase("Mountains")) {
 
             monsterCount = 7;
             int monsterNumber = subSelect();
@@ -109,7 +140,7 @@ public class monsterSelection {
                 selectGoblin();
 
         }
-        if (grouping == 3) {
+        if (Story.location.equalsIgnoreCase("Cave")) {
 
             monsterCount = 4;
             int monsterNumber = subSelect();
@@ -123,7 +154,7 @@ public class monsterSelection {
             else
                 selectLich();
         }
-        if (grouping == 4) {
+        if (Story.location.equalsIgnoreCase("JaggedCoastline")) {
 
             monsterCount = 1;
             int monsterNumber = subSelect();
