@@ -36,6 +36,8 @@ class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
+        if (attack.equalsIgnoreCase("Bite")) {bite();
+            return attackData;}
         return attackData;
     }
 //      This is the formatting
@@ -171,6 +173,15 @@ class attackDatabase {
         attackData[0] = 19;
         attackData[1] = 20;
         attackData[2] = 40;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void bite(){ //certain hit, lacking damage
+        attackData[0] = 14;
+        attackData[1] = 15;
+        attackData[2] = 5;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
