@@ -18,6 +18,8 @@ public class ItemDirectory {
             return unknownFlesh();
         if (itemNumber == 6)
             return  nail();
+        if (itemNumber == 7)
+            return  torch();
 
             return noItem(); //should NEVER return this from this line of code.
         }
@@ -122,6 +124,20 @@ public class ItemDirectory {
         ItemReturn[7] = "10";                //acc
         ItemReturn[8] = "0";                  //effects # on
         ItemReturn[9] = "0";                  // effects # off
+
+        return ItemReturn;
+    }
+    public String[] torch () {
+        ItemReturn[0] = "Torch";           //name
+        ItemReturn[1] = "1";                  //self as 0 or enemy as 1
+        ItemReturn[2] = "-13";                  //health modifier
+        ItemReturn[3] = "0";                  //attack modifier
+        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "0";                  //speed modifier
+        ItemReturn[7] = "50";                 //accuracy
+        ItemReturn[8] = "3";                  //effect # on
+        ItemReturn[9] = "0";                  //effect # off
 
         return ItemReturn;
     }

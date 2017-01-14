@@ -38,23 +38,28 @@ public class Story {
         String[] buttons = {possibleDestination1, possibleDestination2,"turn back and continue exploring the "+location+"."};
         int answer = JOptionPane.showOptionDialog(null, "You reach the end of the "+location+".\nWhere would you like to go next?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-        if (answer == 0) {
+        if (answer == 0&&questionRequirements(possibleDestination1)) {
+            System.out.println("\nYou have entered the "+possibleDestination1+"!");
             location = possibleDestination1;
-        } else if (answer == 1) {
+        } else if (answer == 1&&questionRequirements(possibleDestination2)) {
             location = possibleDestination2;
+            System.out.println("\nYou have entered the "+possibleDestination2+"!");
+        } else if (answer == 2){
+            System.out.println("\nYou have chosen to continue exploring the "+location+"!");
+            //location will stay the same regardless of if the requirements are fulfilled.
         } else {
             setDestination();
         }
     }
-    //possible areas include:
-    //forest
-    //deepForest
-    //mountains
-    //plains
-    //cave
-    //jaggedCoastline
-    //needs to have a method  for each area! will not work otherwise
     public static void questionPossible(){
+        //possible areas include:
+        //forest
+        //deepForest
+        //mountains
+        //plains
+        //cave
+        //jaggedCoastline
+        //needs to have a method  for each area! will not work otherwise
         if (location.equalsIgnoreCase("forest")){
             possibleDestination1 ="deepForest";
             possibleDestination2 = outOf2("Plains","mountains");
@@ -81,6 +86,24 @@ public class Story {
         }
 
 
+    }
+    public static boolean questionRequirements(String location){
+        if (location.equalsIgnoreCase("deepForest")&&(!(questionItem(7)&&!questionAttack("Sparks")))) {
+            System.out.println("You need a light source to enter the deeps of the forest!");
+            return false;}
+        if (location.equalsIgnoreCase("cave")&&(!(questionItem(7)&&!questionAttack("Sparks")))) {
+            System.out.println("Without a light source a cave is an adventurers death sentence!");
+            return false;}
+        return true;
+    }
+    public static boolean questionItem(int itemNumber){
+        if (item1==itemNumber||item0 ==itemNumber || item2 == itemNumber|| item3 == itemNumber|| item4 ==itemNumber)
+            return true;
+        return false;
+    }public static boolean questionAttack(String attackNumber){
+        if (attack1.equalsIgnoreCase(attackNumber)||attack2.equalsIgnoreCase(attackNumber) || attack3.equalsIgnoreCase(attackNumber)|| attack4.equalsIgnoreCase(attackNumber))
+            return true;
+        return false;
     }
     public static String outOf2(String first, String second){
         if (Math.ceil(Math.random())*2==1){
