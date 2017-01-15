@@ -1,10 +1,10 @@
 
 public class monsterSelection {
-    public static String beast;
-    public static int beastStats[]= {0,0,0,0,0,0,0,1,1,1,1};
+    private static String beast;
+    private static int beastStats[]= {0,0,0,0,0,0,0,1,1,1,1};
     public static int grouping = 1;
-    public static boolean capital = false;
-    public static int monsterCount = 0;
+    private static boolean capital = false;
+    private static int monsterCount = 0;
 
 
     public static int[] main (int round){
@@ -31,13 +31,13 @@ public class monsterSelection {
         return beastStats;
     }
 
-    public static int outOfTwo(int first, int second){
+    private static int outOfTwo(int first, int second){
         if (Math.ceil(Math.random())*2==1){
             return first;
         }else
             return second;
     }
-    public static void selection() {
+    private static void selection() {
 //   standard variables:
 //        beast = "rabid dog";
 //        capital = false;
@@ -123,7 +123,6 @@ public class monsterSelection {
 
             monsterCount = 7;
             int monsterNumber = subSelect();
-            monsterCount = 7;
             if (monsterNumber == 1)
                 selectDrunkDwarf();
             else if (monsterNumber == 2)
@@ -144,7 +143,6 @@ public class monsterSelection {
 
             monsterCount = 4;
             int monsterNumber = subSelect();
-            monsterCount = 4;
             if (monsterNumber == 1)
                 selectDragon();
             else if (monsterNumber == 2)
@@ -158,7 +156,6 @@ public class monsterSelection {
 
             monsterCount = 1;
             int monsterNumber = subSelect();
-            monsterCount = 1;
             if (monsterNumber == 1)
                 selectCthulu();
 

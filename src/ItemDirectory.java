@@ -1,9 +1,9 @@
 
 public class ItemDirectory {
 
-    public String ItemReturn[] = {"0", "0", "0", "0", "0", "0", "0", "0","0","0"};
+    public static String ItemReturn[] = {"0", "0", "0", "0", "0", "0", "0", "0","0","0"};
 
-    public String[] findItemValues(int itemNumber) {
+    public static String[] findItemValues(int itemNumber) {
         if (itemNumber == 0)
             return noItem();
         if (itemNumber == 1)
@@ -28,9 +28,9 @@ public class ItemDirectory {
 
 //use no item as a rubric.
 
-        public String[] noItem () {
+        public static String[] noItem () {
             ItemReturn[0] = "No Items";           //name
-            ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+            ItemReturn[1] = "0";                  //self as 0 or enemy as 1 or worn as 2
             ItemReturn[2] = "0";                  //health modifier
             ItemReturn[3] = "0";                  //attack modifier
             ItemReturn[4] = "0";                  //accuracy modifier
@@ -42,9 +42,9 @@ public class ItemDirectory {
 
             return ItemReturn;
         }
-        public String[] healthPotion () {
+        public static String[] healthPotion () {
             ItemReturn[0] = "health potion";      //name
-            ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+            ItemReturn[1] = "0";                  //self as 0 or enemy as 1 or worn as 2
             ItemReturn[2] = "25";                 //health modifier
             ItemReturn[3] = "0";                  //attack modifier
             ItemReturn[4] = "0";                  //accuracy modifier
@@ -56,9 +56,9 @@ public class ItemDirectory {
 
             return ItemReturn;
         }
-    public String[] poison () {
+    public static String[] poison () {
         ItemReturn[0] = "Poison";           //name
-        ItemReturn[1] = "1";                  //self as 0 or enemy as 1
+        ItemReturn[1] = "1";                  //self as 0 or enemy as 1 or worn as 2
         ItemReturn[2] = "-25";                  //health modifier
         ItemReturn[3] = "-.2";                  //attack modifier
         ItemReturn[4] = "0";                  //accuracy modifier
@@ -70,9 +70,9 @@ public class ItemDirectory {
 
         return ItemReturn;
     }
-    public String[] curse (){
+    public static String[] curse (){
         ItemReturn[0] = "Curse";           //name
-        ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+        ItemReturn[1] = "0";                  //self as 0 or enemy as 1 or worn as 2
         ItemReturn[2] = "0";                  //health modifier
         ItemReturn[3] = ".5";                  //attack modifier
         ItemReturn[4] = "-.5";                  //accuracy modifier
@@ -84,9 +84,9 @@ public class ItemDirectory {
 
         return ItemReturn;
     }
-    public String[] mead () {
+    public static String[] mead () {
         ItemReturn[0] = "Mead";           //name
-        ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+        ItemReturn[1] = "0";                  //self as 0 or enemy as 1 or worn as 2
         ItemReturn[2] = "20";                  //health modifier
         ItemReturn[3] = ".3";                  //attack modifier
         ItemReturn[4] = "-.25";                  //accuracy modifier
@@ -98,9 +98,9 @@ public class ItemDirectory {
 
         return ItemReturn;
     }
-    public String[] unknownFlesh () {
+    public static String[] unknownFlesh () {
         ItemReturn[0] = "Unknown Flesh";           //name
-        ItemReturn[1] = "0";                  //self as 0 or enemy as 1
+        ItemReturn[1] = "0";                  //self as 0 or enemy as 1 or worn as 2
         ItemReturn[2] = "25";                  //health modifier
         ItemReturn[3] = "-.1";                  //attack modifier
         ItemReturn[4] = "-.1";                  //accuracy modifier
@@ -112,10 +112,10 @@ public class ItemDirectory {
 
         return ItemReturn;
     }
-    public String[] nail()
+    public static String[] nail()
     {
         ItemReturn[0] = "Nail";          //name
-        ItemReturn[1] = "0";                  //self as 0; enemy as 1
+        ItemReturn[1] = "0";                  //self as 0 or enemy as 1 or worn as 2
         ItemReturn[2] = "-10";                //health modifier
         ItemReturn[3] = ".2";                 //attack modifier
         ItemReturn[4] = ".3";                //accuracy modifier
@@ -127,9 +127,9 @@ public class ItemDirectory {
 
         return ItemReturn;
     }
-    public String[] torch () {
+    public static String[] torch () {
         ItemReturn[0] = "Torch";           //name
-        ItemReturn[1] = "1";                  //self as 0 or enemy as 1
+        ItemReturn[1] = "1";                 //self as 0 or enemy as 1 or worn as 2
         ItemReturn[2] = "-13";                  //health modifier
         ItemReturn[3] = "0";                  //attack modifier
         ItemReturn[4] = "0";                  //accuracy modifier

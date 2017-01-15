@@ -161,7 +161,7 @@ public class adventurerework {
         return "RETURN FOR THE SAKE OF HAVING TO RETURN A STRING.";
     }
 
-    public static void startEncounter() {
+    private static void startEncounter() {
         accuracyMultiplier = accuracyMultiplierLocked;
         attackMultiplier = attackMultiplierLocked;
         defensiveMultiplier = defensiveMultiplierLocked;
@@ -180,8 +180,7 @@ public class adventurerework {
         do {
             if (speed * speedMultiplier >= beastStats[6]) {
                 String[] tempData = playerTurn();
-                if (tempData == null) {
-                } else if (tempData[0].equalsIgnoreCase("A")) {
+                if (tempData[0].equalsIgnoreCase("A")) {
                     beastStats[0] -= Integer.parseInt(tempData[1]);
 
                     if (Integer.parseInt(tempData[2]) != 0) { //for effect 1
@@ -264,9 +263,7 @@ public class adventurerework {
             } else {
                 monsterTurn(beastStats, lifeStatus);
                 String[] tempData = playerTurn();
-                if (tempData == null) {
-                }//does nothing on purpose
-                else if (tempData[0].equalsIgnoreCase("A")) {
+                if (tempData[0].equalsIgnoreCase("A")) {
                     beastStats[0] -= Integer.parseInt(tempData[1]);
 
                     if (Integer.parseInt(tempData[2]) != 0) { //for effect 1
@@ -471,11 +468,11 @@ public class adventurerework {
     }
 
 
-    public static int monsterTurn(int[] beastStats, boolean lifeStatus) {
+    private static int monsterTurn(int[] beastStats, boolean lifeStatus) {
 
 
         Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5], beastStats[6], beastStats[7], beastStats[8], beastStats[9], beastStats[10]);
-        if (lifeStatus == true) {
+        if (lifeStatus) {
             System.out.println(tempBeastName + " attacks!");
             String tempMAttack = monsterRefresh.calculateHit();
             if (tempMAttack.equalsIgnoreCase("The beast has missed!")) {
@@ -494,7 +491,7 @@ public class adventurerework {
         return 5318008; //returns but does nothing. such savagery
     }
 
-    public static String[] playerTurn() {
+    private static String[] playerTurn() {
         String[] returningString = {"", "", "", "", "", "", "", ""};
 
         String tempDialog = "";
@@ -523,13 +520,7 @@ public class adventurerework {
             boolean questionHit;
             String[] tempData = playerRefresh.PlayerItem();
             System.out.println("You used the " + tempData[0]);
-            if (Math.round(Integer.parseInt(tempData[7])) <= Math.round(Math.random() * 100 * accuracyMultiplier)) {
-                questionHit = true;
-
-            } else {
-                questionHit = false;
-            }
-
+            questionHit =  (Math.round(Integer.parseInt(tempData[7])) <= Math.round(Math.random() * 100 * accuracyMultiplier)); //true or false.
             //prints regardless (below)
             String tempOutput = "";
             if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the " + tempData[0] + " on yourself\n";
@@ -591,7 +582,7 @@ public class adventurerework {
     }
 
 
-public static void levelUp() {
+private static void levelUp() {
     exp = expLim - exp;
     expLim = (int) Math.round(expLim * 1.5);
     level++;
