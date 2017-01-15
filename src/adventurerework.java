@@ -19,6 +19,12 @@ public class adventurerework {
     public static int itemSlot2 = 0;
     public static int itemSlot3 = 0;
     public static int itemSlot4 = 0;
+    public static int armorSlot0 = 0;
+    public static int armorSlot1 = 0;
+    public static int armorSlot2 = 0;
+    public static int armorSlot3 = 0;
+    public static int armorSlot4 = 0;
+    public static int armorSlot5 = 0;
     public static String tempBeastName = "";
     public static String tempUserString = "";
     public static double time;
