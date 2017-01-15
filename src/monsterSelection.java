@@ -189,7 +189,7 @@ public class monsterSelection {
         beastStats[2] = 5;
         beastStats[3] = 20;
         beastStats[4] = (2);
-        beastStats[5] = (20);
+        beastStats[5] = (30);
         beastStats[6] = (70);
 
     }
@@ -201,8 +201,8 @@ public class monsterSelection {
         beastStats[1] = 20;
         beastStats[2] = 17;
         beastStats[3] = 50;
-        beastStats[4] = (1);
-        beastStats[5] = (30);
+        beastStats[4] = (7);
+        beastStats[5] = (50);
         beastStats[6] = (55);
 
     }
@@ -214,7 +214,7 @@ public class monsterSelection {
         beastStats[2] = 20;
         beastStats[3] = 25;
         beastStats[4] = (outOfTwo(1,3));
-        beastStats[5] = (20);
+        beastStats[5] = (40);
         beastStats[6] = (56);
 
     }
@@ -238,7 +238,7 @@ public class monsterSelection {
         beastStats[2] = 20;
         beastStats[3] = 35;
         beastStats[4] = (5);
-        beastStats[5] = (30);
+        beastStats[5] = (40);
         beastStats[6] = (60);
 
     }
@@ -262,7 +262,7 @@ public class monsterSelection {
         beastStats[2] = 30;
         beastStats[3] = 70;
         beastStats[4] = (4);
-        beastStats[5] = (90);
+        beastStats[5] = (95);
         beastStats[6] = (30);
 
     }
@@ -286,7 +286,7 @@ public class monsterSelection {
         beastStats[2] = 20;
         beastStats[3] = 34;
         beastStats[4] = (0);
-        beastStats[5] = (100);
+        beastStats[5] = (0);
         beastStats[6] = (40);
     }
     public static void selectDemon(){
@@ -297,7 +297,7 @@ public class monsterSelection {
         beastStats[2] = 35;
         beastStats[3] = 20;
         beastStats[4] = (0);
-        beastStats[5] = (99);
+        beastStats[5] = (0);
         beastStats[6] = (30);
     }
     public static void selectCAngel(){
@@ -308,7 +308,7 @@ public class monsterSelection {
         beastStats[2] = 25;
         beastStats[3] = 25;
         beastStats[4] = (0);
-        beastStats[5] = (100);
+        beastStats[5] = (0);
         beastStats[6] = (60);
     }
     public static void selectLich(){
