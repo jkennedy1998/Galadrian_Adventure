@@ -477,7 +477,6 @@ public class adventurerework {
             adventurerework.live();
         }
 
-
     private static int monsterTurn(int[] beastStats, boolean lifeStatus) {
 
 
