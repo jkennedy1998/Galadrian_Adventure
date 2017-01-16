@@ -473,7 +473,6 @@ public class adventurerework {
         adventurerework.live();
     }
 
-
     private static int monsterTurn(int[] beastStats, boolean lifeStatus) {
 
 
@@ -586,7 +585,6 @@ public class adventurerework {
         }
         return null;
     }
-
 
 private static void levelUp() {
     exp = expLim - exp;
