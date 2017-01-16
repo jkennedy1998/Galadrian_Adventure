@@ -1,7 +1,7 @@
 
 public class ItemDirectory {
 
-    public static String ItemReturn[] = {"0", "0", "0", "0", "0", "0", "0", "0","0","0"};
+    public static String ItemReturn[] = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
 
     public static String[] findItemValues(int itemNumber) {
         if (itemNumber == 0)
@@ -20,6 +20,10 @@ public class ItemDirectory {
             return  nail();
         if (itemNumber == 7)
             return  torch();
+        if (itemNumber == 8)
+            return  peasantsBlouse();
+        if (itemNumber == 9)
+            return  peasantsRags();
 
             return noItem(); //should NEVER return this from this line of code.
         }
@@ -159,17 +163,46 @@ public class ItemDirectory {
 //here be armor!
     //public static String[] EquiptableName () {
 //    ItemReturn[0] = "ItemName";           //name
-//    ItemReturn[1] = "0";                  //2 for id'ing an equipt without adding another directory
-//    ItemReturn[2] = "0";                  //health modifier
+//    ItemReturn[1] = "2";                  //2 for id'ing an equipt without adding another directory
+//    ItemReturn[2] = "0";                  //defence as a positive int. 0 is no defence.
 //    ItemReturn[3] = "0";                  //attack modifier
 //    ItemReturn[4] = "0";                  //accuracy modifier
 //    ItemReturn[5] = "0";                  //defence modifier
 //    ItemReturn[6] = "0";                  //speed modifier
-//    ItemReturn[7] = "0";                 //defence as a positive int. 0 is no defence.
-//    ItemReturn[8] = "0";                  //Body part ID (0 head, 1 torso, 2 left arm, 3 right arm, 4 leggings, 5 boots
+//    ItemReturn[7] = "0";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
+//    ItemReturn[8] = "0";                  //defence breaking point (idk about this)
 //    ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
 //
 //    return ItemReturn;
 //}
+    public static String[] peasantsBlouse () {
+    ItemReturn[0] = "peasant's blouse";           //name
+    ItemReturn[1] = "2";                  //2 for id'ing an equipt without adding another directory
+    ItemReturn[2] = "3";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
+    ItemReturn[3] = "0";                  //attack modifier
+    ItemReturn[4] = "0";                  //accuracy modifier
+    ItemReturn[5] = "0";                  //defence modifier
+    ItemReturn[6] = "0";                  //speed modifier
+    ItemReturn[7] = "1";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
+    ItemReturn[8] = "0";                  //defence breaking point (idk about this)
+    ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
+
+    return ItemReturn;
+}
+    public static String[] peasantsRags () {
+        ItemReturn[0] = "peasant's rags";           //name
+        ItemReturn[1] = "2";                  //2 for id'ing an equipt without adding another directory
+        ItemReturn[2] = "4";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
+        ItemReturn[3] = "0";                  //attack modifier
+        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "0";                  //speed modifier
+        ItemReturn[7] = "4";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
+        ItemReturn[8] = "0";                  //defence breaking point (idk about this)
+        ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
+
+        return ItemReturn;
+    }
+
     }
 

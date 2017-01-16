@@ -19,12 +19,7 @@ public class adventurerework {
     public static int itemSlot2 = 0;
     public static int itemSlot3 = 0;
     public static int itemSlot4 = 0;
-    public static int armorSlot0 = 0;
-    public static int armorSlot1 = 0;
-    public static int armorSlot2 = 0;
-    public static int armorSlot3 = 0;
-    public static int armorSlot4 = 0;
-    public static int armorSlot5 = 0;
+    public static int[] armor = {0,8,0,0,9,0};
     public static String tempBeastName = "";
     public static String tempUserString = "";
     public static double time;
@@ -251,12 +246,12 @@ public class adventurerework {
                         monsterEffect = Integer.parseInt(tempData[6]);
                         turnOfMonsterEffect = turn;
                     }
-                }else{//if tempData[0] == IS
+                } else if (tempData[0].equalsIgnoreCase("IS")) {
                     if (playerEffect != Integer.parseInt(tempData[1])) {
                         playerEffect = Integer.parseInt(tempData[1]);
                         turnOfPlayerEffect = turn;
                     }
-                    if (playerEffect == Integer.parseInt(tempData[2])){
+                    if (playerEffect == Integer.parseInt(tempData[2])) {
                         playerEffect = 0;
                         turnOfPlayerEffect = 0;
                     }
@@ -324,154 +319,163 @@ public class adventurerework {
                             }
                         }
                     }
-
-                } else { //if tempData[0] == "I" (for clarification)
+                } else if (tempData[0].equalsIgnoreCase("I")) {
                     beastStats[0] += Integer.parseInt(tempData[1]);
                     beastStats[7] += Double.parseDouble(tempData[2]);
-                    beastStats[8] += Double.parseDouble(tempData[4]); //if you edit this data edit that one too! (see above)
+                    beastStats[8] += Double.parseDouble(tempData[4]); //if you edit this data edit that one too! (see below)
                     beastStats[9] += Double.parseDouble(tempData[3]);
                     beastStats[10] += Double.parseDouble(tempData[5]);
                     if (monsterEffect != Integer.parseInt(tempData[6])) {
                         monsterEffect = Integer.parseInt(tempData[6]);
                         turnOfMonsterEffect = turn;
                     }
+                } else if (tempData[0].equalsIgnoreCase("IS")) {
+                    if (playerEffect != Integer.parseInt(tempData[1])) {
+                        playerEffect = Integer.parseInt(tempData[1]);
+                        turnOfPlayerEffect = turn;
+                    }
+                    if (playerEffect == Integer.parseInt(tempData[2])) {
+                        playerEffect = 0;
+                        turnOfPlayerEffect = 0;
+                    }
+
                 }
                 System.out.println("the current health of " + tempBeastName + " is at " + (beastStats[0]));
-            }
-            //make effects taking place start
+                //make effects taking place start
 
-            if (playerEffect != 0) {
-                if (turn - turnOfPlayerEffect <= Integer.parseInt(effectDatabase.getEffectData(playerEffect)[2])) {
-                    int tempDam = Integer.parseInt(effectDatabase.getEffectData(playerEffect)[1]);
-                    health += tempDam;
-                    if (tempDam < 0)
-                        System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + tempDam + " points of damage!");
-                    if (tempDam > 0)
-                        System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " healed " + tempDam + " points of damage!");
-                    if (!playerMultipliersChanged) {
-                        playerMultipliersChanged = true;
-                        double tempDaMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
-                        double tempSpMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
-                        double tempDeMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
-                        double tempAcMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
-                        System.out.println("\nYou are now " + (effectDatabase.getEffectData(playerEffect)[0]) + "!");
-                        if (tempDaMod != 0) {
-                            if (tempDaMod > 0)
-                                System.out.println("You feel stronger!");
-                            if (tempDaMod > 0)
-                                System.out.println("Your attacks seem lessened!");
-                            attackMultiplier += tempDaMod;
+                if (playerEffect != 0) {
+                    if (turn - turnOfPlayerEffect <= Integer.parseInt(effectDatabase.getEffectData(playerEffect)[2])) {
+                        int tempDam = Integer.parseInt(effectDatabase.getEffectData(playerEffect)[1]);
+                        health += tempDam;
+                        if (tempDam < 0)
+                            System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + tempDam + " points of damage!");
+                        if (tempDam > 0)
+                            System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " healed " + tempDam + " points of damage!");
+                        if (!playerMultipliersChanged) {
+                            playerMultipliersChanged = true;
+                            double tempDaMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
+                            double tempSpMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
+                            double tempDeMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
+                            double tempAcMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
+                            System.out.println("\nYou are now " + (effectDatabase.getEffectData(playerEffect)[0]) + "!");
+                            if (tempDaMod != 0) {
+                                if (tempDaMod > 0)
+                                    System.out.println("You feel stronger!");
+                                if (tempDaMod > 0)
+                                    System.out.println("Your attacks seem lessened!");
+                                attackMultiplier += tempDaMod;
+                            }
+                            if (tempSpMod != 0) {
+                                if (tempSpMod > 0)
+                                    System.out.println("Your feel a rush of adrenaline!");
+                                if (tempSpMod < 0)
+                                    System.out.println("You feel sluggish!");
+                                speedMultiplier += tempSpMod;
+                            }
+                            if (tempDeMod != 0) {
+                                if (tempDeMod > 0)
+                                    System.out.println("You feel more accustomed to your armor!");
+                                if (tempDeMod < 0)
+                                    System.out.println("your enemy has noticed a weak point in your armor");
+                                defensiveMultiplier += tempDeMod;
+                            }
+                            if (tempAcMod != 0) {
+                                if (tempAcMod > 0)
+                                    System.out.println("You feel focused!");
+                                if (tempAcMod < 0)
+                                    System.out.println("You have become distracted in the chaos of battle");
+                                accuracyMultiplier += tempAcMod;
+                            }
                         }
-                        if (tempSpMod != 0) {
-                            if (tempSpMod > 0)
-                                System.out.println("Your feel a rush of adrenaline!");
-                            if (tempSpMod < 0)
-                                System.out.println("You feel sluggish!");
-                            speedMultiplier += tempSpMod;
-                        }
-                        if (tempDeMod != 0) {
-                            if (tempDeMod > 0)
-                                System.out.println("You feel more accustomed to your armor!");
-                            if (tempDeMod < 0)
-                                System.out.println("your enemy has noticed a weak point in your armor");
-                            defensiveMultiplier += tempDeMod;
-                        }
-                        if (tempAcMod != 0) {
-                            if (tempAcMod > 0)
-                                System.out.println("You feel focused!");
-                            if (tempAcMod < 0)
-                                System.out.println("You have become distracted in the chaos of battle");
-                            accuracyMultiplier += tempAcMod;
-                        }
+                    } else {
+                        playerMultipliersChanged = false;
+                        attackMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
+                        speedMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
+                        defensiveMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
+                        accuracyMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
                     }
-                } else {
-                    playerMultipliersChanged = false;
-                    attackMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
-                    speedMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
-                    defensiveMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
-                    accuracyMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
                 }
-            }
-            if (monsterEffect != 0) {
-                if (turn - turnOfMonsterEffect <= Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[2])) {
-                    int tempDam = Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[1]);
-                    beastStats[0] += tempDam;
-                    if (tempDam < 0)
-                        System.out.println("\nThe monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " caused " + tempDam + " points of damage!");
-                    if (tempDam > 0)
-                        System.out.println("\nThe monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " healed " + tempDam + " points of damage!");
-                    if (!monsterMultipliersChanged) {
-                        monsterMultipliersChanged = true;
-                        double tempDaMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[3]);
-                        double tempSpMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[4]);
-                        double tempDeMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[5]);
-                        double tempAcMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[6]);
-                        System.out.println("\nThe monster is now " + (effectDatabase.getEffectData(monsterEffect)[0]) + "!");
-                        if (tempDaMod != 0) {
-                            if (tempDaMod > 0)
-                                System.out.println("The monster seems stronger!");
-                            if (tempDaMod > 0)
-                                System.out.println("The monster's attacks seem lessened!");
-                            beastStats[7] += tempDaMod;
+                if (monsterEffect != 0) {
+                    if (turn - turnOfMonsterEffect <= Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[2])) {
+                        int tempDam = Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[1]);
+                        beastStats[0] += tempDam;
+                        if (tempDam < 0)
+                            System.out.println("\nThe monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " caused " + tempDam + " points of damage!");
+                        if (tempDam > 0)
+                            System.out.println("\nThe monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " healed " + tempDam + " points of damage!");
+                        if (!monsterMultipliersChanged) {
+                            monsterMultipliersChanged = true;
+                            double tempDaMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[3]);
+                            double tempSpMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[4]);
+                            double tempDeMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[5]);
+                            double tempAcMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[6]);
+                            System.out.println("\nThe monster is now " + (effectDatabase.getEffectData(monsterEffect)[0]) + "!");
+                            if (tempDaMod != 0) {
+                                if (tempDaMod > 0)
+                                    System.out.println("The monster seems stronger!");
+                                if (tempDaMod > 0)
+                                    System.out.println("The monster's attacks seem lessened!");
+                                beastStats[7] += tempDaMod;
+                            }
+                            if (tempSpMod != 0) {
+                                if (tempSpMod > 0)
+                                    System.out.println("The monster's lunges seem quicker!");
+                                if (tempSpMod < 0)
+                                    System.out.println("You find yourself running laps around the beast!");
+                                beastStats[8] += tempSpMod;
+                            }
+                            if (tempDeMod != 0) {
+                                if (tempDeMod > 0)
+                                    System.out.println("The beasts skin seems tougher!");
+                                if (tempDeMod < 0)
+                                    System.out.println("You notice a small hole in the beasts armor!");
+                                beastStats[10] += tempDeMod;
+                            }
+                            if (tempAcMod != 0) {
+                                if (tempAcMod > 0)
+                                    System.out.println("The monster is hitting consistent blows!");
+                                if (tempAcMod < 0)
+                                    System.out.println("The monster is overwhelmed by the chaos of battle!");
+                                beastStats[9] += tempAcMod;
+                            }
                         }
-                        if (tempSpMod != 0) {
-                            if (tempSpMod > 0)
-                                System.out.println("The monster's lunges seem quicker!");
-                            if (tempSpMod < 0)
-                                System.out.println("You find yourself running laps around the beast!");
-                            beastStats[8] += tempSpMod;
-                        }
-                        if (tempDeMod != 0) {
-                            if (tempDeMod > 0)
-                                System.out.println("The beasts skin seems tougher!");
-                            if (tempDeMod < 0)
-                                System.out.println("You notice a small hole in the beasts armor!");
-                            beastStats[10] += tempDeMod;
-                        }
-                        if (tempAcMod != 0) {
-                            if (tempAcMod > 0)
-                                System.out.println("The monster is hitting consistent blows!");
-                            if (tempAcMod < 0)
-                                System.out.println("The monster is overwhelmed by the chaos of battle!");
-                            beastStats[9] += tempAcMod;
-                        }
+                    } else {
+                        playerMultipliersChanged = false;
+                        beastStats[7] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
+                        beastStats[8] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
+                        beastStats[10] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
+                        beastStats[9] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
                     }
-                } else {
-                    playerMultipliersChanged = false;
-                    beastStats[7] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
-                    beastStats[8] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
-                    beastStats[10] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
-                    beastStats[9] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
                 }
+                turn++;
+                time += 0.1;
             }
-            turn++;
-            time+=0.1;
-        } while (health > 0 && beastStats[0] > 0);
-        if (health <= 0)
-            adventurerework.death();
+        }while (health > 0 && beastStats[0] > 0) ;
+            if (health <= 0)
+                adventurerework.death();
 
-        roundCount += 1;
-        time +=1;
-        score += 15;
-        exp += 5;
-        System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
-        String endEncounterDialog = "";
-        endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
-        lifeStatus = false;
-        if (monsterTurn(beastStats, lifeStatus) == 1) {
-            endEncounterDialog += getItem(beastStats[4]);
-            System.out.println(endEncounterDialog);
-        }
-        if ((health < maxHealth) && (roundCount % 5 == 0)) {
-            int tempHealth = (int) (Math.round(Math.random() * 20));
-            health += tempHealth;
-            if (health > maxHealth) {
-                health = maxHealth;
+            roundCount += 1;
+            time += 1;
+            score += 15;
+            exp += 5;
+            System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
+            String endEncounterDialog = "";
+            endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
+            lifeStatus = false;
+            if (monsterTurn(beastStats, lifeStatus) == 1) {
+                endEncounterDialog += getItem(beastStats[4]);
+                System.out.println(endEncounterDialog);
             }
-            System.out.println("You feel your past wounds begin to heal.\nYou regain " + tempHealth + " health.");
+            if ((health < maxHealth) && (roundCount % 5 == 0)) {
+                int tempHealth = (int) (Math.round(Math.random() * 20));
+                health += tempHealth;
+                if (health > maxHealth) {
+                    health = maxHealth;
+                }
+                System.out.println("You feel your past wounds begin to heal.\nYou regain " + tempHealth + " health.");
+            }
+            adventurerework.live();
         }
-        adventurerework.live();
-    }
 
 
     private static int monsterTurn(int[] beastStats, boolean lifeStatus) {
@@ -480,7 +484,7 @@ public class adventurerework {
         Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5], beastStats[6], beastStats[7], beastStats[8], beastStats[9], beastStats[10]);
         if (lifeStatus) {
             System.out.println(tempBeastName + " attacks!");
-            String tempMAttack = monsterRefresh.calculateHit();
+            String tempMAttack = monsterRefresh.calculateHit(getArmorStats());
             if (tempMAttack.equalsIgnoreCase("The beast has missed!")) {
                 System.out.println(tempBeastName + " has missed!");
             } else {
@@ -491,7 +495,6 @@ public class adventurerework {
             if (health <= 0) {
                 health = 0;
                 adventurerework.death();
-
             }
         } else return monsterRefresh.questionItem();
         return 5318008; //returns but does nothing. such savagery
@@ -507,7 +510,9 @@ public class adventurerework {
         String attackStorage[] = playerRefresh.PlayerAttack(tempDialog);
         if (!(attackStorage[0].equalsIgnoreCase("item"))) { //not using item
             if (attackStorage[0].equalsIgnoreCase("Miss")) {
-            }//does nothing on purpose
+                returningString[0] = "miss";
+                return returningString;
+            }
             else {
                 int[] tempPAttack = {0, 0, 0, 0, 0};
                 tempPAttack[0] = Integer.parseInt(attackStorage[0]);
@@ -584,9 +589,7 @@ public class adventurerework {
 
             //using item (end)
         }
-        return null;
     }
-
 
 private static void levelUp() {
     exp = expLim - exp;
@@ -600,6 +603,16 @@ private static void levelUp() {
     if (leveledStats[2].equalsIgnoreCase("accuracy")) accuracyMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("speed")) speedMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("defence")) defensiveMultiplierLocked += Double.parseDouble(leveledStats[3]);
+}
+private  static int getArmorStats(){
+    int stat = 0;
+    stat += Integer.parseInt(ItemDirectory.findItemValues(armor[0])[2]);
+    stat += Integer.parseInt(ItemDirectory.findItemValues(armor[1])[2]);
+    stat += Integer.parseInt(ItemDirectory.findItemValues(armor[2])[2]);
+    stat += Integer.parseInt(ItemDirectory.findItemValues(armor[3])[2]);
+    stat += Integer.parseInt(ItemDirectory.findItemValues(armor[4])[2]);
+    stat += Integer.parseInt(ItemDirectory.findItemValues(armor[5])[2]);
+    return (int)Math.round(stat*defensiveMultiplier);
 }
 
 }

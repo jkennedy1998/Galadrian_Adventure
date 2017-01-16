@@ -30,9 +30,13 @@ public class Monster {
         }
     }
 
-    public String calculateHit() {
+    public String calculateHit(int armor) { //armor of person he is attacking
         if (accuracy <= Math.round(Math.random() * 100 * accuracyMult)) {
-            String randomNum = "" +Math.round(damageMult*(Math.random()*(maxHit-minHit)+minHit));
+            double temp = (damageMult*(Math.random()*(maxHit-minHit)+minHit))/3;
+            if (armor<=100)
+                temp += (temp * 2) - (temp * 2 * ((double)armor / 100));
+            temp = Math.round(temp);
+            String randomNum = "" + (int)temp;
             return randomNum;
         }
         else {

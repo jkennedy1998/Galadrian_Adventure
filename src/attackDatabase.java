@@ -100,7 +100,7 @@ class attackDatabase {
     private static void DualShot(){ //certain moderate damage, certain accuracy
         attackData[0] = 37;
         attackData[1] = 41;
-        attackData[2] = 39;
+        attackData[2] = 100;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
