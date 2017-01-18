@@ -1,17 +1,15 @@
 import javax.swing.*;
 
-/**
- * Created by student5 on 1/13/17.
- */
 public class Story {
     public static String location = "Forest";
-    public static String possibleDestination1;
-    public static String possibleDestination2;
+    private static String possibleDestination1;
+    private static String possibleDestination2;
     private static String attack1, attack2, attack3, attack4;
     private static int item0, item1, item2, item3, item4;
+    private static String race;
+    private static String role;
 
-
-    public static void initialize(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4 ){ //should only be used once!
+    public static void initialize(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4, String Race, String Role ){ //should only be used once!
         attack1 = a1;
         attack2 = a2;
         attack3 = a3;
@@ -21,6 +19,14 @@ public class Story {
         item2 = i2;
         item3 = i3;
         item4 = i4;
+        race = Race;
+        role = Role;
+
+
+    }
+
+    public static void actOne(){
+
     }
     public static void refresh(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4 ){ //should be used before each area change!
         attack1 = a1;
@@ -100,7 +106,8 @@ public class Story {
         if (item1==itemNumber||item0 ==itemNumber || item2 == itemNumber|| item3 == itemNumber|| item4 ==itemNumber)
             return true;
         return false;
-    }public static boolean questionAttack(String attackNumber){
+    }
+    public static boolean questionAttack(String attackNumber){
         if (attack1.equalsIgnoreCase(attackNumber)||attack2.equalsIgnoreCase(attackNumber) || attack3.equalsIgnoreCase(attackNumber)|| attack4.equalsIgnoreCase(attackNumber))
             return true;
         return false;

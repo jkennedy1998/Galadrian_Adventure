@@ -26,7 +26,7 @@ public class adventurerework {
     public static int day;
 
     public static void main(String args[]) {
-        time = 12.0;
+        time =20.0;
         day = 0;
         health = 100;
         maxHealth = 100;
@@ -36,13 +36,11 @@ public class adventurerework {
         defensiveMultiplier = 1;
         speedMultiplier = 1;
         CharacterCreation character = new CharacterCreation();
-        CharacterCreation.race();
-        CharacterCreation.role();
+        Story.initialize(attack1, attack2, attack3, attack4, itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4,CharacterCreation.race(),CharacterCreation.role());
         accuracyMultiplierLocked += character.getAccuracyMultiplier();
         attackMultiplierLocked += character.getAttackMultiplier();
         defensiveMultiplierLocked += character.getDefensiveMultiplier();
         speedMultiplierLocked += character.getSpeedMultiplier();
-        Story.initialize(attack1, attack2, attack3, attack4, itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
         attack1 = character.getAttack1();
         attack2 = character.getAttack2();
         attack3 = character.getAttack3();
@@ -55,8 +53,15 @@ public class adventurerework {
             day ++;
             time = time-24;
         }
-        if (exp >= expLim) {
-            levelUp();
+        if (time > 22 || time < 5) { //between 10 pm and 5 am
+            String temp = Leveler.rest();
+            if (temp.equalsIgnoreCase("e")) {
+                System.out.println("\nYou have been ambushed in your sleep!");
+                startEncounter();
+            }else {
+                health += Integer.parseInt(temp);
+                System.out.println("\nYou wake up at around "+Math.round(time)+".\nYou have regained "+temp+" health points by resting.");
+            }
         }
         String[] buttons = {"Yes", "I REFUSE"};
         int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
@@ -448,14 +453,14 @@ public class adventurerework {
                     }
                 }
                 turn++;
-                time += 0.1;
+                time += (Math.random()/6);
             }
         }while (health > 0 && beastStats[0] > 0) ;
             if (health <= 0)
                 adventurerework.death();
 
             roundCount += 1;
-            time += 1;
+            time += Math.random()*1.5;
             score += 15;
             exp += 5;
             System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
@@ -590,7 +595,7 @@ public class adventurerework {
         }
     }
 
-private static void levelUp() {
+public static void levelUp() {
     exp = expLim - exp;
     expLim = (int) Math.round(expLim * 1.5);
     level++;
