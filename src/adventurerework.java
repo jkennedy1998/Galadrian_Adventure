@@ -496,6 +496,7 @@ public class adventurerework {
                 System.out.println(tempBeastName + " has missed!");
             } else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
+                questionArmorBreak(tempMAttack2);
                 health -= tempMAttack2;
                 System.out.println(tempBeastName + " attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health) + "");
             }
@@ -620,6 +621,27 @@ private  static int getArmorStats(){
     stat += Integer.parseInt(ItemDirectory.findItemValues(armor[4])[2]);
     stat += Integer.parseInt(ItemDirectory.findItemValues(armor[5])[2]);
     return (int)Math.round(stat*defensiveMultiplier);
+}
+private static void questionArmorBreak(int attack){
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[0]!=0) {
+        System.out.println("Your "+ItemDirectory.findItemValues(armor[0])[0]+" has broken from incoming damage!");
+        armor[0] = 0;}
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[1]!=0) {
+        System.out.println("Your "+ItemDirectory.findItemValues(armor[1])[0]+" has broken from incoming damage!");
+        armor[1] = 0;}
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[2]!=0) {
+        System.out.println("Your "+ItemDirectory.findItemValues(armor[2])[0]+" has broken from incoming damage!");
+        armor[2] = 0;}
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[3]!=0) {
+        System.out.println("Your "+ItemDirectory.findItemValues(armor[3])[0]+" has broken from incoming damage!");
+        armor[3] = 0;}
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[4]!=0) {
+        System.out.println("Your "+ItemDirectory.findItemValues(armor[4])[0]+" has broken from incoming damage!");
+        armor[4] = 0;}
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[5]!=0) {
+        System.out.println("Your "+ItemDirectory.findItemValues(armor[5])[0]+" has broken from incoming damage!");
+        armor[5] = 0;}
+
 }
 
 }

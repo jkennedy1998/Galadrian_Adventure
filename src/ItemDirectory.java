@@ -184,7 +184,7 @@ public class ItemDirectory {
     ItemReturn[5] = "0";                  //defence modifier
     ItemReturn[6] = "0";                  //speed modifier
     ItemReturn[7] = "1";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
-    ItemReturn[8] = "0";                  //defence breaking point (idk about this)
+    ItemReturn[8] = "10";                  //defence breaking point (idk about this)
     ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
 
     return ItemReturn;
@@ -198,7 +198,7 @@ public class ItemDirectory {
         ItemReturn[5] = "0";                  //defence modifier
         ItemReturn[6] = "0";                  //speed modifier
         ItemReturn[7] = "4";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
-        ItemReturn[8] = "0";                  //defence breaking point (idk about this)
+        ItemReturn[8] = "10";                  //defence breaking point (idk about this)
         ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
 
         return ItemReturn;
