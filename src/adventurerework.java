@@ -459,26 +459,29 @@ public class adventurerework {
             if (health <= 0)
                 adventurerework.death();
 
+        String endEncounterDialog = "";
+        endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
+        lifeStatus = false;
+        if (monsterTurn(beastStats, lifeStatus) != 0) {
+            endEncounterDialog += getItem(beastStats[4]);
+        }
+        if ((health < maxHealth) && (roundCount % 5 == 0)) {
+            int tempHealth = (int) (Math.round(Math.random() * 20));
+            health += tempHealth;
+            if (health > maxHealth) {
+                health = maxHealth;
+            }
+            System.out.println("You feel your past wounds begin to heal.\nYou regain " + tempHealth + " health.");
+        }
+            System.out.println(endEncounterDialog);
             roundCount += 1;
-            time += Math.random()*1.5;
+            double temp = Math.random()*5.5;
+            time += temp;
+            System.out.println((int)temp+" hours have passed.");
+            System.out.println("it appears to be around "+(int)(time+1)+".");
             score += 15;
             exp += 5;
             System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
-            String endEncounterDialog = "";
-            endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
-            lifeStatus = false;
-            if (monsterTurn(beastStats, lifeStatus) == 1) {
-                endEncounterDialog += getItem(beastStats[4]);
-                System.out.println(endEncounterDialog);
-            }
-            if ((health < maxHealth) && (roundCount % 5 == 0)) {
-                int tempHealth = (int) (Math.round(Math.random() * 20));
-                health += tempHealth;
-                if (health > maxHealth) {
-                    health = maxHealth;
-                }
-                System.out.println("You feel your past wounds begin to heal.\nYou regain " + tempHealth + " health.");
-            }
             adventurerework.live();
         }
 
@@ -500,7 +503,7 @@ public class adventurerework {
                 health = 0;
                 adventurerework.death();
             }
-        } else return monsterRefresh.questionItem();
+        } else return monsterRefresh.questionItem(beastStats[4],beastStats[5]);
         return 5318008; //returns but does nothing. such savagery
     }
 
@@ -596,7 +599,7 @@ public class adventurerework {
     }
 
 public static void levelUp() {
-    exp = expLim - exp;
+    exp = exp - expLim;
     expLim = (int) Math.round(expLim * 1.5);
     level++;
     String[] leveledStats;

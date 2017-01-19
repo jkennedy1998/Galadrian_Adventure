@@ -22,7 +22,9 @@ public class Monster {
         defenceMult = deM;
 
     }
-    public int questionItem(){
+    public int questionItem(int item, int dropRate){
+        itemDrop[0] = item;
+        itemDrop[1] = dropRate;
         if (itemDrop[1] >= Math.round(Math.random() * 100)){
             return itemDrop[0];
         } else {

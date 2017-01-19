@@ -55,7 +55,7 @@ public class Leveler {
     }
 
     public static String rest() {
-        if (adventurerework.exp>adventurerework.expLim){
+        while (adventurerework.exp>=adventurerework.expLim){
             adventurerework.levelUp();
             adventurerework.time += 1;
         }
