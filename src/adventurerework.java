@@ -477,11 +477,16 @@ public class adventurerework {
             roundCount += 1;
             double temp = Math.random()*5.5;
             time += temp;
+
             System.out.println((int)temp+" hours have passed.");
             System.out.println("it appears to be around "+(int)(time+1)+".");
             score += 15;
             exp += 5;
-            System.out.println("your health is at " + health + ".\nYou are on round " + roundCount + ".");
+            System.out.println("your health is at " + health + ".");
+        if (time <= 22 && time >= 5) { //not between 10 pm and 5 am
+            if (Math.random()*100>75)
+                SideQuests.selectSidequest();
+        }
             adventurerework.live();
         }
 
