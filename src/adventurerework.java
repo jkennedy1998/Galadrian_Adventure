@@ -628,24 +628,33 @@ private  static int getArmorStats(){
     return (int)Math.round(stat*defensiveMultiplier);
 }
 private static void questionArmorBreak(int attack){
+    boolean questionChange = false;
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[0]!=0) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[0])[0]+" has broken from incoming damage!");
-        armor[0] = 0;}
+        armor[0] = 0;
+        questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[1]!=0) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[1])[0]+" has broken from incoming damage!");
-        armor[1] = 0;}
+        armor[1] = 0;
+        questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[2]!=0) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[2])[0]+" has broken from incoming damage!");
-        armor[2] = 0;}
+        armor[2] = 0;
+        questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[3]!=0) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[3])[0]+" has broken from incoming damage!");
-        armor[3] = 0;}
+        armor[3] = 0;
+        questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[4]!=0) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[4])[0]+" has broken from incoming damage!");
-        armor[4] = 0;}
+        armor[4] = 0;
+        questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[5]!=0) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[5])[0]+" has broken from incoming damage!");
-        armor[5] = 0;}
+        armor[5] = 0;
+        questionChange = true;}
+    if (armor[0]==0&&armor[1]==0&&armor[4]==0&&armor[5]==0&&questionChange)
+        System.out.println("You notice a cool breeze...");
 
 }
 
