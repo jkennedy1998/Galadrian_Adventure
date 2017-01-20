@@ -225,8 +225,8 @@ public class monsterSelection {
         beastStats[1] = 12;
         beastStats[2] = 3;
         beastStats[3] = 35;
-        beastStats[4] = (0);
-        beastStats[5] = (0);
+        beastStats[4] = (10);
+        beastStats[5] = (20);
         beastStats[6] = (45);
 
     }
@@ -261,7 +261,7 @@ public class monsterSelection {
         beastStats[1] = 40;
         beastStats[2] = 30;
         beastStats[3] = 70;
-        beastStats[4] = (4);
+        beastStats[4] = (outOfTwo(4,10));
         beastStats[5] = (95);
         beastStats[6] = (30);
 
