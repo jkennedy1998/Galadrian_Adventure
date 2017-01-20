@@ -24,6 +24,7 @@ public class adventurerework {
     public static String tempUserString = "";
     public static double time;
     public static int day;
+    public static CharacterCreation character1 = new CharacterCreation();
 
     public static void main(String args[]) {
         time =20.0;
@@ -35,16 +36,15 @@ public class adventurerework {
         attackMultiplier = 1;
         defensiveMultiplier = 1;
         speedMultiplier = 1;
-        CharacterCreation character = new CharacterCreation();
         Story.initialize(attack1, attack2, attack3, attack4, itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4,CharacterCreation.race(),CharacterCreation.role());
-        accuracyMultiplierLocked += character.getAccuracyMultiplier();
-        attackMultiplierLocked += character.getAttackMultiplier();
-        defensiveMultiplierLocked += character.getDefensiveMultiplier();
-        speedMultiplierLocked += character.getSpeedMultiplier();
-        attack1 = character.getAttack1();
-        attack2 = character.getAttack2();
-        attack3 = character.getAttack3();
-        attack4 = character.getAttack4();
+        accuracyMultiplierLocked += character1.getAccuracyMultiplier();
+        attackMultiplierLocked += character1.getAttackMultiplier();
+        defensiveMultiplierLocked += character1.getDefensiveMultiplier();
+        speedMultiplierLocked += character1.getSpeedMultiplier();
+        attack1 = character1.getAttack1();
+        attack2 = character1.getAttack2();
+        attack3 = character1.getAttack3();
+        attack4 = character1.getAttack4();
         live();
     }
 
