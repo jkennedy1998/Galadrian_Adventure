@@ -24,7 +24,16 @@ public class ItemDirectory {
             return  peasantsBlouse();
         if (itemNumber == 9)
             return  peasantsRags();
-
+        if (itemNumber == 10)
+            return  spade();
+        if (itemNumber == 11)
+            return  forgottenChestPeice();
+        if (itemNumber == 12)
+            return  forgottenLegwear();
+        if (itemNumber == 13)
+            return  forgottenHelm();
+        if (itemNumber == 14)
+            return  forgottenGreives();
             return noItem(); //should NEVER return this from this line of code.
         }
 
@@ -159,6 +168,20 @@ public class ItemDirectory {
 
         return ItemReturn;
     }
+    public static String[] spade () {
+        ItemReturn[0] = "Spade";           //name
+        ItemReturn[1] = "1";                 //self as 0 or enemy as 1
+        ItemReturn[2] = "-7";                  //health modifier
+        ItemReturn[3] = "0";                  //attack modifier
+        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "0";                  //speed modifier
+        ItemReturn[7] = "50";                 //accuracy
+        ItemReturn[8] = "0";                  //effect # on
+        ItemReturn[9] = "0";                  //effect # off
+
+        return ItemReturn;
+    }
 
 //here be armor!
     //public static String[] EquiptableName () {
@@ -178,7 +201,7 @@ public class ItemDirectory {
     public static String[] peasantsBlouse () {
     ItemReturn[0] = "peasant's blouse";           //name
     ItemReturn[1] = "2";                  //2 for id'ing an equipt without adding another directory
-    ItemReturn[2] = "3";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
+    ItemReturn[2] = "2";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
     ItemReturn[3] = "0";                  //attack modifier
     ItemReturn[4] = "0";                  //accuracy modifier
     ItemReturn[5] = "0";                  //defence modifier
@@ -192,13 +215,69 @@ public class ItemDirectory {
     public static String[] peasantsRags () {
         ItemReturn[0] = "peasant's rags";           //name
         ItemReturn[1] = "2";                  //2 for id'ing an equipt without adding another directory
-        ItemReturn[2] = "4";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
+        ItemReturn[2] = "2";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
         ItemReturn[3] = "0";                  //attack modifier
         ItemReturn[4] = "0";                  //accuracy modifier
         ItemReturn[5] = "0";                  //defence modifier
         ItemReturn[6] = "0";                  //speed modifier
         ItemReturn[7] = "4";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
         ItemReturn[8] = "10";                  //defence breaking point (idk about this)
+        ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
+
+        return ItemReturn;
+    }
+    public static String[] forgottenChestPeice () {
+        ItemReturn[0] = "forgotten chest piece";           //name
+        ItemReturn[1] = "2";                  //2 for id'ing an equipt without adding another directory
+        ItemReturn[2] = "5";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
+        ItemReturn[3] = "0";                  //attack modifier
+        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "-.05";                  //speed modifier
+        ItemReturn[7] = "1";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
+        ItemReturn[8] = "40";                  //defence breaking point (idk about this)
+        ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
+
+        return ItemReturn;
+    }
+    public static String[] forgottenLegwear () {
+        ItemReturn[0] = "forgotten leg wear";           //name
+        ItemReturn[1] = "2";                  //2 for id'ing an equipt without adding another directory
+        ItemReturn[2] = "4";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
+        ItemReturn[3] = "0";                  //attack modifier
+        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "-.07";                  //speed modifier
+        ItemReturn[7] = "4";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
+        ItemReturn[8] = "40";                  //defence breaking point (idk about this)
+        ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
+
+        return ItemReturn;
+    }
+    public static String[] forgottenHelm () {
+        ItemReturn[0] = "forgotten helm";           //name
+        ItemReturn[1] = "2";                  //2 for id'ing an equipt without adding another directory
+        ItemReturn[2] = "4";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
+        ItemReturn[3] = "0";                  //attack modifier
+        ItemReturn[4] = "-.05";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "0";                  //speed modifier
+        ItemReturn[7] = "0";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
+        ItemReturn[8] = "37";                  //defence breaking point (idk about this)
+        ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
+
+        return ItemReturn;
+    }
+    public static String[] forgottenGreives () {
+        ItemReturn[0] = "forgotten grieves";           //name
+        ItemReturn[1] = "2";                  //2 for id'ing an equipt without adding another directory
+        ItemReturn[2] = "3";                  //defence as a positive int. 0 is no defence. 15 is high end armor.
+        ItemReturn[3] = "0";                  //attack modifier
+        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "0";                  //defence modifier
+        ItemReturn[6] = "-.07";                  //speed modifier
+        ItemReturn[7] = "5";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
+        ItemReturn[8] = "35";                  //defence breaking point (idk about this)
         ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
 
         return ItemReturn;
