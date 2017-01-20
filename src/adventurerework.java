@@ -164,7 +164,7 @@ public class adventurerework {
 
             }
         }
-        return "RETURN FOR THE SAKE OF HAVING TO RETURN A STRING.";
+        return null;
     }
 
     private static void startEncounter() {
