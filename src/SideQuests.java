@@ -17,6 +17,18 @@ public class SideQuests {
 
     //Blank should be the item that will be gotten
     //if you are giving armor to the player and want to give a peice of a set, list it as BLANK armor and give one peice out of that set.
+    private static int outOfTwo(int first, int second){
+        if (Math.ceil(Math.random())*2==1){
+            return first;
+        }else
+            return second;
+    }
+    public static void shop(){
+        int[] items = {outOfTwo(1,2),outOfTwo(1,2),11,5};
+
+
+    }
+
     public static void selectSidequest() {
         int questType = 0; //0 is common, 1 is uncommon, 2 is rare
         {
@@ -82,7 +94,8 @@ public class SideQuests {
             } else {
                 itemVoid(10);
                 int piece = (int)Math.ceil(Math.random()*4+10); //any forgotten armor peice
-                System.out.println("You have broken your spade but have looted a " + ItemDirectory.findItemValues(piece) + "off of the forgotten\nA rush of guilt falls over you.");
+                System.out.println("You have broken your spade but have looted a " + ItemDirectory.findItemValues(piece)[0] + "off of the forgotten\nA rush of guilt falls over you.");
+                adventurerework.getItem(piece);
             }
         }else{
             System.out.println("You come across a makeshift grave.\nIt reads: May Mortum grant you the armor you word for Vivus\nYou strive on.");

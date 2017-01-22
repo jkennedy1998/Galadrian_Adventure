@@ -2,7 +2,6 @@
 public class monsterSelection {
     private static String beast;
     private static int beastStats[]= {0,0,0,0,0,0,0,1,1,1,1};
-    public static int grouping = 1;
     private static boolean capital = false;
     private static int monsterCount = 0;
 
