@@ -17,17 +17,6 @@ public class SideQuests {
 
     //Blank should be the item that will be gotten
     //if you are giving armor to the player and want to give a peice of a set, list it as BLANK armor and give one peice out of that set.
-    private static int outOfTwo(int first, int second){
-        if (Math.ceil(Math.random())*2==1){
-            return first;
-        }else
-            return second;
-    }
-    public static void shop(){
-        int[] items = {outOfTwo(1,2),outOfTwo(1,2),11,5};
-
-
-    }
 
     public static void selectSidequest() {
         int questType = 0; //0 is common, 1 is uncommon, 2 is rare

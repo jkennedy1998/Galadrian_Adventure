@@ -6,8 +6,9 @@ public class adventurerework {
     public static int level = 0;
     public static double attackMultiplier, accuracyMultiplier, defensiveMultiplier, speedMultiplier;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
-    public static int score;
+    public static int coins;
     public static int roundCount = 1;
+    public static int lastRoundInShop = 0;
     public static int exp = 0;
     public static int expLim = 5;
     public static String attack1 = "";
@@ -31,7 +32,7 @@ public class adventurerework {
         day = 0;
         health = 100;
         maxHealth = 100;
-        score = 0;
+        coins = 0;
         accuracyMultiplier = 1;
         attackMultiplier = 1;
         defensiveMultiplier = 1;
@@ -70,8 +71,6 @@ public class adventurerework {
             striveOn();
         } else if (answer == 1) {
             System.out.println("You have chosen to stop adventuring.\nI knew you were a Coward!");
-            score = health + score;
-            System.out.println("Your score is " + score);
             System.exit(0);
         } else {
             live();
@@ -81,14 +80,6 @@ public class adventurerework {
 
     public static void death() {
         System.out.println("You have died while adventuring!\nHuh, quite the savior you are.");
-        score = health + score;
-        System.out.println("Your score is " + score);
-        if (score >= 200) {
-            // lets add an easter egg here!
-        }
-        if (health <= 0) {
-            System.exit(0);
-        }
     }
 
     public static void striveOn() {
@@ -499,15 +490,19 @@ public class adventurerework {
 
             System.out.println((int)temp+" hours have passed.");
             System.out.println("it appears to be around "+(int)(time+1)+".");
-            score += 15;
             exp += 5;
             System.out.println("your health is at " + health + ".");
         if (time <= 22 && time >= 5) { //not between 10 pm and 5 am
             if (Math.random()*100>75)
                 SideQuests.selectSidequest();
         }
+        if(roundCount-lastRoundInShop>10&&Math.random()>.4){//60 percent chance for shop encounter if you havent seen a shop in 5 rounds
+        Shop.start();
+            lastRoundInShop = roundCount;
+        }
             adventurerework.live();
         }
+
 
     private static int monsterTurn(int[] beastStats, boolean lifeStatus) {
 
