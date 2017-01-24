@@ -89,9 +89,9 @@ public class monsterSelection {
             else if (monsterNumber == 6)
                 selectSpiderling();
             else if (monsterNumber == 7)
-                selectYaunTiMalison();
+                selectYaunTiAbonimation();
             else if (monsterNumber == 8)
-                selectYaunTiPureBlood();
+                selectDragon();
             else
                 selectBat();
         }
