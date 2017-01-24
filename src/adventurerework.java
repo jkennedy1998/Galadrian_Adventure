@@ -26,6 +26,7 @@ public class adventurerework {
     public static double time;
     public static int day;
     public static CharacterCreation character1 = new CharacterCreation();
+    public static boolean jaredisgay = true;
 
     public static void main(String args[]) {
         time =20.0;
@@ -47,6 +48,8 @@ public class adventurerework {
         attack3 = character1.getAttack3();
         attack4 = character1.getAttack4();
         live();
+        if(jaredisgay)
+            System.out.print("Jarid Sucks");
     }
 
     public static void live() {
