@@ -143,13 +143,13 @@ public class monsterSelection {
             monsterCount = 4;
             int monsterNumber = subSelect();
             if (monsterNumber == 1)
-                selectDragon();
+                selectBat();
             else if (monsterNumber == 2)
-                selectDemon();
+                selectGoblin();
             else if (monsterNumber == 3)
-                selectCAngel();
+                selectDrunkDwarf();
             else
-                selectLich();
+                selectSkeleton();
         }
         if (Story.location.equalsIgnoreCase("JaggedCoastline")) {
 
