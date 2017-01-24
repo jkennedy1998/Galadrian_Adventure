@@ -48,8 +48,7 @@ public class adventurerework {
         attack3 = character1.getAttack3();
         attack4 = character1.getAttack4();
         live();
-        if(jaredisgay)
-            System.out.print("Jarid Sucks");
+
     }
 
     public static void live() {
@@ -78,6 +77,8 @@ public class adventurerework {
         } else {
             live();
         }
+        if(jaredisgay)
+            System.out.print("Jarid Sucks");
 
     }
 
