@@ -188,12 +188,18 @@ public class CharacterCreation {
     public void setExp(int x){
         this.exp += x;
     }
+    public void permExp(int x){
+        this.exp = x;
+    }
 
     public int getExpLim() {
         return this.expLim;
     }
     public void setExpLim(int x) {
         this.expLim += x;
+    }
+    public void permExpLim(int x){
+        this.expLim = x;
     }
 
     public double getAccuracyMultiplier() {

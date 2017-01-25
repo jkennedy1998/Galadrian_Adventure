@@ -607,8 +607,8 @@ public class adventurerework {
     }
 
 public static void levelUp() {
-    character1.setExp(character1.getExp() - character1.getExpLim());
-    character1.setExpLim((int) Math.round(character1.getExpLim() * 1.5));
+    character1.permExp(character1.getExp() - character1.getExpLim());
+    character1.permExpLim((int) Math.round(character1.getExpLim() * 1.5));
     character1.LevelUp();
     String[] leveledStats;
     leveledStats = Leveler.levelUp(character1.getHealth(), character1.getMaxHealth());
