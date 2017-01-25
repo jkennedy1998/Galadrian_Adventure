@@ -152,6 +152,16 @@ public class CharacterCreation {
         health = x;
     }
 
+    public int getMaxHealth(){
+        return maxHealth;
+    }
+    public void setMaxHealth(int x){
+        maxHealth += x;
+    }
+    public void permMaxHealth(int x){
+        maxHealth = x;
+    }
+
     public double getAccuracyMultiplier() {
         return accuracyMultiplier;
     }

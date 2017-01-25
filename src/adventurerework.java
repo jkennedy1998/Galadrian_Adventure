@@ -1,7 +1,6 @@
 import javax.swing.*;
 
 public class adventurerework {
-    public static int maxHealth;
     public static int speed = 60;
     public static int level = 0;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
@@ -25,7 +24,6 @@ public class adventurerework {
     public static void main(String args[]) {
         time =20.0;
         day = 0;
-        maxHealth = 100;
         coins = 0;
         character1.race();
         character1.role();
@@ -461,11 +459,11 @@ public class adventurerework {
         if (monsterTurn(beastStats, lifeStatus) != 0) {
             endEncounterDialog += getItem(beastStats[4]);
         }
-        if ((character1.getHealth() < maxHealth) && (roundCount % 5 == 0)) {
+        if ((character1.getHealth() < character1.getMaxHealth()) && (roundCount % 5 == 0)) {
             int tempHealth = (int) (Math.round(Math.random() * 20));
             character1.setHealth(tempHealth);
-            if (character1.getHealth() > maxHealth) {
-                character1.permHealth(maxHealth);
+            if (character1.getHealth() > character1.getMaxHealth()) {
+                character1.permHealth(character1.getMaxHealth());
             }
             System.out.println("You feel your past wounds begin to heal.\nYou regain " + tempHealth + " health.");
         }
@@ -617,9 +615,9 @@ public static void levelUp() {
     expLim = (int) Math.round(expLim * 1.5);
     level++;
     String[] leveledStats;
-    leveledStats = Leveler.levelUp(character1.getHealth(), maxHealth);
+    leveledStats = Leveler.levelUp(character1.getHealth(), character1.getMaxHealth());
     character1.permHealth(Integer.parseInt(leveledStats[0]));
-    maxHealth = Integer.parseInt(leveledStats[1]);
+    character1.permMaxHealth(Integer.parseInt(leveledStats[1]));
     if (leveledStats[2].equalsIgnoreCase("damage")) attackMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("accuracy")) accuracyMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("speed")) speedMultiplierLocked += Double.parseDouble(leveledStats[3]);
