@@ -21,8 +21,7 @@ public class Items{
         return 5;
     }
     public String[] getItemValues(int slotValue){
-        ItemDirectory refresh = new ItemDirectory();
-        return refresh.findItemValues(slotValue);
+        return ItemDirectory.findItemValues(slotValue);
     }
 
 }

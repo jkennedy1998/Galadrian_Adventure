@@ -1,133 +1,198 @@
 
-public class attackDatabase {
+public
+class attackDatabase {
 
     //attackData contains min,max,accuracy
 
-    public static int attackData[]= {0,0,0};
+    private static int attackData[]= {0,0,0,0,0,0,0};
+    private final static int emptyData[]= {0,0,0,0,0,0,0};
     public static void main(String args[]){ //nothing should be here or call to here
     }
     public static int[] getAttackData(String attack) {
         if (attack.equalsIgnoreCase("Slash")) {slash();
             return attackData;}
-        if (attack.equalsIgnoreCase("One-Ton Punch")) {onetonpunch();
+        if (attack.equalsIgnoreCase("Stab")) {Stab();
             return attackData;}
-        if (attack.equalsIgnoreCase("Shield Batter")) {ShieldBatter();
+        if (attack.equalsIgnoreCase("Shield Bash")) {ShieldBash();
             return attackData;}
-        if (attack.equalsIgnoreCase("Perfect Shot")) {PerfectShot();
+        if (attack.equalsIgnoreCase("Bow Shot")) {BowShot();
             return attackData;}
-        if (attack.equalsIgnoreCase("QuadShot")) {QuadShot();
+        if (attack.equalsIgnoreCase("Dual Shot")) {DualShot();
             return attackData;}
-        if (attack.equalsIgnoreCase("Hidden Shank")) {HiddenShank();
+        if (attack.equalsIgnoreCase("Shadow Bolt")) {ShadowBolt();
             return attackData;}
         if (attack.equalsIgnoreCase("Hex")) {Hex();
             return attackData;}
-        if (attack.equalsIgnoreCase("Dark Ones Blessing")) {DarkOnesBlessing();
+        if (attack.equalsIgnoreCase("Sparks")) {Sparks();
             return attackData;}
-        if (attack.equalsIgnoreCase("Pyro Assault")) {PyroAssault();
+        if (attack.equalsIgnoreCase("Punch")) {Punch();
             return attackData;}
-        if (attack.equalsIgnoreCase("SunSpot")) {SunSpot();
+        if (attack.equalsIgnoreCase("Blood Lust")) {BloodLust();
             return attackData;}
-        if (attack.equalsIgnoreCase("MoonBeam")) {MoonBeam();
+        if (attack.equalsIgnoreCase("Rend")) {Rend();
             return attackData;}
-        if (attack.equalsIgnoreCase("ThunderWave")) {ThunderWave();
+        if (attack.equalsIgnoreCase("Meditation")) {Meditation();
             return attackData;}
-        if (attack.equalsIgnoreCase("Pure Rend")) {PureRend();
-            return attackData;}
-        if (attack.equalsIgnoreCase("Toxic Pierce")) {ToxicPierce();
-            return attackData;}
-        if (attack.equalsIgnoreCase("Explosive Pellets")) {ExplosivePellets();
+        if (attack.equalsIgnoreCase("Flying Jump Kick")) {FlyingJumpKick();
             return attackData;}
         if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
             return attackData;}
-        return attackData;
+        if (attack.equalsIgnoreCase("Bite")) {bite();
+            return attackData;}
+        return emptyData;
     }
 //      This is the formatting
-//    public static void slash(){
+
+//    public static void attackName(){
 //        attackData[0] = min attack (int);
 //        attackData[1] = max attack (int);
-//        attackData[2] = accuracy (0 to 10);
-//    }
-    public static void instaKill(){ //for testing purposes only!
+//        attackData[2] = accuracy (0 to 100); lower numbers hit more
+//        attackData[3] = effect status calling number (0 as no status)      //comment which effect is changed if applicable
+//        attackData[4] = effect status state (NA as 0, on self as 1, off self as 2, on enemy as 3, off enemy as 4)
+//        attackData[5] = effect status calling number (0 as no status)      //comment which effect is changed if applicable (second effect)
+//        attackData[6] = effect status state (NA as 0, on as 1, off as 2, on enemy as 3, off enemy as 4)9   (second effect)
+//
+    private static void instaKill(){ //for testing purposes only!
         attackData[0] = 100;
         attackData[1] = 100;
-        attackData[2] = 10;
+        attackData[2] = 0;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
     }
-    public static void ShieldBatter(){
-        attackData[0] = 25;
-        attackData[1] = 30;
-        attackData[2] = 7;
-    }
-    public static void onetonpunch(){
-        attackData[0] = 10;
-        attackData[1] = 15;
-        attackData[2] = 10;
-    }
-    public static void slash(){
-        attackData[0] = 5;
-        attackData[1] = 30;
-        attackData[2] = 9;
-    }
-    public static void PerfectShot(){
-        attackData[0] = 10;
-        attackData[1] = 20;
-        attackData[2] = 9;
-    }
-    public static void QuadShot(){
-        attackData[0] = 35;
-        attackData[1] = 40;
-        attackData[2] = 4;
-    }
-    public static void HiddenShank(){
-        attackData[0] = 5;
-        attackData[1] = 10;
-        attackData[2] = 9;
-    }
-    public static void Hex(){
-        attackData[0] = 5;
-        attackData[1] = 15;
-        attackData[2] = 9;
-    }
-    public static void DarkOnesBlessing(){
-        attackData[0] = 5;
-        attackData[1] = 35;
-        attackData[2] = 7;
-    }
-    public static void PyroAssault(){
+    private static void ShieldBash(){ //certain mid damage, lacking accuracy
         attackData[0] = 20;
         attackData[1] = 25;
-        attackData[2] = 7;
+        attackData[2] = 35;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
     }
-    public static void SunSpot() {
-        attackData[0] = 20;
-        attackData[1] = 25;
-        attackData[2] = 8;
-    }
-    public static void MoonBeam() {
-        attackData[0] = 5;
+    private static void Punch(){ //certain hit, lacking damage
+        attackData[0] = 14;
         attackData[1] = 15;
-        attackData[2] = 9;
+        attackData[2] = 5;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
     }
-    public static void ThunderWave() {
-        attackData[0] = 20;
+    private static void slash(){ //moderate hit, questionable damage
+        attackData[0] = 5;
         attackData[1] = 30;
-        attackData[2] = 7;
+        attackData[2] = 28;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+
     }
-    public static void PureRend() {
+    private static void BowShot(){ //questionable damage, decent accuracy
         attackData[0] = 25;
-        attackData[1] = 30;
-        attackData[2] = 6;
+        attackData[1] = 27;
+        attackData[2] = 10;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
     }
-    public static void ToxicPierce() {
+    private static void DualShot(){ //certain moderate damage, certain accuracy
+        attackData[0] = 37;
+        attackData[1] = 41;
+        attackData[2] = 100;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void Stab(){ //certain hit, low damage
         attackData[0] = 15;
-        attackData[1] = 25;
-        attackData[2] = 7;
+        attackData[1] = 18;
+        attackData[2] = 5;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
     }
-    public static void ExplosivePellets() {
-        attackData[0] = 1;
-        attackData[1] = 50;
-        attackData[2] = 7;
+    private static void Hex(){ //ok accuracy, good damage
+        attackData[0] = 25;
+        attackData[1] = 32;
+        attackData[2] = 45;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void ShadowBolt(){ //good accuracy, ok damage
+        attackData[0] = 15;
+        attackData[1] = 19;
+        attackData[2] = 24;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void Sparks(){ //high damage, low accuracy
+        attackData[0] = 30;
+        attackData[1] = 35;
+        attackData[2] = 70;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void BloodLust(){ //ok accuracy, high damage
+        attackData[0] = 29;
+        attackData[1] = 35;
+        attackData[2] = 60;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void Rend() { //decent accuracy, uncertain damage damage
+        attackData[0] = 15;
+        attackData[1] = 29;
+        attackData[2] = 36;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void Meditation() { //make this heal the user and always hit
+        attackData[0] = 0;
+        attackData[1] = 0;
+        attackData[2] = 5;
+        attackData[3] = 2; //meditation
+        attackData[4] = 1;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void FlyingJumpKick() { //decent accuracy, certain damage
+        attackData[0] = 19;
+        attackData[1] = 20;
+        attackData[2] = 40;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void bite(){ //certain hit, lacking damage
+        attackData[0] = 14;
+        attackData[1] = 15;
+        attackData[2] = 5;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
     }
 }
 //        attackData[0] = min attack (int);
 //        attackData[1] = max attack (int);
 //        attackData[2] = accuracy (0 to 10);
+//        attackData[3] = effect status calling number (0 as no status)      //comment which effect is changed if applicable
+//        attackData[4] = effect status state (NA as 0, on self as 1, off self as 2, on enemy as 3, off enemy as 4)
+//        attackData[5] = effect status calling number (0 as no status)      //comment which effect is changed if applicable (second effect)
+//        attackData[6] = effect status state (NA as 0, on as 1, off as 2, on enemy as 3, off enemy as 4)9   (second effect)
