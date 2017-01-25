@@ -162,6 +162,13 @@ public class CharacterCreation {
         maxHealth = x;
     }
 
+    public int getSpeed(){
+        return speed;
+    }
+    public void setSpeed(int x){
+        speed += x;
+    }
+
     public double getAccuracyMultiplier() {
         return accuracyMultiplier;
     }

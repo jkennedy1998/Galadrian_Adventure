@@ -1,7 +1,6 @@
 import javax.swing.*;
 
 public class adventurerework {
-    public static int speed = 60;
     public static int level = 0;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
@@ -174,7 +173,7 @@ public class adventurerework {
         int monsterEffect = 0;
         int playerEffect = 0;
         do {
-            if (speed * character1.getSpeedMultiplier() >= beastStats[6]) {
+            if (character1.getSpeed() * character1.getSpeedMultiplier() >= beastStats[6]) {
                 String[] tempData = playerTurn();
                 if (tempData[0].equalsIgnoreCase("A")) {
                     beastStats[0] -= Integer.parseInt(tempData[1]);
