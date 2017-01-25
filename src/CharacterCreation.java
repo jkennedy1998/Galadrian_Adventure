@@ -5,10 +5,10 @@ import javax.swing.*;
  */
 
 public class CharacterCreation {
-    public String attack1 = "";
-    public String attack2 = "";
-    public String attack3 = "";
-    public String attack4 = "";
+    private String attack1 = "";
+    private String attack2 = "";
+    private String attack3 = "";
+    private String attack4 = "";
     private int health, maxHealth, speed, level, score, exp, expLim;
     private double attackMultiplier, accuracyMultiplier, defensiveMultiplier, speedMultiplier;
     private String race,role;

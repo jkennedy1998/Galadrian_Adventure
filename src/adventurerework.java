@@ -23,7 +23,7 @@ public class adventurerework {
         coins = 0;
         character1.race();
         character1.role();
-        Story.initialize(character1.attack1, character1.attack2, character1.attack3, character1.attack4, itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
+        Story.initialize(character1.getAttack1(), character1.getAttack2(), character1.getAttack3(), character1.getAttack4(), itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
         live();
 
     }
@@ -519,7 +519,7 @@ public class adventurerework {
 
         String tempDialog = "";
         Player playerRefresh = new Player();
-        playerRefresh.initialize(character1.attack1, character1.attack2, character1.attack3, character1.attack4,
+        playerRefresh.initialize(character1.getAttack1(), character1.getAttack2(), character1.getAttack3(), character1.getAttack4(),
                 character1.getAttackMultiplier(), character1.getAccuracyMultiplier());
         System.out.println("It's your turn to attack!\n");
         String attackStorage[] = playerRefresh.PlayerAttack(tempDialog);
