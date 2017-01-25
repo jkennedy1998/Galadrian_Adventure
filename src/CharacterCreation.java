@@ -142,6 +142,16 @@ public class CharacterCreation {
         this.role = NewRole;
     }
 
+    public int getHealth(){
+        return health;
+    }
+    public void setHealth(int x){
+        health += x;
+    }
+    public void permHealth(int x){
+        health = x;
+    }
+
     public double getAccuracyMultiplier() {
         return accuracyMultiplier;
     }

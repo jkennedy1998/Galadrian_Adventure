@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class adventurerework {
-    public static int health, maxHealth;
+    public static int maxHealth;
     public static int speed = 60;
     public static int level = 0;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
@@ -25,7 +25,6 @@ public class adventurerework {
     public static void main(String args[]) {
         time =20.0;
         day = 0;
-        health = 100;
         maxHealth = 100;
         coins = 0;
         character1.race();
@@ -46,7 +45,7 @@ public class adventurerework {
                 System.out.println("\nYou have been ambushed in your sleep!");
                 startEncounter();
             }else {
-                health += Integer.parseInt(temp);
+                character1.setHealth(Integer.parseInt(temp));
                 System.out.println("\nYou wake up at around "+Math.round(time)+".\nYou have regained "+temp+" health points by resting.");
             }
         }
@@ -344,7 +343,7 @@ public class adventurerework {
                 if (playerEffect != 0) {
                     if (turn - turnOfPlayerEffect <= Integer.parseInt(effectDatabase.getEffectData(playerEffect)[2])) {
                         int tempDam = Integer.parseInt(effectDatabase.getEffectData(playerEffect)[1]);
-                        health += tempDam;
+                        character1.setHealth(tempDam);
                         if (tempDam < 0)
                             System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + tempDam + " points of damage!");
                         if (tempDam > 0)
@@ -452,8 +451,8 @@ public class adventurerework {
                 turn++;
                 time += (Math.random()/6);
             }
-        }while (health > 0 && beastStats[0] > 0) ;
-            if (health <= 0)
+        }while (character1.getHealth() > 0 && beastStats[0] > 0) ;
+            if (character1.getHealth() <= 0)
                 adventurerework.death();
 
         String endEncounterDialog = "";
@@ -462,11 +461,11 @@ public class adventurerework {
         if (monsterTurn(beastStats, lifeStatus) != 0) {
             endEncounterDialog += getItem(beastStats[4]);
         }
-        if ((health < maxHealth) && (roundCount % 5 == 0)) {
+        if ((character1.getHealth() < maxHealth) && (roundCount % 5 == 0)) {
             int tempHealth = (int) (Math.round(Math.random() * 20));
-            health += tempHealth;
-            if (health > maxHealth) {
-                health = maxHealth;
+            character1.setHealth(tempHealth);
+            if (character1.getHealth() > maxHealth) {
+                character1.permHealth(maxHealth);
             }
             System.out.println("You feel your past wounds begin to heal.\nYou regain " + tempHealth + " health.");
         }
@@ -484,7 +483,7 @@ public class adventurerework {
         if (tempCoins>0)
             System.out.println("You have looted "+ tempBeastName + " for "+tempCoins+" coins!");
         coins+=tempCoins;
-        System.out.println("your health is at " + health + ".");
+        System.out.println("your health is at " + character1.getHealth() + ".");
         if (time <= 22 && time >= 5) { //not between 10 pm and 5 am
             if (Math.random()*100>75)
                 System.out.println("");
@@ -510,11 +509,11 @@ public class adventurerework {
             } else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 questionArmorBreak(tempMAttack2);
-                health -= tempMAttack2;
-                System.out.println(tempBeastName + " attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (health) + "");
+                character1.setHealth(-tempMAttack2);
+                System.out.println(tempBeastName + " attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
             }
-            if (health <= 0) {
-                health = 0;
+            if (character1.getHealth() <= 0) {
+                character1.permHealth(0);
                 adventurerework.death();
             }
         } else return monsterRefresh.questionItem(beastStats[4],beastStats[5]);
@@ -587,7 +586,7 @@ public class adventurerework {
             System.out.println(tempOutput);
 
             if (tempData[1].equalsIgnoreCase("0")) {
-                health += Integer.parseInt(tempData[2]);
+                character1.setHealth(Integer.parseInt(tempData[2]));
                 character1.setAttackMultiplier(Double.parseDouble(tempData[3]));
                 character1.setAccuracyMultiplier(Double.parseDouble(tempData[4]));
                 character1.setDefensiveMultiplier(Double.parseDouble(tempData[5]));
@@ -618,8 +617,8 @@ public static void levelUp() {
     expLim = (int) Math.round(expLim * 1.5);
     level++;
     String[] leveledStats;
-    leveledStats = Leveler.levelUp(health, maxHealth);
-    health = Integer.parseInt(leveledStats[0]);
+    leveledStats = Leveler.levelUp(character1.getHealth(), maxHealth);
+    character1.permHealth(Integer.parseInt(leveledStats[0]));
     maxHealth = Integer.parseInt(leveledStats[1]);
     if (leveledStats[2].equalsIgnoreCase("damage")) attackMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("accuracy")) accuracyMultiplierLocked += Double.parseDouble(leveledStats[3]);
