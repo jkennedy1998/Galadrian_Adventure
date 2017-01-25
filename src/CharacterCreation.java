@@ -169,6 +169,19 @@ public class CharacterCreation {
         speed += x;
     }
 
+    public int getLevel(){
+        return level;
+    }
+    public void setLevel(int x){
+        level += x;
+    }
+    public void LevelUp(){
+        level++;
+    }
+    public void permLevel(int x){
+        level = x;
+    }
+
     public double getAccuracyMultiplier() {
         return accuracyMultiplier;
     }

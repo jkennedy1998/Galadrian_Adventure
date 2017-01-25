@@ -1,7 +1,6 @@
 import javax.swing.*;
 
 public class adventurerework {
-    public static int level = 0;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
     public static int roundCount = 1;
@@ -612,7 +611,7 @@ public class adventurerework {
 public static void levelUp() {
     exp = exp - expLim;
     expLim = (int) Math.round(expLim * 1.5);
-    level++;
+    character1.LevelUp();
     String[] leveledStats;
     leveledStats = Leveler.levelUp(character1.getHealth(), character1.getMaxHealth());
     character1.permHealth(Integer.parseInt(leveledStats[0]));
