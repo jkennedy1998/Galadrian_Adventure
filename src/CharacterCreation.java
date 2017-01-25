@@ -189,6 +189,12 @@ public class CharacterCreation {
         this.exp += x;
     }
 
+    public int getExpLim() {
+        return this.expLim;
+    }
+    public void setExpLim(int x) {
+        this.expLim += x;
+    }
 
     public double getAccuracyMultiplier() {
         return this.accuracyMultiplier;

@@ -5,7 +5,6 @@ public class adventurerework {
     public static int coins;
     public static int roundCount = 1;
     public static int lastRoundInShop = 0;
-    public static int expLim = 15;
     public static int itemSlot0 = 1;
     public static int itemSlot1 = 1;
     public static int itemSlot2 = 0;
@@ -608,8 +607,8 @@ public class adventurerework {
     }
 
 public static void levelUp() {
-    character1.setExp(character1.getExp() - expLim);
-    expLim = (int) Math.round(expLim * 1.5);
+    character1.setExp(character1.getExp() - character1.getExpLim());
+    character1.setExpLim((int) Math.round(character1.getExpLim() * 1.5));
     character1.LevelUp();
     String[] leveledStats;
     leveledStats = Leveler.levelUp(character1.getHealth(), character1.getMaxHealth());
