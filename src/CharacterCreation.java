@@ -143,47 +143,55 @@ public class CharacterCreation {
     }
 
     public int getHealth(){
-        return health;
+        return this.health;
     }
     public void setHealth(int x){
-        health += x;
+        this.health += x;
     }
     public void permHealth(int x){
-        health = x;
+        this.health = x;
     }
 
     public int getMaxHealth(){
-        return maxHealth;
+        return this.maxHealth;
     }
     public void setMaxHealth(int x){
-        maxHealth += x;
+        this.maxHealth += x;
     }
     public void permMaxHealth(int x){
-        maxHealth = x;
+        this.maxHealth = x;
     }
 
     public int getSpeed(){
-        return speed;
+        return this.speed;
     }
     public void setSpeed(int x){
-        speed += x;
+        this.speed += x;
     }
 
     public int getLevel(){
-        return level;
+        return this.level;
     }
     public void setLevel(int x){
-        level += x;
+        this.level += x;
     }
     public void LevelUp(){
-        level++;
+        this.level++;
     }
     public void permLevel(int x){
-        level = x;
+        this.level = x;
     }
 
+    public int getExp(){
+        return this.exp;
+    }
+    public void setExp(int x){
+        this.exp += x;
+    }
+
+
     public double getAccuracyMultiplier() {
-        return accuracyMultiplier;
+        return this.accuracyMultiplier;
     }
     public void setAccuracyMultiplier(double x){
         this.accuracyMultiplier += x;
@@ -192,7 +200,7 @@ public class CharacterCreation {
     }
 
     public double getAttackMultiplier(){
-        return attackMultiplier;
+        return this.attackMultiplier;
     }
     public void setAttackMultiplier(double x){
         this.attackMultiplier += x;
@@ -201,7 +209,7 @@ public class CharacterCreation {
     }
 
     public double getDefensiveMultiplier(){
-        return defensiveMultiplier;
+        return this.defensiveMultiplier;
     }
     public void setDefensiveMultiplier(double x){
         this.defensiveMultiplier += x;
@@ -210,7 +218,7 @@ public class CharacterCreation {
     }
 
     public double getSpeedMultiplier(){
-        return speedMultiplier;
+        return this.speedMultiplier;
     }
     public void setSpeedMultiplier(double x){
         this.speedMultiplier += x;
@@ -242,6 +250,13 @@ public class CharacterCreation {
     public String getAttack4() { return attack4; }
     public void setAttack4(String a){
         this.attack4 = a;
+    }
+
+    public int getScore(){
+        return this.score;
+    }
+    public void setScore(int x){
+        this.score += x;
     }
 
 }

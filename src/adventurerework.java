@@ -5,7 +5,6 @@ public class adventurerework {
     public static int coins;
     public static int roundCount = 1;
     public static int lastRoundInShop = 0;
-    public static int exp = 0;
     public static int expLim = 15;
     public static int itemSlot0 = 1;
     public static int itemSlot1 = 1;
@@ -474,7 +473,7 @@ public class adventurerework {
         else
             System.out.println((int)temp+" hours have passed.");
         System.out.println("it appears to be around "+(int)(time+1)+".");
-        exp += beastStats[11];
+        character1.setExp(beastStats[11]);
         int tempCoins= (int)Math.round(Math.random()*beastStats[12]);
         if (tempCoins>0)
             System.out.println("You have looted "+ tempBeastName + " for "+tempCoins+" coins!");
@@ -609,7 +608,7 @@ public class adventurerework {
     }
 
 public static void levelUp() {
-    exp = exp - expLim;
+    character1.setExp(character1.getExp() - expLim);
     expLim = (int) Math.round(expLim * 1.5);
     character1.LevelUp();
     String[] leveledStats;
