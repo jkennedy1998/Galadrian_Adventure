@@ -6,10 +6,10 @@ public class Story {
     private static String possibleDestination2;
     private static String attack1, attack2, attack3, attack4;
     private static int item0, item1, item2, item3, item4;
-    private static String race;
-    private static String role;
+    private static String race = "";
+    private static String role = "";
 
-    public static void initialize(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4, String Race, String Role ){ //should only be used once!
+    public static void initialize(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4){ //should only be used once!
         attack1 = a1;
         attack2 = a2;
         attack3 = a3;
@@ -19,8 +19,8 @@ public class Story {
         item2 = i2;
         item3 = i3;
         item4 = i4;
-        race = Race;
-        role = Role;
+        race = adventurerework.character1.getRace();
+        role = adventurerework.character1.getRole();
 
 
     }
@@ -28,7 +28,7 @@ public class Story {
     public static void actOne(){
 
     }
-    public static void refresh(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4 ){ //should be used before each area change!
+    public static void refresh(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4){ //should be used before each area change!
         attack1 = a1;
         attack2 = a2;
         attack3 = a3;

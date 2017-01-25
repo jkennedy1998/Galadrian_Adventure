@@ -37,7 +37,7 @@ public class adventurerework {
         attackMultiplier = 1;
         defensiveMultiplier = 1;
         speedMultiplier = 1;
-        Story.initialize(attack1, attack2, attack3, attack4, itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4,CharacterCreation.race(),CharacterCreation.role());
+        Story.initialize(attack1, attack2, attack3, attack4, itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
         accuracyMultiplierLocked += character1.getAccuracyMultiplier();
         attackMultiplierLocked += character1.getAttackMultiplier();
         defensiveMultiplierLocked += character1.getDefensiveMultiplier();
