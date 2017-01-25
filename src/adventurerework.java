@@ -4,17 +4,12 @@ public class adventurerework {
     public static int health, maxHealth;
     public static int speed = 60;
     public static int level = 0;
-    public static double attackMultiplier, accuracyMultiplier, defensiveMultiplier, speedMultiplier;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
     public static int roundCount = 1;
     public static int lastRoundInShop = 0;
     public static int exp = 0;
     public static int expLim = 15;
-    public static String attack1 = "";
-    public static String attack2 = "";
-    public static String attack3 = "";
-    public static String attack4 = "";
     public static int itemSlot0 = 1;
     public static int itemSlot1 = 1;
     public static int itemSlot2 = 0;
@@ -33,19 +28,9 @@ public class adventurerework {
         health = 100;
         maxHealth = 100;
         coins = 0;
-        accuracyMultiplier = 1;
-        attackMultiplier = 1;
-        defensiveMultiplier = 1;
-        speedMultiplier = 1;
-        Story.initialize(attack1, attack2, attack3, attack4, itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
-        accuracyMultiplierLocked += character1.getAccuracyMultiplier();
-        attackMultiplierLocked += character1.getAttackMultiplier();
-        defensiveMultiplierLocked += character1.getDefensiveMultiplier();
-        speedMultiplierLocked += character1.getSpeedMultiplier();
-        attack1 = character1.getAttack1();
-        attack2 = character1.getAttack2();
-        attack3 = character1.getAttack3();
-        attack4 = character1.getAttack4();
+        character1.race();
+        character1.role();
+        Story.initialize(character1.attack1, character1.attack2, character1.attack3, character1.attack4, itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
         live();
 
     }
@@ -180,10 +165,6 @@ public class adventurerework {
     }
 
     private static void startEncounter() {
-        accuracyMultiplier = accuracyMultiplierLocked;
-        attackMultiplier = attackMultiplierLocked;
-        defensiveMultiplier = defensiveMultiplierLocked;
-        speedMultiplier = speedMultiplierLocked;
         int beastStats[], beastStatsSolid[];
         beastStatsSolid = monsterSelection.main(roundCount);
         beastStats = beastStatsSolid;
@@ -196,7 +177,7 @@ public class adventurerework {
         int monsterEffect = 0;
         int playerEffect = 0;
         do {
-            if (speed * speedMultiplier >= beastStats[6]) {
+            if (speed * character1.getSpeedMultiplier() >= beastStats[6]) {
                 String[] tempData = playerTurn();
                 if (tempData[0].equalsIgnoreCase("A")) {
                     beastStats[0] -= Integer.parseInt(tempData[1]);
@@ -380,36 +361,40 @@ public class adventurerework {
                                     System.out.println("You feel stronger!");
                                 if (tempDaMod > 0)
                                     System.out.println("Your attacks seem lessened!");
-                                attackMultiplier += tempDaMod;
+                                character1.setAttackMultiplier(tempDaMod);
                             }
                             if (tempSpMod != 0) {
                                 if (tempSpMod > 0)
                                     System.out.println("Your feel a rush of adrenaline!");
                                 if (tempSpMod < 0)
                                     System.out.println("You feel sluggish!");
-                                speedMultiplier += tempSpMod;
+                                character1.setSpeedMultiplier(tempSpMod);
                             }
                             if (tempDeMod != 0) {
                                 if (tempDeMod > 0)
                                     System.out.println("You feel more accustomed to your armor!");
                                 if (tempDeMod < 0)
                                     System.out.println("your enemy has noticed a weak point in your armor");
-                                defensiveMultiplier += tempDeMod;
+                                character1.setDefensiveMultiplier(tempDeMod);
                             }
                             if (tempAcMod != 0) {
                                 if (tempAcMod > 0)
                                     System.out.println("You feel focused!");
                                 if (tempAcMod < 0)
                                     System.out.println("You have become distracted in the chaos of battle");
-                                accuracyMultiplier += tempAcMod;
+                                character1.setAccuracyMultiplier(tempAcMod);
                             }
                         }
                     } else {
                         playerMultipliersChanged = false;
-                        attackMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
-                        speedMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
-                        defensiveMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
-                        accuracyMultiplier -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
+                        character1.setAttackMultiplier
+                                (-Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]));
+                        character1.setSpeedMultiplier
+                                (-Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]));
+                        character1.setDefensiveMultiplier
+                                (-Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]));
+                        character1.setAccuracyMultiplier
+                                (-Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]));
                     }
                 }
                 if (monsterEffect != 0) {
@@ -541,7 +526,8 @@ public class adventurerework {
 
         String tempDialog = "";
         Player playerRefresh = new Player();
-        playerRefresh.initialize(attack1, attack2, attack3, attack4, attackMultiplier, accuracyMultiplier);
+        playerRefresh.initialize(character1.attack1, character1.attack2, character1.attack3, character1.attack4,
+                character1.getAttackMultiplier(), character1.getAccuracyMultiplier());
         System.out.println("It's your turn to attack!\n");
         String attackStorage[] = playerRefresh.PlayerAttack(tempDialog);
         if (!(attackStorage[0].equalsIgnoreCase("item"))) { //not using item
@@ -567,7 +553,7 @@ public class adventurerework {
             boolean questionHit;
             String[] tempData = playerRefresh.PlayerItem();
             System.out.println("You used the " + tempData[0]);
-            questionHit =  (Math.round(Integer.parseInt(tempData[7])) <= Math.round(Math.random() * 100 * accuracyMultiplier)); //true or false.
+            questionHit =  (Math.round(Integer.parseInt(tempData[7])) <= Math.round(Math.random() * 100 * character1.getAccuracyMultiplier())); //true or false.
             //prints regardless (below)
             String tempOutput = "";
             if (Integer.parseInt(tempData[1]) == 0) tempOutput += "You use the " + tempData[0] + " on yourself\n";
@@ -602,10 +588,10 @@ public class adventurerework {
 
             if (tempData[1].equalsIgnoreCase("0")) {
                 health += Integer.parseInt(tempData[2]);
-                attackMultiplier += Double.parseDouble(tempData[3]);
-                accuracyMultiplier += Double.parseDouble(tempData[4]);
-                defensiveMultiplier += Double.parseDouble(tempData[5]);
-                speedMultiplier += Double.parseDouble(tempData[6]);
+                character1.setAttackMultiplier(Double.parseDouble(tempData[3]));
+                character1.setAccuracyMultiplier(Double.parseDouble(tempData[4]));
+                character1.setDefensiveMultiplier(Double.parseDouble(tempData[5]));
+                character1.setSpeedMultiplier(Double.parseDouble(tempData[6]));
                 returningString[0] = "IS";
                 returningString[1] = "" + Integer.parseInt(tempData[8]); //eff on
                 returningString[2] = "" + Integer.parseInt(tempData[9]); //eff off
@@ -648,7 +634,7 @@ private  static int getArmorStats(){
     stat += Integer.parseInt(ItemDirectory.findItemValues(armor[3])[2]);
     stat += Integer.parseInt(ItemDirectory.findItemValues(armor[4])[2]);
     stat += Integer.parseInt(ItemDirectory.findItemValues(armor[5])[2]);
-    return (int)Math.round(stat*defensiveMultiplier);
+    return (int)Math.round(stat*character1.getDefensiveMultiplier());
 }
 private static void questionArmorBreak(int attack){
     boolean questionChange = false;
