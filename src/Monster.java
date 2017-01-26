@@ -1,11 +1,11 @@
 
 public class Monster {
-    public int health;
-    public int maxHit, minHit, accuracy;
-    public int[] itemDrop = {0,0};
-    public double accuracyMult,defenceMult,damageMult,speedMult;
-    public double speed;
-    public String name = "";
+    private int health;
+    private int maxHit, minHit, accuracy;
+    private int[] itemDrop = {0,0};
+    private double accuracyMult,defenceMult,damageMult,speedMult;
+    private double speed;
+    private String name = "";
 
     public Monster(int h, int max, int min, int acc, int item, int dropRate, double spd, double daM,double spM, double acM, double deM)
     {
