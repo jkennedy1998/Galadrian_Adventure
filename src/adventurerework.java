@@ -479,7 +479,7 @@ public class adventurerework {
         coins+=tempCoins;
         System.out.println("your health is at " + character1.getHealth() + ".");
         if (time <= 22 && time >= 5) { //not between 10 pm and 5 am
-            if (Math.random()*100>75)
+            if (Math.random()*100>80)
                 System.out.println("");
                 SideQuests.selectSidequest();
         }

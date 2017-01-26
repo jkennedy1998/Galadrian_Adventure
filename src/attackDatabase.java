@@ -35,8 +35,6 @@ class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("Flying Jump Kick")) {FlyingJumpKick();
             return attackData;}
-        if (attack.equalsIgnoreCase("")) {attackData[2] = 0;
-            return attackData;}
         if (attack.equalsIgnoreCase("Bite")) {bite();
             return attackData;}
         return emptyData;
