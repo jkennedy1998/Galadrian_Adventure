@@ -25,9 +25,6 @@ public class Story {
 
     }
 
-    public static void actOne(){
-
-    }
     public static void refresh(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4){ //should be used before each area change!
         attack1 = a1;
         attack2 = a2;
@@ -65,6 +62,7 @@ public class Story {
         //plains
         //cave
         //jaggedCoastline
+        //JUNGLE
         //needs to have a method  for each area! will not work otherwise
         if (location.equalsIgnoreCase("forest")){
             possibleDestination1 ="deepForest";

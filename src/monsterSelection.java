@@ -154,6 +154,26 @@ public class monsterSelection {
             else
                 selectSkeleton();
         }
+        if (Story.location.equalsIgnoreCase("Jungle")) {
+
+            monsterCount = 7;
+            int monsterNumber = subSelect();
+            if (monsterNumber == 1)
+                selectBat();
+            else if (monsterNumber == 2)
+                selectSpiderling();
+            else if (monsterNumber == 3)
+                selectYaunTiAbonimation();
+            else if (monsterNumber == 4)
+                selectBigBat();
+            else if (monsterNumber == 5)
+                selectBat();
+            else if (monsterNumber == 6)
+                selectBat();
+            else
+                selectGoblin();
+
+        }
         if (Story.location.equalsIgnoreCase("JaggedCoastline")) {
 
             monsterCount = 1;
@@ -171,6 +191,20 @@ public class monsterSelection {
 
     // Past this point should only contain beast selections.
 
+//    public static void selectNAMEHERE(){
+//        beast = "NAME HERE";
+//        capital = false; //if starting letter is a vowel this needs to be true
+//        beastStats[0] = 15; //finish formatting this jared!
+//        beastStats[1] = 10;
+//        beastStats[2] = 5;
+//        beastStats[3] = 20;
+//        beastStats[4] = (2);
+//        beastStats[5] = (30);
+//        beastStats[6] = (70);
+//        beastStats[11] = (5);
+//        beastStats[12] = (0);
+//
+//    }
     public static void selectDog(){
         beast = "Rabid Dog";
         capital = false;
@@ -196,6 +230,20 @@ public class monsterSelection {
         beastStats[5] = (30);
         beastStats[6] = (70);
         beastStats[11] = (5);
+        beastStats[12] = (0);
+
+    }
+    public static void selectBigBat(){
+        beast = "Large Bat";
+        capital = false;
+        beastStats[0] = 38;
+        beastStats[1] = 28;
+        beastStats[2] = 25;
+        beastStats[3] = 20;
+        beastStats[4] = (2);
+        beastStats[5] = (40);
+        beastStats[6] = (58);
+        beastStats[11] = (13);
         beastStats[12] = (0);
 
     }
