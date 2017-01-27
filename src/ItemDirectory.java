@@ -34,7 +34,9 @@ public class ItemDirectory {
             return  forgottenHelm();
         if (itemNumber == 14)
             return  forgottenGreives();
-            return noItem(); //should NEVER return this from this line of code.
+        if (itemNumber == 15)
+            return mortumsAmulet();
+            return noItem();
         }
 
         //past this point should only be data values for items and rubrics
@@ -188,6 +190,21 @@ public class ItemDirectory {
         ItemReturn[8] = "0";                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "49";                  //base price for shops
+
+        return ItemReturn;
+    }
+    public static String[] mortumsAmulet () { //boss item for merrshaulk.
+        ItemReturn[0] = "Mortum's Amulet";           //name
+        ItemReturn[1] = "1";                  //self as 0 or enemy as 1
+        ItemReturn[2] = "0";                  //health modifier
+        ItemReturn[3] = "-.5";                  //attack modifier
+        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "-.5";                  //defence modifier
+        ItemReturn[6] = "-.5";                  //speed modifier
+        ItemReturn[7] = "90";                 //accuracy
+        ItemReturn[8] = "0";                  //effect # on
+        ItemReturn[9] = "0";                  //effect # off
+        ItemReturn[10] = "200";                  //base price for shops
 
         return ItemReturn;
     }

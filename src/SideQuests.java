@@ -94,4 +94,29 @@ public class SideQuests {
 
     }
 
+    //area for rare quests.
+
+    //area for specific quests. (like bosses!)
+    public static boolean merrshaulkRitual(){ //true summons merrshaulk correctly, false distrupts summoning and ruins the process leaving merrshaulk a mass of flesh.
+        System.out.println("\nYou fight your way past the royal guards and see a dim magenta light down the hallway." +
+                "\nWalking closer you hear the screech inbetween anguish and rage." +
+                "\nAs you round the corner a summoning ritual is brought into sight." +
+                "\nThe ritual is almost complete");
+        if (itemCheck(15)){
+            String[] buttons = {"Throw Mortum's aumulet at the mass of throbbing flesh!", "Stand aside and watch the ritual"};
+            int answer = JOptionPane.showOptionDialog(null, "You feel something in your pocket thrust towards the ritual.\nAs you reach in your pocket to grab the item you have flashes of the horrors to come if the ritual succeeds.\nIt appears to be Mortum's amulet!", "",
+                    JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
+            if (answer == 0) {
+                System.out.println("The amulet lands in the center of the throbbing flesh.\n You feel an immersive amount of heat and the next thing you know you are on the ground.\nAs you get up you notice the passed Yuan-ti around the abomination.\nYou feel paralyzed as it squelches slowly to you.");
+                return false;
+
+            }else{
+                System.out.println("May Preiseir bless you");
+                return true;
+            }
+
+        }else System.out.println("May Preiseir bless you");
+        return true;
+    }
+
 }

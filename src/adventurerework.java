@@ -60,6 +60,7 @@ public class adventurerework {
 
     public static void death() {
         System.out.println("You have died while adventuring!\nHuh, quite the savior you are.");
+        System.exit(0);
     }
 
     public static void striveOn() {

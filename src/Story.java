@@ -56,6 +56,7 @@ public class Story {
     }
     public static void questionPossible(){
         //possible areas include:
+
         //forest
         //deepForest
         //mountains
@@ -63,10 +64,25 @@ public class Story {
         //cave
         //jaggedCoastline
         //JUNGLE
+        // Yuan-ti Fortress
+        // Yuan-ti Dungeon
+
         //needs to have a method  for each area! will not work otherwise
         if (location.equalsIgnoreCase("forest")){
             possibleDestination1 ="deepForest";
-            possibleDestination2 = outOf2("Plains","mountains");
+            possibleDestination2 = outOf2("Plains","Jungle");
+        }
+        if (location.equalsIgnoreCase("Jungle")){
+            possibleDestination1 ="Yuan-ti Fortress";
+            possibleDestination2 = "forest";
+        }
+        if (location.equalsIgnoreCase("Yuan-ti Fortress")){
+            possibleDestination1 ="Yuan-ti Dungeon";
+            possibleDestination2 = "Jungle";
+        }
+        if (location.equalsIgnoreCase("Yuan-ti Dungeon")){
+            possibleDestination1 ="Yuan-ti Fortress";
+            possibleDestination2 = "Jungle";
         }
         if (location.equalsIgnoreCase("deepForest")){
             possibleDestination1 ="forest";

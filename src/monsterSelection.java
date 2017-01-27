@@ -4,10 +4,12 @@ public class monsterSelection {
     private static int beastStats[]= {0,0,0,0,0,0,0,1,1,1,1,0,0};
     private static boolean capital = false;
     private static int monsterCount = 0;
+    private static int roundsHere = 0; //only used in locations with a set enemy
 
 
     public static int[] main (int round){
         if (round%10 == 0 ) {
+            roundsHere = 0;
             Story.refresh(adventurerework.character1.getAttack1(), adventurerework.character1.getAttack2(),
                     adventurerework.character1.getAttack3(), adventurerework.character1.getAttack4(), adventurerework.itemSlot0,
                     adventurerework.itemSlot1, adventurerework.itemSlot2,
@@ -15,6 +17,7 @@ public class monsterSelection {
             //that's the shortest line of code ever!
             Story.setDestination();
         }
+        roundsHere++;
         selection();
         if (capital) {
             System.out.println("\n\nYou have encountered an " + beast + "!");
@@ -40,18 +43,6 @@ public class monsterSelection {
             return second;
     }
     private static void selection() {
-//   standard variables:
-//        beast = "rabid dog";
-//        capital = false;
-//        beastStats[0] = (health value);
-//        beastStats[1] = (maxAttack value);
-//        beastStats[2] = (minAttack value);
-//        beastStats[3] = (accuracy value out of 100); (number needed by the equation accMod*(a number1-100) (lower numbers hit more)
-//        beastStats[4] = (item value);
-//        beastStats[5] = (item drop rate %);
-//        beastStats[6] = (speed value); (positive numbers. unmodded character speed is 60)
-
-
         if (Story.location.equalsIgnoreCase("Forest")) {
             monsterCount = 9;
             int monsterNumber = subSelect();
@@ -167,11 +158,44 @@ public class monsterSelection {
             else if (monsterNumber == 4)
                 selectBigBat();
             else if (monsterNumber == 5)
-                selectBat();
+                selectNaga();
             else if (monsterNumber == 6)
-                selectBat();
+                selectLargeCat();
             else
-                selectGoblin();
+                selectSmallSnake();
+
+        }
+        if (Story.location.equalsIgnoreCase("Yuan-ti Fortress")) {
+
+            monsterCount = 5;
+            int monsterNumber = subSelect();
+            if (monsterNumber == 1)
+                selectYaunTiMalison();
+            else if (monsterNumber == 2)
+                selectYaunTiPureBlood();
+            else if (monsterNumber == 3)
+                selectYaunTiAbonimation();
+            else if (monsterNumber == 4)
+                selectNaga();
+            else
+                selectYaunTiMalison();
+
+        }
+        if (Story.location.equalsIgnoreCase("Yuan-ti Dungeon")) { //set listing
+
+            if (roundsHere ==0) selectYaunTiPureBlood();
+            else if (roundsHere ==1) selectYaunTiMalison();
+            else if (roundsHere ==2) selectNaga();
+            else if (roundsHere ==3) selectYaunTiMalison();
+            else if (roundsHere ==4) selectYaunTiPureBlood();
+            else if (roundsHere ==5) selectYaunTiAbonimation();
+            else if (roundsHere ==6) selectWarlock();
+            else if (roundsHere ==7) selectYaunTiHolyGuard();
+            else if (roundsHere ==8) selectYaunTiHolyGuard();
+            else if (roundsHere ==9){
+                if (SideQuests.merrshaulkRitual()) selectMerrshaulk();
+                else selectMerrshaulkAbomination();
+            }
 
         }
         if (Story.location.equalsIgnoreCase("JaggedCoastline")) {
@@ -193,17 +217,14 @@ public class monsterSelection {
 
 //    public static void selectNAMEHERE(){
 //        beast = "NAME HERE";
-//        capital = false; //if starting letter is a vowel this needs to be true
-//        beastStats[0] = 15; //finish formatting this jared!
-//        beastStats[1] = 10;
-//        beastStats[2] = 5;
-//        beastStats[3] = 20;
-//        beastStats[4] = (2);
-//        beastStats[5] = (30);
-//        beastStats[6] = (70);
-//        beastStats[11] = (5);
-//        beastStats[12] = (0);
-//
+//        capital = false; //if the first letter is a vowel
+//        beastStats[0] = (health value);
+//        beastStats[1] = (maxAttack value);
+//        beastStats[2] = (minAttack value);
+//        beastStats[3] = (accuracy value out of 100); (number needed by the equation accMod*(a number1-100) (lower numbers hit more)
+//        beastStats[4] = (item value);
+//        beastStats[5] = (item drop rate %);
+//        beastStats[6] = (speed value); (positive numbers. not modded character speed is 60)
 //    }
     public static void selectDog(){
         beast = "Rabid Dog";
@@ -219,6 +240,34 @@ public class monsterSelection {
         beastStats[12] = (0);
 
     }
+    public static void selectSmallSnake(){
+        beast = "Lesser Snake";
+        capital = false;
+        beastStats[0] = 25;
+        beastStats[1] = 10;
+        beastStats[2] = 9;
+        beastStats[3] = 16;
+        beastStats[4] = (0);
+        beastStats[5] = (0);
+        beastStats[6] = (70);
+        beastStats[11] = (7);
+        beastStats[12] = (0);
+
+    }
+    public static void selectLargeCat(){
+        beast = "Large Cat";
+        capital = false;
+        beastStats[0] = 36;
+        beastStats[1] = 30;
+        beastStats[2] = 10;
+        beastStats[3] = 38;
+        beastStats[4] = (0);
+        beastStats[5] = (0);
+        beastStats[6] = (79);
+        beastStats[11] = (27);
+        beastStats[12] = (0);
+
+    }
     public static void selectBat(){
         beast = "Small Bat";
         capital = false;
@@ -230,6 +279,20 @@ public class monsterSelection {
         beastStats[5] = (30);
         beastStats[6] = (70);
         beastStats[11] = (5);
+        beastStats[12] = (0);
+
+    }
+    public static void selectNaga(){
+        beast = "Naga";
+        capital = false;
+        beastStats[0] = 40;
+        beastStats[1] = 36;
+        beastStats[2] = 27;
+        beastStats[3] = 37;
+        beastStats[4] = (0);
+        beastStats[5] = (0);
+        beastStats[6] = (48);
+        beastStats[11] = (22);
         beastStats[12] = (0);
 
     }
@@ -401,41 +464,80 @@ public class monsterSelection {
     public static void selectYaunTiMalison(){
         beast = "Yaun-Ti Malison";
         capital = false;
-        beastStats[0] = 10;
-        beastStats[1] = 15;
-        beastStats[2] = 5;
-        beastStats[3] = 25;
+        beastStats[0] = 37;
+        beastStats[1] = 25;
+        beastStats[2] = 17;
+        beastStats[3] = 40;
         beastStats[4] = (0);
         beastStats[5] = (100);
-        beastStats[6] = (35);
-        beastStats[11] = (16);
+        beastStats[6] = (70);
+        beastStats[11] = (19);
         beastStats[12] = (0);
     }
     public static void selectYaunTiAbonimation(){
         beast = "Yaun-Ti Abonimation";
         capital = false;
-        beastStats[0] = 25;
-        beastStats[1] = 25;
+        beastStats[0] = 40;
+        beastStats[1] = 19;
         beastStats[2] = 15;
-        beastStats[3] = 35;
+        beastStats[3] = 30;
         beastStats[4] = (0);
         beastStats[5] = (100);
-        beastStats[6] = (45);
-        beastStats[11] = (16);
+        beastStats[6] = (80);
+        beastStats[11] = (23);
+        beastStats[12] = (0);
+    }
+    public static void selectYaunTiHolyGuard(){
+        beast = "Yaun-Ti Holy Guard";
+        capital = false;
+        beastStats[0] = 47;
+        beastStats[1] = 24;
+        beastStats[2] = 15;
+        beastStats[3] = 30;
+        beastStats[4] = (0);
+        beastStats[5] = (100);
+        beastStats[6] = (69);
+        beastStats[11] = (28);
+        beastStats[12] = (0);
+    }
+    public static void selectMerrshaulk(){
+        beast = "Merrshaulk";
+        capital = false;
+        beastStats[0] = 60;
+        beastStats[1] = 24;
+        beastStats[2] = 15;
+        beastStats[3] = 18;
+        beastStats[4] = (0); //should make boss drop a cool item!
+        beastStats[5] = (100);
+        beastStats[6] = (40);
+        beastStats[11] = (40);
+        beastStats[12] = (0);
+    }
+    public static void selectMerrshaulkAbomination(){
+        beast = "Merrshaulk Abomination";
+        capital = false;
+        beastStats[0] = 4;
+        beastStats[1] = 9;
+        beastStats[2] = 5;
+        beastStats[3] = 70;
+        beastStats[4] = (5);
+        beastStats[5] = (100);
+        beastStats[6] = (10);
+        beastStats[11] = (5);
         beastStats[12] = (0);
     }
     public static void selectYaunTiPureBlood(){
         beast = "Yaun-Ti PureBlood";
         capital = false;
-        beastStats[0] = 5;
-        beastStats[1] = 15;
-        beastStats[2] = 5;
-        beastStats[3] = 50;
-        beastStats[4] = (0);
-        beastStats[5] = (100);
-        beastStats[6] = (35);
+        beastStats[0] = 35;
+        beastStats[1] = 25;
+        beastStats[2] = 16;
+        beastStats[3] = 30;
+        beastStats[4] = (1);
+        beastStats[5] = (15);
+        beastStats[6] = (60);
         beastStats[11] = (16);
-        beastStats[12] = (0);
+        beastStats[12] = (14);
     }
     public static void selectCthulu(){
         beast = "Cthulu";

@@ -173,6 +173,49 @@ public class Shop {
             System.out.println("A tent appears on the horrizon.\nAs you approach a hermit presents you with goods out of the abode.");
             changed = true;
         }
+                if (location.equalsIgnoreCase("Jungle")){
+            possibleItems[0] = 1; //
+            possibleItems[1] = 2; //
+            possibleItems[2] = 2; //
+            possibleItems[3] = 7; //
+            possibleItems[4] = 4; //
+            possibleItems[5] = 3; //
+            possibleItems[6] = 1; //
+            possibleItems[7] = 0; //
+            possibleItems[8] = 0; //
+            possibleItems[9] = 0; //
+            System.out.println("Through the mass of foliage a trading post immerges.\nYou are greeted by an insect like creature and an ork.");
+            changed = true;
+        }
+        if (location.equalsIgnoreCase("Yuan-ti Fortress")){
+            possibleItems[0] = 1; //
+            possibleItems[1] = 1; //
+            possibleItems[2] = 2; //
+            possibleItems[3] = 4; //
+            possibleItems[4] = 4; //
+            possibleItems[5] = 4; //
+            possibleItems[6] = 3; //
+            possibleItems[7] = 0; //
+            possibleItems[8] = 0; //
+            possibleItems[9] = 0; //
+            System.out.println("A seemly relaxed human resides in the fortress. \nHe offers you his wares as you notice his slitted eyes blink friendlily");
+            changed = true;
+        }
+        if (location.equalsIgnoreCase("Yuan-ti Dungeon")){
+            possibleItems[0] = 1; //
+            possibleItems[1] = 1; //
+            possibleItems[2] = 2; //
+            possibleItems[3] = 4; //
+            possibleItems[4] = 4; //
+            possibleItems[5] = 3; //
+            possibleItems[6] = 11; //
+            possibleItems[7] = 12; //
+            possibleItems[8] = 13; //
+            possibleItems[9] = 14; //
+            System.out.println("A Yuan-ti half-blood shifts his slitted eyes to you. \nAggravated, he hisses \"Are you going to buy something or just sit there like all the other pure-bloods?\"");
+            changed = true;
+        }
+
 
         if(!changed){
             System.out.println("\nYou goof! you added an area without adding items to the shop in that area! learn how to code!\nYou didnt add "+location);
