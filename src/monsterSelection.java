@@ -5,6 +5,10 @@ public class monsterSelection {
     private static boolean capital = false;
     private static int monsterCount = 0;
     private static int roundsHere = 0; //only used in locations with a set enemy
+    public static String attack;
+    public static String attack2;
+    public static String attack3;
+
 
 
     public static int[] main (int round){
@@ -225,6 +229,7 @@ public class monsterSelection {
 //        beastStats[4] = (item value);
 //        beastStats[5] = (item drop rate %);
 //        beastStats[6] = (speed value); (positive numbers. not modded character speed is 60)
+//        attack = (name of the enemies attack);
 //    }
     public static void selectDog(){
         beast = "Rabid Dog";
@@ -238,6 +243,8 @@ public class monsterSelection {
         beastStats[6] = (60);
         beastStats[11] = (7);
         beastStats[12] = (0);
+        attack = " uses bite";
+
 
     }
     public static void selectSmallSnake(){
@@ -252,6 +259,7 @@ public class monsterSelection {
         beastStats[6] = (70);
         beastStats[11] = (7);
         beastStats[12] = (0);
+        attack = " uses bite";
 
     }
     public static void selectLargeCat(){
@@ -266,6 +274,8 @@ public class monsterSelection {
         beastStats[6] = (79);
         beastStats[11] = (27);
         beastStats[12] = (0);
+        attack = " uses slash";
+
 
     }
     public static void selectBat(){
@@ -280,6 +290,8 @@ public class monsterSelection {
         beastStats[6] = (70);
         beastStats[11] = (5);
         beastStats[12] = (0);
+        attack = " uses bite";
+
 
     }
     public static void selectNaga(){
@@ -294,7 +306,7 @@ public class monsterSelection {
         beastStats[6] = (48);
         beastStats[11] = (22);
         beastStats[12] = (0);
-
+        attack = " uses bite";
     }
     public static void selectBigBat(){
         beast = "Large Bat";
@@ -308,6 +320,8 @@ public class monsterSelection {
         beastStats[6] = (58);
         beastStats[11] = (13);
         beastStats[12] = (0);
+        attack = " uses heavy bite";
+
 
     }
 
@@ -323,6 +337,7 @@ public class monsterSelection {
         beastStats[6] = (55);
         beastStats[11] = (15);
         beastStats[12] = (7);
+        attack = " uses punch";
 
     }
     public static void selectWarlock(){
@@ -337,6 +352,7 @@ public class monsterSelection {
         beastStats[6] = (56);
         beastStats[11] = (17);
         beastStats[12] = (30);
+        attack = " uses fire blast";
 
     }
     public static void selectSkeleton(){
@@ -351,6 +367,7 @@ public class monsterSelection {
         beastStats[6] = (45);
         beastStats[11] = (17);
         beastStats[12] = (10);
+        attack = " uses bone assault";
 
     }
     public static void selectVampire(){
@@ -365,6 +382,7 @@ public class monsterSelection {
         beastStats[6] = (60);
         beastStats[11] = (19);
         beastStats[12] = (26);
+        attack = " uses leech life";
 
     }
     public static void selectCultist(){
@@ -379,6 +397,7 @@ public class monsterSelection {
         beastStats[6] = (60);
         beastStats[11] = (16);
         beastStats[12] = (24);
+        attack = " uses sacrificial stab";
 
     }
     public static void selectDrunkDwarf(){
@@ -393,6 +412,7 @@ public class monsterSelection {
         beastStats[6] = (30);
         beastStats[11] = (19);
         beastStats[12] = (40);
+        attack = " uses dizzy punch";
 
     }
     public static void selectSpiderling() {
@@ -407,6 +427,7 @@ public class monsterSelection {
         beastStats[6] = (67);
         beastStats[11] = (7);
         beastStats[12] = (0);
+        attack = " uses web bullet";
 
     }
     public static void selectDragon(){
@@ -421,6 +442,7 @@ public class monsterSelection {
         beastStats[6] = (40);
         beastStats[11] = (32);
         beastStats[12] = (0);
+        attack = " uses fire storm";
     }
     public static void selectDemon(){
         beast = "Demon";
@@ -434,6 +456,7 @@ public class monsterSelection {
         beastStats[6] = (30);
         beastStats[11] = (19);
         beastStats[12] = (0);
+        attack = " uses hell fire";
     }
     public static void selectCAngel(){
         beast = "Corrupted Angel";
@@ -447,6 +470,7 @@ public class monsterSelection {
         beastStats[6] = (60);
         beastStats[11] = (19);
         beastStats[12] = (0);
+        attack = " uses holy beam";
     }
     public static void selectLich(){
         beast = "Lich";
@@ -460,6 +484,7 @@ public class monsterSelection {
         beastStats[6] = (35);
         beastStats[11] = (16);
         beastStats[12] = (0);
+        attack = " uses blizzard";
     }
     public static void selectYaunTiMalison(){
         beast = "Yaun-Ti Malison";
@@ -473,6 +498,7 @@ public class monsterSelection {
         beastStats[6] = (70);
         beastStats[11] = (19);
         beastStats[12] = (0);
+        attack = " uses heavy slash";
     }
     public static void selectYaunTiAbonimation(){
         beast = "Yaun-Ti Abonimation";
@@ -486,9 +512,11 @@ public class monsterSelection {
         beastStats[6] = (80);
         beastStats[11] = (23);
         beastStats[12] = (0);
+        attack = " uses heavy slash";
     }
     public static void selectYaunTiHolyGuard(){
         beast = "Yaun-Ti Holy Guard";
+        attack = " uses heavy slash";
         capital = false;
         beastStats[0] = 47;
         beastStats[1] = 24;
@@ -512,6 +540,7 @@ public class monsterSelection {
         beastStats[6] = (40);
         beastStats[11] = (40);
         beastStats[12] = (0);
+        attack = " uses tail stab";
     }
     public static void selectMerrshaulkAbomination(){
         beast = "Merrshaulk Abomination";
@@ -525,6 +554,8 @@ public class monsterSelection {
         beastStats[6] = (10);
         beastStats[11] = (5);
         beastStats[12] = (0);
+        attack = " uses tail stab";
+
     }
     public static void selectYaunTiPureBlood(){
         beast = "Yaun-Ti PureBlood";
@@ -538,6 +569,8 @@ public class monsterSelection {
         beastStats[6] = (60);
         beastStats[11] = (16);
         beastStats[12] = (14);
+        attack = " uses tail stab";
+
     }
     public static void selectCthulu(){
         beast = "Cthulu";
@@ -551,7 +584,11 @@ public class monsterSelection {
         beastStats[6] = (1);
         beastStats[11] = (30);
         beastStats[12] = (0);
+        attack = " uses tentacle genocide";
+
     }
+
+
 }
 //        beastStats[0] = (health value);
 //        beastStats[1] = (maxAttack value);

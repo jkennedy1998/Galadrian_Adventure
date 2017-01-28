@@ -505,7 +505,7 @@ public class adventurerework {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 questionArmorBreak(tempMAttack2);
                 character1.setHealth(-tempMAttack2);
-                System.out.println(tempBeastName + " attacks for " + tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
+                System.out.println(tempBeastName + monsterSelection.attack + " it does "+ tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
             }
             if (character1.getHealth() <= 0) {
                 character1.permHealth(0);
