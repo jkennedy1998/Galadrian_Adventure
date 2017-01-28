@@ -99,7 +99,7 @@ public class SideQuests {
     //area for specific quests. (like bosses!)
     public static boolean merrshaulkRitual(){ //true summons merrshaulk correctly, false distrupts summoning and ruins the process leaving merrshaulk a mass of flesh.
         System.out.println("\nYou fight your way past the royal guards and see a dim magenta light down the hallway." +
-                "\nWalking closer you hear the screech inbetween anguish and rage." +
+                "\nWalking closer you hear the screech in between anguish and rage." +
                 "\nAs you round the corner a summoning ritual is brought into sight." +
                 "\nThe ritual is almost complete");
         if (itemCheck(15)){
