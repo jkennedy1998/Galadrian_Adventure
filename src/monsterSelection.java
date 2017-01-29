@@ -1,17 +1,14 @@
 
 public class monsterSelection {
     private static String beast;
-    private static int beastStats[]= {0,0,0,0,0,0,0,1,1,1,1,0,0};
+    private static String beastStats[]= {"","","","","","","","1","1","1","1","",""};
     private static boolean capital = false;
     private static int monsterCount = 0;
     private static int roundsHere = 0; //only used in locations with a set enemy
-    public static String attack;
-    public static String attack2;
-    public static String attack3;
 
 
 
-    public static int[] main (int round){
+    public static String[] main (int round){
         if (round%10 == 0 ) {
             roundsHere = 0;
             Story.refresh(adventurerework.character1.getAttack1(), adventurerework.character1.getAttack2(),
@@ -31,10 +28,10 @@ public class monsterSelection {
 
         for (int pointsToGive = round; pointsToGive>0; pointsToGive--){ //this scales monsters per how many
             int rand = (int)Math.ceil(Math.random()*4);
-            if (rand == 1)  beastStats[7]+=.05;
-            if (rand == 2)  beastStats[8]+=.05;
-            if (rand == 3)  beastStats[9]+=.05;
-            if (rand == 4)  beastStats[10]+=.05;
+            if (rand == 1)  beastStats[7] ="" + (Double.parseDouble(beastStats[7])+.05);
+            if (rand == 2)  beastStats[8] ="" + (Double.parseDouble(beastStats[8])+.05);
+            if (rand == 3)  beastStats[9] ="" + (Double.parseDouble(beastStats[9])+.05);
+            if (rand == 4)  beastStats[10] ="" + (Double.parseDouble(beastStats[10])+.05);
         }
         beastNameGen.main(beast);
         return beastStats;
@@ -223,9 +220,9 @@ public class monsterSelection {
 //        beast = "NAME HERE";
 //        capital = false; //if the first letter is a vowel
 //        beastStats[0] = (health value);
-//        beastStats[1] = (maxAttack value);
-//        beastStats[2] = (minAttack value);
-//        beastStats[3] = (accuracy value out of 100); (number needed by the equation accMod*(a number1-100) (lower numbers hit more)
+//        beastStats[1] = (attack 1 name);
+//        beastStats[2] = (attack 1 name);
+//        beastStats[3] = (attack 1 name);
 //        beastStats[4] = (item value);
 //        beastStats[5] = (item drop rate %);
 //        beastStats[6] = (speed value); (positive numbers. not modded character speed is 60)
@@ -234,93 +231,87 @@ public class monsterSelection {
     public static void selectDog(){
         beast = "Rabid Dog";
         capital = false;
-        beastStats[0] = 25;
-        beastStats[1] = 15;
-        beastStats[2] = 10;
-        beastStats[3] = 60;
-        beastStats[4] = (0);
-        beastStats[5] = (0);
-        beastStats[6] = (60);
-        beastStats[11] = (7);
-        beastStats[12] = (0);
-        attack = " uses bite";
+        beastStats[0] = ""+25;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(0);
+        beastStats[6] = ""+(60);
+        beastStats[11] = ""+(7);
+        beastStats[12] = ""+(0);
 
 
     }
     public static void selectSmallSnake(){
         beast = "Lesser Snake";
         capital = false;
-        beastStats[0] = 25;
-        beastStats[1] = 10;
-        beastStats[2] = 9;
-        beastStats[3] = 16;
-        beastStats[4] = (0);
-        beastStats[5] = (0);
-        beastStats[6] = (70);
-        beastStats[11] = (7);
-        beastStats[12] = (0);
-        attack = " uses bite";
+        beastStats[0] = ""+25;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(0);
+        beastStats[6] = ""+(70);
+        beastStats[11] = ""+(7);
+        beastStats[12] = ""+(0);
 
     }
     public static void selectLargeCat(){
         beast = "Large Cat";
         capital = false;
-        beastStats[0] = 36;
-        beastStats[1] = 30;
-        beastStats[2] = 10;
-        beastStats[3] = 38;
-        beastStats[4] = (0);
-        beastStats[5] = (0);
-        beastStats[6] = (79);
-        beastStats[11] = (27);
-        beastStats[12] = (0);
-        attack = " uses slash";
+        beastStats[0] = ""+36;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(0);
+        beastStats[6] = ""+(79);
+        beastStats[11] = ""+(27);
+        beastStats[12] = ""+(0);
 
 
     }
     public static void selectBat(){
         beast = "Small Bat";
         capital = false;
-        beastStats[0] = 15;
-        beastStats[1] = 10;
-        beastStats[2] = 5;
-        beastStats[3] = 20;
-        beastStats[4] = (2);
-        beastStats[5] = (30);
-        beastStats[6] = (70);
-        beastStats[11] = (5);
-        beastStats[12] = (0);
-        attack = " uses bite";
+        beastStats[0] = ""+15;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(2);
+        beastStats[5] = ""+(30);
+        beastStats[6] = ""+(70);
+        beastStats[11] = ""+(5);
+        beastStats[12] = ""+(0);
 
 
     }
     public static void selectNaga(){
         beast = "Naga";
         capital = false;
-        beastStats[0] = 40;
-        beastStats[1] = 36;
-        beastStats[2] = 27;
-        beastStats[3] = 37;
-        beastStats[4] = (0);
-        beastStats[5] = (0);
-        beastStats[6] = (48);
-        beastStats[11] = (22);
-        beastStats[12] = (0);
-        attack = " uses bite";
+        beastStats[0] = ""+40;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(0);
+        beastStats[6] = ""+(48);
+        beastStats[11] = ""+(22);
+        beastStats[12] = ""+(0);
     }
     public static void selectBigBat(){
         beast = "Large Bat";
         capital = false;
-        beastStats[0] = 38;
-        beastStats[1] = 28;
-        beastStats[2] = 25;
-        beastStats[3] = 20;
-        beastStats[4] = (2);
-        beastStats[5] = (40);
-        beastStats[6] = (58);
-        beastStats[11] = (13);
-        beastStats[12] = (0);
-        attack = " uses heavy bite";
+        beastStats[0] = ""+38;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(2);
+        beastStats[5] = ""+(40);
+        beastStats[6] = ""+(58);
+        beastStats[11] = ""+(13);
+        beastStats[12] = ""+(0);
 
 
     }
@@ -328,263 +319,244 @@ public class monsterSelection {
     public static void selectGoblin(){
         beast = "Goblin";
         capital = false;
-        beastStats[0] = 20;
-        beastStats[1] = 20;
-        beastStats[2] = 17;
-        beastStats[3] = 50;
-        beastStats[4] = (7);
-        beastStats[5] = (50);
-        beastStats[6] = (55);
-        beastStats[11] = (15);
-        beastStats[12] = (7);
-        attack = " uses punch";
+        beastStats[0] = ""+20;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(7);
+        beastStats[5] = ""+(50);
+        beastStats[6] = ""+(55);
+        beastStats[11] = ""+(15);
+        beastStats[12] = ""+(7);
 
     }
     public static void selectWarlock(){
         beast = "Warlock";
         capital = false;
-        beastStats[0] = 20;
-        beastStats[1] = 40;
-        beastStats[2] = 20;
-        beastStats[3] = 25;
-        beastStats[4] = (outOfTwo(1,3));
-        beastStats[5] = (40);
-        beastStats[6] = (56);
-        beastStats[11] = (17);
-        beastStats[12] = (30);
-        attack = " uses fire blast";
+        beastStats[0] = ""+20;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(outOfTwo(1,3));
+        beastStats[5] = ""+(40);
+        beastStats[6] = ""+(56);
+        beastStats[11] = ""+(17);
+        beastStats[12] = ""+(30);
 
     }
     public static void selectSkeleton(){
         beast = "Skeleton";
         capital = false;
-        beastStats[0] = 15;
-        beastStats[1] = 12;
-        beastStats[2] = 3;
-        beastStats[3] = 35;
-        beastStats[4] = (10);
-        beastStats[5] = (20);
-        beastStats[6] = (45);
-        beastStats[11] = (17);
-        beastStats[12] = (10);
-        attack = " uses bone assault";
+        beastStats[0] = ""+15;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(10);
+        beastStats[5] = ""+(20);
+        beastStats[6] = ""+(45);
+        beastStats[11] = ""+(17);
+        beastStats[12] = ""+(10);
 
     }
     public static void selectVampire(){
         beast = "Vampire";
         capital = false;
-        beastStats[0] = 40;
-        beastStats[1] = 35;
-        beastStats[2] = 20;
-        beastStats[3] = 35;
-        beastStats[4] = (5);
-        beastStats[5] = (40);
-        beastStats[6] = (60);
-        beastStats[11] = (19);
-        beastStats[12] = (26);
-        attack = " uses leech life";
+        beastStats[0] = ""+40;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(5);
+        beastStats[5] = ""+(40);
+        beastStats[6] = ""+(60);
+        beastStats[11] = ""+(19);
+        beastStats[12] = ""+(26);
 
     }
     public static void selectCultist(){
         beast = "Cultist";
         capital = false;
-        beastStats[0] = 20;
-        beastStats[1] = 20;
-        beastStats[2] = 9;
-        beastStats[3] = 35;
-        beastStats[4] = (3);
-        beastStats[5] = (50);
-        beastStats[6] = (60);
-        beastStats[11] = (16);
-        beastStats[12] = (24);
-        attack = " uses sacrificial stab";
+        beastStats[0] = ""+20;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(3);
+        beastStats[5] = ""+(50);
+        beastStats[6] = ""+(60);
+        beastStats[11] = ""+(16);
+        beastStats[12] = ""+(24);
 
     }
     public static void selectDrunkDwarf(){
         beast = "Drunk Dwarf";
         capital = false;
-        beastStats[0] = 35;
-        beastStats[1] = 40;
-        beastStats[2] = 30;
-        beastStats[3] = 70;
-        beastStats[4] = (outOfTwo(4,10));
-        beastStats[5] = (95);
-        beastStats[6] = (30);
-        beastStats[11] = (19);
-        beastStats[12] = (40);
-        attack = " uses dizzy punch";
+        beastStats[0] = ""+35;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(outOfTwo(4,10));
+        beastStats[5] = ""+(95);
+        beastStats[6] = ""+(30);
+        beastStats[11] = ""+(19);
+        beastStats[12] = ""+(40);
 
     }
     public static void selectSpiderling() {
         beast = "Spiderling";
         capital = false;
-        beastStats[0] = 10;
-        beastStats[1] = 18;
-        beastStats[2] = 10;
-        beastStats[3] = 28;
-        beastStats[4] = (2);
-        beastStats[5] = (70);
-        beastStats[6] = (67);
-        beastStats[11] = (7);
-        beastStats[12] = (0);
-        attack = " uses web bullet";
+        beastStats[0] = ""+10;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(2);
+        beastStats[5] = ""+(70);
+        beastStats[6] = ""+(67);
+        beastStats[11] = ""+(7);
+        beastStats[12] = ""+(0);
 
     }
     public static void selectDragon(){
         beast = "Dragon";
         capital = false;
-        beastStats[0] = 40;
-        beastStats[1] = 45;
-        beastStats[2] = 20;
-        beastStats[3] = 34;
-        beastStats[4] = (0);
-        beastStats[5] = (0);
-        beastStats[6] = (40);
-        beastStats[11] = (32);
-        beastStats[12] = (0);
-        attack = " uses fire storm";
+        beastStats[0] = ""+40;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(0);
+        beastStats[6] = ""+(40);
+        beastStats[11] = ""+(32);
+        beastStats[12] = ""+(0);
     }
     public static void selectDemon(){
         beast = "Demon";
         capital = false;
-        beastStats[0] = 35;
-        beastStats[1] = 45;
-        beastStats[2] = 35;
-        beastStats[3] = 20;
-        beastStats[4] = (0);
-        beastStats[5] = (0);
-        beastStats[6] = (30);
-        beastStats[11] = (19);
-        beastStats[12] = (0);
-        attack = " uses hell fire";
+        beastStats[0] = ""+35;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(0);
+        beastStats[6] = ""+(30);
+        beastStats[11] = ""+(19);
+        beastStats[12] = ""+(0);
     }
     public static void selectCAngel(){
         beast = "Corrupted Angel";
         capital = true;
-        beastStats[0] = 50;
-        beastStats[1] = 50;
-        beastStats[2] = 25;
-        beastStats[3] = 25;
-        beastStats[4] = (0);
-        beastStats[5] = (0);
-        beastStats[6] = (60);
-        beastStats[11] = (19);
-        beastStats[12] = (0);
-        attack = " uses holy beam";
+        beastStats[0] = ""+50;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(0);
+        beastStats[6] = ""+(60);
+        beastStats[11] = ""+(19);
+        beastStats[12] = ""+(0);
     }
     public static void selectLich(){
         beast = "Lich";
         capital = false;
-        beastStats[0] = 35;
-        beastStats[1] = 30;
-        beastStats[2] = 25;
-        beastStats[3] = 25;
-        beastStats[4] = (0);
-        beastStats[5] = (100);
-        beastStats[6] = (35);
-        beastStats[11] = (16);
-        beastStats[12] = (0);
-        attack = " uses blizzard";
+        beastStats[0] = ""+35;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(100);
+        beastStats[6] = ""+(35);
+        beastStats[11] = ""+(16);
+        beastStats[12] = ""+(0);
     }
     public static void selectYaunTiMalison(){
         beast = "Yaun-Ti Malison";
         capital = false;
-        beastStats[0] = 37;
-        beastStats[1] = 25;
-        beastStats[2] = 17;
-        beastStats[3] = 40;
-        beastStats[4] = (0);
-        beastStats[5] = (100);
-        beastStats[6] = (70);
-        beastStats[11] = (19);
-        beastStats[12] = (0);
-        attack = " uses heavy slash";
+        beastStats[0] = ""+37;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(100);
+        beastStats[6] = ""+(70);
+        beastStats[11] = ""+(19);
+        beastStats[12] = ""+(0);
     }
     public static void selectYaunTiAbonimation(){
         beast = "Yaun-Ti Abonimation";
         capital = false;
-        beastStats[0] = 40;
-        beastStats[1] = 19;
-        beastStats[2] = 15;
-        beastStats[3] = 30;
-        beastStats[4] = (0);
-        beastStats[5] = (100);
-        beastStats[6] = (80);
-        beastStats[11] = (23);
-        beastStats[12] = (0);
-        attack = " uses heavy slash";
+        beastStats[0] = ""+40;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(100);
+        beastStats[6] = ""+(80);
+        beastStats[11] = ""+(23);
+        beastStats[12] = ""+(0);
     }
     public static void selectYaunTiHolyGuard(){
         beast = "Yaun-Ti Holy Guard";
-        attack = " uses heavy slash";
         capital = false;
-        beastStats[0] = 47;
-        beastStats[1] = 24;
-        beastStats[2] = 15;
-        beastStats[3] = 30;
-        beastStats[4] = (0);
-        beastStats[5] = (100);
-        beastStats[6] = (69);
-        beastStats[11] = (28);
-        beastStats[12] = (0);
+        beastStats[0] = ""+47;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(100);
+        beastStats[6] = ""+(69);
+        beastStats[11] = ""+(28);
+        beastStats[12] = ""+(0);
     }
     public static void selectMerrshaulk(){
         beast = "Merrshaulk";
         capital = false;
-        beastStats[0] = 60;
-        beastStats[1] = 24;
-        beastStats[2] = 15;
-        beastStats[3] = 18;
-        beastStats[4] = (0); //should make boss drop a cool item!
-        beastStats[5] = (100);
-        beastStats[6] = (40);
-        beastStats[11] = (40);
-        beastStats[12] = (0);
-        attack = " uses tail stab";
+        beastStats[0] = ""+60;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0); //should make boss drop a cool item!
+        beastStats[5] = ""+(100);
+        beastStats[6] = ""+(40);
+        beastStats[11] = ""+(40);
+        beastStats[12] = ""+(0);
     }
     public static void selectMerrshaulkAbomination(){
         beast = "Merrshaulk Abomination";
         capital = false;
-        beastStats[0] = 4;
-        beastStats[1] = 9;
-        beastStats[2] = 5;
-        beastStats[3] = 70;
-        beastStats[4] = (5);
-        beastStats[5] = (100);
-        beastStats[6] = (10);
-        beastStats[11] = (5);
-        beastStats[12] = (0);
-        attack = " uses tail stab";
+        beastStats[0] = ""+4;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(5);
+        beastStats[5] = ""+(100);
+        beastStats[6] = ""+(10);
+        beastStats[11] = ""+(5);
+        beastStats[12] = ""+(0);
 
     }
     public static void selectYaunTiPureBlood(){
         beast = "Yaun-Ti PureBlood";
         capital = false;
-        beastStats[0] = 35;
-        beastStats[1] = 25;
-        beastStats[2] = 16;
-        beastStats[3] = 30;
-        beastStats[4] = (1);
-        beastStats[5] = (15);
-        beastStats[6] = (60);
-        beastStats[11] = (16);
-        beastStats[12] = (14);
-        attack = " uses tail stab";
-
+        beastStats[0] = ""+35;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(1);
+        beastStats[5] = ""+(15);
+        beastStats[6] = ""+(60);
+        beastStats[11] = ""+(16);
+        beastStats[12] = ""+(14);
     }
     public static void selectCthulu(){
         beast = "Cthulu";
         capital = false;
-        beastStats[0] = 100;
-        beastStats[1] = 100;
-        beastStats[2] = 95;
-        beastStats[3] = 10;
-        beastStats[4] = (0);
-        beastStats[5] = (100);
-        beastStats[6] = (1);
-        beastStats[11] = (30);
-        beastStats[12] = (0);
-        attack = " uses tentacle genocide";
+        beastStats[0] = ""+100;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "bite";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(100);
+        beastStats[6] = ""+(1);
+        beastStats[11] = ""+(30);
+        beastStats[12] = ""+(0);
 
     }
 

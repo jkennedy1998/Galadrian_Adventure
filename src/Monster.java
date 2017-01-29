@@ -1,18 +1,19 @@
 
 public class Monster {
     private int health;
-    private int maxHit, minHit, accuracy;
+    private String attack1, attack2, attack3;
     private int[] itemDrop = {0,0};
     private double accuracyMult,defenceMult,damageMult,speedMult;
     private double speed;
     private String name = "";
+    public String attack = "";
 
-    public Monster(int h, int max, int min, int acc, int item, int dropRate, double spd, double daM,double spM, double acM, double deM)
+    public Monster(int h, String at1, String at2, String at3, int item, int dropRate, double spd, double daM,double spM, double acM, double deM)
     {
         health = h;
-        maxHit = max;
-        minHit = min;
-        accuracy = acc;
+        attack1 = at1;
+        attack2 = at2;
+        attack3 = at3;
         itemDrop[0] = item;
         itemDrop[1] = dropRate;
         speed = spd;
@@ -33,8 +34,14 @@ public class Monster {
     }
 
     public String calculateHit(int armor) { //armor of person he is attacking
-        if (accuracy <= Math.round(Math.random() * 100 * accuracyMult)) {
-            double temp = (damageMult*(Math.random()*(maxHit-minHit)+minHit))/3;
+        int tempA = (int)Math.round(Math.random()*2);
+        if (tempA==0)  attack = attack1;
+        else if (tempA==1)  attack = attack2;
+        else  attack = attack3;
+
+        int[] attackData = attackDatabase.getAttackData(attack);
+        if (attackData[2] <= Math.round(Math.random() * 100 * accuracyMult)) {
+            double temp = (damageMult*(Math.random()*(attackData[1]-attackData[0])+attackData[0]))/3;
             if (armor<=100)
                 temp += (temp * 2) - (temp * 2 * ((double)armor / 100));
             temp = Math.round(temp);

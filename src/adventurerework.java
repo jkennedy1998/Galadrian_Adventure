@@ -159,7 +159,7 @@ public class adventurerework {
     }
 
     private static void startEncounter() {
-        int beastStats[], beastStatsSolid[];
+        String beastStats[], beastStatsSolid[];
         beastStatsSolid = monsterSelection.main(roundCount);
         beastStats = beastStatsSolid;
         boolean lifeStatus = true;
@@ -171,10 +171,10 @@ public class adventurerework {
         int monsterEffect = 0;
         int playerEffect = 0;
         do {
-            if (character1.getSpeed() * character1.getSpeedMultiplier() >= beastStats[6]) {
+            if (character1.getSpeed() * character1.getSpeedMultiplier() >= Integer.parseInt(beastStats[6])) {
                 String[] tempData = playerTurn();
                 if (tempData[0].equalsIgnoreCase("A")) {
-                    beastStats[0] -= Integer.parseInt(tempData[1]);
+                    beastStats[0] = "" + (Integer.parseInt(beastStats[0]) - Integer.parseInt(tempData[1]));
 
                     if (Integer.parseInt(tempData[2]) != 0) { //for effect 1
                         if (Integer.parseInt(tempData[3]) == 1) { //self on
@@ -250,14 +250,14 @@ public class adventurerework {
 
                 }
                 System.out.println("the current health of " + tempBeastName + " is at " + (beastStats[0]));
-                if (beastStats[0] > 0) {
+                if (Integer.parseInt(beastStats[0]) > 0) {
                     monsterTurn(beastStats, lifeStatus);
                 }
             } else {
                 monsterTurn(beastStats, lifeStatus);
                 String[] tempData = playerTurn();
                 if (tempData[0].equalsIgnoreCase("A")) {
-                    beastStats[0] -= Integer.parseInt(tempData[1]);
+                    beastStats[0] = "" + (Integer.parseInt(beastStats[0]) - Integer.parseInt(tempData[1]));
 
                     if (Integer.parseInt(tempData[2]) != 0) { //for effect 1
                         if (Integer.parseInt(tempData[3]) == 1) { //self on
@@ -436,17 +436,17 @@ public class adventurerework {
                             }
                         }
                     } else {
-                        playerMultipliersChanged = false;
-                        beastStats[7] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
-                        beastStats[8] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
-                        beastStats[10] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
-                        beastStats[9] -= Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
+                        monsterMultipliersChanged = false;
+                        beastStats[7] = ""+(Double.parseDouble(beastStats[7]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]));
+                        beastStats[8] = ""+(Double.parseDouble(beastStats[8]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]));
+                        beastStats[10] = ""+(Double.parseDouble(beastStats[10]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]));
+                        beastStats[9] = ""+(Double.parseDouble(beastStats[9]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]));
                     }
                 }
                 turn++;
                 time += (Math.random()/6);
             }
-        }while (character1.getHealth() > 0 && beastStats[0] > 0) ;
+        }while (character1.getHealth() > 0 && Integer.parseInt(beastStats[0]) > 0) ;
             if (character1.getHealth() <= 0)
                 adventurerework.death();
 
@@ -454,7 +454,7 @@ public class adventurerework {
         endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
         lifeStatus = false;
         if (monsterTurn(beastStats, lifeStatus) != 0) {
-            endEncounterDialog += getItem(beastStats[4]);
+            endEncounterDialog += getItem (Integer.parseInt(beastStats[4]));
         }
         if ((character1.getHealth() < character1.getMaxHealth()) && (roundCount % 5 == 0)) {
             int tempHealth = (int) (Math.round(Math.random() * 20));
@@ -473,8 +473,8 @@ public class adventurerework {
         else
             System.out.println((int)temp+" hours have passed.");
         System.out.println("it appears to be around "+(int)(time+1)+".");
-        character1.setExp(beastStats[11]);
-        int tempCoins= (int)Math.round(Math.random()*beastStats[12]);
+        character1.setExp(Integer.parseInt(beastStats[11]));
+        int tempCoins= (int)Math.round(Math.random()*Integer.parseInt(beastStats[12]));
         if (tempCoins>0)
             System.out.println("You have looted "+ tempBeastName + " for "+tempCoins+" coins!");
         coins+=tempCoins;
@@ -484,7 +484,7 @@ public class adventurerework {
                 System.out.println("");
                 SideQuests.selectSidequest();
         }
-        if(roundCount-lastRoundInShop>10&&Math.random()>.4){//60 percent chance for shop encounter if you havent seen a shop in 5 rounds
+        if(roundCount-lastRoundInShop>10&&Math.random()>.4){//60 percent chance for shop encounter if you haven't seen a shop in 5 rounds
         Shop.start();
             lastRoundInShop = roundCount;
         }
@@ -492,10 +492,10 @@ public class adventurerework {
         }
 
 
-    private static int monsterTurn(int[] beastStats, boolean lifeStatus) {
+    private static int monsterTurn(String[] beastStats, boolean lifeStatus) {
 
 
-        Monster monsterRefresh = new Monster(beastStats[0], beastStats[1], beastStats[2], beastStats[3], beastStats[4], beastStats[5], beastStats[6], beastStats[7], beastStats[8], beastStats[9], beastStats[10]);
+        Monster monsterRefresh = new Monster(Integer.parseInt(beastStats[0]), beastStats[1], beastStats[2], beastStats[3], Integer.parseInt(beastStats[4]), Integer.parseInt(beastStats[5]), Integer.parseInt(beastStats[6]), Double.parseDouble(beastStats[7]), Double.parseDouble(beastStats[8]), Double.parseDouble(beastStats[9]), Double.parseDouble(beastStats[10]));
         if (lifeStatus) {
             System.out.println(tempBeastName + " attacks!");
             String tempMAttack = monsterRefresh.calculateHit(getArmorStats());
@@ -503,15 +503,16 @@ public class adventurerework {
                 System.out.println(tempBeastName + " has missed!");
             } else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
-                questionArmorBreak(tempMAttack2);
                 character1.setHealth(-tempMAttack2);
-                System.out.println(tempBeastName + monsterSelection.attack + " it does "+ tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
+                System.out.println(tempBeastName + monsterRefresh.attack + " it does "+ tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
+                questionArmorBreak(tempMAttack2);
+
             }
             if (character1.getHealth() <= 0) {
                 character1.permHealth(0);
                 adventurerework.death();
             }
-        } else return monsterRefresh.questionItem(beastStats[4],beastStats[5]);
+        } else return monsterRefresh.questionItem(Integer.parseInt(beastStats[4]),Integer.parseInt(beastStats[5]));
         return 5318008; //returns but does nothing. such savagery
     }
 
