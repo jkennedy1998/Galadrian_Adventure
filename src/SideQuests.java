@@ -62,12 +62,12 @@ public class SideQuests {
 
     //area for common quests.
     public static void receiveHealthPotion() {
-        System.out.print("You find an unopened health potion in the cold hands of a late adventurer.");
+        System.out.println("You find an unopened health potion in the cold hands of a late adventurer.");
         System.out.println(adventurerework.getItem(1));
     }
 
     public static void receivePoison() {
-        System.out.print("You find an open bottle of poison in the cold hands of a late adventurer.");
+        System.out.println("You find an open bottle of poison in the cold hands of a late adventurer.");
         System.out.println(adventurerework.getItem(2));
     }
 

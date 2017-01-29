@@ -504,7 +504,7 @@ public class adventurerework {
             } else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 character1.setHealth(-tempMAttack2);
-                System.out.println(tempBeastName + monsterRefresh.attack + " it does "+ tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
+                System.out.println(tempBeastName +" uses "+ monsterRefresh.attack + " \nIt does "+ tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
                 questionArmorBreak(tempMAttack2);
 
             }
@@ -633,27 +633,27 @@ private  static int getArmorStats(){
 }
 private static void questionArmorBreak(int attack){
     boolean questionChange = false;
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[0]!=0) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[0]!=0&&Math.random()>.5) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[0])[0]+" has broken from incoming damage!");
         armor[0] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[1]!=0) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[1]!=0&&Math.random()>.5) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[1])[0]+" has broken from incoming damage!");
         armor[1] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[2]!=0) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[2]!=0&&Math.random()>.5) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[2])[0]+" has broken from incoming damage!");
         armor[2] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[3]!=0) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[3]!=0&&Math.random()>.5) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[3])[0]+" has broken from incoming damage!");
         armor[3] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[4]!=0) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[4]!=0&&Math.random()>.5) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[4])[0]+" has broken from incoming damage!");
         armor[4] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[5]!=0) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[5]!=0&&Math.random()>.5) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[5])[0]+" has broken from incoming damage!");
         armor[5] = 0;
         questionChange = true;}
