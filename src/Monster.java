@@ -34,10 +34,14 @@ public class Monster {
     }
 
     public String calculateHit(int armor) { //armor of person he is attacking
-        int tempA = (int)Math.round(Math.random()*2);
-        if (tempA==0)  attack = attack1;
-        else if (tempA==1)  attack = attack2;
-        else  attack = attack3;
+
+            int tempA = (int) Math.round(Math.random() * 2);
+
+            if (tempA == 0) attack = attack1;
+            else if (tempA == 1) attack = attack2;
+            else attack = attack3;
+
+
 
         int[] attackData = attackDatabase.getAttackData(attack);
         if (attackData[2] <= Math.round(Math.random() * 100 * accuracyMult)) {

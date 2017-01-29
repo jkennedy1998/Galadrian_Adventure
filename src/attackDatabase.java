@@ -37,6 +37,26 @@ class attackDatabase {
             return attackData;}
         if (attack.equalsIgnoreCase("Bite")) {bite();
             return attackData;}
+        if (attack.equalsIgnoreCase("Maul")) {maul();
+            return attackData;}
+        if (attack.equalsIgnoreCase("claw swipe")) {clawSwipe();
+            return attackData;}
+        if (attack.equalsIgnoreCase("tail sweep")) {tailSweep();
+            return attackData;}
+        if (attack.equalsIgnoreCase("bombard")) {bombard();
+            return attackData;}
+        if (attack.equalsIgnoreCase("fang peirce")) {fangPeirce();
+            return attackData;}
+        if (attack.equalsIgnoreCase("club")) {club();
+            return attackData;}
+        if (attack.equalsIgnoreCase("skull toss")) {skullToss();
+            return attackData;}
+        if (attack.equalsIgnoreCase("stoneToss")) {stoneToss();
+            return attackData;}
+        if (attack.equalsIgnoreCase("sting")) {sting();
+            return attackData;}
+        if (attack.equalsIgnoreCase("suffer")) {suffer();
+            return attackData;}
         return emptyData;
     }
 //      This is the formatting
@@ -181,6 +201,96 @@ class attackDatabase {
         attackData[0] = 14;
         attackData[1] = 15;
         attackData[2] = 5;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void maul(){ //certain hit, moderate damage
+        attackData[0] = 15;
+        attackData[1] = 25;
+        attackData[2] = 7;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void clawSwipe(){ //moderate accuracy, moderate damage
+        attackData[0] = 15;
+        attackData[1] = 28;
+        attackData[2] = 35;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void bombard(){ //eh accuracy, uncertain damage
+        attackData[0] = 2;
+        attackData[1] = 40;
+        attackData[2] = 38;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void tailSweep(){ //lowish accuracy, eh damage
+        attackData[0] = 15;
+        attackData[1] = 23;
+        attackData[2] = 45;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void fangPeirce(){ //good accuracy, moderate damage
+        attackData[0] = 19;
+        attackData[1] = 25;
+        attackData[2] = 17;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void club(){ //moderate accuracy, moderate damage
+        attackData[0] = 19;
+        attackData[1] = 27;
+        attackData[2] = 37;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void skullToss(){ //good accuracy, lacking damage, mildly funny
+        attackData[0] = 14;
+        attackData[1] = 15;
+        attackData[2] = 20;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void stoneToss(){ //good accuracy, better damage, less funny
+        attackData[0] = 21;
+        attackData[1] = 27;
+        attackData[2] = 20;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void sting(){ //moderate accuracy, moderate low damage
+        attackData[0] = 14;
+        attackData[1] = 27;
+        attackData[2] = 30;
+        attackData[3] = 0;
+        attackData[4] = 0;
+        attackData[5] = 0;
+        attackData[6] = 0;
+    }
+    private static void suffer(){ //always missed. enemy does this only when we want it to. (like when mershauk is turned into an abomination)
+        attackData[0] = 0;
+        attackData[1] = 0;
+        attackData[2] = 100;
         attackData[3] = 0;
         attackData[4] = 0;
         attackData[5] = 0;
