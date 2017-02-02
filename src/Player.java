@@ -22,15 +22,15 @@ public class Player {
     }
     public String[] PlayerItem() {
         String ItemReturn[] = {"0", "0", "0", "0", "10", "0", "0", "0"};
-        String Item1[] = ItemDirectory.findItemValues(adventure.itemSlot0);
+        String Item1[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[0]);
         String item1 = Item1[0];
-        String Item2[] = ItemDirectory.findItemValues(adventure.itemSlot1);
+        String Item2[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[1]);
         String item2 = Item2[0];
-        String Item3[] = ItemDirectory.findItemValues(adventure.itemSlot2);
+        String Item3[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[2]);
         String item3 = Item3[0];
-        String Item4[] = ItemDirectory.findItemValues(adventure.itemSlot3);
+        String Item4[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[3]);
         String item4 = Item4[0];
-        String Item5[] = ItemDirectory.findItemValues(adventure.itemSlot4);
+        String Item5[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[4]);
         String item5 = Item5[0];
 
         String[] buttons = {item1, item2, item3, item4, item5};
@@ -38,30 +38,16 @@ public class Player {
 
         int choice = JOptionPane.showOptionDialog(null, "\nWhich item would you like to use?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-
-        if (choice == 0) {
-
-            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot0);
-            adventure.itemSlot0=0;
-        }
-        else if (choice == 1) {
-            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot1);
-            adventure.itemSlot1=0;
-        }
-        else if (choice == 2) {
-            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot2);
-            adventure.itemSlot2=0;
-        }
-        else if (choice == 3) {
-            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot3);
-            adventure.itemSlot3=0;
-        }
-        else if (choice == 4) {
-            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot4);
-            adventure.itemSlot4=0;
+        boolean temp = true;
+        for (int x = 0; x<5; x++) {
+            if (choice == x) {
+                ItemReturn = ItemDirectory.findItemValues(adventure.inventory.itemStorage[x]);
+                adventure.inventory.updateItemUse(x);
+                temp = false;
+            }
         }
 
-        else PlayerAttack(tempDialogStored);
+        if (temp) PlayerAttack(tempDialogStored);
         return ItemReturn;
     }
 

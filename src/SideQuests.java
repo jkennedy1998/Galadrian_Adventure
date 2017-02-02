@@ -48,16 +48,20 @@ public class SideQuests {
         }
     }
     public static boolean itemCheck(int itemNumber){
-        if (adventure.itemSlot0==itemNumber|| adventure.itemSlot1 ==itemNumber || adventure.itemSlot2 == itemNumber|| adventure.itemSlot3 == itemNumber|| adventure.itemSlot4 ==itemNumber)
+        if (adventure.inventory.itemStorage[0]==itemNumber
+                || adventure.inventory.itemStorage[1] ==itemNumber
+                || adventure.inventory.itemStorage[2] == itemNumber
+                || adventure.inventory.itemStorage[3] == itemNumber
+                || adventure.inventory.itemStorage[4] ==itemNumber)
             return true;
         return false;
     }
     public static void itemVoid(int itemNumber){
-        if (adventure.itemSlot0==itemNumber) adventure.itemSlot0 = 0;
-        else if (adventure.itemSlot1 ==itemNumber) adventure.itemSlot1 = 0;
-        else if ( adventure.itemSlot2 == itemNumber) adventure.itemSlot2 = 0;
-        else if ( adventure.itemSlot3 == itemNumber) adventure.itemSlot3 = 0;
-        else if ( adventure.itemSlot4 ==itemNumber) adventure.itemSlot4 = 0;
+        if (adventure.inventory.itemStorage[0]==itemNumber) adventure.inventory.itemStorage[0] = 0;
+        else if (adventure.inventory.itemStorage[1] ==itemNumber) adventure.inventory.itemStorage[1] = 0;
+        else if ( adventure.inventory.itemStorage[2] == itemNumber) adventure.inventory.itemStorage[2] = 0;
+        else if ( adventure.inventory.itemStorage[3] == itemNumber) adventure.inventory.itemStorage[3] = 0;
+        else if ( adventure.inventory.itemStorage[4] ==itemNumber) adventure.inventory.itemStorage[4] = 0;
     }
 
     //area for common quests.

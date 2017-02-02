@@ -5,18 +5,13 @@ public class adventure {
     public static int coins;
     public static int roundCount = 1;
     public static int lastRoundInShop = 0;
-    public static int itemSlot0 = 1;
-    public static int itemSlot1 = 1;
-    public static int itemSlot2 = 0;
-    public static int itemSlot3 = 0;
-    public static int itemSlot4 = 0;
     public static int[] armor = {0,8,0,0,9,0};
     public static String tempBeastName = "";
     public static String tempUserString = "";
     public static double time;
     public static int day;
     public static CharacterCreation character1 = new CharacterCreation();
-    public static Items inventory = new Items(itemSlot0,itemSlot1,itemSlot2,itemSlot3,itemSlot4);
+    public static Items inventory = new Items(1,1,0,0,0);
 
     public static void main(String args[]) {
         time =20.0;
@@ -24,7 +19,7 @@ public class adventure {
         coins = 0;
         character1.race();
         character1.role();
-        Story.initialize(character1.getAttack1(), character1.getAttack2(), character1.getAttack3(), character1.getAttack4(), itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
+        Story.initialize(character1.getAttack1(), character1.getAttack2(), character1.getAttack3(), character1.getAttack4());
         live();
 
     }
@@ -546,27 +541,27 @@ public class adventure {
 
     private static void questionArmorBreak(int attack){
     boolean questionChange = false;
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[0]!=0&&Math.random()>.5) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[0]!=0&&Math.random()>.8) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[0])[0]+" has broken from incoming damage!");
         armor[0] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[1]!=0&&Math.random()>.5) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[1]!=0&&Math.random()>.8) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[1])[0]+" has broken from incoming damage!");
         armor[1] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[2]!=0&&Math.random()>.5) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[2]!=0&&Math.random()>.8) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[2])[0]+" has broken from incoming damage!");
         armor[2] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[3]!=0&&Math.random()>.5) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[3]!=0&&Math.random()>.8) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[3])[0]+" has broken from incoming damage!");
         armor[3] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[4]!=0&&Math.random()>.5) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[4]!=0&&Math.random()>.8) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[4])[0]+" has broken from incoming damage!");
         armor[4] = 0;
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[5]!=0&&Math.random()>.5) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[5]!=0&&Math.random()>.8) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[5])[0]+" has broken from incoming damage!");
         armor[5] = 0;
         questionChange = true;}

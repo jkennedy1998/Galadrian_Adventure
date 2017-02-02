@@ -53,6 +53,8 @@ public class ItemDirectory {
 //    ItemReturn[8] = "0";                  //effect # on
 //    ItemReturn[9] = "0";                  //effect # off
 //    ItemReturn[10] = "0";                  //base price for shops
+//    ItemReturn[10] = "26";                  //base price for shops
+//
 //    return ItemReturn;
 //}
 
@@ -84,6 +86,7 @@ public class ItemDirectory {
             ItemReturn[8] = "0";                  //effect # on
             ItemReturn[9] = "0";                  //effect # off
             ItemReturn[10] = "25";                  //base price for shops
+            ItemReturn[11] = "2";                  //number of uses before discard (one time use is 1)
 
             return ItemReturn;
         }
@@ -99,6 +102,7 @@ public class ItemDirectory {
         ItemReturn[8] = "1";//poison                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "20";                  //base price for shops
+        ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
 
         return ItemReturn;
     }
@@ -114,6 +118,7 @@ public class ItemDirectory {
         ItemReturn[8] = "0";                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "46";                  //base price for shops
+        ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
 
         return ItemReturn;
     }
@@ -129,6 +134,7 @@ public class ItemDirectory {
         ItemReturn[8] = "0";                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "10";                  //base price for shops
+        ItemReturn[11] = "3";                  //number of uses before discard (one time use is 1)
 
         return ItemReturn;
     }
@@ -144,6 +150,7 @@ public class ItemDirectory {
         ItemReturn[8] = "0";                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "13";                  //base price for shops
+        ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
 
         return ItemReturn;
     }
@@ -160,6 +167,7 @@ public class ItemDirectory {
         ItemReturn[8] = "0";                  //effects # on
         ItemReturn[9] = "0";                  // effects # off
         ItemReturn[10] = "5";                  //base price for shops
+        ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
 
         return ItemReturn;
     }
@@ -175,6 +183,7 @@ public class ItemDirectory {
         ItemReturn[8] = "3";                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "42";                  //base price for shops
+        ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
 
         return ItemReturn;
     }
@@ -190,6 +199,7 @@ public class ItemDirectory {
         ItemReturn[8] = "0";                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "49";                  //base price for shops
+        ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
 
         return ItemReturn;
     }
@@ -205,6 +215,7 @@ public class ItemDirectory {
         ItemReturn[8] = "0";                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "200";                  //base price for shops
+        ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
 
         return ItemReturn;
     }
@@ -221,6 +232,7 @@ public class ItemDirectory {
 //    ItemReturn[7] = "0";                 //Body part ID (0 head, 1 torso, 2 hands, 3 rings, 4 leggings, 5 boots
 //    ItemReturn[8] = "0";                  //defence breaking point (idk about this)
 //    ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
+//    ItemReturn[10] = "26";                  //base price for shops
 //
 //    return ItemReturn;
 //}

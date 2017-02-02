@@ -5,36 +5,25 @@ public class Story {
     private static String possibleDestination1;
     private static String possibleDestination2;
     private static String attack1, attack2, attack3, attack4;
-    private static int item0, item1, item2, item3, item4;
     private static String race = "";
     private static String role = "";
 
-    public static void initialize(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4){ //should only be used once!
+    public static void initialize(String a1, String a2, String a3, String a4){ //should only be used once!
         attack1 = a1;
         attack2 = a2;
         attack3 = a3;
         attack4 = a4;
-        item0 = i0;
-        item1 = i1;
-        item2 = i2;
-        item3 = i3;
-        item4 = i4;
         race = adventure.character1.getRace();
         role = adventure.character1.getRole();
 
 
     }
 
-    public static void refresh(String a1, String a2, String a3, String a4, int i0, int i1, int i2, int i3, int i4){ //should be used before each area change!
+    public static void refresh(String a1, String a2, String a3, String a4){ //should be used before each area change!
         attack1 = a1;
         attack2 = a2;
         attack3 = a3;
         attack4 = a4;
-        item0 = i0;
-        item1 = i1;
-        item2 = i2;
-        item3 = i3;
-        item4 = i4;
     }
     public static void setDestination(){
         questionPossible();
@@ -117,7 +106,11 @@ public class Story {
         return true;
     }
     public static boolean questionItem(int itemNumber){
-        if (item1==itemNumber||item0 ==itemNumber || item2 == itemNumber|| item3 == itemNumber|| item4 ==itemNumber)
+        if (adventure.inventory.itemStorage[0]==itemNumber
+                ||adventure.inventory.itemStorage[1] ==itemNumber
+                || adventure.inventory.itemStorage[2] == itemNumber
+                || adventure.inventory.itemStorage[3] == itemNumber
+                || adventure.inventory.itemStorage[4] ==itemNumber)
             return true;
         return false;
     }

@@ -12,9 +12,7 @@ public class monsterSelection {
         if (round%10 == 0 ) {
             roundsHere = 0;
             Story.refresh(adventure.character1.getAttack1(), adventure.character1.getAttack2(),
-                    adventure.character1.getAttack3(), adventure.character1.getAttack4(), adventure.itemSlot0,
-                    adventure.itemSlot1, adventure.itemSlot2,
-                    adventure.itemSlot3, adventure.itemSlot4);
+                    adventure.character1.getAttack3(), adventure.character1.getAttack4());
             //that's the shortest line of code ever!
             Story.setDestination();
         }
