@@ -70,8 +70,6 @@ public class adventure {
         live();
     }
 
-
-
     private static void startEncounter() {
         String beastStats[], beastStatsSolid[];
         beastStatsSolid = monsterSelection.main(roundCount);
@@ -405,7 +403,6 @@ public class adventure {
             adventure.live();
         }
 
-
     private static int monsterTurn(String[] beastStats, boolean lifeStatus) {
 
 
@@ -522,7 +519,7 @@ public class adventure {
         }
     }
 
-public static void levelUp() {
+    static void levelUp() {
     character1.permExp(character1.getExp() - character1.getExpLim());
     character1.permExpLim((int) Math.round(character1.getExpLim() * 1.5));
     character1.LevelUp();
@@ -535,7 +532,8 @@ public static void levelUp() {
     if (leveledStats[2].equalsIgnoreCase("speed")) speedMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("defence")) defensiveMultiplierLocked += Double.parseDouble(leveledStats[3]);
 }
-private  static int getArmorStats(){
+
+    private  static int getArmorStats(){
     int stat = 0;
     stat += Integer.parseInt(ItemDirectory.findItemValues(armor[0])[2]);
     stat += Integer.parseInt(ItemDirectory.findItemValues(armor[1])[2]);
@@ -545,7 +543,8 @@ private  static int getArmorStats(){
     stat += Integer.parseInt(ItemDirectory.findItemValues(armor[5])[2]);
     return (int)Math.round(stat*character1.getDefensiveMultiplier());
 }
-private static void questionArmorBreak(int attack){
+
+    private static void questionArmorBreak(int attack){
     boolean questionChange = false;
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[0]!=0&&Math.random()>.5) {
         System.out.println("Your "+ItemDirectory.findItemValues(armor[0])[0]+" has broken from incoming damage!");
@@ -573,7 +572,6 @@ private static void questionArmorBreak(int attack){
         questionChange = true;}
     if (armor[0]==0&&armor[1]==0&&armor[4]==0&&armor[5]==0&&questionChange)
         System.out.println("You notice a cool breeze...");
-
 }
 
 }
