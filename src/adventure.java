@@ -70,95 +70,7 @@ public class adventure {
         live();
     }
 
-    public static String getItem(int itemValue) {
-        inventory.refresh(itemSlot0,itemSlot1,itemSlot2,itemSlot3,itemSlot4);
-        if(ItemDirectory.findItemValues(itemValue)[1].equalsIgnoreCase("2")) {
 
-            if (armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] == 0) {
-                armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] = itemValue;
-            } else {
-                String[] buttons = {"replace armor", "keep old armor"};
-                String prompt = ("You cannot equip the"+ItemDirectory.findItemValues(itemValue)[0]+ " while already wearing the "+ItemDirectory.findItemValues(armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])])[0]);
-                int answer = JOptionPane.showOptionDialog(null, prompt, "",
-                        JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-                if (answer ==0){
-                    armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] = itemValue;
-                    System.out.println("You have replaced your old armor.");
-                    return "";
-                }else {
-                    System.out.println("You have abandoned the newly found armor.");
-                    return "";
-                }
-            }
-        } else {
-
-
-            int tempValue = inventory.receiveItem(itemValue);
-            String[] itemTemp = inventory.getItemValues(itemValue);
-            if (tempValue != 5) {
-                if (tempValue == 0) {
-                    itemSlot0 = itemValue;
-                    return ("\n" + itemTemp[0] + " has been stored in slot 1!");
-                }
-                if (tempValue == 1) {
-                    itemSlot1 = itemValue;
-                    return ("\n" + itemTemp[0] + " has been stored in slot 2!");
-                }
-                if (tempValue == 2) {
-                    itemSlot2 = itemValue;
-                    return ("\n" + itemTemp[0] + " has been stored in slot 3!");
-                }
-                if (tempValue == 3) {
-                    itemSlot3 = itemValue;
-                    return ("\n" + itemTemp[0] + " has been stored in slot 4!");
-                }
-                if (tempValue == 4) {
-                    itemSlot4 = itemValue;
-                    return ("\n" + itemTemp[0] + " has been stored in slot 5!");
-                }
-            } else {
-                String[] buttons = {"yes", "no"};
-                String prompt = (itemTemp[0] + " has no available storage slot. Would you like to empty another slot for it?");
-                int answer = JOptionPane.showOptionDialog(null, prompt, "",
-                        JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-                if (answer == 0) {
-                    String slot1 = ("Slot 1 holding " + inventory.getItemValues(inventory.itemStorage[0])[0]);
-                    String slot2 = ("Slot 2 holding " + inventory.getItemValues(inventory.itemStorage[1])[0]);
-                    String slot3 = ("Slot 3 holding " + inventory.getItemValues(inventory.itemStorage[2])[0]);
-                    String slot4 = ("Slot 4 holding " + inventory.getItemValues(inventory.itemStorage[3])[0]);
-                    String slot5 = ("Slot 5 holding " + inventory.getItemValues(inventory.itemStorage[4])[0]);
-
-                    String[] moreButtons = {slot1, slot2, slot3, slot4, slot5};
-
-                    int otherAnswer = JOptionPane.showOptionDialog(null, "Which item would you like to be replaced?", "",
-                            JOptionPane.PLAIN_MESSAGE, 1, null, moreButtons, null);
-                    if (otherAnswer == 0) {
-                        itemSlot0 = itemValue;
-                        System.out.println(itemTemp[0] + " has been stored in slot 1!");
-                    }
-                    if (otherAnswer == 1) {
-                        itemSlot1 = itemValue;
-                        System.out.println(itemTemp[0] + " has been stored in slot 2!");
-                    }
-                    if (otherAnswer == 2) {
-                        itemSlot2 = itemValue;
-                        System.out.println(itemTemp[0] + " has been stored in slot 3!");
-                    }
-                    if (otherAnswer == 3) {
-                        itemSlot3 = itemValue;
-                        System.out.println(itemTemp[0] + " has been stored in slot 4!");
-                    }
-                    if (otherAnswer == 4) {
-                        itemSlot4 = itemValue;
-                        System.out.println(itemTemp[0] + " has been stored in slot 5!");
-                    }
-                } else {
-                    return ("You have chosen to discard the item.");
-
-                }
-            }
-        }return null;
-    }
 
     private static void startEncounter() {
         String beastStats[], beastStatsSolid[];
@@ -456,7 +368,7 @@ public class adventure {
         endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
         lifeStatus = false;
         if (monsterTurn(beastStats, lifeStatus) != 0) {
-            endEncounterDialog += getItem (Integer.parseInt(beastStats[4]));
+            endEncounterDialog += inventory.getItem (Integer.parseInt(beastStats[4]));
         }
         if ((character1.getHealth() < character1.getMaxHealth()) && (roundCount % 5 == 0)) {
             int tempHealth = (int) (Math.round(Math.random() * 20));

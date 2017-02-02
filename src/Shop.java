@@ -23,7 +23,7 @@ public class Shop {
             if (answer == 0){
                 if (!(buttons[0]).equals("Sold Out!")) {
                     if (adventure.coins >= itemPrices[0]) {
-                        adventure.getItem(itemsSold[0]);
+                        adventure.inventory.getItem(itemsSold[0]);
                         adventure.coins-=itemPrices[0];
                         buttons[0] = "Sold Out!";
                     } else System.out.println("You don't have the coins for that!");
@@ -32,7 +32,7 @@ public class Shop {
             else if (answer == 1){
                 if (!(buttons[1]).equals("Sold Out!")) {
                     if (adventure.coins >= itemPrices[1]) {
-                        adventure.getItem(itemsSold[1]);
+                        adventure.inventory.getItem(itemsSold[1]);
                         adventure.coins-=itemPrices[1];
                         buttons[1] = "Sold Out!";
                     } else System.out.println("You don't have the coins for that!");
@@ -41,7 +41,7 @@ public class Shop {
             else if (answer == 2){
                 if (!(buttons[2]).equals("Sold Out!")) {
                     if (adventure.coins >= itemPrices[2]) {
-                        adventure.getItem(itemsSold[2]);
+                        adventure.inventory.getItem(itemsSold[2]);
                         adventure.coins-=itemPrices[2];
                         buttons[2] = "Sold Out!";
                     } else System.out.println("You don't have the coins for that!");
@@ -50,7 +50,7 @@ public class Shop {
             else if (answer == 3){
                 if (!(buttons[3]).equals("Sold Out!")) {
                     if (adventure.coins >= itemPrices[3]) {
-                        adventure.getItem(itemsSold[3]);
+                        adventure.inventory.getItem(itemsSold[3]);
                         adventure.coins-=itemPrices[3];
                         buttons[3] = "Sold Out!";
                     } else System.out.println("You don't have the coins for that!");

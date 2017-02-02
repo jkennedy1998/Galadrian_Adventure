@@ -63,12 +63,12 @@ public class SideQuests {
     //area for common quests.
     public static void receiveHealthPotion() {
         System.out.println("You find an unopened health potion in the cold hands of a late adventurer.");
-        System.out.println(adventure.getItem(1));
+        System.out.println(adventure.inventory.getItem(1));
     }
 
     public static void receivePoison() {
         System.out.println("You find an open bottle of poison in the cold hands of a late adventurer.");
-        System.out.println(adventure.getItem(2));
+        System.out.println(adventure.inventory.getItem(2));
     }
 
     //area for uncommon quests.
@@ -84,7 +84,7 @@ public class SideQuests {
                 itemVoid(10);
                 int piece = (int)Math.ceil(Math.random()*4+10); //any forgotten armor peice
                 System.out.println("You have broken your spade but have looted a " + ItemDirectory.findItemValues(piece)[0] + "off of the forgotten\nA rush of guilt falls over you.");
-                adventure.getItem(piece);
+                adventure.inventory.getItem(piece);
             }
         }else{
             System.out.println("You come across a makeshift grave.\nIt reads: May Mortum grant you the armor you word for Vivus\nYou strive on.");
