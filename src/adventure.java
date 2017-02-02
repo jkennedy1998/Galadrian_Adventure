@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class adventurerework {
+public class adventure {
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
     public static int roundCount = 1;
@@ -16,6 +16,7 @@ public class adventurerework {
     public static double time;
     public static int day;
     public static CharacterCreation character1 = new CharacterCreation();
+    public static Items inventory = new Items(itemSlot0,itemSlot1,itemSlot2,itemSlot3,itemSlot4);
 
     public static void main(String args[]) {
         time =20.0;
@@ -40,7 +41,7 @@ public class adventurerework {
                 startEncounter();
             }else {
                 character1.setHealth(Integer.parseInt(temp));
-                System.out.println("\nYou wake up at around "+Math.round(time)+".\nYou have regained "+temp+" health points by resting.");
+                System.out.println("\nYou wake up at around "+(int)Math.round(time)+".\nYou have regained "+temp+" health points by resting.");
             }
         }
         String[] buttons = {"Yes", "I REFUSE"};
@@ -70,6 +71,7 @@ public class adventurerework {
     }
 
     public static String getItem(int itemValue) {
+        inventory.refresh(itemSlot0,itemSlot1,itemSlot2,itemSlot3,itemSlot4);
         if(ItemDirectory.findItemValues(itemValue)[1].equalsIgnoreCase("2")) {
 
             if (armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] == 0) {
@@ -89,10 +91,10 @@ public class adventurerework {
                 }
             }
         } else {
-            Items refreshInventory = new Items();
-            refreshInventory.initializeItems(itemSlot0, itemSlot1, itemSlot2, itemSlot3, itemSlot4);
-            int tempValue = refreshInventory.receiveItem(itemValue);
-            String[] itemTemp = refreshInventory.getItemValues(itemValue);
+
+
+            int tempValue = inventory.receiveItem(itemValue);
+            String[] itemTemp = inventory.getItemValues(itemValue);
             if (tempValue != 5) {
                 if (tempValue == 0) {
                     itemSlot0 = itemValue;
@@ -120,11 +122,11 @@ public class adventurerework {
                 int answer = JOptionPane.showOptionDialog(null, prompt, "",
                         JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
                 if (answer == 0) {
-                    String slot1 = ("Slot 1 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[0])[0]);
-                    String slot2 = ("Slot 2 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[1])[0]);
-                    String slot3 = ("Slot 3 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[2])[0]);
-                    String slot4 = ("Slot 4 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[3])[0]);
-                    String slot5 = ("Slot 5 holding " + refreshInventory.getItemValues(refreshInventory.itemStorage[4])[0]);
+                    String slot1 = ("Slot 1 holding " + inventory.getItemValues(inventory.itemStorage[0])[0]);
+                    String slot2 = ("Slot 2 holding " + inventory.getItemValues(inventory.itemStorage[1])[0]);
+                    String slot3 = ("Slot 3 holding " + inventory.getItemValues(inventory.itemStorage[2])[0]);
+                    String slot4 = ("Slot 4 holding " + inventory.getItemValues(inventory.itemStorage[3])[0]);
+                    String slot5 = ("Slot 5 holding " + inventory.getItemValues(inventory.itemStorage[4])[0]);
 
                     String[] moreButtons = {slot1, slot2, slot3, slot4, slot5};
 
@@ -448,7 +450,7 @@ public class adventurerework {
             }
         }while (character1.getHealth() > 0 && Integer.parseInt(beastStats[0]) > 0) ;
             if (character1.getHealth() <= 0)
-                adventurerework.death();
+                adventure.death();
 
         String endEncounterDialog = "";
         endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
@@ -488,7 +490,7 @@ public class adventurerework {
         Shop.start();
             lastRoundInShop = roundCount;
         }
-            adventurerework.live();
+            adventure.live();
         }
 
 
@@ -510,7 +512,7 @@ public class adventurerework {
             }
             if (character1.getHealth() <= 0) {
                 character1.permHealth(0);
-                adventurerework.death();
+                adventure.death();
             }
         } else return monsterRefresh.questionItem(Integer.parseInt(beastStats[4]),Integer.parseInt(beastStats[5]));
         return 5318008; //returns but does nothing. such savagery

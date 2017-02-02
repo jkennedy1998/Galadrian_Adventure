@@ -48,27 +48,27 @@ public class SideQuests {
         }
     }
     public static boolean itemCheck(int itemNumber){
-        if (adventurerework.itemSlot0==itemNumber||adventurerework.itemSlot1 ==itemNumber || adventurerework.itemSlot2 == itemNumber|| adventurerework.itemSlot3 == itemNumber|| adventurerework.itemSlot4 ==itemNumber)
+        if (adventure.itemSlot0==itemNumber|| adventure.itemSlot1 ==itemNumber || adventure.itemSlot2 == itemNumber|| adventure.itemSlot3 == itemNumber|| adventure.itemSlot4 ==itemNumber)
             return true;
         return false;
     }
     public static void itemVoid(int itemNumber){
-        if (adventurerework.itemSlot0==itemNumber) adventurerework.itemSlot0 = 0;
-        else if (adventurerework.itemSlot1 ==itemNumber) adventurerework.itemSlot1 = 0;
-        else if ( adventurerework.itemSlot2 == itemNumber) adventurerework.itemSlot2 = 0;
-        else if ( adventurerework.itemSlot3 == itemNumber) adventurerework.itemSlot3 = 0;
-        else if ( adventurerework.itemSlot4 ==itemNumber) adventurerework.itemSlot4 = 0;
+        if (adventure.itemSlot0==itemNumber) adventure.itemSlot0 = 0;
+        else if (adventure.itemSlot1 ==itemNumber) adventure.itemSlot1 = 0;
+        else if ( adventure.itemSlot2 == itemNumber) adventure.itemSlot2 = 0;
+        else if ( adventure.itemSlot3 == itemNumber) adventure.itemSlot3 = 0;
+        else if ( adventure.itemSlot4 ==itemNumber) adventure.itemSlot4 = 0;
     }
 
     //area for common quests.
     public static void receiveHealthPotion() {
         System.out.println("You find an unopened health potion in the cold hands of a late adventurer.");
-        System.out.println(adventurerework.getItem(1));
+        System.out.println(adventure.getItem(1));
     }
 
     public static void receivePoison() {
         System.out.println("You find an open bottle of poison in the cold hands of a late adventurer.");
-        System.out.println(adventurerework.getItem(2));
+        System.out.println(adventure.getItem(2));
     }
 
     //area for uncommon quests.
@@ -79,12 +79,12 @@ public class SideQuests {
                     JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
             if (answer == 0) {
                 System.out.print("You feel a need to strive on.");
-                adventurerework.speedMultiplierLocked += .08;
+                adventure.speedMultiplierLocked += .08;
             } else {
                 itemVoid(10);
                 int piece = (int)Math.ceil(Math.random()*4+10); //any forgotten armor peice
                 System.out.println("You have broken your spade but have looted a " + ItemDirectory.findItemValues(piece)[0] + "off of the forgotten\nA rush of guilt falls over you.");
-                adventurerework.getItem(piece);
+                adventure.getItem(piece);
             }
         }else{
             System.out.println("You come across a makeshift grave.\nIt reads: May Mortum grant you the armor you word for Vivus\nYou strive on.");

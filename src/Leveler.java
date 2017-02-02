@@ -54,9 +54,9 @@ public class Leveler {
     }
 
     public static String rest() {
-        while (adventurerework.character1.getExp()>=adventurerework.character1.getExpLim()){
-            adventurerework.levelUp();
-            adventurerework.time += 1;
+        while (adventure.character1.getExp()>= adventure.character1.getExpLim()){
+            adventure.levelUp();
+            adventure.time += 1;
         }
 
         String[] buttons = {"Set up traps for the creatures of the night.", "Forgo safety and rest."};
@@ -64,30 +64,30 @@ public class Leveler {
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
 
         if (choice == 0) {
-            adventurerework.time += 2;
-            if (adventurerework.time>=24){
-                adventurerework.time = adventurerework.time-24;
-                adventurerework.day++;
+            adventure.time += 2;
+            if (adventure.time>=24){
+                adventure.time = adventure.time-24;
+                adventure.day++;
             }
             if (Math.random() * 10 > 9) { //10% chance of encounter
                 return "E";
             }else
-                return calculateRestingHealth(adventurerework.time);
+                return calculateRestingHealth(adventure.time);
         } else if (choice == 1) {
-            if (adventurerework.time>=24){
-                adventurerework.time = adventurerework.time-24;
-                adventurerework.day++;
+            if (adventure.time>=24){
+                adventure.time = adventure.time-24;
+                adventure.day++;
             }
             if (Math.random() * 10 > 6) { //40% chance of encounter
                 return "E";
             }else
-                return calculateRestingHealth(adventurerework.time);
+                return calculateRestingHealth(adventure.time);
         } else
             return rest();
     }
     public static String calculateRestingHealth(double time){
         double awakeTime = Math.random()*4+6; //waking up somewhere between 6 and 10;
-        adventurerework.time = awakeTime;
+        adventure.time = awakeTime;
         if (time>12){//if a day has not passed in the time between your last sleep
             return ""+(int)(24-time+awakeTime)*4;
         }else{

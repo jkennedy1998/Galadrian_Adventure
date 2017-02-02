@@ -1,7 +1,7 @@
 
 public class ItemDirectory {
 
-    public static String ItemReturn[] = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0"};
+    public static String ItemReturn[] = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","1"};
 
     public static String[] findItemValues(int itemNumber) {
         if (itemNumber == 0)

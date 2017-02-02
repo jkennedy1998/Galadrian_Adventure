@@ -2,7 +2,15 @@
 public class Items{
     public int itemStorage[] = {0,0,0,0,0,0};
 
-    public void initializeItems(int slot0, int slot1, int slot2, int slot3, int slot4) {
+    public Items(int slot0, int slot1, int slot2, int slot3, int slot4) {
+        itemStorage[0] = slot0;
+        itemStorage[1] = slot1;
+        itemStorage[2] = slot2;
+        itemStorage[3] = slot3;
+        itemStorage[4] = slot4;
+
+    }
+    public void refresh(int slot0, int slot1, int slot2, int slot3, int slot4) {
         itemStorage[0] = slot0;
         itemStorage[1] = slot1;
         itemStorage[2] = slot2;

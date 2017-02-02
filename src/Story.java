@@ -19,8 +19,8 @@ public class Story {
         item2 = i2;
         item3 = i3;
         item4 = i4;
-        race = adventurerework.character1.getRace();
-        role = adventurerework.character1.getRole();
+        race = adventure.character1.getRace();
+        role = adventure.character1.getRole();
 
 
     }

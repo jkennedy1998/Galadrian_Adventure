@@ -2,7 +2,7 @@
 public class monsterSelection {
     private static String beast;
     private static String beastStats[]= {"","","","","","","","1","1","1","1","",""};
-    private static boolean capital = false;
+    private static boolean needsAnAn = false;
     private static int monsterCount = 0;
     private static int roundsHere = 0; //only used in locations with a set enemy
 
@@ -11,16 +11,16 @@ public class monsterSelection {
     public static String[] main (int round){
         if (round%10 == 0 ) {
             roundsHere = 0;
-            Story.refresh(adventurerework.character1.getAttack1(), adventurerework.character1.getAttack2(),
-                    adventurerework.character1.getAttack3(), adventurerework.character1.getAttack4(), adventurerework.itemSlot0,
-                    adventurerework.itemSlot1, adventurerework.itemSlot2,
-                    adventurerework.itemSlot3, adventurerework.itemSlot4);
+            Story.refresh(adventure.character1.getAttack1(), adventure.character1.getAttack2(),
+                    adventure.character1.getAttack3(), adventure.character1.getAttack4(), adventure.itemSlot0,
+                    adventure.itemSlot1, adventure.itemSlot2,
+                    adventure.itemSlot3, adventure.itemSlot4);
             //that's the shortest line of code ever!
             Story.setDestination();
         }
         roundsHere++;
         selection();
-        if (capital) {
+        if (needsAnAn) {
             System.out.println("\n\nYou have encountered an " + beast + "!");
         } else{
             System.out.println("\n\nYou have encountered a " + beast + "!");
@@ -218,7 +218,7 @@ public class monsterSelection {
 
 //    public static void selectNAMEHERE(){
 //        beast = "NAME HERE";
-//        capital = false; //if the first letter is a vowel
+//        needsAnAn = false; //if the first letter is a vowel
 //        beastStats[0] = (health value);
 //        beastStats[1] = (attack 1 name);
 //        beastStats[2] = (attack 1 name);
@@ -230,7 +230,7 @@ public class monsterSelection {
 //    }
     public static void selectDog(){
         beast = "Rabid Dog";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+25;
         beastStats[1] = "bite";
         beastStats[2] = "maul";
@@ -245,7 +245,7 @@ public class monsterSelection {
     }
     public static void selectSmallSnake(){
         beast = "Lesser Snake";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+25;
         beastStats[1] = "bite";
         beastStats[2] = "bite";
@@ -259,7 +259,7 @@ public class monsterSelection {
     }
     public static void selectLargeCat(){
         beast = "Large Cat";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+36;
         beastStats[1] = "fang peirce";
         beastStats[2] = "maul";
@@ -274,7 +274,7 @@ public class monsterSelection {
     }
     public static void selectBat(){
         beast = "Small Bat";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+15;
         beastStats[1] = "bite";
         beastStats[2] = "bombard";
@@ -289,7 +289,7 @@ public class monsterSelection {
     }
     public static void selectNaga(){
         beast = "Naga";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+40;
         beastStats[1] = "claw swipe";
         beastStats[2] = "tail sweep";
@@ -302,7 +302,7 @@ public class monsterSelection {
     }
     public static void selectBigBat(){
         beast = "Large Bat";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+38;
         beastStats[1] = "bite";
         beastStats[2] = "bombard";
@@ -318,7 +318,7 @@ public class monsterSelection {
 
     public static void selectGoblin(){
         beast = "Goblin";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+20;
         beastStats[1] = "fang peirce";
         beastStats[2] = "club";
@@ -332,7 +332,7 @@ public class monsterSelection {
     }
     public static void selectWarlock(){
         beast = "Warlock";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+20;
         beastStats[1] = "hex";
         beastStats[2] = "sparks";
@@ -346,7 +346,7 @@ public class monsterSelection {
     }
     public static void selectSkeleton(){
         beast = "Skeleton";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+15;
         beastStats[1] = "slash";
         beastStats[2] = "skull toss";
@@ -360,7 +360,7 @@ public class monsterSelection {
     }
     public static void selectVampire(){
         beast = "Vampire";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+40;
         beastStats[1] = "fang peirce";
         beastStats[2] = "slash";
@@ -374,7 +374,7 @@ public class monsterSelection {
     }
     public static void selectCultist(){
         beast = "Cultist";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+20;
         beastStats[1] = "hex";
         beastStats[2] = "slash";
@@ -388,7 +388,7 @@ public class monsterSelection {
     }
     public static void selectDrunkDwarf(){
         beast = "Drunk Dwarf";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+35;
         beastStats[1] = "bombard";
         beastStats[2] = "punch";
@@ -402,7 +402,7 @@ public class monsterSelection {
     }
     public static void selectSpiderling() {
         beast = "Spiderling";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+10;
         beastStats[1] = "bite";
         beastStats[2] = "sting";
@@ -416,7 +416,7 @@ public class monsterSelection {
     }
     public static void selectDragon(){
         beast = "Dragon";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+40;
         beastStats[1] = "fang peirce";
         beastStats[2] = "tail sweep";
@@ -429,7 +429,7 @@ public class monsterSelection {
     }
     public static void selectDemon(){
         beast = "Demon";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+35;
         beastStats[1] = "bite";
         beastStats[2] = "bite";
@@ -442,7 +442,7 @@ public class monsterSelection {
     }
     public static void selectCAngel(){
         beast = "Corrupted Angel";
-        capital = true;
+        needsAnAn = true;
         beastStats[0] = ""+50;
         beastStats[1] = "bite";
         beastStats[2] = "bite";
@@ -455,7 +455,7 @@ public class monsterSelection {
     }
     public static void selectLich(){
         beast = "Lich";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+35;
         beastStats[1] = "bite";
         beastStats[2] = "bite";
@@ -468,7 +468,7 @@ public class monsterSelection {
     }
     public static void selectYaunTiMalison(){
         beast = "Yaun-Ti Malison";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+37;
         beastStats[1] = "bite";
         beastStats[2] = "fang peirce";
@@ -481,7 +481,7 @@ public class monsterSelection {
     }
     public static void selectYaunTiAbonimation(){
         beast = "Yaun-Ti Abonimation";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+40;
         beastStats[1] = "tail sweep";
         beastStats[2] = "fang peirce";
@@ -494,7 +494,7 @@ public class monsterSelection {
     }
     public static void selectYaunTiHolyGuard(){
         beast = "Yaun-Ti Holy Guard";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+47;
         beastStats[1] = "fang peirce";
         beastStats[2] = "tail sweep";
@@ -507,7 +507,7 @@ public class monsterSelection {
     }
     public static void selectMerrshaulk(){
         beast = "Merrshaulk";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+60;
         beastStats[1] = "tail sweep";
         beastStats[2] = "fang peirce";
@@ -520,7 +520,7 @@ public class monsterSelection {
     }
     public static void selectMerrshaulkAbomination(){
         beast = "Merrshaulk Abomination";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+4;
         beastStats[1] = "suffer";
         beastStats[2] = "suffer";
@@ -534,7 +534,7 @@ public class monsterSelection {
     }
     public static void selectYaunTiPureBlood(){
         beast = "Yaun-Ti PureBlood";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+35;
         beastStats[1] = "bite";
         beastStats[2] = "slash";
@@ -547,7 +547,7 @@ public class monsterSelection {
     }
     public static void selectCthulu(){
         beast = "Cthulu";
-        capital = false;
+        needsAnAn = false;
         beastStats[0] = ""+100;
         beastStats[1] = "hex";
         beastStats[2] = "shadow bolt";

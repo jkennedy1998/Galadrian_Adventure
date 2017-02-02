@@ -22,15 +22,15 @@ public class Player {
     }
     public String[] PlayerItem() {
         String ItemReturn[] = {"0", "0", "0", "0", "10", "0", "0", "0"};
-        String Item1[] = ItemDirectory.findItemValues(adventurerework.itemSlot0);
+        String Item1[] = ItemDirectory.findItemValues(adventure.itemSlot0);
         String item1 = Item1[0];
-        String Item2[] = ItemDirectory.findItemValues(adventurerework.itemSlot1);
+        String Item2[] = ItemDirectory.findItemValues(adventure.itemSlot1);
         String item2 = Item2[0];
-        String Item3[] = ItemDirectory.findItemValues(adventurerework.itemSlot2);
+        String Item3[] = ItemDirectory.findItemValues(adventure.itemSlot2);
         String item3 = Item3[0];
-        String Item4[] = ItemDirectory.findItemValues(adventurerework.itemSlot3);
+        String Item4[] = ItemDirectory.findItemValues(adventure.itemSlot3);
         String item4 = Item4[0];
-        String Item5[] = ItemDirectory.findItemValues(adventurerework.itemSlot4);
+        String Item5[] = ItemDirectory.findItemValues(adventure.itemSlot4);
         String item5 = Item5[0];
 
         String[] buttons = {item1, item2, item3, item4, item5};
@@ -41,24 +41,24 @@ public class Player {
 
         if (choice == 0) {
 
-            ItemReturn = ItemDirectory.findItemValues(adventurerework.itemSlot0);
-            adventurerework.itemSlot0=0;
+            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot0);
+            adventure.itemSlot0=0;
         }
         else if (choice == 1) {
-            ItemReturn = ItemDirectory.findItemValues(adventurerework.itemSlot1);
-            adventurerework.itemSlot1=0;
+            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot1);
+            adventure.itemSlot1=0;
         }
         else if (choice == 2) {
-            ItemReturn = ItemDirectory.findItemValues(adventurerework.itemSlot2);
-            adventurerework.itemSlot2=0;
+            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot2);
+            adventure.itemSlot2=0;
         }
         else if (choice == 3) {
-            ItemReturn = ItemDirectory.findItemValues(adventurerework.itemSlot3);
-            adventurerework.itemSlot3=0;
+            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot3);
+            adventure.itemSlot3=0;
         }
         else if (choice == 4) {
-            ItemReturn = ItemDirectory.findItemValues(adventurerework.itemSlot4);
-            adventurerework.itemSlot4=0;
+            ItemReturn = ItemDirectory.findItemValues(adventure.itemSlot4);
+            adventure.itemSlot4=0;
         }
 
         else PlayerAttack(tempDialogStored);
@@ -106,9 +106,9 @@ public class Player {
         if (Math.round(acc) <= Math.round(Math.random() * 100*accuracyMult)) {
             String randomNum = "" +Math.round(damageMult*(Math.random()*(max-min)+min));
             if (Integer.parseInt(randomNum) > 0) {
-                adventurerework.tempUserString = ("you " + attackChoice + " for " + randomNum + " damage!\n");
+                adventure.tempUserString = ("you " + attackChoice + " for " + randomNum + " damage!\n");
             }else
-                adventurerework.tempUserString = ("you " + attackChoice + " with vigor!\n");
+                adventure.tempUserString = ("you " + attackChoice + " with vigor!\n");
             return randomNum;
         }
         else {
