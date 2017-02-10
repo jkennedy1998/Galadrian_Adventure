@@ -22,15 +22,15 @@ public class Player {
     }
     public String[] PlayerItem() {
         String ItemReturn[] = {"0", "0", "0", "0", "10", "0", "0", "0"};
-        String Item1[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[0]);
+        String Item1[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[0]);
         String item1 = Item1[0];
-        String Item2[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[1]);
+        String Item2[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[1]);
         String item2 = Item2[0];
-        String Item3[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[2]);
+        String Item3[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[2]);
         String item3 = Item3[0];
-        String Item4[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[3]);
+        String Item4[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[3]);
         String item4 = Item4[0];
-        String Item5[] = ItemDirectory.findItemValues(adventure.inventory.itemStorage[4]);
+        String Item5[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[4]);
         String item5 = Item5[0];
 
         String[] buttons = {item1, item2, item3, item4, item5};
@@ -41,8 +41,8 @@ public class Player {
         boolean temp = true;
         for (int x = 0; x<5; x++) {
             if (choice == x) {
-                ItemReturn = ItemDirectory.findItemValues(adventure.inventory.itemStorage[x]);
-                adventure.inventory.updateItemUse(x);
+                ItemReturn = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[x]);
+                adventurerework.inventory.updateItemUse(x);
                 temp = false;
             }
         }
@@ -92,9 +92,9 @@ public class Player {
         if (Math.round(acc) <= Math.round(Math.random() * 100*accuracyMult)) {
             String randomNum = "" +Math.round(damageMult*(Math.random()*(max-min)+min));
             if (Integer.parseInt(randomNum) > 0) {
-                adventure.tempUserString = ("you " + attackChoice + " for " + randomNum + " damage!\n");
+                adventurerework.tempUserString = ("you " + attackChoice + " for " + randomNum + " damage!\n");
             }else
-                adventure.tempUserString = ("you " + attackChoice + " with vigor!\n");
+                adventurerework.tempUserString = ("you " + attackChoice + " with vigor!\n");
             return randomNum;
         }
         else {

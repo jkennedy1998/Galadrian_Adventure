@@ -27,15 +27,15 @@ public class Items {
     public String getItem(int itemValue) {
         if (ItemDirectory.findItemValues(itemValue)[1].equalsIgnoreCase("2")) {
 
-            if (adventure.armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] == 0) {
-                adventure.armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] = itemValue;
+            if (adventurerework.armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] == 0) {
+                adventurerework.armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] = itemValue;
             } else {
                 String[] buttons = {"replace armor", "keep old armor"};
-                String prompt = ("You cannot equip the" + ItemDirectory.findItemValues(itemValue)[0] + " while already wearing the " + ItemDirectory.findItemValues(adventure.armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])])[0]);
+                String prompt = ("You cannot equip the" + ItemDirectory.findItemValues(itemValue)[0] + " while already wearing the " + ItemDirectory.findItemValues(adventurerework.armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])])[0]);
                 int answer = JOptionPane.showOptionDialog(null, prompt, "",
                         JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
                 if (answer == 0) {
-                    adventure.armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] = itemValue;
+                    adventurerework.armor[Integer.parseInt(ItemDirectory.findItemValues(itemValue)[7])] = itemValue;
                     System.out.println("You have replaced your old armor.");
                     return "";
                 } else {

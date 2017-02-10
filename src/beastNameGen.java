@@ -6,9 +6,9 @@ public class beastNameGen {
 
     public static void main (String beastType){
         if (Math.ceil(Math.random())*2==1){
-            adventure.tempBeastName = preName()+postName()+" the "+beastType;
+            adventurerework.tempBeastName = preName()+postName()+" the "+beastType;
         }else
-            adventure.tempBeastName = fullName()+" the "+beastType;
+            adventurerework.tempBeastName = fullName()+" the "+beastType;
 
 
     }

@@ -13,8 +13,8 @@ public class Story {
         attack2 = a2;
         attack3 = a3;
         attack4 = a4;
-        race = adventure.character1.getRace();
-        role = adventure.character1.getRole();
+        race = adventurerework.character1.getRace();
+        role = adventurerework.character1.getRole();
 
 
     }
@@ -106,11 +106,11 @@ public class Story {
         return true;
     }
     public static boolean questionItem(int itemNumber){
-        if (adventure.inventory.itemStorage[0]==itemNumber
-                ||adventure.inventory.itemStorage[1] ==itemNumber
-                || adventure.inventory.itemStorage[2] == itemNumber
-                || adventure.inventory.itemStorage[3] == itemNumber
-                || adventure.inventory.itemStorage[4] ==itemNumber)
+        if (adventurerework.inventory.itemStorage[0]==itemNumber
+                || adventurerework.inventory.itemStorage[1] ==itemNumber
+                || adventurerework.inventory.itemStorage[2] == itemNumber
+                || adventurerework.inventory.itemStorage[3] == itemNumber
+                || adventurerework.inventory.itemStorage[4] ==itemNumber)
             return true;
         return false;
     }

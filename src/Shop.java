@@ -17,41 +17,41 @@ public class Shop {
         boolean done= false;
         String[] buttons = {ItemDirectory.findItemValues(itemsSold[0])[0] + " for " + itemPrices[0], ItemDirectory.findItemValues(itemsSold[1])[0] + " for " + itemPrices[1], ItemDirectory.findItemValues(itemsSold[2])[0] + " for " + itemPrices[2], ItemDirectory.findItemValues(itemsSold[3])[0] + " for " + itemPrices[3],"Leave the shop."};
         do {
-            int answer = JOptionPane.showOptionDialog(null, "Which items would you like to purchase?\nYou have "+ adventure.coins+" coins.", "",
+            int answer = JOptionPane.showOptionDialog(null, "Which items would you like to purchase?\nYou have "+ adventurerework.coins+" coins.", "",
                     JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
 
             if (answer == 0){
                 if (!(buttons[0]).equals("Sold Out!")) {
-                    if (adventure.coins >= itemPrices[0]) {
-                        adventure.inventory.getItem(itemsSold[0]);
-                        adventure.coins-=itemPrices[0];
+                    if (adventurerework.coins >= itemPrices[0]) {
+                        adventurerework.inventory.getItem(itemsSold[0]);
+                        adventurerework.coins-=itemPrices[0];
                         buttons[0] = "Sold Out!";
                     } else System.out.println("You don't have the coins for that!");
                 }else System.out.println("You have bought all of that stock!");
             }
             else if (answer == 1){
                 if (!(buttons[1]).equals("Sold Out!")) {
-                    if (adventure.coins >= itemPrices[1]) {
-                        adventure.inventory.getItem(itemsSold[1]);
-                        adventure.coins-=itemPrices[1];
+                    if (adventurerework.coins >= itemPrices[1]) {
+                        adventurerework.inventory.getItem(itemsSold[1]);
+                        adventurerework.coins-=itemPrices[1];
                         buttons[1] = "Sold Out!";
                     } else System.out.println("You don't have the coins for that!");
                 }else System.out.println("You have bought all of that stock!");
             }
             else if (answer == 2){
                 if (!(buttons[2]).equals("Sold Out!")) {
-                    if (adventure.coins >= itemPrices[2]) {
-                        adventure.inventory.getItem(itemsSold[2]);
-                        adventure.coins-=itemPrices[2];
+                    if (adventurerework.coins >= itemPrices[2]) {
+                        adventurerework.inventory.getItem(itemsSold[2]);
+                        adventurerework.coins-=itemPrices[2];
                         buttons[2] = "Sold Out!";
                     } else System.out.println("You don't have the coins for that!");
                 }else System.out.println("You have bought all of that stock!");
             }
             else if (answer == 3){
                 if (!(buttons[3]).equals("Sold Out!")) {
-                    if (adventure.coins >= itemPrices[3]) {
-                        adventure.inventory.getItem(itemsSold[3]);
-                        adventure.coins-=itemPrices[3];
+                    if (adventurerework.coins >= itemPrices[3]) {
+                        adventurerework.inventory.getItem(itemsSold[3]);
+                        adventurerework.coins-=itemPrices[3];
                         buttons[3] = "Sold Out!";
                     } else System.out.println("You don't have the coins for that!");
                 }else System.out.println("You have bought all of that stock!");
@@ -227,7 +227,7 @@ public class Shop {
             int item = itemsSold[place];
             int price = 0;
             price += Integer.parseInt(ItemDirectory.findItemValues(item)[10]);
-            price += Math.round(price*(adventure.roundCount/10)); //every 10 rounds the price of an object increases by its base price.
+            price += Math.round(price*(adventurerework.roundCount/10)); //every 10 rounds the price of an object increases by its base price.
             itemPrices[place] = price;
         }
     }

@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class adventure {
+public class adventurerework {
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
     public static int roundCount = 1;
@@ -77,8 +77,10 @@ public class adventure {
         int turnOfMonsterEffect = 0;
         int monsterEffect = 0;
         int playerEffect = 0;
+        Timer battleTimer = new Timer(character1.getSpeed()*character1.getSpeedMultiplier(),Integer.parseInt(beastStats[6]));
         do {
-            if (character1.getSpeed() * character1.getSpeedMultiplier() >= Integer.parseInt(beastStats[6])) {
+            int hitting = battleTimer.determineNextHit();
+            if (hitting == 0) { //is players turn
                 String[] tempData = playerTurn();
                 if (tempData[0].equalsIgnoreCase("A")) {
                     beastStats[0] = "" + (Integer.parseInt(beastStats[0]) - Integer.parseInt(tempData[1]));
@@ -157,91 +159,6 @@ public class adventure {
 
                 }
                 System.out.println("the current health of " + tempBeastName + " is at " + (beastStats[0]));
-                if (Integer.parseInt(beastStats[0]) > 0) {
-                    monsterTurn(beastStats, lifeStatus);
-                }
-            } else {
-                monsterTurn(beastStats, lifeStatus);
-                String[] tempData = playerTurn();
-                if (tempData[0].equalsIgnoreCase("A")) {
-                    beastStats[0] = "" + (Integer.parseInt(beastStats[0]) - Integer.parseInt(tempData[1]));
-
-                    if (Integer.parseInt(tempData[2]) != 0) { //for effect 1
-                        if (Integer.parseInt(tempData[3]) == 1) { //self on
-                            if (Integer.parseInt(tempData[2]) != playerEffect) {
-                                turnOfPlayerEffect = turn;
-                                playerEffect = Integer.parseInt(tempData[2]);
-                            }
-                        }
-                        if (Integer.parseInt(tempData[3]) == 2) { //self off
-                            if (Integer.parseInt(tempData[2]) == playerEffect) {
-                                turnOfPlayerEffect = turn;
-                                playerEffect = 0;
-                            }
-                        }
-                        if (Integer.parseInt(tempData[3]) == 3) { //monster on
-                            if (Integer.parseInt(tempData[2]) != monsterEffect) {
-                                turnOfMonsterEffect = turn;
-                                monsterEffect = Integer.parseInt(tempData[2]);
-                            }
-                        }
-                        if (Integer.parseInt(tempData[3]) == 4) { //monster off
-                            if (Integer.parseInt(tempData[2]) == monsterEffect) {
-                                turnOfMonsterEffect = turn;
-                                monsterEffect = 0;
-                            }
-                        }
-                    }
-                    if (Integer.parseInt(tempData[4]) != 0) { //for effect 2
-                        if (Integer.parseInt(tempData[5]) == 1) { //self on
-                            if (Integer.parseInt(tempData[4]) == playerEffect) {
-                                turnOfPlayerEffect = turn;
-                                playerEffect = Integer.parseInt(tempData[2]);
-                            }
-                        }
-                        if (Integer.parseInt(tempData[5]) == 2) { //self off
-                            if (Integer.parseInt(tempData[4]) == playerEffect) {
-                                turnOfPlayerEffect = turn;
-                                playerEffect = Integer.parseInt(tempData[2]);
-                            }
-                        }
-                        if (Integer.parseInt(tempData[5]) == 3) { //monster on
-                            if (Integer.parseInt(tempData[4]) != monsterEffect) {
-                                turnOfMonsterEffect = turn;
-                                monsterEffect = Integer.parseInt(tempData[2]);
-                            }
-                        }
-                        if (Integer.parseInt(tempData[5]) == 4) { //monster off
-                            if (Integer.parseInt(tempData[4]) == monsterEffect) {
-                                turnOfMonsterEffect = turn;
-                                monsterEffect = 0;
-                            }
-                        }
-                    }
-                } else if (tempData[0].equalsIgnoreCase("I")) {
-                    beastStats[0] += Integer.parseInt(tempData[1]);
-                    beastStats[7] += Double.parseDouble(tempData[2]);
-                    beastStats[8] += Double.parseDouble(tempData[4]); //if you edit this data edit that one too! (see below)
-                    beastStats[9] += Double.parseDouble(tempData[3]);
-                    beastStats[10] += Double.parseDouble(tempData[5]);
-                    if (monsterEffect != Integer.parseInt(tempData[6])) {
-                        monsterEffect = Integer.parseInt(tempData[6]);
-                        turnOfMonsterEffect = turn;
-                    }
-                } else if (tempData[0].equalsIgnoreCase("IS")) {
-                    if (playerEffect != Integer.parseInt(tempData[1])) {
-                        playerEffect = Integer.parseInt(tempData[1]);
-                        turnOfPlayerEffect = turn;
-                    }
-                    if (playerEffect == Integer.parseInt(tempData[2])) {
-                        playerEffect = 0;
-                        turnOfPlayerEffect = 0;
-                    }
-
-                }
-                System.out.println("the current health of " + tempBeastName + " is at " + (beastStats[0]));
-                //make effects taking place start
-
                 if (playerEffect != 0) {
                     if (turn - turnOfPlayerEffect <= Integer.parseInt(effectDatabase.getEffectData(playerEffect)[2])) {
                         int tempDam = Integer.parseInt(effectDatabase.getEffectData(playerEffect)[1]);
@@ -298,6 +215,8 @@ public class adventure {
                                 (-Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]));
                     }
                 }
+            } else { //is monsters turn
+                monsterTurn(beastStats, lifeStatus);
                 if (monsterEffect != 0) {
                     if (turn - turnOfMonsterEffect <= Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[2])) {
                         int tempDam = Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[1]);
@@ -350,12 +269,16 @@ public class adventure {
                         beastStats[9] = ""+(Double.parseDouble(beastStats[9]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]));
                     }
                 }
-                turn++;
-                time += (Math.random()/6);
             }
+                //make effects taking place start
+
+
+
+            turn++;
+            time += (Math.random()/6);
         }while (character1.getHealth() > 0 && Integer.parseInt(beastStats[0]) > 0) ;
             if (character1.getHealth() <= 0)
-                adventure.death();
+                adventurerework.death();
 
         String endEncounterDialog = "";
         endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
@@ -395,7 +318,7 @@ public class adventure {
         Shop.start();
             lastRoundInShop = roundCount;
         }
-            adventure.live();
+            adventurerework.live();
         }
 
     private static int monsterTurn(String[] beastStats, boolean lifeStatus) {
@@ -416,7 +339,7 @@ public class adventure {
             }
             if (character1.getHealth() <= 0) {
                 character1.permHealth(0);
-                adventure.death();
+                adventurerework.death();
             }
         } else return monsterRefresh.questionItem(Integer.parseInt(beastStats[4]),Integer.parseInt(beastStats[5]));
         return 5318008; //returns but does nothing. such savagery

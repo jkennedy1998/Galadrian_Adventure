@@ -48,31 +48,31 @@ public class SideQuests {
         }
     }
     public static boolean itemCheck(int itemNumber){
-        if (adventure.inventory.itemStorage[0]==itemNumber
-                || adventure.inventory.itemStorage[1] ==itemNumber
-                || adventure.inventory.itemStorage[2] == itemNumber
-                || adventure.inventory.itemStorage[3] == itemNumber
-                || adventure.inventory.itemStorage[4] ==itemNumber)
+        if (adventurerework.inventory.itemStorage[0]==itemNumber
+                || adventurerework.inventory.itemStorage[1] ==itemNumber
+                || adventurerework.inventory.itemStorage[2] == itemNumber
+                || adventurerework.inventory.itemStorage[3] == itemNumber
+                || adventurerework.inventory.itemStorage[4] ==itemNumber)
             return true;
         return false;
     }
     public static void itemVoid(int itemNumber){
-        if (adventure.inventory.itemStorage[0]==itemNumber) adventure.inventory.itemStorage[0] = 0;
-        else if (adventure.inventory.itemStorage[1] ==itemNumber) adventure.inventory.itemStorage[1] = 0;
-        else if ( adventure.inventory.itemStorage[2] == itemNumber) adventure.inventory.itemStorage[2] = 0;
-        else if ( adventure.inventory.itemStorage[3] == itemNumber) adventure.inventory.itemStorage[3] = 0;
-        else if ( adventure.inventory.itemStorage[4] ==itemNumber) adventure.inventory.itemStorage[4] = 0;
+        if (adventurerework.inventory.itemStorage[0]==itemNumber) adventurerework.inventory.itemStorage[0] = 0;
+        else if (adventurerework.inventory.itemStorage[1] ==itemNumber) adventurerework.inventory.itemStorage[1] = 0;
+        else if ( adventurerework.inventory.itemStorage[2] == itemNumber) adventurerework.inventory.itemStorage[2] = 0;
+        else if ( adventurerework.inventory.itemStorage[3] == itemNumber) adventurerework.inventory.itemStorage[3] = 0;
+        else if ( adventurerework.inventory.itemStorage[4] ==itemNumber) adventurerework.inventory.itemStorage[4] = 0;
     }
 
     //area for common quests.
     public static void receiveHealthPotion() {
         System.out.println("You find an unopened health potion in the cold hands of a late adventurer.");
-        System.out.println(adventure.inventory.getItem(1));
+        System.out.println(adventurerework.inventory.getItem(1));
     }
 
     public static void receivePoison() {
         System.out.println("You find an open bottle of poison in the cold hands of a late adventurer.");
-        System.out.println(adventure.inventory.getItem(2));
+        System.out.println(adventurerework.inventory.getItem(2));
     }
 
     //area for uncommon quests.
@@ -83,12 +83,12 @@ public class SideQuests {
                     JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
             if (answer == 0) {
                 System.out.print("You feel a need to strive on.");
-                adventure.speedMultiplierLocked += .08;
+                adventurerework.speedMultiplierLocked += .08;
             } else {
                 itemVoid(10);
                 int piece = (int)Math.ceil(Math.random()*4+10); //any forgotten armor peice
                 System.out.println("You have broken your spade but have looted a " + ItemDirectory.findItemValues(piece)[0] + "off of the forgotten\nA rush of guilt falls over you.");
-                adventure.inventory.getItem(piece);
+                adventurerework.inventory.getItem(piece);
             }
         }else{
             System.out.println("You come across a makeshift grave.\nIt reads: May Mortum grant you the armor you word for Vivus\nYou strive on.");
