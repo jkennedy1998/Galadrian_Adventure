@@ -12,3 +12,8 @@
 //Changing Variable
 //    Making an object where all variables are tied to the single object to make it more condensed
 
+//adding in behaviors to the beast database.
+//  possible rename to beast database
+//just tack another variable on the end and make the map read them
+
+//make map read the name of the movable to get its behavior (from function getBehavior)
