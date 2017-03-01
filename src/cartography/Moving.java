@@ -1,4 +1,8 @@
-package cartography;public class Moving {
+package cartography;
+
+import java.nio.file.Watchable;
+
+public class Moving {
     int xPosition, yPosition, range = 7, elevation = 0, speed = 60;
     boolean playerCollide = true, wallCollide = true;
     Board board;
@@ -25,18 +29,15 @@ package cartography;public class Moving {
         return name.substring(0,1);
     }
 
-//    public void shiftHorizontally(int horizontalShift) {
-//        xPosition += horizontalShift;
-//    }
-//
-//    public void shiftVertically(int verticalShift) {
-//        yPosition = verticalShift;
-//    }
-
     public void questionNonWalls(){
-        for (int scan = 0; scan < board.nonWalls.size(); scan++){
-            NonWalls temp = board.nonWalls.get(scan);
-            temp.interact(this);
+        for (int scan = 0; scan < board.walls.size(); scan++){
+            if (board.walls.get(scan).elevation == elevation)
+                for(int subScan = 0; subScan < board.walls.get(scan).walls.size();subScan++){
+            if (NonWallsDatabase.checkIfNonWall(board.walls.get(scan).walls.get(subScan))){
+                NonWalls temp = (NonWalls)board.walls.get(scan).walls.get(subScan);
+                temp.interact(this);
+            }
+            }
         }
     }
     public void moveUp() {

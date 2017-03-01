@@ -1,15 +1,13 @@
 package cartography; /**
  * Created by citim on 2/23/2017.
  */
-public class NonWalls {
-    int xPosition, yPosition, elevation, xTransition = 0, yTransition = 0, elevationTransition = 0;
-    String wallType;
+public class NonWalls extends Wall {
     boolean colidable = false, interactOnCollision = true;
 public NonWalls (int xPosition, int yPosition, int elevation, String wallType) {
-    this.xPosition = xPosition;
-    this.yPosition = yPosition;
-    this.elevation = elevation;
-    this.wallType = wallType;
+    super(xPosition,yPosition, elevation,wallType);
+}
+public NonWalls(NonWalls nonWalls){
+    super(nonWalls.xPosition, nonWalls.yPosition, nonWalls.elevation, nonWalls.wallType);
 }
 public void interact(Moving moving){
     if (interactOnCollision&&!colidable&&xPosition == moving.xPosition && yPosition == moving.yPosition&& elevation == moving.elevation) {  //for if you need to walk on the object to interact with it
@@ -24,7 +22,8 @@ public void interact(Moving moving){
         NonWallsDatabase.findInteraction(moving, wallType);
     }
 }
-public String getNameAbbrieviation(){return wallType.substring(0,1);
+public String getNameAbbrieviation(){if (!wallType.equals(""))return wallType.substring(0,1);
+else return "[]";
 }
 
 }

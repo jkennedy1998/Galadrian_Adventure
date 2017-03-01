@@ -4,7 +4,6 @@ public class Board {
     int xDimension;
     int yDimension;
     ArrayList<Walls> walls = new ArrayList<>();
-    ArrayList<NonWalls> nonWalls = new ArrayList<>();
 
 
     public Board(int x, int y){ //no walls
@@ -26,17 +25,31 @@ public class Board {
         xDimension = board.xDimension;
         yDimension = board.yDimension;
         this.walls.addAll(board.walls);
-        this.nonWalls.addAll(board.nonWalls);
     }
 public boolean questionCollision(int xPosition, int yPosition, int elevtion){
         for(int scan = 0; scan < walls.size(); scan++){
-            if (walls.get(scan).elevation == elevtion) return (walls.get(scan).questionWall(xPosition, yPosition));
+            if (walls.get(scan).elevation == elevtion)
+                for (int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++)
+                return (walls.get(scan).questionWall(xPosition, yPosition));
         }
     System.out.println("error: no walls found at current elevation");
     return false;
 }
+    public String questionWall(int xPosition, int yPosition, int elevtion){
+        for(int scan = 0; scan < walls.size(); scan++){
+            if (walls.get(scan).elevation == elevtion)
+                for (int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++)
+                    if (walls.get(scan).questionWall(xPosition, yPosition)) return "[|"+walls.get(scan).walls.get(subScan).wallType+"]";
+        }
+//        System.out.println("error: no walls found at current elevation");
+        return "___";
+    }
 public void addNonWall( NonWalls nonWall){
-    nonWalls.add(nonWall);
+    Wall nonWallObject = new NonWalls(nonWall);
+    for (int scan = 0; scan < walls.size(); scan++){
+        if (nonWallObject.elevation == walls.get(scan).elevation)
+            walls.get(scan).addWall(nonWallObject);
+    }
 }
 public String printBoard(ArrayList<Moving> movingArray){
 
@@ -50,12 +63,9 @@ public String printBoard(ArrayList<Moving> movingArray){
                 if(movingArray.get(scan).behavior.equals("player"))
                     elevation = movingArray.get(scan).elevation;
             if (elevation == 999) System.out.println("error: no players found (or elevation is at 999)");
-            if (questionCollision(xScan,yScan,elevation)) tempCharacter = "[|#|]";
-            else tempCharacter = "___";
-            for (int scan = 0; scan < nonWalls.size(); scan++){
-                NonWalls temp = nonWalls.get(scan);
-                if (temp.elevation == elevation && temp.xPosition == xScan && temp.yPosition == yScan) tempCharacter = "[|"+temp.getNameAbbrieviation()+"|]";
-            }
+//            if (questionCollision(xScan,yScan,elevation)) tempCharacter = "[|#|]";
+//            else tempCharacter = "___";
+            tempCharacter = questionWall(xScan,yScan,elevation);
             for (int characterScan = 0; characterScan < movingArray.size(); characterScan++)
             if (movingArray.get(characterScan).xPosition == xScan && movingArray.get(characterScan).yPosition == yScan && movingArray.get(characterScan).elevation == elevation) tempCharacter = " |"+movingArray.get(characterScan).getNameAbbreviation()+"| ";
             if (xScan == xDimension-1) tempCharacter += "\n";

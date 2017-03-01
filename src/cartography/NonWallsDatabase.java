@@ -8,6 +8,11 @@ public class NonWallsDatabase {
         NonWalls nonwall = new NonWalls(xPosition,yPosition,elevation,wallType);
         return nonwall;
     }
+    public static boolean checkIfNonWall(Wall wall){
+        if (wall.wallType.equalsIgnoreCase("stairs up")) return true;
+        if (wall.wallType.equalsIgnoreCase("stairs down")) return true;
+        return false;
+    }
 
     public static int findMovingLocation(Moving moving){
         for (int scan = 0; scan < CollisionProject.movings.size();scan++){
