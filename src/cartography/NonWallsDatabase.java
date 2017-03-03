@@ -1,10 +1,5 @@
 package cartography;
-
 import javax.swing.*;
-
-/**
- * Created by citim on 2/23/2017.
- */
 public class NonWallsDatabase {
 
     public static NonWalls makeNonWall(int xPosition, int yPosition, int elevation, String wallType){

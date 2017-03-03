@@ -1,8 +1,4 @@
 package cartography;
-
-/**
- * Created by citim on 2/28/2017.
- */
 public class Wall {
     public int xPosition, yPosition, elevation;
     String wallType = "";

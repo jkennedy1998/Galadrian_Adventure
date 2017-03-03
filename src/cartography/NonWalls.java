@@ -1,6 +1,4 @@
-package cartography; /**
- * Created by citim on 2/23/2017.
- */
+package cartography;
 public class NonWalls extends Wall {
     boolean colidable = false, interactOnCollision = true;
     String description = "";

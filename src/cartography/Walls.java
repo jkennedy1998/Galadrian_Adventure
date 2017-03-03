@@ -1,5 +1,5 @@
-package cartography;import java.util.ArrayList;
-
+package cartography;
+import java.util.ArrayList;
 public class Walls {
      ArrayList<Wall> walls;
      int elevation = 0;

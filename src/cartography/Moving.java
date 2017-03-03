@@ -1,7 +1,4 @@
 package cartography;
-
-import java.nio.file.Watchable;
-
 public class Moving {
     int xPosition, yPosition, range = 7, elevation = 0, speed = 60;
     boolean playerCollide = true, wallCollide = true;
