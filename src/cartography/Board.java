@@ -35,11 +35,17 @@ public boolean questionCollision(int xPosition, int yPosition, int elevtion){
     System.out.println("error: no walls found at current elevation");
     return false;
 }
-    public String questionWall(int xPosition, int yPosition, int elevtion){
+    public String questionWallCharacters(int xPosition, int yPosition, int elevtion){
         for(int scan = 0; scan < walls.size(); scan++){
             if (walls.get(scan).elevation == elevtion)
-                for (int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++)
-                    if (walls.get(scan).questionWall(xPosition, yPosition)) return "[|"+walls.get(scan).walls.get(subScan).wallType+"]";
+                for (int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++) {
+                    if ((walls.get(scan).questionWall(xPosition, yPosition))||
+                            (NonWallsDatabase.checkIfNonWall(walls.get(scan).walls.get(subScan)) &&
+                                    walls.get(scan).walls.get(subScan).xPosition == xPosition &&
+                                    walls.get(scan).walls.get(subScan).yPosition == yPosition))
+                        return "[|" + walls.get(scan).walls.get(subScan).wallType.substring(0,1) + "]";
+
+                }
         }
 //        System.out.println("error: no walls found at current elevation");
         return "___";
@@ -65,7 +71,7 @@ public String printBoard(ArrayList<Moving> movingArray){
             if (elevation == 999) System.out.println("error: no players found (or elevation is at 999)");
 //            if (questionCollision(xScan,yScan,elevation)) tempCharacter = "[|#|]";
 //            else tempCharacter = "___";
-            tempCharacter = questionWall(xScan,yScan,elevation);
+            tempCharacter = questionWallCharacters(xScan,yScan,elevation);
             for (int characterScan = 0; characterScan < movingArray.size(); characterScan++)
             if (movingArray.get(characterScan).xPosition == xScan && movingArray.get(characterScan).yPosition == yScan && movingArray.get(characterScan).elevation == elevation) tempCharacter = " |"+movingArray.get(characterScan).getNameAbbreviation()+"| ";
             if (xScan == xDimension-1) tempCharacter += "\n";

@@ -25,7 +25,6 @@ public class Walls {
         this.walls = walls.walls; //hahaha
     }
     public void addWall (Wall wall){
-        System.out.println(wall);
         walls.add(wall);
         deleteDuplicates();
     }
@@ -74,7 +73,7 @@ public class Walls {
     public boolean questionWall(int x, int y){
 
         for (int scan = 0; scan < walls.size(); scan++){
-                if (walls.get(scan).yPosition == y && walls.get(scan).xPosition == x)
+                if (walls.get(scan).yPosition == y && walls.get(scan).xPosition == x && !NonWallsDatabase.checkIfNonWall(walls.get(scan)))
                     return true;
         }return false;
     }

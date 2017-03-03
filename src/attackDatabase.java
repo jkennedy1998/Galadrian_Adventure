@@ -6,8 +6,6 @@ class attackDatabase {
 
     private static int attackData[]= {0,0,0,0,0,0,0};
     private final static int emptyData[]= {0,0,0,0,0,0,0};
-    public static void main(String args[]){ //nothing should be here or call to here
-    }
     public static int[] getAttackData(String attack) {
         if (attack.equalsIgnoreCase("Slash")) {slash();
             return attackData;}
