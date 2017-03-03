@@ -51,10 +51,11 @@ public boolean questionCollision(int xPosition, int yPosition, int elevtion){
         return "___";
     }
 public void addNonWall( NonWalls nonWall){
-    Wall nonWallObject = new NonWalls(nonWall);
+    Wall nonWallObject = nonWall;
     for (int scan = 0; scan < walls.size(); scan++){
         if (nonWallObject.elevation == walls.get(scan).elevation)
             walls.get(scan).addWall(nonWallObject);
+
     }
 }
 public String printBoard(ArrayList<Moving> movingArray){

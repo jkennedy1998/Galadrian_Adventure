@@ -15,7 +15,7 @@ public class BoardDatabase {
         Walls walls = new Walls(wallX, wallY);
         return new Board(20,20,walls);
     }
-    public static Board squareMultifloored(){ //20x20 square with 20x20 square on top
+    public static Board squareMultifloored() { //20x20 square with 20x20 square on top
         ArrayList walls = new ArrayList();
         {
             int[] wallX = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -33,9 +33,18 @@ public class BoardDatabase {
             walls.add(wall);
         }
 
-        Board board = new Board(20,20,walls);
-        board.addNonWall(NonWallsDatabase.makeNonWall(5,6,0,"stairs up"));
-        board.addNonWall(NonWallsDatabase.makeNonWall(5,5,1,"stairs down"));
+        Board board = new Board(20, 20, walls);
+        board.addNonWall(NonWallsDatabase.makeNonWall(5, 6, 0, "stairs up"));
+        board.addNonWall(NonWallsDatabase.makeNonWall(5, 5, 1, "stairs down"));
+        {
+        NonWalls nonWallObject = NonWallsDatabase.makeNonWall(4, 6, 0, "Sign");
+        nonWallObject.description = "These stairs go up!";
+        board.addNonWall(nonWallObject);
+        }
+        {NonWalls nonWallObject = NonWallsDatabase.makeNonWall(4, 5, 1, "Sign");
+        nonWallObject.description = "These stairs go down!";
+        board.addNonWall(nonWallObject);
+        }
 
         return board;
     }

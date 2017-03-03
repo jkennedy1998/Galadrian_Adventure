@@ -9,7 +9,7 @@ public class CollisionProject {
     public static void main(String args[]){
 
         testBoard = new Board(BoardDatabase.getBoard("squareMultifloored"));
-        Moving adam = new Moving(3,5,testBoard,"adam", true);
+        Moving adam = new Moving(3,5,testBoard,"player", true);
         movings.add(adam);
         Moving eve = new Moving(3,8,testBoard,"eve", false);
         movings.add(eve);
