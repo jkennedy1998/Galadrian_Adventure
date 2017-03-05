@@ -5,6 +5,7 @@ public class NonWallsDatabase {
     public static NonWalls makeNonWall(int xPosition, int yPosition, int elevation, String wallType){
 
         NonWalls nonwall = new NonWalls(xPosition,yPosition,elevation,wallType);
+        if(wallType.equalsIgnoreCase("sign")) nonwall.colidable = true;
         return nonwall;
     }
     public static boolean checkIfNonWall(Wall wall){
@@ -24,7 +25,6 @@ public class NonWallsDatabase {
         if(current.wallType.equalsIgnoreCase("stairs up")) moving.elevation++;
         else if(current.wallType.equalsIgnoreCase("stairs down")) moving.elevation-= 1;
         else if(current.wallType.equalsIgnoreCase("sign") && moving.name.equals("player"))JOptionPane.showMessageDialog(null,current.description);
-
-        else System.out.print("error: wallType isn't set to a legitimate type");
+        else System.out.println("error: wallType isn't set to a legitimate type\nWalltype = ["+current.wallType+"]");
     }
 }

@@ -41,24 +41,29 @@ public class Moving {
         if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1))
             yPosition--;
         questionNonWalls();
+        lastPosition[1] = yPosition;
+
     }
 
     public void moveDown() {
         if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1))
             yPosition++;
         questionNonWalls();
+        lastPosition[1] = yPosition;
     }
 
     public void moveLeft() {
         if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0))
             xPosition--;
         questionNonWalls();
+        lastPosition[0] = xPosition;
     }
 
     public void moveRight() {
         if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0))
             xPosition++;
         questionNonWalls();
+        lastPosition[0] = xPosition;
     }
 
     public boolean questionPlayerCollision(int x, int y){ //up down left right in respective order starting at 0

@@ -37,11 +37,11 @@ public class BoardDatabase {
         board.addNonWall(NonWallsDatabase.makeNonWall(5, 6, 0, "stairs up"));
         board.addNonWall(NonWallsDatabase.makeNonWall(5, 5, 1, "stairs down"));
         {
-        NonWalls nonWallObject = NonWallsDatabase.makeNonWall(4, 6, 0, "Sign");
+        NonWalls nonWallObject = NonWallsDatabase.makeNonWall(4, 6, 0, "sign");
         nonWallObject.description = "These stairs go up!";
         board.addNonWall(nonWallObject);
         }
-        {NonWalls nonWallObject = NonWallsDatabase.makeNonWall(4, 5, 1, "Sign");
+        {NonWalls nonWallObject = NonWallsDatabase.makeNonWall(4, 5, 1, "sign");
         nonWallObject.description = "These stairs go down!";
         board.addNonWall(nonWallObject);
         }
