@@ -45,6 +45,10 @@ public class BoardDatabase {
         nonWallObject.description = "These stairs go down!";
         board.addNonWall(nonWallObject);
         }
+        {NonWalls nonWallObject = NonWallsDatabase.makeNonWall(2, 2, 1, "chest");
+            nonWallObject.description = "This is a chest";
+            board.addNonWall(nonWallObject);
+        }
 
         return board;
     }

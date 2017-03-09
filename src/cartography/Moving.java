@@ -70,7 +70,7 @@ public class Moving {
         if (!playerCollide) return false;
         for(int scan = 0; scan < CollisionProject.movings.size(); scan++){
             Moving temp = CollisionProject.movings.get(scan);
-            if (xPosition+x == temp.xPosition&&yPosition+y == temp.yPosition&&temp.playerCollide &&!(temp.name.equals(name))){
+            if (xPosition+x == temp.xPosition&&yPosition+y == temp.yPosition&&temp.playerCollide &&!(temp.name.equals(name))&&elevation==temp.elevation){
                 return true;
             }
         }
