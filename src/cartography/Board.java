@@ -4,6 +4,7 @@ public class Board {
     int xDimension;
     int yDimension;
     ArrayList<Walls> walls = new ArrayList<>();
+    ArrayList<Moving> movings = new ArrayList<>();
 
 
     public Board(int x, int y){ //no walls
@@ -58,7 +59,7 @@ public void addNonWall( NonWalls nonWall){
 
     }
 }
-public String printBoard(ArrayList<Moving> movingArray){
+public String printBoard(){
 
     String output = "";
     int xScan = 0, yScan = 0;
@@ -66,15 +67,15 @@ public String printBoard(ArrayList<Moving> movingArray){
         while (xScan < xDimension) {
             String tempCharacter;
             int elevation = 999;
-            for(int scan = 0; scan < movingArray.size(); scan++)
-                if(movingArray.get(scan).behavior.equals("player"))
-                    elevation = movingArray.get(scan).elevation;
+            for(int scan = 0; scan < movings.size(); scan++)
+                if(movings.get(scan).behavior.equals("player"))
+                    elevation = movings.get(scan).elevation;
             if (elevation == 999) System.out.println("error: no players found (or elevation is at 999)");
 //            if (questionCollision(xScan,yScan,elevation)) tempCharacter = "[|#|]";
 //            else tempCharacter = "___";
             tempCharacter = questionWallCharacters(xScan,yScan,elevation);
-            for (int characterScan = 0; characterScan < movingArray.size(); characterScan++)
-            if (movingArray.get(characterScan).xPosition == xScan && movingArray.get(characterScan).yPosition == yScan && movingArray.get(characterScan).elevation == elevation) tempCharacter = " |"+movingArray.get(characterScan).getNameAbbreviation()+"| ";
+            for (int characterScan = 0; characterScan < movings.size(); characterScan++)
+            if (movings.get(characterScan).xPosition == xScan && movings.get(characterScan).yPosition == yScan && movings.get(characterScan).elevation == elevation) tempCharacter = " |"+movings.get(characterScan).getNameAbbreviation()+"| ";
             if (xScan == xDimension-1) tempCharacter += "\n";
             output+= tempCharacter;
             xScan++;

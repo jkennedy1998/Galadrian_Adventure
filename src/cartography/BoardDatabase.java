@@ -49,6 +49,10 @@ public class BoardDatabase {
             nonWallObject.description = "This is a chest";
             board.addNonWall(nonWallObject);
         }
+        {
+            Moving eve = new Moving(3,8,board,"eve", false);
+            board.movings.add(eve);
+        }
 
         return board;
     }

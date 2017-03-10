@@ -2,10 +2,11 @@ package cartography;
 public class NonWalls extends Wall {
     boolean colidable = false, interactOnCollision = true;
     String description = "";
+    NonWalls link;
 public NonWalls (int xPosition, int yPosition, int elevation, String wallType) {
     super(xPosition,yPosition, elevation,wallType);
 }
-public NonWalls(NonWalls nonWalls){
+public NonWalls(NonWalls nonWalls) {
     super(nonWalls.xPosition, nonWalls.yPosition, nonWalls.elevation, nonWalls.wallType);
 }
 public void interact(Moving moving){

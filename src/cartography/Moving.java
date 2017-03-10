@@ -19,7 +19,6 @@ public class Moving {
             behavior = "player";
         else
             behavior = BehaviorDatabase.getBehavior(this);
-
     }
 
     public String getNameAbbreviation(){
@@ -68,8 +67,8 @@ public class Moving {
 
     public boolean questionPlayerCollision(int x, int y){ //up down left right in respective order starting at 0
         if (!playerCollide) return false;
-        for(int scan = 0; scan < CollisionProject.movings.size(); scan++){
-            Moving temp = CollisionProject.movings.get(scan);
+        for(int scan = 0; scan < board.movings.size(); scan++){
+            Moving temp = board.movings.get(scan);
             if (xPosition+x == temp.xPosition&&yPosition+y == temp.yPosition&&temp.playerCollide &&!(temp.name.equals(name))&&elevation==temp.elevation){
                 return true;
             }

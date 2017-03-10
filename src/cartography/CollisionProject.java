@@ -2,26 +2,23 @@ package cartography;import javax.swing.*;
 import java.util.ArrayList;
 
 public class CollisionProject {
-    public static Board testBoard;
-    public static ArrayList<Moving> movings = new ArrayList<>();
     public ArrayList emptyTime = new ArrayList();
     public ArrayList time = new ArrayList();
+    public static Moving adam;
+
     public static void main(String args[]){
 
-        testBoard = new Board(BoardDatabase.getBoard("squareMultifloored"));
-        Moving adam = new Moving(3,5,testBoard,"player", true);
-        movings.add(adam);
-        Moving eve = new Moving(3,8,testBoard,"eve", false);
-        movings.add(eve);
-        Moving steve = new Moving(4,8,testBoard,"steve", false);
-        movings.add(steve);
+        adam = new Moving(3,5,Map.currentBoard,"player", true);
+        Map.currentBoard.movings.add(adam);
+
         run();
     }
     public static void run(){
         boolean done = false;
         while(!done){
-        for (int scan = 0; scan < movings.size(); scan++){
-            strive(movings.get(scan));
+
+        for (int scan = 0; scan < adam.board.movings.size(); scan++){
+            strive(adam.board.movings.get(scan));
         }
         }
     }
@@ -29,7 +26,7 @@ public class CollisionProject {
 
         if (piece.behavior.equals("player")) {
             String[] buttons = {"up", "down", "left", "right", "skip"};
-            int answer = JOptionPane.showOptionDialog(null, testBoard.printBoard(movings), "board",
+            int answer = JOptionPane.showOptionDialog(null,adam.board.printBoard(), "board",
                     JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
             if (answer == 0) piece.moveUp();
             if (answer == 1) piece.moveDown();

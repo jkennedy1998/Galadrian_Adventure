@@ -16,9 +16,9 @@ public class BehaviorDatabase {
     public static Moving findVisibleEntity(Moving actingEntity){
         Moving lockedEntity = new Moving();
         boolean assigned = false;
-        for (int scan = 0; scan < CollisionProject.movings.size(); scan++){
-            if (inProximity(CollisionProject.movings.get(scan), actingEntity)){
-                lockedEntity = CollisionProject.movings.get(scan);
+        for (int scan = 0; scan < actingEntity.board.movings.size(); scan++){
+            if (inProximity(actingEntity.board.movings.get(scan), actingEntity)){
+                lockedEntity = actingEntity.board.movings.get(scan);
                 assigned = true;
             }
         }
