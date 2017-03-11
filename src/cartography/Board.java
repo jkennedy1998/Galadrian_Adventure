@@ -76,6 +76,17 @@ public void removeMoving(Moving moving){
             movings.remove(scan);
     }
 }
+    public void removeNonwall(NonWalls nonWalls){
+        for(int scan = 0; scan < walls.size(); scan++){
+            if(walls.get(scan).elevation == nonWalls.elevation)
+                for( int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++){
+                if(walls.get(scan).walls.get(subScan).xPosition == nonWalls.xPosition && walls.get(scan).walls.get(subScan).yPosition == nonWalls.yPosition)
+                    walls.get(scan).walls.remove(subScan);
+                }
+            }
+        }
+
+
 public String printBoard(){
 
     String output = "";
