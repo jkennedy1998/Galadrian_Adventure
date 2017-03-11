@@ -26,6 +26,10 @@ public class NonWallsDatabase {
             moving.xPosition = current.link.xPosition;
             moving.yPosition = current.link.yPosition;
             moving.elevation = current.link.elevation;
+            moving.board = current.link.board;
+            current.board.removeMoving(moving);
+            current.link.board.movings.add(moving);
+
         }
         else if(current.wallType.equalsIgnoreCase("sign") && moving.name.equals("player"))JOptionPane.showMessageDialog(null,current.description);
         else if (current.wallType.equalsIgnoreCase("sign") && !moving.name.equals("player"));//does nothing. this is when an enemy runs into a sign.

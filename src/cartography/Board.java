@@ -59,6 +59,23 @@ public void addNonWall( NonWalls nonWall){
 
     }
 }
+public NonWalls findNonWall(int xPosition, int yPosition, int elevation){
+    for (int scan = 0; scan < walls.size(); scan++){
+        if(walls.get(scan).elevation == elevation)
+            for (int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++)
+            if (walls.get(scan).walls.get(subScan).yPosition == yPosition && walls.get(scan).walls.get(subScan).xPosition == xPosition){
+            return (NonWalls)walls.get(scan).walls.get(subScan);
+            }
+    }
+    System.out.println("no NonWalls object at called location");
+    return null;
+}
+public void removeMoving(Moving moving){
+    for(int scan = 0; scan < movings.size(); scan++){
+        if(movings.get(scan).xPosition == moving.xPosition && movings.get(scan).yPosition == moving.yPosition && moving.name.equals(movings.get(scan).name))
+            movings.remove(scan);
+    }
+}
 public String printBoard(){
 
     String output = "";

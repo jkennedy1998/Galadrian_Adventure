@@ -2,13 +2,12 @@ package cartography;import javax.swing.*;
 import java.util.ArrayList;
 
 public class CollisionProject {
-    public ArrayList emptyTime = new ArrayList();
-    public ArrayList time = new ArrayList();
     public static Moving adam;
 
     public static void main(String args[]){
 
-        adam = new Moving(3,5,Map.currentBoard,"player", true);
+        Map.initializeMaps();
+        adam = new Moving(3,3,Map.currentBoard,"player", true);
         Map.currentBoard.movings.add(adam);
 
         run();

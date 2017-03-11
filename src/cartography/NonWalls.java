@@ -2,6 +2,7 @@ package cartography;
 public class NonWalls extends Wall {
     boolean colidable = false, interactOnCollision = true;
     String description = "";
+    Board board;
     NonWalls link;
 public NonWalls (int xPosition, int yPosition, int elevation, String wallType) {
     super(xPosition,yPosition, elevation,wallType);
