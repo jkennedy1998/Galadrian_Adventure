@@ -41,7 +41,7 @@ public boolean questionCollision(int xPosition, int yPosition, int elevtion){
             if (walls.get(scan).elevation == elevtion)
                 for (int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++) {
                     if ((walls.get(scan).questionWall(xPosition, yPosition))||
-                            (NonWallsDatabase.checkIfNonWall(walls.get(scan).walls.get(subScan)) &&
+                            (walls.get(scan).walls.get(subScan).nonWall &&
                                     walls.get(scan).walls.get(subScan).xPosition == xPosition &&
                                     walls.get(scan).walls.get(subScan).yPosition == yPosition))
                         return "[|" + walls.get(scan).walls.get(subScan).wallType.substring(0,1) + "]";

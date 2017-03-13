@@ -11,18 +11,6 @@ public class NonWallsDatabase {
 
         return nonwall;
     }
-    public static boolean checkIfNonWall(Wall wall){//needs every single new nonwall object
-        if (wall.wallType.equalsIgnoreCase("stairs up")||
-                wall.wallType.equalsIgnoreCase("stairs down")||
-                wall.wallType.equalsIgnoreCase("open door")||
-                wall.wallType.equalsIgnoreCase("closed door")||
-                wall.wallType.equalsIgnoreCase("chest")||   //description = item in chest
-                wall.wallType.equalsIgnoreCase("board door")|| // description is whats on the sign
-                wall.wallType.equalsIgnoreCase("sign")|| // description is whats on the sign
-                wall.wallType.equalsIgnoreCase("item") // description = item on ground
-                )return true;
-        return false;
-    }
     public static void findInteraction(Moving moving, NonWalls current){//needs every single nonwall object and aditional nonplayer colide if its a player based object
         if(current.wallType.equalsIgnoreCase("stairs up")) moving.elevation++;
         else if(current.wallType.equalsIgnoreCase("stairs down")) moving.elevation-= 1;

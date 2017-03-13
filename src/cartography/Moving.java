@@ -29,7 +29,7 @@ public class Moving {
         for (int scan = 0; scan < board.walls.size(); scan++){
             if (board.walls.get(scan).elevation == elevation)
                 for(int subScan = 0; subScan < board.walls.get(scan).walls.size();subScan++){
-            if (NonWallsDatabase.checkIfNonWall(board.walls.get(scan).walls.get(subScan))){
+            if (board.walls.get(scan).walls.get(subScan).nonWall){
                 NonWalls temp = (NonWalls)board.walls.get(scan).walls.get(subScan);
                 temp.interact(this);
             }

@@ -5,10 +5,8 @@ public class NonWalls extends Wall {
     Board board;
     NonWalls link;
 public NonWalls (int xPosition, int yPosition, int elevation, String wallType) {
-    super(xPosition,yPosition, elevation,wallType);
-}
-public NonWalls(NonWalls nonWalls) {
-    super(nonWalls.xPosition, nonWalls.yPosition, nonWalls.elevation, nonWalls.wallType);
+    super(xPosition, yPosition, elevation, wallType);
+    nonWall = true;
 }
 public void interact(Moving moving){
     if (interactOnCollision&&!colidable&&xPosition == moving.xPosition && yPosition == moving.yPosition&& elevation == moving.elevation) {  //for if you need to walk on the object to interact with it

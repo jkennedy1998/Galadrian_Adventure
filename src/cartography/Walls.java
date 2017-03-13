@@ -73,7 +73,7 @@ public class Walls {
     public boolean questionWall(int x, int y){
 
         for (int scan = 0; scan < walls.size(); scan++){
-                if (walls.get(scan).yPosition == y && walls.get(scan).xPosition == x && !NonWallsDatabase.checkIfNonWall(walls.get(scan)))
+                if (walls.get(scan).yPosition == y && walls.get(scan).xPosition == x && !walls.get(scan).nonWall)
                     return true;
         }return false;
     }
