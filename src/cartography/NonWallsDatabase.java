@@ -2,16 +2,20 @@ package cartography;
 import javax.swing.*;
 public class NonWallsDatabase {
 
-    public static NonWalls makeNonWall(int xPosition, int yPosition, int elevation, String wallType){
+    public static NonWalls makeNonWall(int xPosition, int yPosition, int elevation, String wallType){ //needs inclusion of nonwall if presets are not true for desired nonwall object
 
         NonWalls nonwall = new NonWalls(xPosition,yPosition,elevation,wallType);
         if(wallType.equalsIgnoreCase("sign")) nonwall.colidable = true;
-        if(wallType.equalsIgnoreCase("chest")) nonwall.colidable = true;
+        else if(wallType.equalsIgnoreCase("chest")) nonwall.colidable = true;
+        else if(wallType.equalsIgnoreCase("closed door")) nonwall.colidable = true; //starts as a closed door
+
         return nonwall;
     }
-    public static boolean checkIfNonWall(Wall wall){
+    public static boolean checkIfNonWall(Wall wall){//needs every single new nonwall object
         if (wall.wallType.equalsIgnoreCase("stairs up")||
                 wall.wallType.equalsIgnoreCase("stairs down")||
+                wall.wallType.equalsIgnoreCase("open door")||
+                wall.wallType.equalsIgnoreCase("closed door")||
                 wall.wallType.equalsIgnoreCase("chest")||   //description = item in chest
                 wall.wallType.equalsIgnoreCase("board door")|| // description is whats on the sign
                 wall.wallType.equalsIgnoreCase("sign")|| // description is whats on the sign
@@ -19,9 +23,14 @@ public class NonWallsDatabase {
                 )return true;
         return false;
     }
-    public static void findInteraction(Moving moving, NonWalls current){
+    public static void findInteraction(Moving moving, NonWalls current){//needs every single nonwall object and aditional nonplayer colide if its a player based object
         if(current.wallType.equalsIgnoreCase("stairs up")) moving.elevation++;
         else if(current.wallType.equalsIgnoreCase("stairs down")) moving.elevation-= 1;
+        else if(current.wallType.equalsIgnoreCase("open door"));
+        else if(current.wallType.equalsIgnoreCase("closed door")){
+            current.wallType = "open door";
+            current.colidable = false;
+        }
         else if(current.wallType.equalsIgnoreCase("board door")) {
             moving.xPosition = current.link.xPosition;
             moving.yPosition = current.link.yPosition;

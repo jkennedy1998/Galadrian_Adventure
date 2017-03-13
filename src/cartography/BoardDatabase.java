@@ -20,6 +20,7 @@ public class BoardDatabase {
     //board.addNonWall(door)
     //}
     //  then you must set their links in the Map class.
+
     public static Board square(){ //20x20 square
         int[] wallX = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         int[] wallY = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
@@ -36,6 +37,14 @@ public class BoardDatabase {
             board.addNonWall(door);
             door.board = board;
         }
+        {
+            NonWalls door = NonWallsDatabase.makeNonWall(5,3,0,"closed door");
+            board.addNonWall(door);
+        }
+        {
+            NonWalls door = NonWallsDatabase.makeNonWall(1,3,0,"closed door");
+            board.addNonWall(door);
+        }
         return board;
     }
     public static Board hallway2(){
@@ -48,12 +57,17 @@ public class BoardDatabase {
             board.addNonWall(door);
             door.board = board;
         }
+//        {
+//            NonWalls item = NonWallsDatabase.makeNonWall(2,2,0,"item");
+//            item.description = "this thing";
+//            item.board = board;
+//            board.addNonWall(item);
+//        }
         {
-            NonWalls item = NonWallsDatabase.makeNonWall(2,2,0,"item");
-            item.description = "this thing";
-            item.board = board;
-            board.addNonWall(item);
+            NonWalls door = NonWallsDatabase.makeNonWall(6,3,0,"closed door");
+            board.addNonWall(door);
         }
+
         return board;
     }
     public static Board squareMultifloored() { //20x20 square with 20x20 square on top
