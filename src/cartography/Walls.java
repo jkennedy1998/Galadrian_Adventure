@@ -24,6 +24,7 @@ public class Walls {
     public Walls (Walls walls){ // walls from another wall object
         this.walls = walls.walls; //hahaha
     }
+
     public void addWall (Wall wall){
         walls.add(wall);
         deleteDuplicates();
@@ -53,7 +54,7 @@ public class Walls {
         for (int scan = 0; scan < walls.size(); scan++) {
 
             for (int subScan = 0; subScan < walls.size(); subScan++){
-                if (walls.get(scan).xPosition == walls.get(subScan).xPosition && walls.get(scan).yPosition == walls.get(subScan).yPosition&& scan!=subScan){
+                if (walls.get(scan).xPosition == walls.get(subScan).xPosition && walls.get(scan).yPosition == walls.get(subScan).yPosition&& scan!=subScan && !walls.get(scan).nonWall && !walls.get(subScan).nonWall){
                     walls.remove(scan);
                     subScan--;
                 }
