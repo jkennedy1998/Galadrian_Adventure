@@ -42,8 +42,9 @@ public class BoardDatabase {
             board.addNonWall(door);
         }
         {
-            NonWalls door = NonWallsDatabase.makeNonWall(1,3,0,"closed door");
-            board.addNonWall(door);
+            NonWalls dartTrap = NonWallsDatabase.makeNonWall(1,3,0,"dart trap");
+            dartTrap.facing = 1;
+            board.addNonWall(dartTrap);
         }
         return board;
     }

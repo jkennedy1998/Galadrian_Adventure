@@ -1,5 +1,6 @@
 package cartography;
 public class NonWalls extends Wall {
+    byte facing = 0;
     boolean colidable = false, interactOnCollision = true, state = true;
     String description = "";
     Board board;
@@ -16,9 +17,13 @@ public void interact(Moving moving){
         moving.xPosition = moving.lastPosition[0];
         moving.yPosition = moving.lastPosition[1];
         NonWallsDatabase.findInteraction(moving, this);
-        System.out.println(wallType);
     }
-    if (!interactOnCollision){ //for if a nonwall can interact with a player standing a few blocks away. (ie a fan)
+    if (!interactOnCollision && colidable && xPosition == moving.xPosition && yPosition == moving.yPosition&& elevation == moving.elevation){//if the nonwall is always active but playes cannot walk into it. (ie a dart trap)
+        moving.xPosition = moving.lastPosition[0];
+        moving.yPosition = moving.lastPosition[1];
+        NonWallsDatabase.findInteraction(moving, this);
+    }
+    if (!interactOnCollision && !colidable){ //for if a nonwall can interact with a player standing a few blocks away. (ie a fan)
         NonWallsDatabase.findInteraction(moving, this);
     }
 }
@@ -28,10 +33,10 @@ public void checkState(){
         if (state) wallType = "closed door";
         else wallType = "open door";
     }
+    else if(wallType.equals("dart trap")){ //check state is never run from this object
+        NonWallsDatabase.findInteraction(null,this);
+        System.out.println(5);
+    }
     else System.out.println("error: checkState method activated for non referenced objects or link not set");
 }
-public String getNameAbbrieviation(){if (!wallType.equals(""))return wallType.substring(0,1);
-else return "[]";
-}
-
 }

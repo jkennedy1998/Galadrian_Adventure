@@ -11,6 +11,7 @@ public class BehaviorDatabase {
     public static int[] respond(Moving actingEntity){//add random movement
         if (actingEntity.behavior.equals("follow")) return follow(actingEntity);
         if (actingEntity.behavior.equals("flee")) return flee(actingEntity);
+        if (actingEntity.behavior.substring(0,5).equals("linear")) return linear(actingEntity);
         return stand();
     }
     public static Moving findVisibleEntity(Moving actingEntity){
@@ -31,6 +32,14 @@ public class BehaviorDatabase {
     }
     public static boolean inProximity (Moving entity,Moving actingEntity){ return  (!(Math.sqrt(Math.pow(Math.abs(entity.xPosition - actingEntity.xPosition),2)+Math.pow(Math.abs(entity.yPosition - actingEntity.yPosition),2)) > actingEntity.range)&&entity.behavior.equals("player")&&entity.elevation == actingEntity.elevation); }
 
+    private static int[] linear(Moving actingEntity){
+        if(actingEntity.behavior.equals("linear up")) return new int[] {0,-1};
+        if(actingEntity.behavior.equals("linear down")) return new int[] {0,1};
+        if(actingEntity.behavior.equals("linear left")) return new int[] {-1,0};
+        if(actingEntity.behavior.equals("linear right")) return new int[] {1,0};
+        System.out.println("error: linear movement not assigned correctly for Moving's behavior");
+        return null;
+    }
     private static int[] follow(Moving actingEntity){
         Moving lockedEntity = findVisibleEntity(actingEntity);
         if (lockedEntity.name.equals("empty")) if( Math.random()>.7) {return wander();} else return stand();
