@@ -19,6 +19,11 @@ public class NonWallsDatabase {
             current.wallType = "open door";
             current.colidable = false;
         }
+        else if(current.wallType.equalsIgnoreCase("pressure plate")){
+            current.state = !current.state;
+            current.checkState();
+            current.link.checkState();
+        }
         else if(current.wallType.equalsIgnoreCase("board door")) {
             moving.xPosition = current.link.xPosition;
             moving.yPosition = current.link.yPosition;

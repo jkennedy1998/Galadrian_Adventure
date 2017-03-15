@@ -1,6 +1,6 @@
 package cartography;
 public class NonWalls extends Wall {
-    boolean colidable = false, interactOnCollision = true;
+    boolean colidable = false, interactOnCollision = true, state = true;
     String description = "";
     Board board;
     NonWalls link;
@@ -21,6 +21,14 @@ public void interact(Moving moving){
     if (!interactOnCollision){ //for if a nonwall can interact with a player standing a few blocks away. (ie a fan)
         NonWallsDatabase.findInteraction(moving, this);
     }
+}
+public void checkState(){
+    if (wallType.equals("pressure plate") && link != null) link.state = state;
+    else if (wallType.equals("open door") || wallType.equals("closed door")){
+        if (state) wallType = "closed door";
+        else wallType = "open door";
+    }
+    else System.out.println("error: checkState method activated for non referenced objects or link not set");
 }
 public String getNameAbbrieviation(){if (!wallType.equals(""))return wallType.substring(0,1);
 else return "[]";

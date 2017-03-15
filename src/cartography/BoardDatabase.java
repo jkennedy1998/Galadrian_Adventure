@@ -57,12 +57,11 @@ public class BoardDatabase {
             board.addNonWall(door);
             door.board = board;
         }
-//        {
-//            NonWalls item = NonWallsDatabase.makeNonWall(2,2,0,"item");
-//            item.description = "this thing";
-//            item.board = board;
-//            board.addNonWall(item);
-//        }
+
+        {
+            NonWalls pressurePlate = NonWallsDatabase.makeNonWall(4,3,0,"pressure plate");
+            board.addNonWall(pressurePlate);
+        }
         {
             NonWalls door = NonWallsDatabase.makeNonWall(6,3,0,"closed door");
             board.addNonWall(door);

@@ -8,9 +8,9 @@ public class CollisionProject {
 
         Map.initializeMaps();
         adam = new Moving(3,3,Map.currentBoard,"player", true);
-        Map.currentBoard.movings.add(adam);
+        Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
 
-        run();
+        run(); //starts endless loop!
     }
     public static void run(){
         boolean done = false;
@@ -21,8 +21,8 @@ public class CollisionProject {
         }
         }
     }
-    public static void strive(Moving piece){
 
+    public static void strive(Moving piece){
         if (piece.behavior.equals("player")) {
             String[] buttons = {"up", "down", "left", "right", "skip"};
             int answer = JOptionPane.showOptionDialog(null,adam.board.printBoard(), "board",

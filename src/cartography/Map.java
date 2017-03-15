@@ -16,6 +16,7 @@ public class Map {
         boards.add(getBoard("hallway2"));//1
         boards.get(0).findNonWall(9,2,0).link = (boards.get(1).findNonWall(0,3,0));
         boards.get(1).findNonWall(0,3,0).link = (boards.get(0).findNonWall(9,2,0));
+        boards.get(1).findNonWall(4,3,0).link = boards.get(1).findNonWall(6,3,0);
         System.out.println("Ended map initialization!");
         currentBoard = boards.get(0);
     }
