@@ -4,7 +4,8 @@
 public class beastNameGen {
     public static String[] vowels = {"a","e","i","o","u"},
             constanants = {"b","c","d","f","g","h","j","k","ck","l","m","n","p","qu","r","s","sh","t","th","v","w","x","y","z"},
-            roots = {"an","a","abs","arist","adip","arct","aer","agri","amor","patri","danth","matri","acri","phobe","nec","necre","lux","lum","luna","acra","phon","ahpobe","belle","bel","perp","stir","bane","wend"};
+            roots = {"an","a","abs","arist","adip","arct","aer","agri","amor","patri","danth","matri","acri",
+                    "phobe","nec","necre","lux","lum","luna","acra","phon","ahpobe","belle","bel","perp","stir","bane","wend"};
 
 
 
