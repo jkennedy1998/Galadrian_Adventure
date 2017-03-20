@@ -86,17 +86,25 @@ public class SideQuests {
                 adventurerework.speedMultiplierLocked += .08;
             } else {
                 itemVoid(10);
-                int piece = (int)Math.ceil(Math.random()*4+10); //any forgotten armor peice
+                int piece = (int) Math.ceil(Math.random() * 4 + 10); //any forgotten armor peice
                 System.out.println("You have broken your spade but have looted a " + ItemDirectory.findItemValues(piece)[0] + "off of the forgotten\nA rush of guilt falls over you.");
                 adventurerework.inventory.getItem(piece);
             }
-        }else{
+        } else {
             System.out.println("You come across a makeshift grave.\nIt reads: May Mortum grant you the armor you word for Vivus");
         }
+    }
 
-        //area for rare quests.
+        public static void buyMortumusAumulet(){
+        if(adventurerework.coins>100){
+
+        }else{
+            System.out.println("You come across a deranged traveler offering some shard of slate for 100 coins.\nYour pockets are too empty and you choose to strive on, saving what you have. ");
+        }
 
     }
+
+
 
     //area for rare quests.
 
