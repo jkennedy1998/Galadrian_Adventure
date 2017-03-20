@@ -31,7 +31,7 @@ public class monsterSelection {
             if (rand == 3)  beastStats[9] ="" + (Double.parseDouble(beastStats[9])+.05);
             if (rand == 4)  beastStats[10] ="" + (Double.parseDouble(beastStats[10])+.05);
         }
-        beastNameGen.main(beast);
+        beastNameGen.assighnName(beast);
         return beastStats;
     }
 

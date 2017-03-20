@@ -2,87 +2,45 @@
  * Created by Jared on 12/22/2016.
  */
 public class beastNameGen {
+    public static String[] vowels = {"a","e","i","o","u"},
+            constanants = {"b","c","d","f","g","h","j","k","ck","l","m","n","p","qu","r","s","sh","t","th","v","w","x","y","z"},
+            roots = {"an","a","abs","arist","adip","arct","aer","agri","amor","patri","danth","matri","acri","phobe","nec","necre","lux","lum","luna","acra","phon","ahpobe","belle","bel","perp","stir","bane","wend"};
 
 
-    public static void main (String beastType){
-        if (Math.ceil(Math.random())*2==1){
-            adventurerework.tempBeastName = preName()+postName()+" the "+beastType;
-        }else
-            adventurerework.tempBeastName = fullName()+" the "+beastType;
 
+    public static void assighnName(String beast){
+        adventurerework.tempBeastName = getRootedName();
 
     }
+    public static String getRootedName(){
 
-
-
-    public static String preName(){
-        int precount = 5;
-        int rand = (int)Math.ceil(Math.random()*precount);
-
-        if (rand == 1){
-            return "Elf";
+        String rooted = "";
+        for(int scan = 0; scan < 2; scan++){
+            rooted+=randomRoot();
         }
-        if (rand == 2){
-            return "Skull";
-        }
-        if (rand == 3){
-            return "Ork";
-        }
-        if (rand == 4){
-            return "Earth";
-        }
-        if (rand == 5){
-            return "Darth";
-        }
-        return "error";
+        return rooted;
     }
 
+    public static void getRandomName (){
+        System.out.print(randomConsanant()+randomVowel()+randomConsanant()+randomVowel()+randomConsanant()+randomVowel()+randomConsanant());
+    }
+    public static String randomVowel(){
+        if(Math.random()<.2)return "";
+        int temp = (int)Math.floor(Math.random()*vowels.length);
+        return vowels[temp];
+    }
+    public static String randomConsanant(){
+        if(Math.random()<.3)return "";
+        int temp = (int)Math.floor(Math.random()*constanants.length);
+        return constanants[temp];
+    }
+    public static String randomRoot(){
 
-    public static String postName(){
-        int postcount = 4;
-        int rand = (int)Math.ceil(Math.random()*postcount);
-        if (rand == 1){
-            return "-Bane";
-        }
-        if (rand == 2){
-            return "-Eater";
-        }
-        if (rand == 3){
-            return "-Torturer";
-        }
-        if (rand == 4){
-            return "-Killer";
-        }
-        return "error";
+        int temp = (int)Math.floor(Math.random()*roots.length);
+        return roots[temp];
     }
-    public static String fullName(){
-        int fullCount = 8;
-        int rand = (int)Math.ceil(Math.random()*fullCount);
-        if (rand == 1){
-            return "Ballgruff";
-        }
-        if (rand == 2){
-            return "Endri";
-        }
-        if (rand == 3){
-            return "Justin";
-        }
-        if (rand == 4){
-            return "Jared";
-        }
-        if (rand == 5){
-            return "Bob Brown";
-        }
-        if (rand == 6){
-            return "Jonas";
-        }
-        if (rand == 7){
-            return "Noah";
-        }
-        if (rand == 8){
-            return "Skywalker";
-        }
-        return "error";
-    }
+
 
 }
+
+
