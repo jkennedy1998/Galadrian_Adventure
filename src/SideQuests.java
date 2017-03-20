@@ -91,7 +91,7 @@ public class SideQuests {
                 adventurerework.inventory.getItem(piece);
             }
         }else{
-            System.out.println("You come across a makeshift grave.\nIt reads: May Mortum grant you the armor you word for Vivus\nYou strive on.");
+            System.out.println("You come across a makeshift grave.\nIt reads: May Mortum grant you the armor you word for Vivus");
         }
 
         //area for rare quests.
