@@ -4,13 +4,12 @@ public class BehaviorDatabase {
         if (Math.random()>.5)
         return "follow";
         else  return "flee";
-    }//make this assign behaviors per name of mob
-//    public static boolean testVisibility(){
-//
-//    }
+    }
     public static int[] respond(Moving actingEntity){//add random movement
         if (actingEntity.behavior.equals("follow")) return follow(actingEntity);
         if (actingEntity.behavior.equals("flee")) return flee(actingEntity);
+        if (actingEntity.behavior.equals("wander")) return wander();
+        if (actingEntity.behavior.equals("stand")) return stand();
         if (actingEntity.behavior.substring(0,5).equals("linear")) return linear(actingEntity);
         return stand();
     }
@@ -24,7 +23,6 @@ public class BehaviorDatabase {
             }
         }
         if (assigned) return lockedEntity;
-
         else {
             Moving emptyMoving = new Moving();
             return  emptyMoving;

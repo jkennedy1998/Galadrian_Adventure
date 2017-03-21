@@ -1,7 +1,7 @@
 
 public class monsterSelection {
     private static String beast;
-    private static String beastStats[]= {"","","","","","","","1","1","1","1","",""};
+    private static String beastStats[]= {"","","","","","","","1","1","1","1","","",""};
     private static boolean needsAnAn = false;
     private static int monsterCount = 0;
     private static int roundsHere = 0; //only used in locations with a set enemy
@@ -35,7 +35,7 @@ public class monsterSelection {
         return beastStats;
     }
 
-    private static int outOfTwo(int first, int second){
+    private static Object outOfTwo(Object first, Object second){
         if (Math.ceil(Math.random())*2==1){
             return first;
         }else
@@ -238,6 +238,8 @@ public class monsterSelection {
         beastStats[6] = ""+(60);
         beastStats[11] = ""+(7);
         beastStats[12] = ""+(0);
+        beastStats[13] = (String) outOfTwo("follow","flee");
+
 
 
     }
@@ -253,6 +255,8 @@ public class monsterSelection {
         beastStats[6] = ""+(70);
         beastStats[11] = ""+(7);
         beastStats[12] = ""+(0);
+        beastStats[13] = "flee";
+
 
     }
     public static void selectLargeCat(){
@@ -267,6 +271,7 @@ public class monsterSelection {
         beastStats[6] = ""+(79);
         beastStats[11] = ""+(27);
         beastStats[12] = ""+(0);
+        beastStats[13] = "follow";
 
 
     }
@@ -282,6 +287,7 @@ public class monsterSelection {
         beastStats[6] = ""+(70);
         beastStats[11] = ""+(5);
         beastStats[12] = ""+(0);
+        beastStats[13] = (String) outOfTwo("follow","flee");
 
 
     }
@@ -297,6 +303,9 @@ public class monsterSelection {
         beastStats[6] = ""+(48);
         beastStats[11] = ""+(22);
         beastStats[12] = ""+(0);
+        beastStats[13] = "follow";
+
+
     }
     public static void selectBigBat(){
         beast = "Large Bat";
@@ -310,6 +319,8 @@ public class monsterSelection {
         beastStats[6] = ""+(58);
         beastStats[11] = ""+(13);
         beastStats[12] = ""+(0);
+        beastStats[13] = (String) outOfTwo("follow","wander");
+
 
 
     }
@@ -326,6 +337,8 @@ public class monsterSelection {
         beastStats[6] = ""+(55);
         beastStats[11] = ""+(15);
         beastStats[12] = ""+(7);
+        beastStats[13] = "follow";
+
 
     }
     public static void selectWarlock(){
@@ -340,6 +353,8 @@ public class monsterSelection {
         beastStats[6] = ""+(56);
         beastStats[11] = ""+(17);
         beastStats[12] = ""+(30);
+        beastStats[13] = "follow";
+
 
     }
     public static void selectSkeleton(){
@@ -354,6 +369,8 @@ public class monsterSelection {
         beastStats[6] = ""+(45);
         beastStats[11] = ""+(17);
         beastStats[12] = ""+(10);
+        beastStats[13] = "follow";
+
 
     }
     public static void selectVampire(){
@@ -368,6 +385,8 @@ public class monsterSelection {
         beastStats[6] = ""+(60);
         beastStats[11] = ""+(19);
         beastStats[12] = ""+(26);
+        beastStats[13] = "follow";
+
 
     }
     public static void selectCultist(){
@@ -382,6 +401,8 @@ public class monsterSelection {
         beastStats[6] = ""+(60);
         beastStats[11] = ""+(16);
         beastStats[12] = ""+(24);
+        beastStats[13] = "follow";
+
 
     }
     public static void selectDrunkDwarf(){
@@ -396,6 +417,8 @@ public class monsterSelection {
         beastStats[6] = ""+(30);
         beastStats[11] = ""+(19);
         beastStats[12] = ""+(40);
+        beastStats[13] = "wander";
+
 
     }
     public static void selectSpiderling() {
@@ -410,6 +433,8 @@ public class monsterSelection {
         beastStats[6] = ""+(67);
         beastStats[11] = ""+(7);
         beastStats[12] = ""+(0);
+        beastStats[13] = (String) outOfTwo("follow","flee");
+
 
     }
     public static void selectDragon(){
@@ -424,32 +449,8 @@ public class monsterSelection {
         beastStats[6] = ""+(40);
         beastStats[11] = ""+(32);
         beastStats[12] = ""+(0);
-    }
-    public static void selectDemon(){
-        beast = "Demon";
-        needsAnAn = false;
-        beastStats[0] = ""+35;
-        beastStats[1] = "bite";
-        beastStats[2] = "bite";
-        beastStats[3] = "bite";
-        beastStats[4] = ""+(0);
-        beastStats[5] = ""+(0);
-        beastStats[6] = ""+(30);
-        beastStats[11] = ""+(19);
-        beastStats[12] = ""+(0);
-    }
-    public static void selectCAngel(){
-        beast = "Corrupted Angel";
-        needsAnAn = true;
-        beastStats[0] = ""+50;
-        beastStats[1] = "bite";
-        beastStats[2] = "bite";
-        beastStats[3] = "bite";
-        beastStats[4] = ""+(0);
-        beastStats[5] = ""+(0);
-        beastStats[6] = ""+(60);
-        beastStats[11] = ""+(19);
-        beastStats[12] = ""+(0);
+        beastStats[13] = (String) outOfTwo("follow","wander");
+
     }
     public static void selectLich(){
         beast = "Lich";
@@ -463,6 +464,8 @@ public class monsterSelection {
         beastStats[6] = ""+(35);
         beastStats[11] = ""+(16);
         beastStats[12] = ""+(0);
+        beastStats[13] = "follow";
+
     }
     public static void selectYaunTiMalison(){
         beast = "Yaun-Ti Malison";
@@ -476,6 +479,8 @@ public class monsterSelection {
         beastStats[6] = ""+(70);
         beastStats[11] = ""+(19);
         beastStats[12] = ""+(0);
+        beastStats[13] = "follow";
+
     }
     public static void selectYaunTiAbonimation(){
         beast = "Yaun-Ti Abonimation";
@@ -489,6 +494,8 @@ public class monsterSelection {
         beastStats[6] = ""+(80);
         beastStats[11] = ""+(23);
         beastStats[12] = ""+(0);
+        beastStats[13] = "follow";
+
     }
     public static void selectYaunTiHolyGuard(){
         beast = "Yaun-Ti Holy Guard";
@@ -502,6 +509,8 @@ public class monsterSelection {
         beastStats[6] = ""+(69);
         beastStats[11] = ""+(28);
         beastStats[12] = ""+(0);
+        beastStats[13] = "follow";
+
     }
     public static void selectMerrshaulk(){
         beast = "Merrshaulk";
@@ -515,6 +524,8 @@ public class monsterSelection {
         beastStats[6] = ""+(40);
         beastStats[11] = ""+(40);
         beastStats[12] = ""+(0);
+        beastStats[13] = "stand";
+
     }
     public static void selectMerrshaulkAbomination(){
         beast = "Merrshaulk Abomination";
@@ -528,6 +539,8 @@ public class monsterSelection {
         beastStats[6] = ""+(10);
         beastStats[11] = ""+(5);
         beastStats[12] = ""+(0);
+        beastStats[13] = "stand";
+
 
     }
     public static void selectYaunTiPureBlood(){
@@ -542,6 +555,8 @@ public class monsterSelection {
         beastStats[6] = ""+(60);
         beastStats[11] = ""+(16);
         beastStats[12] = ""+(14);
+        beastStats[13] = "follow";
+
     }
     public static void selectCthulu(){
         beast = "Cthulu";
@@ -555,6 +570,8 @@ public class monsterSelection {
         beastStats[6] = ""+(1);
         beastStats[11] = ""+(30);
         beastStats[12] = ""+(0);
+        beastStats[13] = "stand";
+
 
     }
 
