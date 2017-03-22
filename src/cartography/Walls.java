@@ -29,6 +29,24 @@ public class Walls {
         walls.add(wall);
         deleteDuplicates();
     }
+    public void addSquare(int xPosition, int yPosition, int xDimension, int yDimension){
+        ArrayList wallX = new ArrayList();
+        ArrayList wallY = new ArrayList();
+        for(int x = xPosition; x < xDimension + xPosition; x++)wallX.add(x);
+        for(int scan = 0; scan < yDimension; scan++) wallY.add(yPosition);
+        for(int x = xPosition; x < xDimension + xPosition; x++)wallX.add(x);
+        for(int scan = 0; scan < yDimension; scan++) wallY.add(yPosition+yDimension-1);
+        for(int y = yPosition; y < yDimension + yPosition; y++)wallY.add(y);
+        for(int scan = 0; scan < xDimension; scan++) wallX.add(xPosition);
+        for(int y = yPosition; y < yDimension + yPosition; y++)wallY.add(y);
+        for(int scan = 0; scan < xDimension; scan++) wallX.add(xPosition+xDimension-1);
+        int[] x = new int[wallX.size()];
+        int[] y = new int[wallX.size()];
+        for(int scan = 0; scan < wallX.size(); scan++){x[scan] = (int)wallX.get(scan);}
+        for(int scan = 0; scan < wallY.size(); scan++){y[scan] = (int)wallY.get(scan);}
+        addWall(x,y);
+
+    }
     public void addWall (int[] wallXCoordinates, int[] wallYCoordinates){
         if (wallXCoordinates.length!=wallYCoordinates.length)
             //sent uneven wall arrays to addWall();

@@ -12,12 +12,7 @@ public class Map {
     private static Board getBoard(String boardName){return BoardDatabase.getBoard(boardName);}
     public static void initializeMaps(){
         System.out.println("Started map initialization!");
-        boards.add(getBoard("hallway1"));//0
-        boards.add(getBoard("hallway2"));//1
-        boards.get(0).findNonWall(9,2,0).link = (boards.get(1).findNonWall(0,3,0));
-        boards.get(1).findNonWall(0,3,0).link = (boards.get(0).findNonWall(9,2,0));
-        boards.get(1).findNonWall(4,3,0).link = boards.get(1).findNonWall(6,3,0);
-        System.out.println("Ended map initialization!");
+        boards.add(BoardDatabase.getBoard("spawn"));
         currentBoard = boards.get(0);
     }
 }
