@@ -39,6 +39,7 @@ public class Moving {
     public void moveUp() {
         if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1))
             yPosition--;
+        else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
@@ -47,6 +48,7 @@ public class Moving {
     public void moveDown() {
         if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1))
             yPosition++;
+        else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
@@ -55,6 +57,7 @@ public class Moving {
     public void moveLeft() {
         if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0))
             xPosition--;
+        else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
@@ -63,6 +66,7 @@ public class Moving {
     public void moveRight() {
         if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0))
             xPosition++;
+        else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;

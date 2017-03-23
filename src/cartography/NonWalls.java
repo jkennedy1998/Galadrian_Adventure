@@ -21,10 +21,9 @@ public void interact(Moving moving){
     if (!interactOnCollision && colidable && xPosition == moving.xPosition && yPosition == moving.yPosition&& elevation == moving.elevation){//if the nonwall is always active but playes cannot walk into it. (ie a dart trap)
         moving.xPosition = moving.lastPosition[0];
         moving.yPosition = moving.lastPosition[1];
-        NonWallsDatabase.findInteraction(moving, this);
     }
-    if (!interactOnCollision && !colidable){ //for if a nonwall can interact with a player standing a few blocks away. (ie a fan)
-        NonWallsDatabase.findInteraction(moving, this);
+    if (!interactOnCollision && !colidable){ //for if a nonwall that needs to be triggered with a link based button
+
     }
 }
 public void checkState(){
@@ -40,7 +39,7 @@ public void checkState(){
             System.out.println(true + "door closed");
         }
     }
-    else if(wallType.equals("dart trap")){ //check state is never run from this object
+    else if(wallType.equals("dart trap")){
         NonWallsDatabase.findInteraction(null,this);
         System.out.println(5);
     }

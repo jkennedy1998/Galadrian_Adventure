@@ -24,11 +24,22 @@ public class BoardDatabase {
             board.walls.get(0).addSquare(0,0,15,15);
             board.walls.get(0).addSquare(5,7,5,5);
             board.walls.get(0).deleteWall(5,9);
-            NonWalls door = NonWallsDatabase.makeNonWall(5,9,0,"closed door");
-            NonWalls pressurePlate = NonWallsDatabase.makeNonWall(8,8,0,"pressure plate");
-            pressurePlate.link = door;
-            board.addNonWall(door);
-            board.addNonWall(pressurePlate);
+            {
+                NonWalls door = NonWallsDatabase.makeNonWall(5, 9, 0, "closed door");
+                NonWalls pressurePlate = NonWallsDatabase.makeNonWall(8, 8, 0, "pressure plate");
+                pressurePlate.link = door;
+                board.addNonWall(door);
+                board.addNonWall(pressurePlate);
+            }
+            {
+                NonWalls pressurePlate = NonWallsDatabase.makeNonWall(7, 2, 0, "pressure plate");
+                NonWalls dartTrap = NonWallsDatabase.makeNonWall(5, 2, 0, "dart trap");
+                dartTrap.board = board;
+                dartTrap.facing = 2;
+                pressurePlate.link = dartTrap;
+                board.addNonWall(pressurePlate);
+                board.addNonWall(dartTrap);
+            }
 
         }
         return board;

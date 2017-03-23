@@ -8,7 +8,7 @@ public class NonWallsDatabase {
         if(wallType.equals("sign")) nonwall.colidable = true;
         else if(wallType.equals("chest")) nonwall.colidable = true;
         else if(wallType.equals("closed door")) nonwall.colidable = true; //starts as a closed door
-        else if(wallType.equals("dart trap")) {
+        else if(wallType.equals("dart trap")) { //needs to assighn a board to it after it is created.
             nonwall.colidable = true;
             nonwall.interactOnCollision = false;
         }
@@ -43,11 +43,12 @@ public class NonWallsDatabase {
         }
         else if(current.wallType.equals("dart trap")){
             //make arrows come out
-            Moving dart = new Moving(current.xPosition,current.yPosition, current.board, "dart", false);
-            if(current.facing == 0){ dart.yPosition-=1; dart.behavior = "linear up";}
-            if(current.facing == 2){ dart.yPosition+=1; dart.behavior = "linear down";}
-            if(current.facing == 1){ dart.xPosition-=1; dart.behavior = "linear left";}
-            if(current.facing == 3){ dart.xPosition+=1; dart.behavior = "linear right";}
+            Moving dart = new Moving(current.xPosition,current.yPosition, current.board, "projectile", false);
+            current.board.movings.add(dart);
+            if(current.facing == 0){ dart.behavior = "linear up";}
+            else if(current.facing == 2){ dart.behavior = "linear down";}
+            else if(current.facing == 1){ dart.behavior = "linear left";}
+            else if(current.facing == 3){ dart.behavior = "linear right";}
 
         }
         else if (current.wallType.equals("item")&& !moving.name.equals("player"));//does nothing. this is when an enemy runs into an item

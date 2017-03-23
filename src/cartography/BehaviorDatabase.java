@@ -10,7 +10,8 @@ public class BehaviorDatabase {
         if (actingEntity.behavior.equals("flee")) return flee(actingEntity);
         if (actingEntity.behavior.equals("wander")) return wander();
         if (actingEntity.behavior.equals("stand")) return stand();
-        if (actingEntity.behavior.substring(0,5).equals("linear")) return linear(actingEntity);
+        if (actingEntity.behavior.substring(0,6).equals("linear")) return linear(actingEntity);
+        System.out.println(5);
         return stand();
     }
     public static Moving findVisibleEntity(Moving actingEntity){
