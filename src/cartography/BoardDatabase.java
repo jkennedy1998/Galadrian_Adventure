@@ -22,6 +22,14 @@ public class BoardDatabase {
         Board board = new Board(15,15);
         {
             board.walls.get(0).addSquare(0,0,15,15);
+            board.walls.get(0).addSquare(5,7,5,5);
+            board.walls.get(0).deleteWall(5,9);
+            NonWalls door = NonWallsDatabase.makeNonWall(5,9,0,"closed door");
+            NonWalls pressurePlate = NonWallsDatabase.makeNonWall(8,8,0,"pressure plate");
+            pressurePlate.link = door;
+            board.addNonWall(door);
+            board.addNonWall(pressurePlate);
+
         }
         return board;
     }

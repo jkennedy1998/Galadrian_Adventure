@@ -29,9 +29,16 @@ public void interact(Moving moving){
 }
 public void checkState(){
     if (wallType.equals("pressure plate") && link != null) link.state = state;
-    else if (wallType.equals("open door") || wallType.equals("closed door")){
-        if (state) wallType = "closed door";
-        else wallType = "open door";
+    else if (wallType.equals("open door") || wallType.equals("closed door")){ //an open door is in a false state
+        if (state){
+            wallType = "open door";
+            colidable = false;
+            System.out.println(false + " door open");
+        } else{
+            wallType = "closed door";
+            colidable = true;
+            System.out.println(true + "door closed");
+        }
     }
     else if(wallType.equals("dart trap")){ //check state is never run from this object
         NonWallsDatabase.findInteraction(null,this);

@@ -22,6 +22,7 @@ public class NonWallsDatabase {
         else if(current.wallType.equals("closed door")){
             current.wallType = "open door";
             current.colidable = false;
+            current.state = false;
         }
         else if(current.wallType.equals("pressure plate")){
             current.state = !current.state;
