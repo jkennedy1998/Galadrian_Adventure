@@ -3,22 +3,20 @@ import java.util.ArrayList;
 
 public class CollisionProject {
     public static Moving adam;
+    static Screen window =  new Screen();
 
     public static void main(String args[]){
 
         Map.initializeMaps();
         adam = new Moving(3,3,Map.currentBoard,"player", true);
         Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
+        run();
 
-        run(); //starts endless loop!
     }
     public static void run(){
-        boolean done = false;
-        while(!done){
+        while(true){
+            strive(adam);
 
-        for (int scan = 0; scan < adam.board.movings.size(); scan++){
-            strive(adam.board.movings.get(scan));
-        }
         }
     }
 

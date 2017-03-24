@@ -1,4 +1,7 @@
-package cartography;import java.util.ArrayList;
+package cartography;
+
+import javax.swing.*;
+import java.util.ArrayList;
 
 public class Board {
     int xDimension;
@@ -88,7 +91,7 @@ public void removeMoving(Moving moving){
 
 
 public String printBoard(){
-
+    CollisionProject.window = new Screen();
     String output = "";
     int xScan = 0, yScan = 0;
     while (yScan < yDimension){
@@ -105,7 +108,8 @@ public String printBoard(){
             for (int characterScan = 0; characterScan < movings.size(); characterScan++)
             if (movings.get(characterScan).xPosition == xScan && movings.get(characterScan).yPosition == yScan && movings.get(characterScan).elevation == elevation) tempCharacter = " |"+movings.get(characterScan).getNameAbbreviation()+"| ";
             if (xScan == xDimension-1) tempCharacter += "\n";
-            output+= tempCharacter;
+            CollisionProject.window.drawCharacter(xScan,yScan,tempCharacter);
+            CollisionProject.window.removeAll();
             xScan++;
         }
         yScan++;
