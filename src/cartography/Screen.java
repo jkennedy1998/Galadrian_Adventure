@@ -65,7 +65,6 @@ public class Screen extends JFrame {
         for (int place =0;place < log.length;place++){
 
             g.drawString(log[place],750,(30+place*30));
-            System.out.println(470-place*30);
         }
 
     }

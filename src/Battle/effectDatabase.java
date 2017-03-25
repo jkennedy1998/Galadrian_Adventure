@@ -1,3 +1,4 @@
+package Battle;
 
 public class effectDatabase {
 

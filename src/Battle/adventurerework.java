@@ -1,10 +1,14 @@
-import javax.swing.*;
+package Battle;
+
+import cartography.*;
 
 public class adventurerework {
+    public static Moving adam;
+    public static Screen window = new Screen();
+    public static String keyPressed = "";
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
     public static int roundCount = 1;
-    public static int lastRoundInShop = 0;
     public static int[] armor = {0,8,0,0,9,0};
     public static String tempBeastName = "";
     public static String tempUserString = "";
@@ -20,8 +24,48 @@ public class adventurerework {
         character1.race();
         character1.role();
         Story.initialize(character1.getAttack1(), character1.getAttack2(), character1.getAttack3(), character1.getAttack4());
-        live();
+        KeyboardListener keyboardListener = new KeyboardListener();
+        window.addKeyListener(keyboardListener);
+        Map.initializeMaps();
+        adam = new Moving(3, 3, Map.currentBoard, "player", true);
+        Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
+        run(); //should replace strive
 
+    }
+    public static void run() {
+        while (true) {
+            for (int scan = 0; scan < adam.board.movings.size(); scan++) {
+                strive(adam.board.movings.get(scan));
+            }
+
+        }
+    }
+    public static void strive(Moving piece) {
+        if (piece.behavior.equals("player")) {
+
+            adam.board.printBoard();
+            boolean boundKey = false;
+            while(!boundKey){
+                System.out.print(""); //idk why this fixed an infinite loop bug, but it does.
+                if (keyPressed.equals("W") || keyPressed.equals("A") || keyPressed.equals("S")|| keyPressed.equals("D") || keyPressed.equals("Space")){
+                    boundKey = true;
+                }
+            }
+            if (keyPressed.equals("W")) piece.moveUp();
+            else if (keyPressed.equals("S")) piece.moveDown();
+            else if (keyPressed.equals("A")) piece.moveLeft();
+            else if (keyPressed.equals("D")) piece.moveRight();
+            else if (keyPressed.equals(" ")) {
+            }
+            keyPressed = "";
+        } else {
+            int temp = (int) Math.round(Math.random());
+            int[] answer = BehaviorDatabase.respond(piece);
+            if (answer[0] == 1 && (temp == 1 || answer[1] == 0)) piece.moveRight();
+            if (answer[0] == -1 && (temp == 1 || answer[1] == 0)) piece.moveLeft();
+            if (answer[1] == -1 && (temp == 0 || answer[0] == 0)) piece.moveUp();
+            if (answer[1] == 1 && (temp == 0 || answer[0] == 0)) piece.moveDown();
+        }
     }
 
     public static void live() {
@@ -32,40 +76,45 @@ public class adventurerework {
         if (time > 22 || time < 5) { //between 10 pm and 5 am
             String temp = Leveler.rest();
             if (temp.equalsIgnoreCase("e")) {
-                System.out.println("\nYou have been ambushed in your sleep!");
-                startEncounter();
+                window.print("You have been ambushed in your sleep!");
+                Board board = new Board(0,0);
+                Moving moving = new Moving(0,0,board,"goblin",false);
+                startEncounter(moving);
             }else {
                 character1.setHealth(Integer.parseInt(temp));
-                System.out.println("\nYou wake up at around "+(int)Math.round(time)+".\nYou have regained "+temp+" health points by resting.");
+                {
+                    String[] strings = {"You wake up at around " + (int) Math.round(time) + ".", "You have regained " + temp + " health points by resting."};
+                    window.print(strings);
+                }
             }
         }
-        String[] buttons = {"Yes", "I REFUSE"};
-        int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
-                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-        if (answer == 0) {
-            striveOn();
-        } else if (answer == 1) {
-            System.out.println("You have chosen to stop adventuring.\nI knew you were a Coward!");
-            System.exit(0);
-        } else {
-            live();
-        }
+//        String[] buttons = {"Yes", "I REFUSE"};
+//        int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
+//                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
+//        if (answer == 0) {
+//            striveOn();
+//        } else if (answer == 1) {
+//            System.out.println("You have chosen to stop adventuring.\nI knew you were a Coward!");
+//            System.exit(0);
+//        } else {
+//            live();
+//        }
 
 
     }
 
     public static void death() {
-        System.out.println("You have died while adventuring!\nHuh, quite the savior you are.");
+        window.print("You have died while adventuring!\nHuh, quite the savior you are.");
         System.exit(0);
     }
 
-    public static void striveOn() {
-        System.out.println("You strive on.");
-        startEncounter();
-        live();
-    }
+//    public static void striveOn() {
+//        System.out.println("You strive on.");
+//        startEncounter();
+//        live();
+//    }
 
-    private static void startEncounter() {
+    public static void startEncounter(Moving beast) {
         String beastStats[], beastStatsSolid[];
         beastStatsSolid = monsterSelection.main(roundCount);
         beastStats = beastStatsSolid;
@@ -158,48 +207,48 @@ public class adventurerework {
                     }
 
                 }
-                System.out.println("the current health of " + tempBeastName + " is at " + (beastStats[0]));
+                window.print("the current health of " + tempBeastName + " is at " + (beastStats[0]));
                 if (playerEffect != 0) {
                     if (turn - turnOfPlayerEffect <= Integer.parseInt(effectDatabase.getEffectData(playerEffect)[2])) {
                         int tempDam = Integer.parseInt(effectDatabase.getEffectData(playerEffect)[1]);
                         character1.setHealth(tempDam);
                         if (tempDam < 0)
-                            System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + tempDam + " points of damage!");
+                            window.print("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " caused " + tempDam + " points of damage!");
                         if (tempDam > 0)
-                            System.out.println("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " healed " + tempDam + " points of damage!");
+                            window.print("\nYour " + effectDatabase.getEffectData(playerEffect)[0] + " healed " + tempDam + " points of damage!");
                         if (!playerMultipliersChanged) {
                             playerMultipliersChanged = true;
                             double tempDaMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]);
                             double tempSpMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]);
                             double tempDeMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]);
                             double tempAcMod = Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]);
-                            System.out.println("\nYou are now " + (effectDatabase.getEffectData(playerEffect)[0]) + "!");
+                            window.print("You are now " + (effectDatabase.getEffectData(playerEffect)[0]) + "!");
                             if (tempDaMod != 0) {
                                 if (tempDaMod > 0)
-                                    System.out.println("You feel stronger!");
+                                    window.print("You feel stronger!");
                                 if (tempDaMod > 0)
-                                    System.out.println("Your attacks seem lessened!");
+                                    window.print("Your attacks seem lessened!");
                                 character1.setAttackMultiplier(tempDaMod);
                             }
                             if (tempSpMod != 0) {
                                 if (tempSpMod > 0)
-                                    System.out.println("Your feel a rush of adrenaline!");
+                                    window.print("Your feel a rush of adrenaline!");
                                 if (tempSpMod < 0)
-                                    System.out.println("You feel sluggish!");
+                                    window.print("You feel sluggish!");
                                 character1.setSpeedMultiplier(tempSpMod);
                             }
                             if (tempDeMod != 0) {
                                 if (tempDeMod > 0)
-                                    System.out.println("You feel more accustomed to your armor!");
+                                    window.print("You feel more accustomed to your armor!");
                                 if (tempDeMod < 0)
-                                    System.out.println("your enemy has noticed a weak point in your armor");
+                                    window.print("your enemy has noticed a weak point in your armor");
                                 character1.setDefensiveMultiplier(tempDeMod);
                             }
                             if (tempAcMod != 0) {
                                 if (tempAcMod > 0)
-                                    System.out.println("You feel focused!");
+                                    window.print("You feel focused!");
                                 if (tempAcMod < 0)
-                                    System.out.println("You have become distracted in the chaos of battle");
+                                    window.print("You have become distracted in the chaos of battle");
                                 character1.setAccuracyMultiplier(tempAcMod);
                             }
                         }
@@ -222,42 +271,42 @@ public class adventurerework {
                         int tempDam = Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[1]);
                         beastStats[0] += tempDam;
                         if (tempDam < 0)
-                            System.out.println("\nThe monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " caused " + tempDam + " points of damage!");
+                            window.print("The monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " caused " + tempDam + " points of damage!");
                         if (tempDam > 0)
-                            System.out.println("\nThe monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " healed " + tempDam + " points of damage!");
+                            window.print("\nThe monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " healed " + tempDam + " points of damage!");
                         if (!monsterMultipliersChanged) {
                             monsterMultipliersChanged = true;
                             double tempDaMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[3]);
                             double tempSpMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[4]);
                             double tempDeMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[5]);
                             double tempAcMod = Double.parseDouble(effectDatabase.getEffectData(monsterEffect)[6]);
-                            System.out.println("\nThe monster is now " + (effectDatabase.getEffectData(monsterEffect)[0]) + "!");
+                            window.print("The monster is now " + (effectDatabase.getEffectData(monsterEffect)[0]) + "!");
                             if (tempDaMod != 0) {
                                 if (tempDaMod > 0)
-                                    System.out.println("The monster seems stronger!");
+                                    window.print("The monster seems stronger!");
                                 if (tempDaMod > 0)
-                                    System.out.println("The monster's attacks seem lessened!");
+                                    window.print("The monster's attacks seem lessened!");
                                 beastStats[7] += tempDaMod;
                             }
                             if (tempSpMod != 0) {
                                 if (tempSpMod > 0)
-                                    System.out.println("The monster's lunges seem quicker!");
+                                    window.print("The monster's lunges seem quicker!");
                                 if (tempSpMod < 0)
-                                    System.out.println("You find yourself running laps around the beast!");
+                                    window.print("You find yourself running laps around the beast!");
                                 beastStats[8] += tempSpMod;
                             }
                             if (tempDeMod != 0) {
                                 if (tempDeMod > 0)
-                                    System.out.println("The beasts skin seems tougher!");
+                                    window.print("The beasts skin seems tougher!");
                                 if (tempDeMod < 0)
-                                    System.out.println("You notice a small hole in the beasts armor!");
+                                    window.print("You notice a small hole in the beasts armor!");
                                 beastStats[10] += tempDeMod;
                             }
                             if (tempAcMod != 0) {
                                 if (tempAcMod > 0)
-                                    System.out.println("The monster is hitting consistent blows!");
+                                    window.print("The monster is hitting consistent blows!");
                                 if (tempAcMod < 0)
-                                    System.out.println("The monster is overwhelmed by the chaos of battle!");
+                                    window.print("The monster is overwhelmed by the chaos of battle!");
                                 beastStats[9] += tempAcMod;
                             }
                         }
@@ -292,32 +341,23 @@ public class adventurerework {
             if (character1.getHealth() > character1.getMaxHealth()) {
                 character1.permHealth(character1.getMaxHealth());
             }
-            System.out.println("You feel your past wounds begin to heal.\nYou regain " + tempHealth + " health.");
+            window.print("You feel your past wounds begin to heal.\nYou regain " + tempHealth + " health.");
         }
-            System.out.println(endEncounterDialog);
+        window.print(endEncounterDialog);
             roundCount += 1;
             double temp = Math.random()*5.5;
             time += temp;
         if ((int)temp == 1)
-            System.out.println("1 hour has passed.");
+            window.print("1 hour has passed.");
         else
-            System.out.println((int)temp+" hours have passed.");
-        System.out.println("it appears to be around "+(int)(time+1)+".");
+            window.print((int)temp+" hours have passed.");
+        window.print("it appears to be around "+(int)(time+1)+".");
         character1.setExp(Integer.parseInt(beastStats[11]));
         int tempCoins= (int)Math.round(Math.random()*Integer.parseInt(beastStats[12]));
         if (tempCoins>0)
-            System.out.println("You have looted "+ tempBeastName + " for "+tempCoins+" coins!");
+            window.print("You have looted "+ tempBeastName + " for "+tempCoins+" coins!");
         coins+=tempCoins;
-        System.out.println("your health is at " + character1.getHealth() + ".");
-        if (time <= 22 && time >= 5) { //not between 10 pm and 5 am
-            if (Math.random()*100>80)
-                System.out.println("");
-                SideQuests.selectSidequest();
-        }
-        if(roundCount-lastRoundInShop>10&&Math.random()>.4){//60 percent chance for shop encounter if you haven't seen a shop in 5 rounds
-        Shop.start();
-            lastRoundInShop = roundCount;
-        }
+        window.print("your health is at " + character1.getHealth() + ".");
             adventurerework.live();
         }
 
@@ -326,14 +366,14 @@ public class adventurerework {
 
         Monster monsterRefresh = new Monster(Integer.parseInt(beastStats[0]), beastStats[1], beastStats[2], beastStats[3], Integer.parseInt(beastStats[4]), Integer.parseInt(beastStats[5]), Integer.parseInt(beastStats[6]), Double.parseDouble(beastStats[7]), Double.parseDouble(beastStats[8]), Double.parseDouble(beastStats[9]), Double.parseDouble(beastStats[10]));
         if (lifeStatus) {
-            System.out.println(tempBeastName + " attacks!");
+            window.print(tempBeastName + " attacks!");
             String tempMAttack = monsterRefresh.calculateHit(getArmorStats());
             if (tempMAttack.equalsIgnoreCase("The beast has missed!")) {
-                System.out.println(tempBeastName + " has missed!");
+                window.print(tempBeastName + " has missed!");
             } else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 character1.setHealth(-tempMAttack2);
-                System.out.println(tempBeastName +" uses "+ monsterRefresh.attack + " \nIt does "+ tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
+                window.print(tempBeastName +" uses "+ monsterRefresh.attack + " \nIt does "+ tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
                 questionArmorBreak(tempMAttack2);
 
             }
@@ -352,7 +392,7 @@ public class adventurerework {
         Player playerRefresh = new Player();
         playerRefresh.initialize(character1.getAttack1(), character1.getAttack2(), character1.getAttack3(), character1.getAttack4(),
                 character1.getAttackMultiplier(), character1.getAccuracyMultiplier());
-        System.out.println("It's your turn to attack!\n");
+        window.print("It's your turn to attack!\n");
         String attackStorage[] = playerRefresh.PlayerAttack(tempDialog);
         if (!(attackStorage[0].equalsIgnoreCase("item"))) { //not using item
             if (attackStorage[0].equalsIgnoreCase("Miss")) {
@@ -362,7 +402,7 @@ public class adventurerework {
             else {
                 int[] tempPAttack = {0, 0, 0, 0, 0};
                 tempPAttack[0] = Integer.parseInt(attackStorage[0]);
-                System.out.println("You attack for " + tempPAttack[0] + " damage!");
+                window.print("You attack for " + tempPAttack[0] + " damage!");
                 returningString[0] = "A";
                 returningString[1] = "" + tempPAttack[0];
                 returningString[2] = "" + (attackStorage[1]);
@@ -376,7 +416,7 @@ public class adventurerework {
         } else {                                            //using item (start)
             boolean questionHit;
             String[] tempData = playerRefresh.PlayerItem();
-            System.out.println("You used the " + tempData[0]);
+            window.print("You used the " + tempData[0]);
             questionHit =  (Math.round(Integer.parseInt(tempData[7])) <= Math.round(Math.random() * 100 * character1.getAccuracyMultiplier())); //true or false.
             //prints regardless (below)
             String tempOutput = "";
@@ -385,7 +425,7 @@ public class adventurerework {
 
             //prints if hits or misses (below)
 
-            if (questionHit) {
+            if (questionHit) { //needs to make this into a String []
                 if (Integer.parseInt(tempData[2]) == 0) tempOutput += "";
                 else if (Integer.parseInt(tempData[2]) < 0) {
                     tempOutput += "This causes " + tempData[2] + " points of damage.\n";
@@ -408,7 +448,7 @@ public class adventurerework {
             } else {
                 tempOutput += "It fails.\n";
             }
-            System.out.println(tempOutput);
+            window.print(tempOutput);
 
             if (tempData[1].equalsIgnoreCase("0")) {
                 character1.setHealth(Integer.parseInt(tempData[2]));
@@ -465,31 +505,31 @@ public class adventurerework {
     private static void questionArmorBreak(int attack){
     boolean questionChange = false;
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[0]!=0&&Math.random()>.8) {
-        System.out.println("Your "+ItemDirectory.findItemValues(armor[0])[0]+" has broken from incoming damage!");
+        window.print("Your "+ItemDirectory.findItemValues(armor[0])[0]+" has broken from incoming damage!");
         armor[0] = 0;
         questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[1]!=0&&Math.random()>.8) {
-        System.out.println("Your "+ItemDirectory.findItemValues(armor[1])[0]+" has broken from incoming damage!");
+        window.print("Your "+ItemDirectory.findItemValues(armor[1])[0]+" has broken from incoming damage!");
         armor[1] = 0;
         questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[2]!=0&&Math.random()>.8) {
-        System.out.println("Your "+ItemDirectory.findItemValues(armor[2])[0]+" has broken from incoming damage!");
+        window.print("Your "+ItemDirectory.findItemValues(armor[2])[0]+" has broken from incoming damage!");
         armor[2] = 0;
         questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[3]!=0&&Math.random()>.8) {
-        System.out.println("Your "+ItemDirectory.findItemValues(armor[3])[0]+" has broken from incoming damage!");
+        window.print("Your "+ItemDirectory.findItemValues(armor[3])[0]+" has broken from incoming damage!");
         armor[3] = 0;
         questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[4]!=0&&Math.random()>.8) {
-        System.out.println("Your "+ItemDirectory.findItemValues(armor[4])[0]+" has broken from incoming damage!");
+        window.print("Your "+ItemDirectory.findItemValues(armor[4])[0]+" has broken from incoming damage!");
         armor[4] = 0;
         questionChange = true;}
     if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[5]!=0&&Math.random()>.8) {
-        System.out.println("Your "+ItemDirectory.findItemValues(armor[5])[0]+" has broken from incoming damage!");
+        window.print("Your "+ItemDirectory.findItemValues(armor[5])[0]+" has broken from incoming damage!");
         armor[5] = 0;
         questionChange = true;}
     if (armor[0]==0&&armor[1]==0&&armor[4]==0&&armor[5]==0&&questionChange)
-        System.out.println("You notice a cool breeze...");
+        window.print("You notice a cool breeze...");
 }
 
 }

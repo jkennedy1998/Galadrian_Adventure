@@ -1,11 +1,12 @@
 package cartography;
 import java.util.ArrayList;
+import Battle.adventurerework;
 
 public class Board {
     int xDimension;
     int yDimension;
     ArrayList<Walls> walls = new ArrayList<>();
-    ArrayList<Moving> movings = new ArrayList<>();
+    public ArrayList<Moving> movings = new ArrayList<>();
 
 
     public Board(int x, int y){ //no walls
@@ -88,7 +89,7 @@ public void removeMoving(Moving moving){
 
 
 public String printBoard(){ //use of Screen
-    CollisionProject.window.refreshBoard();
+    adventurerework.window.refreshBoard();
     String output = "";
     int xScan = 0, yScan = 0;
     while (yScan < yDimension){
@@ -100,11 +101,11 @@ public String printBoard(){ //use of Screen
                     elevation = movings.get(scan).elevation;
             if (elevation == 999) System.out.println("error: no players found (or elevation is at 999)");
             tempCharacter = questionWallCharacters(xScan,yScan,elevation);
-            if (tempCharacter == null) CollisionProject.window.drawCharacter(xScan,yScan,null);
+            if (tempCharacter == null) adventurerework.window.drawCharacter(xScan,yScan,null);
             for (int characterScan = 0; characterScan < movings.size(); characterScan++)
             if (movings.get(characterScan).xPosition == xScan && movings.get(characterScan).yPosition == yScan && movings.get(characterScan).elevation == elevation) tempCharacter = movings.get(characterScan).getNameAbbreviation();
-            CollisionProject.window.drawCharacter(xScan,yScan,tempCharacter);
-            CollisionProject.window.removeAll();
+            adventurerework.window.drawCharacter(xScan,yScan,tempCharacter);
+            adventurerework.window.removeAll();
             xScan++;
         }
         yScan++;

@@ -1,10 +1,11 @@
 package cartography;
+import Battle.*;
 public class Moving {
-    int xPosition, yPosition, range = 7, elevation = 0, speed = 60;
+    public int xPosition, yPosition, range = 7, elevation = 0, speed = 60;
     boolean playerCollide = true, wallCollide = true;
-    Board board;
-    String name, behavior;
-    int[] lastPosition;
+    public Board board;
+    public String name, behavior;
+    public int[] lastPosition;
 
     public Moving (){
         name = "empty";
@@ -39,7 +40,10 @@ public class Moving {
     public void moveUp() {
         if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1))
             yPosition--;
-        else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
+        else if(name.equals("projectile")){
+
+            board.removeMoving(this); //if its a projectile it kills it self
+        }
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
@@ -74,9 +78,13 @@ public class Moving {
 
     public boolean questionPlayerCollision(int x, int y){ //up down left right in respective order starting at 0
         if (!playerCollide) return false;
+        Moving temp;
         for(int scan = 0; scan < board.movings.size(); scan++){
-            Moving temp = board.movings.get(scan);
+            temp = board.movings.get(scan);
             if (xPosition+x == temp.xPosition&&yPosition+y == temp.yPosition&&temp.playerCollide &&!(temp.name.equals(name))&&elevation==temp.elevation){
+
+                if(behavior.equals("player"))adventurerework.startEncounter(temp);
+                else adventurerework.startEncounter(this);
                 return true;
             }
         }

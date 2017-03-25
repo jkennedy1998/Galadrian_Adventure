@@ -1,4 +1,5 @@
 package cartography;
+import Battle.adventurerework;
 public class NonWallsDatabase {
 
     public static NonWalls makeNonWall(int xPosition, int yPosition, int elevation, String wallType){ //needs inclusion of nonwall if presets are not true for desired nonwall object
@@ -37,7 +38,7 @@ public class NonWallsDatabase {
             current.link.board.movings.add(moving);
         }
         else if (current.wallType.equals("item")&& moving.name.equals("player")){
-            CollisionProject.window.print("You have picked up a "+current.description+"!");
+            adventurerework.window.print("You have picked up a "+current.description+"!");
             current.board.removeNonwall(current);
         }
         else if (current.wallType.equals("item")&& !moving.name.equals("player"));//does nothing. this is when an enemy runs into an item
@@ -52,11 +53,11 @@ public class NonWallsDatabase {
         }
         else if(current.wallType.equals("sign") && moving.name.equals("player")){
             String[] strings = {"The sign reads...",current.description};
-            CollisionProject.window.print(strings);
+            adventurerework.window.print(strings);
         }
         else if (current.wallType.equals("sign") && !moving.name.equals("player"));//does nothing. this is when an enemy runs into a sign.
         else if(current.wallType.equals("chest") && moving.name.equals("player")){
-            CollisionProject.window.print("You have found a "+current.description+"!");
+            adventurerework.window.print("You have found a "+current.description+"!");
         }
         else if (current.wallType.equals("chest") && !moving.name.equals("player"));//does nothing. this is when an enemy runs into a chest.
         else System.out.println("error: wallType isn't set to a legitimate type\nWalltype = ["+current.wallType+"]");

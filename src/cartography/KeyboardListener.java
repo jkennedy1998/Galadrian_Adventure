@@ -1,6 +1,7 @@
 package cartography;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import Battle.adventurerework;
 public class KeyboardListener implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
@@ -8,7 +9,7 @@ public class KeyboardListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        CollisionProject.keyPressed = KeyEvent.getKeyText(e.getKeyCode());
+        adventurerework.keyPressed = KeyEvent.getKeyText(e.getKeyCode());
     }
 
     @Override

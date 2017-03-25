@@ -1,3 +1,5 @@
+package Battle;
+
 import javax.swing.*;
 
 public class Story {

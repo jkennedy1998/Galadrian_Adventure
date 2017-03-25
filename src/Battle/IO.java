@@ -1,3 +1,5 @@
+package Battle;
+
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
