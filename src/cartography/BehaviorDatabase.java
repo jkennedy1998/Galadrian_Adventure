@@ -3,7 +3,7 @@ public class BehaviorDatabase {
     public static String getBehavior(Moving moving){
         if (Math.random()>.5)
         return "follow";
-        else  return "flee";
+        else  return "follow";
     }
     public static int[] respond(Moving actingEntity){//add random movement
         if (actingEntity.behavior.equals("follow")) return follow(actingEntity);

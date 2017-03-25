@@ -1,10 +1,9 @@
 package cartography;
-import javax.swing.*;
 
 public class CollisionProject {
     public static Moving adam;
     public static Screen window = new Screen();
-    public static String keyPressed = "P";
+    public static String keyPressed = "";
 
 
     public static void main(String args[]) {

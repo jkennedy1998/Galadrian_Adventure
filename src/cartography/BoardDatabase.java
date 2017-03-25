@@ -1,4 +1,4 @@
-package cartography;import java.util.ArrayList;
+package cartography;
 
 public class BoardDatabase {
 
@@ -50,6 +50,8 @@ public class BoardDatabase {
                 sign.description = "This is a sign too!";
                 board.addNonWall(sign);
             }
+            Moving goblin = new Moving(7,12,board,"goblin",false);
+            board.movings.add(goblin);
 
         }
         return board;

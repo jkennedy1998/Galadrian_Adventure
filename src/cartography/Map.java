@@ -1,10 +1,5 @@
 package cartography;
-
 import java.util.ArrayList;
-
-/**
- * Created by citim on 3/10/2017.
- */
 public class Map {
     public static Board currentBoard;
     private static ArrayList<Board> boards = new ArrayList<>();
