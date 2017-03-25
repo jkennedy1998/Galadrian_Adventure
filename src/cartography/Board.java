@@ -48,13 +48,12 @@ public boolean questionCollision(int xPosition, int yPosition, int elevtion){
                                     walls.get(scan).walls.get(subScan).xPosition == xPosition &&
                                     walls.get(scan).walls.get(subScan).yPosition == yPosition))
                         return "[|" + walls.get(scan).walls.get(subScan).wallType.substring(0,1) + "]";
-
                 }
         }
 //        System.out.println("error: no walls found at current elevation");
-        return "___";
+        return "";
     }
-public void addNonWall( NonWalls nonWall){
+ public void addNonWall( NonWalls nonWall){
     Wall nonWallObject = nonWall;
     for (int scan = 0; scan < walls.size(); scan++){
         if (nonWallObject.elevation == walls.get(scan).elevation)
@@ -90,8 +89,8 @@ public void removeMoving(Moving moving){
         }
 
 
-public String printBoard(){
-    CollisionProject.window = new Screen();
+public String printBoard(){ //use of Screen
+    CollisionProject.window.refreshBoard();
     String output = "";
     int xScan = 0, yScan = 0;
     while (yScan < yDimension){
@@ -102,12 +101,10 @@ public String printBoard(){
                 if(movings.get(scan).behavior.equals("player"))
                     elevation = movings.get(scan).elevation;
             if (elevation == 999) System.out.println("error: no players found (or elevation is at 999)");
-//            if (questionCollision(xScan,yScan,elevation)) tempCharacter = "[|#|]";
-//            else tempCharacter = "___";
             tempCharacter = questionWallCharacters(xScan,yScan,elevation);
+            if (tempCharacter == null) CollisionProject.window.drawCharacter(xScan,yScan,null);
             for (int characterScan = 0; characterScan < movings.size(); characterScan++)
             if (movings.get(characterScan).xPosition == xScan && movings.get(characterScan).yPosition == yScan && movings.get(characterScan).elevation == elevation) tempCharacter = " |"+movings.get(characterScan).getNameAbbreviation()+"| ";
-            if (xScan == xDimension-1) tempCharacter += "\n";
             CollisionProject.window.drawCharacter(xScan,yScan,tempCharacter);
             CollisionProject.window.removeAll();
             xScan++;

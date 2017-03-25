@@ -13,15 +13,23 @@ public class Screen extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
+    public void refreshBoard(){
+        Graphics g = getGraphics();
+        super.paint(g);
+        g.setColor(Color.GRAY);
+
+        g.fillRect(0,0,1280,720);
+    }
     public void drawCharacter(int xPosition, int yPosition, String name){
 
         Graphics g = getGraphics();
         super.paint(g);
+        g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
+        g.drawString(name, (xPosition * 30) + 40, (yPosition * 30) + 100);
 
-        g.setFont(new Font( "Serif", Font.BOLD + Font.PLAIN, 20 ) );
-        g.drawString(name,(xPosition*30)+40,(yPosition*30)+100);
-    }
 
+
+}
     public  void voidLines(){log = emptyLog;}
     public  void print(String singleLine){
         boolean printed = false;
