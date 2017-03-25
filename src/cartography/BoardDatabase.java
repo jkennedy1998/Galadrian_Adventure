@@ -44,7 +44,11 @@ public class BoardDatabase {
                 NonWalls sign = NonWallsDatabase.makeNonWall(2,2,0,"sign");
                 sign.description = "This is a sign!";
                 board.addNonWall(sign);
-
+            }
+            {
+                NonWalls sign = NonWallsDatabase.makeNonWall(2,5,0,"sign");
+                sign.description = "This is a sign too!";
+                board.addNonWall(sign);
             }
 
         }

@@ -4,8 +4,8 @@ import java.awt.*;
 
 
 public class Screen extends JFrame {
-    private static String[] log = {"","","","","","","","","","","","","",""};
-    private final static String[] emptyLog = {"","","","","","","","","","","",""};
+    private static String[] log = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
+    private final static String[] emptyLog = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
 
     public Screen(){
         super("Galadria");
@@ -64,7 +64,7 @@ public class Screen extends JFrame {
         g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
         for (int place =0;place < log.length;place++){
 
-            g.drawString(log[place],750,(470-place*30));
+            g.drawString(log[place],750,(30+place*30));
             System.out.println(470-place*30);
         }
 
