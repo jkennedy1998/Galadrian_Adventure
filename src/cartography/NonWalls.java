@@ -32,16 +32,13 @@ public void checkState(){
         if (state){
             wallType = "open door";
             colidable = false;
-            System.out.println(false + " door open");
         } else{
             wallType = "closed door";
             colidable = true;
-            System.out.println(true + "door closed");
         }
     }
     else if(wallType.equals("dart trap")){
         NonWallsDatabase.findInteraction(null,this);
-        System.out.println(5);
     }
     else System.out.println("error: checkState method activated for non referenced objects or link not set");
 }
