@@ -104,7 +104,7 @@ public String printBoard(){ //use of Screen
             tempCharacter = questionWallCharacters(xScan,yScan,elevation);
             if (tempCharacter == null) CollisionProject.window.drawCharacter(xScan,yScan,null);
             for (int characterScan = 0; characterScan < movings.size(); characterScan++)
-            if (movings.get(characterScan).xPosition == xScan && movings.get(characterScan).yPosition == yScan && movings.get(characterScan).elevation == elevation) tempCharacter = " |"+movings.get(characterScan).getNameAbbreviation()+"| ";
+            if (movings.get(characterScan).xPosition == xScan && movings.get(characterScan).yPosition == yScan && movings.get(characterScan).elevation == elevation) tempCharacter = movings.get(characterScan).getNameAbbreviation();
             CollisionProject.window.drawCharacter(xScan,yScan,tempCharacter);
             CollisionProject.window.removeAll();
             xScan++;

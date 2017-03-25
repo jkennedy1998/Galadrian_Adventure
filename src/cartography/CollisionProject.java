@@ -15,7 +15,9 @@ public class CollisionProject {
     }
     public static void run(){
         while(true){
-            strive(adam);
+            for(int scan = 0; scan < adam.board.movings.size(); scan++){
+                strive(adam.board.movings.get(scan));
+            }
 
         }
     }
