@@ -4,8 +4,8 @@ import java.awt.*;
 
 
 public class Screen extends JFrame {
-    private static String[] log = {"","","","","","",""};
-    final static String[] emptyLog = {"","","","","","",""};
+    private static String[] log = {"","","","","","","","","","","","","",""};
+    private final static String[] emptyLog = {"","","","","","","","","","","",""};
 
     public Screen(){
         super("Galadria");
@@ -21,8 +21,6 @@ public class Screen extends JFrame {
         g.fillRect(0,0,720,720);
         g.setColor(Color.BLACK);
         g.fillRect(720,500,560,220);
-        g.setColor(Color.cyan);
-        g.fillRect(720,0,560,500);
     }
     public void drawCharacter(int xPosition, int yPosition, String name){
         Graphics g = getGraphics();
@@ -40,13 +38,10 @@ public class Screen extends JFrame {
                 printed = true;
             }
             if (place==6){ //prints to last line as no others are open. moves all other lines up one and line 0 is reassigned.
-                log[0] = log[1];
-                log[1] = log[2];
-                log[2] = log[3];
-                log[3] = log[4];
-                log[4] = log[5];
-                log[5] = log[6];
-                log[6]= singleLine;
+                for (int scan = 0; scan < log.length-1; scan++){
+                    log[scan] = log[scan+1];
+                }
+                log[log.length-1]= singleLine;
                 printed=true;
             }else {
                 place++;
@@ -63,15 +58,17 @@ public class Screen extends JFrame {
     private void refreshLog(){
         Graphics g = getGraphics();
         super.paint(g);
-        g.setColor(Color.cyan);
+        g.setColor(Color.darkGray);
         g.fillRect(720,0,560,500);
         g.setColor(Color.black);
         g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
-        for (int place =0;place!=7;place++){
-            g.drawString(log[place],750,70+place*30);
+        for (int place =0;place < log.length;place++){
+
+            g.drawString(log[place],750,(470-place*30));
+            System.out.println(470-place*30);
         }
 
-    }//make this refresh screen by printing Strings
+    }
 
 
 }

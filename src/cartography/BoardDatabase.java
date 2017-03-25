@@ -40,6 +40,12 @@ public class BoardDatabase {
                 board.addNonWall(pressurePlate);
                 board.addNonWall(dartTrap);
             }
+            {
+                NonWalls sign = NonWallsDatabase.makeNonWall(2,2,0,"sign");
+                sign.description = "This is a sign!";
+                board.addNonWall(sign);
+
+            }
 
         }
         return board;

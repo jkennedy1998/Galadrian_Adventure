@@ -3,7 +3,7 @@ import javax.swing.*;
 
 public class CollisionProject {
     public static Moving adam;
-    static Screen window = new Screen();
+    public static Screen window = new Screen();
     public static String keyPressed = "P";
 
 
