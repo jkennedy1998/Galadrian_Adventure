@@ -9,6 +9,7 @@ public class Screen extends JFrame {
 
     public Screen(){
         super("Galadria");
+        setBackground(Color.BLACK);
         setSize(1280,720);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -18,14 +19,14 @@ public class Screen extends JFrame {
         super.paint(g);
         g.setColor(Color.GRAY);
 
-        g.fillRect(0,0,1280,720);
+        g.fillRect(0,0,530,530);
     }
     public void drawCharacter(int xPosition, int yPosition, String name){
 
         Graphics g = getGraphics();
         super.paint(g);
         g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
-        g.drawString(name, (xPosition * 30) + 40, (yPosition * 30) + 100);
+        g.drawString(name, (xPosition * 30) + 30, (yPosition * 30) + 70);
 
 
 
