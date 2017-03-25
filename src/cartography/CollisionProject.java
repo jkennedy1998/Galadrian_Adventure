@@ -16,6 +16,7 @@ public class CollisionProject {
         Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
         run();
 
+
     }
 
     public static void run() {
