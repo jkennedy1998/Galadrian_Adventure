@@ -31,16 +31,13 @@ public class CollisionProject {
         if (piece.behavior.equals("player")) {
 
             adam.board.printBoard();
-            System.out.println("Started loop");
             boolean boundKey = false;
             while(!boundKey){
                 System.out.print("");
                 if (keyPressed.equals("W") || keyPressed.equals("A") || keyPressed.equals("S")|| keyPressed.equals("D") || keyPressed.equals("Space")){
                     boundKey = true;
                 }
-
             }
-            System.out.println("got out");
             if (keyPressed.equals("W")) piece.moveUp();
             else if (keyPressed.equals("S")) piece.moveDown();
             else if (keyPressed.equals("A")) piece.moveLeft();

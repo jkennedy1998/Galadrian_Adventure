@@ -42,7 +42,6 @@ public class NonWallsDatabase {
             current.board.removeNonwall(current);
         }
         else if(current.wallType.equals("dart trap")){
-            //make arrows come out
             Moving dart = new Moving(current.xPosition,current.yPosition, current.board, "projectile", false);
             current.board.movings.add(dart);
             if(current.facing == 0){ dart.behavior = "linear up";}

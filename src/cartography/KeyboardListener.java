@@ -12,8 +12,6 @@ public class KeyboardListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         CollisionProject.keyPressed = KeyEvent.getKeyText(e.getKeyCode());
-        System.out.println((KeyEvent.getKeyText(e.getKeyCode())));
-
     }
 
     @Override

@@ -14,5 +14,6 @@ public class Map {
         System.out.println("Started map initialization!");
         boards.add(BoardDatabase.getBoard("spawn"));
         currentBoard = boards.get(0);
+        System.out.println("Ended map initialization!");
     }
 }
