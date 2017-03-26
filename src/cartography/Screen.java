@@ -22,7 +22,7 @@ public class Screen extends JFrame {
         super.paint(g);
         g.setColor(Color.gray);
         g.fillRect(0,0,720,720);
-        String[] buttons = {"hey","hi","hello","chhhello"};
+        String[] buttons = {"hey","hi","hello","chhhello","hola"};
         makeButtons(buttons);
         drawButtons();
         voidButtons();
@@ -33,6 +33,35 @@ public class Screen extends JFrame {
             this.buttons.add(buttons[scan]);
         }
     }
+    public int questionButtonClick(int x, int y){//-1 if no buttons are clicked
+        if (buttons.size() == 0) return -1;
+        if(buttons.size() ==1){
+            if (x > 725 && x < 1270 && y > 505 && y < 505+240) return 0;
+        }
+        else if(buttons.size() ==2){
+            if (x > 725 && x < 1270 && y > 505 && y < 505+100) return 0;
+            if (x > 725 && x < 1270 && y > 610 && y < 610+100) return 1;
+        }
+        else if(buttons.size() ==3){
+            if (x > 725 && x < 1270 && y > 505 && y < 505+65) return 0;
+            if (x > 725 && x < 1270 && y > 575 && y < 575+65) return 1;
+            if (x > 725 && x < 1270 && y > 645 && y < 645+65) return 2;
+        }
+        else if(buttons.size() ==4){
+            if (x > 725 && x < 992 && y > 505 && y < 505+100) return 0;
+            if (x > 725 && x < 992 && y > 610 && y < 610+100) return 1;
+            if (x > 1000 && x < 1267 && y > 505 && y < 505+100) return 2;
+            if (x > 1000 && x < 1267 && y > 610 && y < 610+100) return 3;
+        }
+        else if(buttons.size() ==5){
+            if (x > 725 && x < 1270 && y > 510 && y < 510+35) return 0;
+            if (x > 725 && x < 1270 && y > 550 && y < 550+35) return 1;
+            if (x > 725 && x < 1270 && y > 590 && y < 590+35) return 2;
+            if (x > 725 && x < 1270 && y > 630 && y < 630+35) return 3;
+            if (x > 725 && x < 1270 && y > 670 && y < 670+35) return 4;
+        }
+            return -1;
+        }
     public void voidButtons(){
         buttons = new ArrayList<>();
     }
@@ -70,6 +99,19 @@ public class Screen extends JFrame {
             g.drawString(buttons.get(1), 725 + (int) 535 / 4, 610 + (int) 100 / 2);
             g.drawString(buttons.get(2), 725 + (int) 375 , 505 + (int) 100 / 2);
             g.drawString(buttons.get(3), 725 + (int) 375 , 610 + (int) 100 / 2);
+        }
+        else if (buttons.size() == 5){
+            g.fillRect(725, 510, 545, 35);
+            g.fillRect(725, 550, 545, 35);
+            g.fillRect(725, 590, 545, 35);
+            g.fillRect(725, 630, 545, 35);
+            g.fillRect(725, 670, 545, 35);
+            g.setColor(Color.black);
+            g.drawString(buttons.get(0), 725 + (int) 540 / 2, 510 + (int) 38 / 2);
+            g.drawString(buttons.get(1), 725 + (int) 540 / 2, 550 + (int) 38 / 2);
+            g.drawString(buttons.get(2), 725 + (int) 540 / 2, 590 + (int) 38 / 2);
+            g.drawString(buttons.get(3), 725 + (int) 540 / 2, 630 + (int) 38 / 2);
+            g.drawString(buttons.get(4), 725 + (int) 540 / 2, 670 + (int) 38 / 2);
         }
         }
     public void drawCharacter(int xPosition, int yPosition, String name){
