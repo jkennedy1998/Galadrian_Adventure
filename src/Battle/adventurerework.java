@@ -342,6 +342,8 @@ public class adventurerework {
             window.print("You have looted "+ tempBeastName + " for "+tempCoins+" coins!");
         coins+=tempCoins;
         window.print("your health is at " + character1.getHealth() + ".");
+        if(!beast.behavior.equals("player"))
+        beast.board.removeMoving(beast);
             adventurerework.live();
         }
 
