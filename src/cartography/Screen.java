@@ -15,15 +15,14 @@ public class Screen extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         refreshBoard();
+        print("you wake up lost, cold and alone.");
     }
     public void refreshBoard(){
         Graphics g = getGraphics();
         super.paint(g);
         g.setColor(Color.gray);
         g.fillRect(0,0,720,720);
-//        g.setColor(Color.BLACK);
-//        g.fillRect(720,500,560,220);
-        String[] buttons = {"hey","hi"};
+        String[] buttons = {"hey","hi","hello","chhhello"};
         makeButtons(buttons);
         drawButtons();
         voidButtons();
@@ -42,20 +41,36 @@ public class Screen extends JFrame {
         super.paint(g);
         g.setColor(Color.darkGray);
         if(buttons.size() == 1){
-                g.fillRect(725, 505, 580, 240);
-                g.setColor(Color.black);
-                g.drawString(buttons.get(0), 725 + (int) 540 / 2, 505 + (int) 200 / 2);
+            g.fillRect(725, 505, 580, 240);
+            g.setColor(Color.black);
+            g.drawString(buttons.get(0), 725 + (int) 540 / 2, 505 + (int) 200 / 2);
             }
-            else if(buttons.size() == 2){
+        else if(buttons.size() == 2){
             g.fillRect(725, 505, 545, 100);
             g.fillRect(725, 610, 545, 100);
             g.setColor(Color.black);
-            g.drawString(buttons.get(0), 725 + (int) 540 / 2, 505 + (int) 200 / 2);
-            g.drawString(buttons.get(0), 725 + (int) 540 / 2, 505 + (int) 200 / 2);
-
-
+            g.drawString(buttons.get(0), 725 + (int) 540 / 2, 505 + (int) 100 / 2);
+            g.drawString(buttons.get(1), 725 + (int) 540 / 2, 610 + (int) 100 / 2);
+        }else if (buttons.size() == 3){
+            g.fillRect(725, 505, 545, 65);
+            g.fillRect(725, 575, 545, 65);
+            g.fillRect(725, 645, 545, 65);
+            g.setColor(Color.black);
+            g.drawString(buttons.get(0), 725 + (int) 540 / 2, 505 + (int) 65 / 2);
+            g.drawString(buttons.get(1), 725 + (int) 540 / 2, 575 + (int) 65 / 2);
+            g.drawString(buttons.get(2), 725 + (int) 540 / 2, 645 + (int) 65 / 2);
         }
-
+        else if (buttons.size() == 4){
+            g.fillRect(725, 505, 267, 100);
+            g.fillRect(725, 610, 267, 100);
+            g.fillRect(1000, 505, 267, 100);
+            g.fillRect(1000, 610, 267, 100);
+            g.setColor(Color.black);
+            g.drawString(buttons.get(0), 725 + (int) 535 / 4, 505 + (int) 100 / 2);
+            g.drawString(buttons.get(1), 725 + (int) 535 / 4, 610 + (int) 100 / 2);
+            g.drawString(buttons.get(2), 725 + (int) 375 , 505 + (int) 100 / 2);
+            g.drawString(buttons.get(3), 725 + (int) 375 , 610 + (int) 100 / 2);
+        }
         }
     public void drawCharacter(int xPosition, int yPosition, String name){
         Graphics g = getGraphics();
