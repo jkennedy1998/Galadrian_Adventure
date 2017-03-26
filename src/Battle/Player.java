@@ -100,7 +100,7 @@ public class Player {
             return randomNum;
         }
         else {
-            System.out.print(attackChoice+" has missed!\n");
+            adventurerework.window.print(attackChoice+" has missed!\n");
             return "Miss";
         }
     }

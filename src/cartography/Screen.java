@@ -1,11 +1,13 @@
 package cartography;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 
 public class Screen extends JFrame {
     private static String[] log = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
     private final static String[] emptyLog = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
+    public static ArrayList<Button> buttons = new ArrayList();
 
     public Screen(){
         super("Galadria");
@@ -21,6 +23,17 @@ public class Screen extends JFrame {
         g.fillRect(0,0,720,720);
         g.setColor(Color.BLACK);
         g.fillRect(720,500,560,220);
+    }
+    public void makeButtons(Button[] buttons){//for making buttons during map play
+
+    }
+    public void drawButtons(){ //needs to be in the box 720, 500 to 1280, 720
+        Graphics g = getGraphics();
+        super.paint(g);
+        for(int scan = 0; scan < buttons.size(); scan++){
+            Button button = buttons.get(scan);
+            g.fillRect(button.xPosition,button.yPosition,button.xDimension,button.yDimension);
+        }
     }
     public void drawCharacter(int xPosition, int yPosition, String name){
         Graphics g = getGraphics();

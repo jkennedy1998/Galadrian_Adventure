@@ -20,36 +20,36 @@ public class Leveler {
         if (choice == 0) {
             returningLevelStats[2] = "max health";
             returningLevelStats[1] = "" + (maxHealth + 7);
-            System.out.println("\nYou feel considerably more healthy!");
+            adventurerework.window.print("\nYou feel considerably more healthy!");
         }
         if (choice == 1) {
             returningLevelStats[2] = "damage";
             returningLevelStats[3] = ".1";
-            System.out.println("\nTarget dummies fear you!\nYou need to replace them more often due to your increased strength!");
+            adventurerework.window.print("\nTarget dummies fear you!\nYou need to replace them more often due to your increased strength!");
         }
         if (choice == 2) {
             returningLevelStats[2] = "accuracy";
             returningLevelStats[3] = ".1";
-            System.out.println("\nYou begin to hit more when in target practice!");
+            adventurerework.window.print("\nYou begin to hit more when in target practice!");
         }
         if (choice == 3) {
             returningLevelStats[2] = "speed";
             returningLevelStats[3] = ".1";
-            System.out.println("\nYou find that you cover more distance when running!");
+            adventurerework.window.print("\nYou find that you cover more distance when running!");
         }
         if (choice == 4) {
             returningLevelStats[2] = "defence";
             returningLevelStats[3] = ".1";
-            System.out.println("\nYou find something to improve in your armor!");
+            adventurerework.window.print("\nYou find something to improve in your armor!");
         }
         if (choice == 5) {
             returningLevelStats[2] = "health";
             if (health + 10 > maxHealth) {
                 returningLevelStats[0] = "" + (maxHealth - health);
-                System.out.println("\nYou bind the last of your wounds.\nYou Have full health with " + maxHealth + " points.");
+                adventurerework.window.print("\nYou bind the last of your wounds.\nYou Have full health with " + maxHealth + " points.");
             } else {
                 returningLevelStats[0] = "" + (health + 10);
-                System.out.println("You bind your wounds.\nYou Have " + (health + 10) + " health points.");
+                adventurerework.window.print("You bind your wounds.\nYou Have " + (health + 10) + " health points.");
             }
         }
         return returningLevelStats;

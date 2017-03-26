@@ -33,13 +33,13 @@ public class Story {
         int answer = JOptionPane.showOptionDialog(null, "You reach the end of the "+location+".\nWhere would you like to go next?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         if (answer == 0&&questionRequirements(possibleDestination1)) {
-            System.out.println("\nYou have entered the "+possibleDestination1+"!");
+            adventurerework.window.print("\nYou have entered the "+possibleDestination1+"!");
             location = possibleDestination1;
         } else if (answer == 1&&questionRequirements(possibleDestination2)) {
             location = possibleDestination2;
-            System.out.println("\nYou have entered the "+possibleDestination2+"!");
+            adventurerework.window.print("\nYou have entered the "+possibleDestination2+"!");
         } else if (answer == 2){
-            System.out.println("\nYou have chosen to continue exploring the "+location+"!");
+            adventurerework.window.print("\nYou have chosen to continue exploring the "+location+"!");
             //location will stay the same regardless of if the requirements are fulfilled.
         } else {
             setDestination();
@@ -100,10 +100,10 @@ public class Story {
     }
     public static boolean questionRequirements(String location){
         if (location.equalsIgnoreCase("deepForest")&&(!(questionItem(7)&&!questionAttack("Sparks")))) {
-            System.out.println("You need a light source to enter the deeps of the forest!");
+            adventurerework.window.print("You need a light source to enter the deeps of the forest!");
             return false;}
         if (location.equalsIgnoreCase("cave")&&(!(questionItem(7)&&!questionAttack("Sparks")))) {
-            System.out.println("Without a light source a cave is an adventurers death sentence!");
+            adventurerework.window.print("Without a light source a cave is an adventurers death sentence!");
             return false;}
         return true;
     }

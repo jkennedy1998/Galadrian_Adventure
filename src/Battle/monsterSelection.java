@@ -20,9 +20,9 @@ public class monsterSelection {
         roundsHere++;
         selection();
         if (needsAnAn) {
-            System.out.println("\n\nYou have encountered an " + beast + "!");
+            adventurerework.window.print("\n\nYou have encountered an " + beast + "!");
         } else{
-            System.out.println("\n\nYou have encountered a " + beast + "!");
+            adventurerework.window.print("\n\nYou have encountered a " + beast + "!");
         }
 
         for (int pointsToGive = round; pointsToGive>0; pointsToGive--){ //this scales monsters per how many

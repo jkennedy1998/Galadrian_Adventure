@@ -26,6 +26,8 @@ public class adventurerework {
         Story.initialize(character1.getAttack1(), character1.getAttack2(), character1.getAttack3(), character1.getAttack4());
         KeyboardListener keyboardListener = new KeyboardListener();
         window.addKeyListener(keyboardListener);
+        MouseListener mouseListener = new MouseListener();
+        window.addMouseListener(mouseListener);
         Map.initializeMaps();
         adam = new Moving(3, 3, Map.currentBoard, "player", true);
         Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
