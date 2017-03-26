@@ -8,6 +8,8 @@ public class Screen extends JFrame {
     private static String[] log = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
     private final static String[] emptyLog = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
     private ArrayList<String> buttons= new ArrayList <>();
+    int xClick = 0;
+    int yClick = 0;
 
     public Screen(){
         super("Galadria");
@@ -22,43 +24,46 @@ public class Screen extends JFrame {
         super.paint(g);
         g.setColor(Color.gray);
         g.fillRect(0,0,720,720);
-        String[] buttons = {"hey","hi","hello","chhhello","hola"};
-        makeButtons(buttons);
-        drawButtons();
-        voidButtons();
     }
     public void makeButtons(String[] buttons){//for making buttons during map play
-
+        voidButtons();
         for (int scan = 0; scan < buttons.length; scan++){
             this.buttons.add(buttons[scan]);
         }
     }
-    public int questionButtonClick(int x, int y){//-1 if no buttons are clicked
+    private void resetClicks(){
+        xClick = 0;
+        yClick = 0;
+    }
+    public int questionButtonClick(){//-1 if no buttons are clicked
         if (buttons.size() == 0) return -1;
         if(buttons.size() ==1){
-            if (x > 725 && x < 1270 && y > 505 && y < 505+240) return 0;
+            if (xClick > 725 && xClick < 1270 && yClick > 505 && yClick < 505+240){
+                resetClicks();
+                return 0;
+            }
         }
         else if(buttons.size() ==2){
-            if (x > 725 && x < 1270 && y > 505 && y < 505+100) return 0;
-            if (x > 725 && x < 1270 && y > 610 && y < 610+100) return 1;
+            if (xClick > 725 && xClick < 1270 && yClick > 505 && yClick < 505+100){resetClicks();return 0;}
+            if (xClick > 725 && xClick < 1270 && yClick > 610 && yClick < 610+100) resetClicks();return 1;
         }
         else if(buttons.size() ==3){
-            if (x > 725 && x < 1270 && y > 505 && y < 505+65) return 0;
-            if (x > 725 && x < 1270 && y > 575 && y < 575+65) return 1;
-            if (x > 725 && x < 1270 && y > 645 && y < 645+65) return 2;
+            if (xClick > 725 && xClick < 1270 && yClick > 505 && yClick < 505+65){resetClicks();return 0;}
+            if (xClick > 725 && xClick < 1270 && yClick > 575 && yClick < 575+65){resetClicks();return 1;}
+            if (xClick > 725 && xClick < 1270 && yClick > 645 && yClick < 645+65){resetClicks();return 2;}
         }
         else if(buttons.size() ==4){
-            if (x > 725 && x < 992 && y > 505 && y < 505+100) return 0;
-            if (x > 725 && x < 992 && y > 610 && y < 610+100) return 1;
-            if (x > 1000 && x < 1267 && y > 505 && y < 505+100) return 2;
-            if (x > 1000 && x < 1267 && y > 610 && y < 610+100) return 3;
+            if (xClick > 725 && xClick < 992 && yClick > 505 && yClick < 505+100){resetClicks();return 0;}
+            if (xClick > 725 && xClick < 992 && yClick > 610 && yClick < 610+100){resetClicks();return 1;}
+            if (xClick > 1000 && xClick < 1267 && yClick > 505 && yClick < 505+100){resetClicks();return 2;}
+            if (xClick > 1000 && xClick < 1267 && yClick > 610 && yClick < 610+100){resetClicks();return 3;}
         }
         else if(buttons.size() ==5){
-            if (x > 725 && x < 1270 && y > 510 && y < 510+35) return 0;
-            if (x > 725 && x < 1270 && y > 550 && y < 550+35) return 1;
-            if (x > 725 && x < 1270 && y > 590 && y < 590+35) return 2;
-            if (x > 725 && x < 1270 && y > 630 && y < 630+35) return 3;
-            if (x > 725 && x < 1270 && y > 670 && y < 670+35) return 4;
+            if (xClick > 725 && xClick < 1270 && yClick > 510 && yClick < 510+35){resetClicks();return 0;}
+            if (xClick > 725 && xClick < 1270 && yClick > 550 && yClick < 550+35) {resetClicks();return 1;}
+            if (xClick > 725 && xClick < 1270 && yClick> 590 && yClick < 590+35){resetClicks();return 2;}
+            if (xClick > 725 && xClick < 1270 && yClick > 630 && yClick < 630+35){resetClicks();return 3;}
+            if (xClick > 725 && xClick < 1270 && yClick > 670 && yClick < 670+35){resetClicks();return 4;}
         }
             return -1;
         }

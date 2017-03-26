@@ -57,9 +57,15 @@ public class Player {
         tempDialogStored = tempDialog;
         String[] buttons = {attack1, attack2, attack3, attack4,"Items"};
         String[] returningData = {"","","","",""};
+        adventurerework.window.makeButtons(buttons);
+        adventurerework.window.drawButtons();
+        int choice = -1;
+        while(choice == -1){
+            System.out.print("");
+            choice = adventurerework.window.questionButtonClick();
+        }
 
-        int choice = JOptionPane.showOptionDialog(null, tempDialog+"Which move would you like to use?\n", "",
-                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
+        adventurerework.window.voidButtons();
 
         if (choice == 0) {
             attackData = attackDatabase.getAttackData(attack1);
@@ -76,7 +82,7 @@ public class Player {
         else if (choice == 3) {
             attackData = attackDatabase.getAttackData(attack4);
             attackChoice = attack4;
-        }else {
+        }else if (choice ==4) {
             returningData[0] = "Item";
             return returningData;
         }

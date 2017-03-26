@@ -6,7 +6,6 @@ public class adventurerework {
     public static Moving adam;
     public static Screen window = new Screen();
     public static String keyPressed = "";
-    public static boolean clicked = false;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
     public static int roundCount = 1;
@@ -91,31 +90,13 @@ public class adventurerework {
                 }
             }
         }
-//        String[] buttons = {"Yes", "I REFUSE"};
-//        int answer = JOptionPane.showOptionDialog(null, "Would you like to strive on?", "",
-//                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-//        if (answer == 0) {
-//            striveOn();
-//        } else if (answer == 1) {
-//            System.out.println("You have chosen to stop adventuring.\nI knew you were a Coward!");
-//            System.exit(0);
-//        } else {
-//            live();
-//        }
-
-
     }
 
     public static void death() {
         window.print("You have died while adventuring!\nHuh, quite the savior you are.");
+        System.out.println("you ended the game by dying.");
         System.exit(0);
     }
-
-//    public static void striveOn() {
-//        System.out.println("You strive on.");
-//        startEncounter();
-//        live();
-//    }
 
     public static void startEncounter(Moving beast) {
         String beastStats[], beastStatsSolid[];
