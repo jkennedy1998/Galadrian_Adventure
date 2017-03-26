@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Screen extends JFrame {
     private static String[] log = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
     private final static String[] emptyLog = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
-    public static ArrayList<Button> buttons = new ArrayList();
+    private ArrayList<String> buttons= new ArrayList <>();
 
     public Screen(){
         super("Galadria");
@@ -21,20 +21,42 @@ public class Screen extends JFrame {
         super.paint(g);
         g.setColor(Color.gray);
         g.fillRect(0,0,720,720);
-        g.setColor(Color.BLACK);
-        g.fillRect(720,500,560,220);
+//        g.setColor(Color.BLACK);
+//        g.fillRect(720,500,560,220);
+        String[] buttons = {"hey","hi"};
+        makeButtons(buttons);
+        drawButtons();
+        voidButtons();
     }
-    public void makeButtons(Button[] buttons){//for making buttons during map play
+    public void makeButtons(String[] buttons){//for making buttons during map play
 
-    }
-    public void drawButtons(){ //needs to be in the box 720, 500 to 1280, 720
-        Graphics g = getGraphics();
-        super.paint(g);
-        for(int scan = 0; scan < buttons.size(); scan++){
-            Button button = buttons.get(scan);
-            g.fillRect(button.xPosition,button.yPosition,button.xDimension,button.yDimension);
+        for (int scan = 0; scan < buttons.length; scan++){
+            this.buttons.add(buttons[scan]);
         }
     }
+    public void voidButtons(){
+        buttons = new ArrayList<>();
+    }
+    public void drawButtons(){ //needs to be in the box 720, 500 to 1280, 720 (its 560 by 220)
+        Graphics g = getGraphics();
+        super.paint(g);
+        g.setColor(Color.darkGray);
+        if(buttons.size() == 1){
+                g.fillRect(725, 505, 580, 240);
+                g.setColor(Color.black);
+                g.drawString(buttons.get(0), 725 + (int) 540 / 2, 505 + (int) 200 / 2);
+            }
+            else if(buttons.size() == 2){
+            g.fillRect(725, 505, 545, 100);
+            g.fillRect(725, 610, 545, 100);
+            g.setColor(Color.black);
+            g.drawString(buttons.get(0), 725 + (int) 540 / 2, 505 + (int) 200 / 2);
+            g.drawString(buttons.get(0), 725 + (int) 540 / 2, 505 + (int) 200 / 2);
+
+
+        }
+
+        }
     public void drawCharacter(int xPosition, int yPosition, String name){
         Graphics g = getGraphics();
         super.paint(g);

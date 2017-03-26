@@ -1,4 +1,5 @@
 package cartography;
+import Battle.adventurerework;
 
 import java.awt.event.MouseEvent;
 
@@ -11,6 +12,7 @@ public class MouseListener implements java.awt.event.MouseListener {
 
     }
     public void mouseClicked(MouseEvent mouseEvent){
+        adventurerework.clicked = true;
         xPosition = mouseEvent.getX();
         yPosition = mouseEvent.getY();
     }

@@ -6,6 +6,7 @@ public class adventurerework {
     public static Moving adam;
     public static Screen window = new Screen();
     public static String keyPressed = "";
+    public static boolean clicked = false;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
     public static int roundCount = 1;
