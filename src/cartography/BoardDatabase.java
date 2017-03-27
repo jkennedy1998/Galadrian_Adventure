@@ -50,6 +50,7 @@ public class BoardDatabase {
                 sign.description = "This is a sign too!";
                 board.addNonWall(sign);
             }
+            board.addNonWall(NonWallsDatabase.makeNonWall(12,12,0,"camp site"));
             Moving goblin = new Moving(7,12,board,"goblin",false);
             board.movings.add(goblin);
 

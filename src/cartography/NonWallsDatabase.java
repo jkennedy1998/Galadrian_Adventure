@@ -78,7 +78,7 @@ public class NonWallsDatabase {
                         }
                     }
                 }
-                else{
+                else if (choice == 2){
                     adventurerework.window.print("You brave the night with ignorance and brash.");
                 }
             }

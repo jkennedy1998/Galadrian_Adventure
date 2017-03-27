@@ -45,7 +45,7 @@ public class Screen extends JFrame {
         }
         else if(buttons.size() ==2){
             if (xClick > 725 && xClick < 1270 && yClick > 505 && yClick < 505+100){resetClicks();return 0;}
-            if (xClick > 725 && xClick < 1270 && yClick > 610 && yClick < 610+100) resetClicks();return 1;
+            if (xClick > 725 && xClick < 1270 && yClick > 610 && yClick < 610+100){resetClicks();return 1;}
         }
         else if(buttons.size() ==3){
             if (xClick > 725 && xClick < 1270 && yClick > 505 && yClick < 505+65){resetClicks();return 0;}
@@ -75,6 +75,7 @@ public class Screen extends JFrame {
         g.fillRect(720,500,560,220);
     }
     public void drawButtons(){ //needs to be in the box 720, 500 to 1280, 720 (its 560 by 220)
+        resetClicks();
         Graphics g = getGraphics();
         super.paint(g);
         g.setColor(Color.darkGray);
