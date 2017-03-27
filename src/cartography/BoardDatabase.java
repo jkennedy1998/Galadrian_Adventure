@@ -6,6 +6,7 @@ public class BoardDatabase {
         if (name.equalsIgnoreCase("spawn")) return spawn();
         if(name.equals("yaun-ti cave entrance")) return yaunCaveEntrance();
         if(name.equals("yaun-ti cave")) return yaunCave();
+        if(name.equals("yaun-ti cave t")) return yaunCaveT();
 
 
 
@@ -42,9 +43,30 @@ public class BoardDatabase {
         {
             board.walls.get(0).addSquare(0,0,6,10,false);
             board.walls.get(0).deleteWall(3,9);
+            board.walls.get(0).deleteWall(4,0);
         }
         {
             NonWalls boardDoor = NonWallsDatabase.makeNonWall(3, 9, 0, "board door");
+            boardDoor.board = board;
+            board.addNonWall(boardDoor);
+        }
+        {
+            NonWalls boardDoor = NonWallsDatabase.makeNonWall(4, 0, 0, "board door");
+            boardDoor.board = board;
+            board.addNonWall(boardDoor);
+        }
+        return board;
+    }
+    public static Board yaunCaveT(){
+        Board board = new Board(20,12);
+        {
+            board.walls.get(0).addSquare(0,0,20,12,false);
+            board.walls.get(0).addSquare(0,7,10,5,true);
+            board.walls.get(0).addSquare(16,8,4,4,true);
+            board.walls.get(0).deleteWall(13,11);
+        }
+        {
+            NonWalls boardDoor = NonWallsDatabase.makeNonWall(13, 11, 0, "board door");
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
