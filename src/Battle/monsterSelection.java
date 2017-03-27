@@ -27,163 +27,163 @@ public class monsterSelection {
         }else
             return second;
     }
-    private static void selection() {
-        if (Story.location.equalsIgnoreCase("Forest")) {
-            monsterCount = 9;
-            int monsterNumber = subSelect();
-
-            if (monsterNumber == 1)
-                selectDog();
-            else if (monsterNumber == 2)
-                selectCultist();
-            else if (monsterNumber == 3)
-                selectGoblin();
-            else if (monsterNumber == 4)
-                selectWarlock();
-            else if (monsterNumber == 5)
-                selectVampire();
-            else if (monsterNumber == 6)
-                selectSpiderling();
-            else if (monsterNumber == 7)
-                selectYaunTiMalison();
-            else if (monsterNumber == 8)
-                selectYaunTiPureBlood();
-            else
-                selectBat();
-        }
-        if (Story.location.equalsIgnoreCase("DeepForest")) {
-            monsterCount = 9;
-            int monsterNumber = subSelect();
-
-            if (monsterNumber == 1)
-                selectDog();
-            else if (monsterNumber == 2)
-                selectCultist();
-            else if (monsterNumber == 3)
-                selectGoblin();
-            else if (monsterNumber == 4)
-                selectWarlock();
-            else if (monsterNumber == 5)
-                selectVampire();
-            else if (monsterNumber == 6)
-                selectSpiderling();
-            else if (monsterNumber == 7)
-                selectYaunTiAbonimation();
-            else if (monsterNumber == 8)
-                selectDragon();
-            else
-                selectBat();
-        }
-        if (Story.location.equalsIgnoreCase("Plains")) {
-            monsterCount = 9;
-            int monsterNumber = subSelect();
-
-            if (monsterNumber == 1)
-                selectDog();
-            else if (monsterNumber == 2)
-                selectCultist();
-            else if (monsterNumber == 3)
-                selectGoblin();
-            else if (monsterNumber == 4)
-                selectWarlock();
-            else if (monsterNumber == 5)
-                selectVampire();
-            else if (monsterNumber == 6)
-                selectSpiderling();
-            else if (monsterNumber == 7)
-                selectYaunTiMalison();
-            else if (monsterNumber == 8)
-                selectYaunTiPureBlood();
-            else
-                selectBat();
-        }
-        if (Story.location.equalsIgnoreCase("Mountains")) {
-
-            monsterCount = 7;
-            int monsterNumber = subSelect();
-            if (monsterNumber == 1)
-                selectDrunkDwarf();
-            else if (monsterNumber == 2)
-                selectSkeleton();
-            else if (monsterNumber == 3)
-                selectVampire();
-            else if (monsterNumber == 4)
-                selectBat();
-            else if (monsterNumber == 5)
-                selectWarlock();
-            else if (monsterNumber == 6)
-                selectYaunTiAbonimation();
-            else
-                selectGoblin();
-
-        }
-        if (Story.location.equalsIgnoreCase("Cave")) {
-
-            monsterCount = 4;
-            int monsterNumber = subSelect();
-            if (monsterNumber == 1)
-                selectBat();
-            else if (monsterNumber == 2)
-                selectGoblin();
-            else if (monsterNumber == 3)
-                selectDrunkDwarf();
-            else
-                selectSkeleton();
-        }
-        if (Story.location.equalsIgnoreCase("Jungle")) {
-
-            monsterCount = 7;
-            int monsterNumber = subSelect();
-            if (monsterNumber == 1)
-                selectBat();
-            else if (monsterNumber == 2)
-                selectSpiderling();
-            else if (monsterNumber == 3)
-                selectYaunTiAbonimation();
-            else if (monsterNumber == 4)
-                selectBigBat();
-            else if (monsterNumber == 5)
-                selectNaga();
-            else if (monsterNumber == 6)
-                selectLargeCat();
-            else
-                selectSmallSnake();
-
-        }
-        if (Story.location.equalsIgnoreCase("Yuan-ti Fortress")) {
-
-            monsterCount = 5;
-            int monsterNumber = subSelect();
-            if (monsterNumber == 1)
-                selectYaunTiMalison();
-            else if (monsterNumber == 2)
-                selectYaunTiPureBlood();
-            else if (monsterNumber == 3)
-                selectYaunTiAbonimation();
-            else if (monsterNumber == 4)
-                selectNaga();
-            else
-                selectYaunTiMalison();
-
-        }
-        if (Story.location.equalsIgnoreCase("Yuan-ti Dungeon")) { //set listing
-
-            if (roundsHere ==0) selectYaunTiPureBlood();
-            else if (roundsHere ==1) selectYaunTiMalison();
-            else if (roundsHere ==2) selectNaga();
-            else if (roundsHere ==3) selectYaunTiMalison();
-            else if (roundsHere ==4) selectYaunTiPureBlood();
-            else if (roundsHere ==5) selectYaunTiAbonimation();
-            else if (roundsHere ==6) selectWarlock();
-            else if (roundsHere ==7) selectYaunTiHolyGuard();
-            else if (roundsHere ==8) selectYaunTiHolyGuard();
-            else if (roundsHere ==9){
-                if (SideQuests.merrshaulkRitual()) selectMerrshaulk();
-                else selectMerrshaulkAbomination();
-            }
-
-        }
-    }
+//    private static void selection() {
+//        if (Story.location.equalsIgnoreCase("Forest")) {
+//            monsterCount = 9;
+//            int monsterNumber = subSelect();
+//
+//            if (monsterNumber == 1)
+//                selectDog();
+//            else if (monsterNumber == 2)
+//                selectCultist();
+//            else if (monsterNumber == 3)
+//                selectGoblin();
+//            else if (monsterNumber == 4)
+//                selectWarlock();
+//            else if (monsterNumber == 5)
+//                selectVampire();
+//            else if (monsterNumber == 6)
+//                selectSpiderling();
+//            else if (monsterNumber == 7)
+//                selectYaunTiMalison();
+//            else if (monsterNumber == 8)
+//                selectYaunTiPureBlood();
+//            else
+//                selectBat();
+//        }
+//        if (Story.location.equalsIgnoreCase("DeepForest")) {
+//            monsterCount = 9;
+//            int monsterNumber = subSelect();
+//
+//            if (monsterNumber == 1)
+//                selectDog();
+//            else if (monsterNumber == 2)
+//                selectCultist();
+//            else if (monsterNumber == 3)
+//                selectGoblin();
+//            else if (monsterNumber == 4)
+//                selectWarlock();
+//            else if (monsterNumber == 5)
+//                selectVampire();
+//            else if (monsterNumber == 6)
+//                selectSpiderling();
+//            else if (monsterNumber == 7)
+//                selectYaunTiAbonimation();
+//            else if (monsterNumber == 8)
+//                selectDragon();
+//            else
+//                selectBat();
+//        }
+//        if (Story.location.equalsIgnoreCase("Plains")) {
+//            monsterCount = 9;
+//            int monsterNumber = subSelect();
+//
+//            if (monsterNumber == 1)
+//                selectDog();
+//            else if (monsterNumber == 2)
+//                selectCultist();
+//            else if (monsterNumber == 3)
+//                selectGoblin();
+//            else if (monsterNumber == 4)
+//                selectWarlock();
+//            else if (monsterNumber == 5)
+//                selectVampire();
+//            else if (monsterNumber == 6)
+//                selectSpiderling();
+//            else if (monsterNumber == 7)
+//                selectYaunTiMalison();
+//            else if (monsterNumber == 8)
+//                selectYaunTiPureBlood();
+//            else
+//                selectBat();
+//        }
+//        if (Story.location.equalsIgnoreCase("Mountains")) {
+//
+//            monsterCount = 7;
+//            int monsterNumber = subSelect();
+//            if (monsterNumber == 1)
+//                selectDrunkDwarf();
+//            else if (monsterNumber == 2)
+//                selectSkeleton();
+//            else if (monsterNumber == 3)
+//                selectVampire();
+//            else if (monsterNumber == 4)
+//                selectBat();
+//            else if (monsterNumber == 5)
+//                selectWarlock();
+//            else if (monsterNumber == 6)
+//                selectYaunTiAbonimation();
+//            else
+//                selectGoblin();
+//
+//        }
+//        if (Story.location.equalsIgnoreCase("Cave")) {
+//
+//            monsterCount = 4;
+//            int monsterNumber = subSelect();
+//            if (monsterNumber == 1)
+//                selectBat();
+//            else if (monsterNumber == 2)
+//                selectGoblin();
+//            else if (monsterNumber == 3)
+//                selectDrunkDwarf();
+//            else
+//                selectSkeleton();
+//        }
+//        if (Story.location.equalsIgnoreCase("Jungle")) {
+//
+//            monsterCount = 7;
+//            int monsterNumber = subSelect();
+//            if (monsterNumber == 1)
+//                selectBat();
+//            else if (monsterNumber == 2)
+//                selectSpiderling();
+//            else if (monsterNumber == 3)
+//                selectYaunTiAbonimation();
+//            else if (monsterNumber == 4)
+//                selectBigBat();
+//            else if (monsterNumber == 5)
+//                selectNaga();
+//            else if (monsterNumber == 6)
+//                selectLargeCat();
+//            else
+//                selectSmallSnake();
+//
+//        }
+//        if (Story.location.equalsIgnoreCase("Yuan-ti Fortress")) {
+//
+//            monsterCount = 5;
+//            int monsterNumber = subSelect();
+//            if (monsterNumber == 1)
+//                selectYaunTiMalison();
+//            else if (monsterNumber == 2)
+//                selectYaunTiPureBlood();
+//            else if (monsterNumber == 3)
+//                selectYaunTiAbonimation();
+//            else if (monsterNumber == 4)
+//                selectNaga();
+//            else
+//                selectYaunTiMalison();
+//
+//        }
+//        if (Story.location.equalsIgnoreCase("Yuan-ti Dungeon")) { //set listing
+//
+//            if (roundsHere ==0) selectYaunTiPureBlood();
+//            else if (roundsHere ==1) selectYaunTiMalison();
+//            else if (roundsHere ==2) selectNaga();
+//            else if (roundsHere ==3) selectYaunTiMalison();
+//            else if (roundsHere ==4) selectYaunTiPureBlood();
+//            else if (roundsHere ==5) selectYaunTiAbonimation();
+//            else if (roundsHere ==6) selectWarlock();
+//            else if (roundsHere ==7) selectYaunTiHolyGuard();
+//            else if (roundsHere ==8) selectYaunTiHolyGuard();
+//            else if (roundsHere ==9){
+//                if (SideQuests.merrshaulkRitual()) selectMerrshaulk();
+//                else selectMerrshaulkAbomination();
+//            }
+//
+//        }
+//    }
     public static String[] fetchBeastStats(String name){
 
         adventurerework.window.print("\n\nYou have encountered a " + name + "!");
