@@ -38,7 +38,7 @@ public class Moving {
         }
     }
     public void moveUp() {
-        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1))
+        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1)&& inBoardBounds(0,-1))
             yPosition--;
         else if(name.equals("projectile")){
 
@@ -51,7 +51,7 @@ public class Moving {
     }
 
     public void moveDown() {
-        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1))
+        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1)&& inBoardBounds(0,1))
             yPosition++;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
@@ -61,7 +61,7 @@ public class Moving {
     }
 
     public void moveLeft() {
-        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0))
+        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0) && inBoardBounds(-1,0))
             xPosition--;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
@@ -71,7 +71,7 @@ public class Moving {
     }
 
     public void moveRight() {
-        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0))
+        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0)&& inBoardBounds(1,0))
             xPosition++;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
@@ -79,7 +79,11 @@ public class Moving {
         lastPosition[1] = yPosition;
         lastBoard = board;
     }
-
+    public boolean inBoardBounds(int xMove, int yMove){
+        if (xMove+xPosition > board.xDimension-1 || xMove+xPosition < 0) return false;
+        if (yMove+yPosition > board.yDimension-1 || yMove+yPosition < 0) return false;
+        return true;
+    }
     public boolean questionPlayerCollision(int x, int y){ //up down left right in respective order starting at 0
         if (!playerCollide) return false;
         Moving temp;
