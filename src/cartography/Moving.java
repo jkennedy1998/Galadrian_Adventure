@@ -7,9 +7,6 @@ public class Moving {
     public String name, behavior;
     public int[] lastPosition;
 
-    public Moving (){
-        name = "empty";
-    }
     public Moving(int xPosition, int yPosition, Board board, String name, boolean player) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;

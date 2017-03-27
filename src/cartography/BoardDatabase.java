@@ -29,11 +29,7 @@ public class BoardDatabase {
                     y = {4,0,4};
             board.walls.get(0).addWall(x,y);
         }
-        {
-            Moving moving = new Moving(11, 4, board, "yaun-ti holy guard", false);
-            moving.behavior = "stand";
-            board.movings.add(moving);
-        }
+            board.movings.add(new Moving(11, 4, board, "yaun-ti holy guard", false));
         {
             NonWalls boardDoor = NonWallsDatabase.makeNonWall(10, 0, 0, "board door");
             boardDoor.board = board;

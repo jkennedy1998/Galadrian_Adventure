@@ -1,35 +1,31 @@
 package cartography;
+import Battle.monsterSelection;
 public class BehaviorDatabase {
     public static String getBehavior(Moving moving){
-        if (Math.random()>.5)
-        return "follow";
-        else  return "follow";
+        return monsterSelection.fetchBeastStats(moving.name)[13];
     }
     public static int[] respond(Moving actingEntity){//add random movement
         if (actingEntity.behavior.equals("follow")) return follow(actingEntity);
         if (actingEntity.behavior.equals("flee")) return flee(actingEntity);
         if (actingEntity.behavior.equals("wander")) return wander();
         if (actingEntity.behavior.equals("stand")) return stand();
+        if (actingEntity.behavior.equals("guard")) return guard(actingEntity);
+
         if (actingEntity.behavior.substring(0,6).equals("linear")) return linear(actingEntity);
-        System.out.println(5);
-        return stand();
+        System.out.println("error: behavior ("+actingEntity.behavior+") not valid for "+actingEntity.name);
+        return null;
     }
     public static Moving findVisibleEntity(Moving actingEntity){
-        Moving lockedEntity = new Moving();
-        boolean assigned = false;
+        Moving lockedEntity = null;
         for (int scan = 0; scan < actingEntity.board.movings.size(); scan++){
             if (inProximity(actingEntity.board.movings.get(scan), actingEntity)){
                 lockedEntity = actingEntity.board.movings.get(scan);
-                assigned = true;
+
             }
         }
-        if (assigned) return lockedEntity;
-        else {
-            Moving emptyMoving = new Moving();
-            return  emptyMoving;
-        }
+        return lockedEntity;
     }
-    public static boolean inProximity (Moving entity,Moving actingEntity){ return  (!(Math.sqrt(Math.pow(Math.abs(entity.xPosition - actingEntity.xPosition),2)+Math.pow(Math.abs(entity.yPosition - actingEntity.yPosition),2)) > actingEntity.range)&&entity.behavior.equals("player")&&entity.elevation == actingEntity.elevation); }
+    public static boolean inProximity (Moving entity,Moving actingEntity){return  (!(Math.sqrt(Math.pow(Math.abs(entity.xPosition - actingEntity.xPosition),2)+Math.pow(Math.abs(entity.yPosition - actingEntity.yPosition),2)) > actingEntity.range)&&entity.behavior.equals("player")&&entity.elevation == actingEntity.elevation);}
 
     private static int[] linear(Moving actingEntity){
         if(actingEntity.behavior.equals("linear up")) return new int[] {0,-1};
@@ -39,9 +35,28 @@ public class BehaviorDatabase {
         System.out.println("error: linear movement not assigned correctly for Moving's behavior");
         return null;
     }
-    private static int[] follow(Moving actingEntity){
+    private static int[] guard( Moving actingEntity){
+        actingEntity.range = 1;
         Moving lockedEntity = findVisibleEntity(actingEntity);
-        if (lockedEntity.name.equals("empty")) if( Math.random()>.7) {return wander();} else return stand();
+        if (lockedEntity == null) return stand();
+        int[] movement = {0,0};
+        if (lockedEntity.xPosition > actingEntity.xPosition) movement[0] = 1;
+        if (lockedEntity.xPosition < actingEntity.xPosition) movement[0] = -1;
+        if (lockedEntity.yPosition > actingEntity.yPosition) movement[1] = 1;
+        if (lockedEntity.yPosition < actingEntity.yPosition) movement[1] = -1;
+        int temp = actingEntity.questionWallCollision(movement[0], movement[1]);
+        if (temp == 1) movement[0] = 0;
+        else if (temp == 2) movement[1] = 0;
+        if (temp ==1&&movement[1] == 0) movement[1] += randomMove();
+        if (temp ==2&&movement[0] == 0) movement[0] += randomMove();
+        if( movement[0] == 0 && movement[1] == 0 && Math.random()>.7) movement = wander();
+
+        return movement;
+    }
+    private static int[] follow(Moving actingEntity){
+
+        Moving lockedEntity = findVisibleEntity(actingEntity);
+        if (lockedEntity == null) if( Math.random()>.7) {return wander();} else return stand();
         int[] movement = {0,0};
             if (lockedEntity.xPosition > actingEntity.xPosition) movement[0] = 1;
             if (lockedEntity.xPosition < actingEntity.xPosition) movement[0] = -1;

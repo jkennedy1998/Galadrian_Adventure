@@ -502,7 +502,7 @@ public class monsterSelection {
         beastStats[6] = ""+(69);
         beastStats[11] = ""+(28);
         beastStats[12] = ""+(0);
-        beastStats[13] = "follow";
+        beastStats[13] = "guard";
 
     }
     public static void selectMerrshaulk(){
