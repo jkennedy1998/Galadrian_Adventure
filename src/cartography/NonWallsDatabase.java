@@ -82,6 +82,8 @@ public class NonWallsDatabase {
                     adventurerework.window.print("You brave the night with ignorance and brash.");
                 }
             }
+            else
+                adventurerework.window.print("A camp site calls to you, but it is too early to rest.");
         }
         else  if (current.wallType.equals("camp site")  && !moving.behavior.equals("player")); //beasts do nothing at a camp site
         else if(current.wallType.equals("pressure plate")){
