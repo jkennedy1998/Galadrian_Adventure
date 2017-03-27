@@ -69,6 +69,10 @@ public class Screen extends JFrame {
         }
     public void voidButtons(){
         buttons = new ArrayList<>();
+        Graphics g = getGraphics();
+        super.paint(g);
+        g.setColor(Color.black);
+        g.fillRect(720,500,560,220);
     }
     public void drawButtons(){ //needs to be in the box 720, 500 to 1280, 720 (its 560 by 220)
         Graphics g = getGraphics();

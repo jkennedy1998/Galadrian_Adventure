@@ -55,45 +55,13 @@ public class Leveler {
         return returningLevelStats;
     }
 
-    public static String rest() {
-        while (adventurerework.character1.getExp()>= adventurerework.character1.getExpLim()){
-            adventurerework.levelUp();
-            adventurerework.time += 1;
-        }
-
-        String[] buttons = {"Set up traps for the creatures of the night.", "Forgo safety and rest."};
-        int choice = JOptionPane.showOptionDialog(null, "Nightfall approaches quickly.\nYou find cozy spot in the" +Story.location+" and decide to settle down for the night.", "",
-                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-
-        if (choice == 0) {
-            adventurerework.time += 2;
-            if (adventurerework.time>=24){
-                adventurerework.time = adventurerework.time-24;
-                adventurerework.day++;
-            }
-            if (Math.random() * 10 > 9) { //10% chance of encounter
-                return "E";
-            }else
-                return calculateRestingHealth(adventurerework.time);
-        } else if (choice == 1) {
-            if (adventurerework.time>=24){
-                adventurerework.time = adventurerework.time-24;
-                adventurerework.day++;
-            }
-            if (Math.random() * 10 > 6) { //40% chance of encounter
-                return "E";
-            }else
-                return calculateRestingHealth(adventurerework.time);
-        } else
-            return rest();
-    }
-    public static String calculateRestingHealth(double time){
+    public static int calculateRestingHealth(double time){
         double awakeTime = Math.random()*4+6; //waking up somewhere between 6 and 10;
         adventurerework.time = awakeTime;
         if (time>12){//if a day has not passed in the time between your last sleep
-            return ""+(int)(24-time+awakeTime)*4;
+            return (int)(24-time+awakeTime)*4;
         }else{
-            return ""+(int)(awakeTime-time)*4;
+            return (int)(awakeTime-time)*4;
         }
     }
 }

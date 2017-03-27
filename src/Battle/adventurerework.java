@@ -76,19 +76,19 @@ public class adventurerework {
             time = time-24;
         }
         if (time > 22 || time < 5) { //between 10 pm and 5 am
-            String temp = Leveler.rest();
-            if (temp.equalsIgnoreCase("e")) {
-                window.print("You have been ambushed in your sleep!");
-                Board board = new Board(0,0);
-                Moving moving = new Moving(0,0,board,"goblin",false);
-                startEncounter(moving);
-            }else {
-                character1.setHealth(Integer.parseInt(temp));
-                {
-                    String[] strings = {"You wake up at around " + (int) Math.round(time) + ".", "You have regained " + temp + " health points by resting."};
-                    window.print(strings);
-                }
-            }
+            System.out.println("its night time yo! should this code be doing something?");
+//            if (temp.equalsIgnoreCase("e")) {
+//                window.print("You have been ambushed in your sleep!");
+//                Board board = new Board(0,0);
+//                Moving moving = new Moving(0,0,board,"goblin",false);
+//                startEncounter(moving);
+//            }else {
+//                character1.setHealth(Integer.parseInt(temp));
+//                {
+//                    String[] strings = {"You wake up at around " + (int) Math.round(time) + ".", "You have regained " + temp + " health points by resting."};
+//                    window.print(strings);
+//                }
+//            }
         }
     }
 
@@ -344,6 +344,7 @@ public class adventurerework {
         window.print("your health is at " + character1.getHealth() + ".");
         if(!beast.behavior.equals("player"))
         beast.board.removeMoving(beast);
+        window.voidButtons();
             adventurerework.live();
         }
 
@@ -463,7 +464,7 @@ public class adventurerework {
         }
     }
 
-    static void levelUp() {
+    public static void levelUp() {
     character1.permExp(character1.getExp() - character1.getExpLim());
     character1.permExpLim((int) Math.round(character1.getExpLim() * 1.5));
     character1.LevelUp();

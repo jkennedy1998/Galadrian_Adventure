@@ -1,4 +1,5 @@
 package cartography;
+import Battle.Leveler;
 import Battle.adventurerework;
 public class NonWallsDatabase {
 
@@ -12,6 +13,7 @@ public class NonWallsDatabase {
             nonwall.colidable = true;
             nonwall.interactOnCollision = false;
         }
+        else if (wallType.equals("camp site")) nonwall.colidable = true;
 
         return nonwall;
     }
@@ -24,6 +26,64 @@ public class NonWallsDatabase {
             current.colidable = false;
             current.state = false;
         }
+        else if(current.wallType.equals("camp site") && moving.behavior.equals("player")){
+            if (adventurerework.time > 22 || adventurerework.time < 5){
+                adventurerework.window.print("You stumble apon a camp site.");
+                String[] buttons = {"sleep through the night", "Stumble your way through the darkness"};
+                adventurerework.window.makeButtons(buttons);
+                adventurerework.window.drawButtons();
+                int choice = -1;
+                while(choice == -1){
+                    System.out.print("");
+                    choice = adventurerework.window.questionButtonClick();
+                }
+                adventurerework.window.voidButtons();
+                if(choice == 0){
+                    while (adventurerework.character1.getExp()>= adventurerework.character1.getExpLim()){
+                        adventurerework.levelUp();
+                        adventurerework.time += 1;
+                        adventurerework.window.print("The rustling of beasts and critters alike fill the growing void around your camp.");
+                        String[] buttons2 = {"Fortify your camp from the creatures of the black", "Take your chances with the surrounding inhabitants and sleep through your worries"};
+                        adventurerework.window.makeButtons(buttons2);
+                        adventurerework.window.drawButtons();
+                        int choice2 = -1;
+                        while(choice2 == -1){
+                            System.out.print("");
+                            choice2 = adventurerework.window.questionButtonClick();
+                        }
+                        adventurerework.window.voidButtons();
+                        if (choice2 == 0){
+                            adventurerework.time += 2;
+                            if (adventurerework.time>=24){
+                                adventurerework.time = adventurerework.time-24;
+                                adventurerework.day++;
+                            }
+                            if (Math.random() * 10 > 9) { //10% chance of encounter
+                                adventurerework.startEncounter(new Moving(-1,-1,current.board,"goblin",false));
+                            }else {
+                                adventurerework.character1.setHealth(adventurerework.character1.getHealth() + Leveler.calculateRestingHealth(adventurerework.time));
+                            if (adventurerework.character1.getHealth()>adventurerework.character1.getMaxHealth()) adventurerework.character1.setHealth(adventurerework.character1.getMaxHealth());
+                            }
+                        }else{
+                            if (adventurerework.time>=24){
+                                adventurerework.time = adventurerework.time-24;
+                                adventurerework.day++;
+                            }
+                            if (Math.random() * 10 > 6) { //40% chance of encounter
+                                adventurerework.startEncounter(new Moving(-1,-1,current.board,"goblin",false));
+                            }else {
+                                adventurerework.character1.setHealth(adventurerework.character1.getHealth() + Leveler.calculateRestingHealth(adventurerework.time));
+                                if (adventurerework.character1.getHealth()>adventurerework.character1.getMaxHealth()) adventurerework.character1.setHealth(adventurerework.character1.getMaxHealth());
+                            }
+                        }
+                    }
+                }
+                else{
+                    adventurerework.window.print("You brave the night with ignorance and brash.");
+                }
+            }
+        }
+        else  if (current.wallType.equals("camp site")  && !moving.behavior.equals("player")); //beasts do nothing at a camp site
         else if(current.wallType.equals("pressure plate")){
             current.state = !current.state;
             current.checkState();
@@ -37,11 +97,11 @@ public class NonWallsDatabase {
             current.board.removeMoving(moving);
             current.link.board.movings.add(moving);
         }
-        else if (current.wallType.equals("item")&& moving.name.equals("player")){
+        else if (current.wallType.equals("item")&& moving.behavior.equals("player")){
             adventurerework.window.print("You have picked up a "+current.description+"!");
             current.board.removeNonwall(current);
         }
-        else if (current.wallType.equals("item")&& !moving.name.equals("player"));//does nothing. this is when an enemy runs into an item
+        else if (current.wallType.equals("item")&& !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into an item
         else if(current.wallType.equals("dart trap")){
             Moving dart = new Moving(current.xPosition,current.yPosition, current.board, "projectile", false);
             current.board.movings.add(dart);
@@ -55,11 +115,11 @@ public class NonWallsDatabase {
             String[] strings = {"The sign reads...",current.description};
             adventurerework.window.print(strings);
         }
-        else if (current.wallType.equals("sign") && !moving.name.equals("player"));//does nothing. this is when an enemy runs into a sign.
-        else if(current.wallType.equals("chest") && moving.name.equals("player")){
+        else if (current.wallType.equals("sign") && !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into a sign.
+        else if(current.wallType.equals("chest") && moving.behavior.equals("player")){
             adventurerework.window.print("You have found a "+current.description+"!");
         }
-        else if (current.wallType.equals("chest") && !moving.name.equals("player"));//does nothing. this is when an enemy runs into a chest.
+        else if (current.wallType.equals("chest") && !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into a chest.
         else System.out.println("error: wallType isn't set to a legitimate type\nWalltype = ["+current.wallType+"]");
     }
 }
