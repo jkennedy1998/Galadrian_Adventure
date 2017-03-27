@@ -7,35 +7,20 @@ public class monsterSelection {
     private static int monsterCount = 0;
     private static int roundsHere = 0; //only used in locations with a set enemy
 
-
-
-    public static String[] main (int round){
-        if (round%10 == 0 ) {
-            roundsHere = 0;
-            Story.refresh(adventurerework.character1.getAttack1(), adventurerework.character1.getAttack2(),
-                    adventurerework.character1.getAttack3(), adventurerework.character1.getAttack4());
-            //that's the shortest line of code ever!
-            Story.setDestination();
-        }
-        roundsHere++;
-        selection();
-        if (needsAnAn) {
-            adventurerework.window.print("\n\nYou have encountered an " + beast + "!");
-        } else{
-            adventurerework.window.print("\n\nYou have encountered a " + beast + "!");
-        }
-
-        for (int pointsToGive = round; pointsToGive>0; pointsToGive--){ //this scales monsters per how many
-            int rand = (int)Math.ceil(Math.random()*4);
-            if (rand == 1)  beastStats[7] ="" + (Double.parseDouble(beastStats[7])+.05);
-            if (rand == 2)  beastStats[8] ="" + (Double.parseDouble(beastStats[8])+.05);
-            if (rand == 3)  beastStats[9] ="" + (Double.parseDouble(beastStats[9])+.05);
-            if (rand == 4)  beastStats[10] ="" + (Double.parseDouble(beastStats[10])+.05);
-        }
-        beastNameGen.assighnName(beast);
-        return beastStats;
-    }
-
+    //     Past this point should only contain beast selections.
+//
+//    public static void selectNAMEHERE(){
+//        beast = "NAME HERE";
+//        needsAnAn = false; //if the first letter is a vowel
+//        beastStats[0] = (health value);
+//        beastStats[1] = (attack 1 name);
+//        beastStats[2] = (attack 1 name);
+//        beastStats[3] = (attack 1 name);
+//        beastStats[4] = (item value);
+//        beastStats[5] = (item drop rate %);
+//        beastStats[6] = (speed value); (positive numbers. not modded character speed is 60)
+//        attack = (name of the enemies attack);
+//    }
     private static Object outOfTwo(Object first, Object second){
         if (Math.ceil(Math.random())*2==1){
             return first;
@@ -198,35 +183,42 @@ public class monsterSelection {
             }
 
         }
-        if (Story.location.equalsIgnoreCase("JaggedCoastline")) {
-
-            monsterCount = 1;
-            int monsterNumber = subSelect();
-            if (monsterNumber == 1)
-                selectCthulu();
-
-        }
     }
-    public static int subSelect(){
+    public static String[] fetchBeastStats(String name){
+
+        adventurerework.window.print("\n\nYou have encountered a " + name + "!");
+        beastNameGen.assighnName(name);
+        if(name.equals("rabid dog"))selectDog();
+        else if(name.equals("lesser snake")) selectSmallSnake();
+        else if(name.equals("large cat")) selectLargeCat();
+        else if(name.equals("small bat")) selectBat();
+        else if(name.equals("naga")) selectNaga();
+        else if(name.equals("big bat")) selectBigBat();
+        else if(name.equals("goblin")) selectGoblin();
+        else if(name.equals("warlock")) selectWarlock();
+        else if(name.equals("skeleton")) selectSkeleton();
+        else if(name.equals("naga")) selectNaga();
+        else if(name.equals("vampire")) selectVampire();
+        else if(name.equals("cultist")) selectCultist();
+        else if(name.equals("drunk dwarf")) selectDrunkDwarf();
+        else if(name.equals("spiderling")) selectSpiderling();
+        else if(name.equals("dragon")) selectDragon();
+        else if(name.equals("lich")) selectLich();
+        else if(name.equals("yaun-ti malison")) selectYaunTiMalison();
+        else if(name.equals("yaun-ti abomination")) selectYaunTiAbonimation();
+        else if(name.equals("yaun-ti holy guard")) selectYaunTiHolyGuard();
+        else if(name.equals("merrshaulk")) selectMerrshaulk();
+        else if(name.equals("merrshaulk abomination")) selectMerrshaulkAbomination();
+        else if(name.equals("yaun-ti pure blood")) selectYaunTiPureBlood();
+
+        return beastStats;
+    }
+    private static int subSelect(){
         //here are the amount of monsters
 
         return (int)(Math.round(Math.random()*monsterCount));
     }
 
-    // Past this point should only contain beast selections.
-
-//    public static void selectNAMEHERE(){
-//        beast = "NAME HERE";
-//        needsAnAn = false; //if the first letter is a vowel
-//        beastStats[0] = (health value);
-//        beastStats[1] = (attack 1 name);
-//        beastStats[2] = (attack 1 name);
-//        beastStats[3] = (attack 1 name);
-//        beastStats[4] = (item value);
-//        beastStats[5] = (item drop rate %);
-//        beastStats[6] = (speed value); (positive numbers. not modded character speed is 60)
-//        attack = (name of the enemies attack);
-//    }
     public static void selectDog(){
         beast = "Rabid Dog";
         needsAnAn = false;
@@ -484,7 +476,7 @@ public class monsterSelection {
 
     }
     public static void selectYaunTiAbonimation(){
-        beast = "Yaun-Ti Abonimation";
+        beast = "Yaun-Ti Abonination";
         needsAnAn = false;
         beastStats[0] = ""+40;
         beastStats[1] = "tail sweep";
@@ -559,24 +551,6 @@ public class monsterSelection {
         beastStats[13] = "follow";
 
     }
-    public static void selectCthulu(){
-        beast = "Cthulu";
-        needsAnAn = false;
-        beastStats[0] = ""+100;
-        beastStats[1] = "hex";
-        beastStats[2] = "shadow bolt";
-        beastStats[3] = "bite";
-        beastStats[4] = ""+(0);
-        beastStats[5] = ""+(100);
-        beastStats[6] = ""+(1);
-        beastStats[11] = ""+(30);
-        beastStats[12] = ""+(0);
-        beastStats[13] = "stand";
-
-
-    }
-
-
 }
 //        beastStats[0] = (health value);
 //        beastStats[1] = (maxAttack value);

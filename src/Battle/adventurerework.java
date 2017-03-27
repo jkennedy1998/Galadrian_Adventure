@@ -100,7 +100,7 @@ public class adventurerework {
 
     public static void startEncounter(Moving beast) {
         String beastStats[], beastStatsSolid[];
-        beastStatsSolid = monsterSelection.main(roundCount);
+        beastStatsSolid = monsterSelection.fetchBeastStats(beast.name);
         beastStats = beastStatsSolid;
         boolean lifeStatus = true;
         int turn = 0;
