@@ -12,7 +12,6 @@ public class Map {
         boards.add(getBoard("yaun-ti cave"));
         boards.get(1).findNonWall(10,0,0).link = boards.get(2).findNonWall(3,9,0);
         boards.get(2).findNonWall(3,9,0).link = boards.get(1).findNonWall(10,0,0);
-        System.out.println(boards.get(2).findNonWall(3,9,0).link.board);
         currentBoard = boards.get(1);
         System.out.println("Ended map initialization!");
     }

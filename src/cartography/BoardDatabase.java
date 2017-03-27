@@ -25,11 +25,15 @@ public class BoardDatabase {
         {
             board.walls.get(0).addSquare(0,0,9,5,true);
             board.walls.get(0).addSquare(12,0,3,6,true);
-            int[] x = {10,11},
-                    y = {5,0};
+            int[] x = {10,11,9},
+                    y = {4,0,4};
             board.walls.get(0).addWall(x,y);
         }
-        board.movings.add(new Moving(11,6,board,"yaun-ti holy guard",false));
+        {
+            Moving moving = new Moving(11, 4, board, "yaun-ti holy guard", false);
+            moving.behavior = "stand";
+            board.movings.add(moving);
+        }
         {
             NonWalls boardDoor = NonWallsDatabase.makeNonWall(10, 0, 0, "board door");
             boardDoor.board = board;

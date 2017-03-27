@@ -3,7 +3,7 @@ import Battle.*;
 public class Moving {
     public int xPosition, yPosition, range = 7, elevation = 0, speed = 60;
     boolean playerCollide = true, wallCollide = true;
-    public Board board;
+    public Board board, lastBoard;
     public String name, behavior;
     public int[] lastPosition;
 
@@ -47,6 +47,7 @@ public class Moving {
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
+        lastBoard = board;
     }
 
     public void moveDown() {
@@ -56,6 +57,7 @@ public class Moving {
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
+        lastBoard = board;
     }
 
     public void moveLeft() {
@@ -65,6 +67,7 @@ public class Moving {
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
+        lastBoard = board;
     }
 
     public void moveRight() {
@@ -74,6 +77,7 @@ public class Moving {
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
+        lastBoard = board;
     }
 
     public boolean questionPlayerCollision(int x, int y){ //up down left right in respective order starting at 0

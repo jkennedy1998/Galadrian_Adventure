@@ -128,7 +128,7 @@ public class Screen extends JFrame {
         Graphics g = getGraphics();
         super.paint(g);
         g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
-        g.drawString(name, (xPosition * 30) + 30, (yPosition * 30) + 70);
+        g.drawString(name, (xPosition * 30) + 30, (yPosition * 30) + 100);
 }
     public  void voidLines(){log = emptyLog;}
     public  void print(String singleLine){

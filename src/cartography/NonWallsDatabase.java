@@ -92,7 +92,7 @@ public class NonWallsDatabase {
             current.link.checkState();
         }
         else if(current.wallType.equals("board door")) {
-            if (moving.xPosition == moving.lastPosition[0] && moving.yPosition == moving.lastPosition[1]) { //this makes sure it doesnt go through doors multiple times. if last position is ever fixed(not sure it needs to be) this will break. haha!
+            if (moving.board == moving.lastBoard) { //this makes sure it doesnt go through doors multiple times.
                 moving.xPosition = current.link.xPosition;
                 moving.yPosition = current.link.yPosition;
                 moving.elevation = current.link.elevation;

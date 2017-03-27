@@ -37,7 +37,6 @@ public class adventurerework {
     public static void run() {
         while (true) {
             for (int scan = 0; scan < adam.board.movings.size(); scan++) {
-                System.out.println(adam.board);
                 strive(adam.board.movings.get(scan));
             }
 
