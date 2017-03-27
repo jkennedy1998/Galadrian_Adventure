@@ -29,7 +29,7 @@ public class adventurerework {
         MouseListener mouseListener = new MouseListener();
         window.addMouseListener(mouseListener);
         Map.initializeMaps();
-        adam = new Moving(3, 3, Map.currentBoard, "player", true);
+        adam = new Moving(3, 6, Map.currentBoard, "player", true);
         Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
         run(); //should replace strive
 
@@ -37,6 +37,7 @@ public class adventurerework {
     public static void run() {
         while (true) {
             for (int scan = 0; scan < adam.board.movings.size(); scan++) {
+                System.out.println(adam.board);
                 strive(adam.board.movings.get(scan));
             }
 

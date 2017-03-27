@@ -4,6 +4,8 @@ public class BoardDatabase {
 
     public static Board getBoard(String name){
         if (name.equalsIgnoreCase("spawn")) return spawn();
+        if(name.equals("yaun-ti cave entrance")) return yaunCaveEntrance();
+        if(name.equals("yaun-ti cave")) return yaunCave();
 
 
 
@@ -12,17 +14,47 @@ public class BoardDatabase {
     //how to display complex nonWall objects:
     //board door:
     //{
-    //NonWalls door = NonwallsDatabase.makeNonWall(x,y,elevation,"board door");
-    //door.board = board;
-    //board.addNonWall(door)
+    //NonWalls boardDoor = NonwallsDatabase.makeNonWall(x,y,elevation,"board door");
+    //boardDoor.board = board;
+    //board.addNonWall(boardDoor)
     //}
-    //  then you must set their links in the Map class.
+    //  then you must set their links in the Map class (equal to the nonwall its lnked to. use findNonWall and its coords that you wrote to find the other door).
 
-    public static Board spawn(){ //20x20 square
+    public static Board yaunCaveEntrance(){
         Board board = new Board(15,15);
         {
-            board.walls.get(0).addSquare(0,0,15,15);
-            board.walls.get(0).addSquare(5,7,5,5);
+            board.walls.get(0).addSquare(0,0,9,5,true);
+            board.walls.get(0).addSquare(12,0,3,6,true);
+            int[] x = {10,11},
+                    y = {5,0};
+            board.walls.get(0).addWall(x,y);
+        }
+        board.movings.add(new Moving(11,6,board,"yaun-ti holy guard",false));
+        {
+            NonWalls boardDoor = NonWallsDatabase.makeNonWall(10, 0, 0, "board door");
+            boardDoor.board = board;
+            board.addNonWall(boardDoor);
+        }
+        return board;
+    }
+    public static Board yaunCave(){
+        Board board = new Board(6,10);
+        {
+            board.walls.get(0).addSquare(0,0,6,10,false);
+            board.walls.get(0).deleteWall(3,9);
+        }
+        {
+            NonWalls boardDoor = NonWallsDatabase.makeNonWall(3, 9, 0, "board door");
+            boardDoor.board = board;
+            board.addNonWall(boardDoor);
+        }
+        return board;
+    }
+    public static Board spawn(){
+        Board board = new Board(15,15);
+        {
+            board.walls.get(0).addSquare(0,0,15,15, false);
+            board.walls.get(0).addSquare(5,7,5,5, false);
             board.walls.get(0).deleteWall(5,9);
             {
                 NonWalls door = NonWallsDatabase.makeNonWall(5, 9, 0, "closed door");

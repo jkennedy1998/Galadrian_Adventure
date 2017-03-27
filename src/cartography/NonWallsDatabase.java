@@ -92,12 +92,14 @@ public class NonWallsDatabase {
             current.link.checkState();
         }
         else if(current.wallType.equals("board door")) {
-            moving.xPosition = current.link.xPosition;
-            moving.yPosition = current.link.yPosition;
-            moving.elevation = current.link.elevation;
-            moving.board = current.link.board;
-            current.board.removeMoving(moving);
-            current.link.board.movings.add(moving);
+            if (moving.xPosition == moving.lastPosition[0] && moving.yPosition == moving.lastPosition[1]) { //this makes sure it doesnt go through doors multiple times. if last position is ever fixed(not sure it needs to be) this will break. haha!
+                moving.xPosition = current.link.xPosition;
+                moving.yPosition = current.link.yPosition;
+                moving.elevation = current.link.elevation;
+                moving.board = current.link.board;
+                current.board.removeMoving(moving);
+                current.link.board.movings.add(moving);
+            }
         }
         else if (current.wallType.equals("item")&& moving.behavior.equals("player")){
             adventurerework.window.print("You have picked up a "+current.description+"!");

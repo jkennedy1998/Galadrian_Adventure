@@ -7,8 +7,13 @@ public class Map {
     private static Board getBoard(String boardName){return BoardDatabase.getBoard(boardName);}
     public static void initializeMaps(){
         System.out.println("Started map initialization!");
-        boards.add(BoardDatabase.getBoard("spawn"));
-        currentBoard = boards.get(0);
+        boards.add(getBoard("spawn"));
+        boards.add(getBoard("yaun-ti cave entrance"));
+        boards.add(getBoard("yaun-ti cave"));
+        boards.get(1).findNonWall(10,0,0).link = boards.get(2).findNonWall(3,9,0);
+        boards.get(2).findNonWall(3,9,0).link = boards.get(1).findNonWall(10,0,0);
+        System.out.println(boards.get(2).findNonWall(3,9,0).link.board);
+        currentBoard = boards.get(1);
         System.out.println("Ended map initialization!");
     }
 }

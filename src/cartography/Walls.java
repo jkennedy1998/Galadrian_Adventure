@@ -29,22 +29,42 @@ public class Walls {
         walls.add(wall);
         deleteDuplicates();
     }
-    public void addSquare(int xPosition, int yPosition, int xDimension, int yDimension){
+    public void addSquare(int xPosition, int yPosition, int xDimension, int yDimension, boolean filled){
         ArrayList wallX = new ArrayList();
         ArrayList wallY = new ArrayList();
-        for(int x = xPosition; x < xDimension + xPosition; x++)wallX.add(x);
-        for(int scan = 0; scan < yDimension; scan++) wallY.add(yPosition);
-        for(int x = xPosition; x < xDimension + xPosition; x++)wallX.add(x);
-        for(int scan = 0; scan < yDimension; scan++) wallY.add(yPosition+yDimension-1);
-        for(int y = yPosition; y < yDimension + yPosition; y++)wallY.add(y);
-        for(int scan = 0; scan < xDimension; scan++) wallX.add(xPosition);
-        for(int y = yPosition; y < yDimension + yPosition; y++)wallY.add(y);
-        for(int scan = 0; scan < xDimension; scan++) wallX.add(xPosition+xDimension-1);
-        int[] x = new int[wallX.size()];
-        int[] y = new int[wallX.size()];
-        for(int scan = 0; scan < wallX.size(); scan++){x[scan] = (int)wallX.get(scan);}
-        for(int scan = 0; scan < wallY.size(); scan++){y[scan] = (int)wallY.get(scan);}
-        addWall(x,y);
+        if(!filled) {
+            for (int x = xPosition; x < xDimension + xPosition; x++) wallX.add(x);
+            for (int scan = 0; scan < xDimension; scan++) wallY.add(yPosition);
+            for (int x = xPosition; x < xDimension + xPosition; x++) wallX.add(x);
+            for (int scan = 0; scan < xDimension; scan++) wallY.add(yPosition + yDimension - 1);
+            for (int y = yPosition; y < yDimension + yPosition; y++) wallY.add(y);
+            for (int scan = 0; scan < yDimension; scan++) wallX.add(xPosition);
+            for (int y = yPosition; y < yDimension + yPosition; y++) wallY.add(y);
+            for (int scan = 0; scan < yDimension; scan++) wallX.add(xPosition + xDimension - 1);
+            int[] x = new int[wallX.size()];
+            int[] y = new int[wallX.size()];
+            if(wallX.size() != wallY.size()){
+                System.out.println("error: walls not created with equal x and y coord lengths");
+            }
+            for (int scan = 0; scan < wallX.size(); scan++) {
+                x[scan] = (int) wallX.get(scan);
+            }
+            for (int scan = 0; scan < wallY.size(); scan++) {
+                y[scan] = (int) wallY.get(scan);
+            }
+            addWall(x, y);
+        }
+        else {
+            int x = xPosition,y = yPosition;
+            for(int scan = 0; scan < xDimension*yDimension; scan++){
+                addWall(x,y);
+                x++;
+                if (x > xDimension+xPosition){
+                    x = xPosition;
+                    y++;
+                }
+            }
+        }
 
     }
     public void addWall (int[] wallXCoordinates, int[] wallYCoordinates){
