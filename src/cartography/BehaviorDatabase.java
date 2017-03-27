@@ -36,9 +36,27 @@ public class BehaviorDatabase {
         return null;
     }
     private static int[] guard( Moving actingEntity){
-        actingEntity.range = 1;
+        actingEntity.range = 2;
+
         Moving lockedEntity = findVisibleEntity(actingEntity);
-        if (lockedEntity == null) return stand();
+        if (lockedEntity == null){
+            if (actingEntity.initialX != actingEntity.xPosition || actingEntity.intitialY != actingEntity.yPosition){
+                int[] movement = {0,0};
+                if (actingEntity.initialX > actingEntity.xPosition) movement[0] = 1;
+                if (actingEntity.initialX < actingEntity.xPosition) movement[0] = -1;
+                if (actingEntity.intitialY > actingEntity.yPosition) movement[1] = 1;
+                if (actingEntity.intitialY < actingEntity.yPosition) movement[1] = -1;
+                int temp = actingEntity.questionWallCollision(movement[0], movement[1]);
+                if (temp == 1) movement[0] = 0;
+                else if (temp == 2) movement[1] = 0;
+                if (temp ==1&&movement[1] == 0) movement[1] += randomMove();
+                if (temp ==2&&movement[0] == 0) movement[0] += randomMove();
+                if( movement[0] == 0 && movement[1] == 0 && Math.random()>.7) movement = wander();
+
+                return movement;
+            }else
+            return stand();
+        }
         int[] movement = {0,0};
         if (lockedEntity.xPosition > actingEntity.xPosition) movement[0] = 1;
         if (lockedEntity.xPosition < actingEntity.xPosition) movement[0] = -1;

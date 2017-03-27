@@ -1,7 +1,7 @@
 package cartography;
 import Battle.*;
 public class Moving {
-    public int xPosition, yPosition, range = 7, elevation = 0, speed = 60;
+    public int xPosition, yPosition, range = 7, elevation = 0, speed = 60, initialX, intitialY;
     boolean playerCollide = true, wallCollide = true;
     public Board board, lastBoard;
     public String name, behavior;
@@ -10,6 +10,8 @@ public class Moving {
     public Moving(int xPosition, int yPosition, Board board, String name, boolean player) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
+        intitialY = yPosition;
+        initialX = xPosition;
         this.board = board;
         this.name = name;
         lastPosition = new int[] {xPosition, yPosition};
