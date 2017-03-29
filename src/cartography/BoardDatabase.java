@@ -8,8 +8,7 @@ public class BoardDatabase {
         if(name.equals("yaun-ti cave")) return yaunCave();
         if(name.equals("yaun-ti cave t")) return yaunCaveT();
 
-
-
+        System.out.println("error: getBoard called with an invalid name");
         return null;
     }
     //how to display complex nonWall objects:

@@ -57,7 +57,6 @@ public boolean questionCollision(int xPosition, int yPosition, int elevtion){
     for (int scan = 0; scan < walls.size(); scan++){
         if (nonWallObject.elevation == walls.get(scan).elevation)
             walls.get(scan).addWall(nonWallObject);
-
     }
 }
 public NonWalls findNonWall(int xPosition, int yPosition, int elevation){
