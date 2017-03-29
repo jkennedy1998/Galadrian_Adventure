@@ -63,6 +63,8 @@ public class BoardDatabase {
             board.walls.get(0).addSquare(0,7,10,5,true);
             board.walls.get(0).addSquare(16,8,4,4,true);
             board.walls.get(0).deleteWall(13,11);
+            board.walls.get(0).addSquare(0,1,20,1,true);
+            board.walls.get(0).addSquare(7,6,3,3,true);
         }
         {
             NonWalls boardDoor = NonWallsDatabase.makeNonWall(13, 11, 0, "board door");
