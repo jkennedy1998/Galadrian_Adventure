@@ -10,7 +10,7 @@ public class KeyboardListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        Screen.keyPressed = KeyEvent.getKeyText(e.getKeyCode());
     }
 
     @Override

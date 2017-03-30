@@ -1,8 +1,10 @@
-package cartography;
+package Cartetecton;
 import java.util.ArrayList;
+
 public class Walls {
      ArrayList<Wall> walls;
      int elevation = 0;
+
     public Walls(){//no walls
         walls = new ArrayList<Wall>();
     }
@@ -16,7 +18,7 @@ public class Walls {
         deleteDuplicates();
     }
 
-    public Walls (Walls walls){ // walls from another wall object
+    public Walls(Walls walls){ // walls from another wall object
         this.walls = walls.walls; //hahaha
     }
 
