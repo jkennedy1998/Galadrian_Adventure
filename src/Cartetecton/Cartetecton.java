@@ -15,15 +15,15 @@ public class Cartetecton {
         MouseListener mouseListener = new MouseListener();
         window.addMouseListener(mouseListener);
         window.addKeyListener(keyboardListener);
-        run();
         board = new Board(width,height);
-        board.walls.get(0).addWall(0,0);
+        board.walls.get(0).addWall(2,2);
+        run();
 
     }
     public static void run(){
         while (true){
             board.printBoard();
-            if(window.xClick != -1){
+            while(true){
 
             }
         }

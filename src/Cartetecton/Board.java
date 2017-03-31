@@ -38,8 +38,8 @@ public class Board {
                         return "[|" + walls.get(scan).walls.get(subScan).wallType.substring(0,1) + "]";
                 }
         }
-//        System.out.println("error: no walls found at current elevation");
-        return "";
+        System.out.println("oh jeez");
+        return "___";
     }
  public void addNonWall( NonWalls nonWall){
     Wall nonWallObject = nonWall;
@@ -59,8 +59,7 @@ public NonWalls findNonWall(int xPosition, int yPosition, int elevation){
     System.out.println("no NonWalls object at called location");
     return null;
 }
-
-    public void removeNonwall(NonWalls nonWalls){
+public void removeNonwall(NonWalls nonWalls){
         for(int scan = 0; scan < walls.size(); scan++){
             if(walls.get(scan).elevation == nonWalls.elevation)
                 for( int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++){
@@ -71,17 +70,17 @@ public NonWalls findNonWall(int xPosition, int yPosition, int elevation){
         }
 
 public String printBoard(){ //use of Screen
-    System.out.println("here!");
     Cartetecton.window.refreshBoard();
-    String output = "";
+    String output = "___";
     int xScan = 0, yScan = 0;
     while (yScan < yDimension){
         while (xScan < xDimension) {
             String tempCharacter;
-            int elevation = 999;
+            tempCharacter = questionWallCharacters(xScan,yScan,0);
+            Cartetecton.window.drawCharacter(xScan,yScan,tempCharacter);
 
-            tempCharacter = questionWallCharacters(xScan,yScan,elevation);
-            if (tempCharacter == null) Cartetecton.window.drawCharacter(xScan,yScan,null);
+
+
             xScan++;
         }
         yScan++;
