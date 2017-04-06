@@ -12,6 +12,5 @@
 //Changing Variable
 //    Making an object where all variables are tied to the single object to make it more condensed
 
-//make map read the name of the movable to get its behavior (from function getBehavior)
-
-//make cartography work off of a jPane even if its still working off of leters for sprites. need to implement it anyway so lets do it now
+//enemies become enraged sometimes when the fall below 20% health. or become fearfull
+    //basee off of their behavior in cartography? hat would be sick
