@@ -6,18 +6,20 @@ import java.awt.*;
 public class Screen extends JFrame {
     public static int xClick = -1; int yClick = -1;
     public static String keyPressed = "";
-    int buttonClicked = 0; //0 is left, 1 is mid, 2 is right
+    public static int buttonClicked = 0; //1 is left, 2 is mid?, 3 is right
 
     public Screen(int width, int height){
         super("Galadria");
         setSize(width*25,height*25);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        refreshBoard();
         Graphics g = getGraphics();
         super.paint(g);
         g.setColor(Color.black);
-        g.drawString("oh shit!",60,60);
+        g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 60));
+        g.drawString("this should print!",getX()/2,getY()/2);
+        System.out.println(g);
+
 
     }
     public void drawCharacter(int xPosition, int yPosition, String name){

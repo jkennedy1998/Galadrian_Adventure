@@ -20,6 +20,7 @@ public class MouseListener implements java.awt.event.MouseListener {
     public void mousePressed(MouseEvent mouseEvent){
         Cartetecton.window.xClick = mouseEvent.getX()/25;
         Cartetecton.window.yClick = mouseEvent.getY()/25;
+        Cartetecton.window.buttonClicked = mouseEvent.getButton();
 
 
     }
