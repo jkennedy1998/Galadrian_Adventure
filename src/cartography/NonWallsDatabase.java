@@ -3,7 +3,7 @@ import Battle.Leveler;
 import Battle.adventurerework;
 public class NonWallsDatabase {
 
-    public static NonWalls makeNonWall(int xPosition, int yPosition, int elevation, String wallType){ //needs inclusion of nonwall if presets are not true for desired nonwall object
+    public static NonWalls makeNonWall(int xPosition, int yPosition, int elevation, String wallType, Board board){ //needs inclusion of nonwall if presets are not true for desired nonwall object
 
         NonWalls nonwall = new NonWalls(xPosition,yPosition,elevation,wallType);
         if(wallType.equals("sign")) nonwall.colidable = true;
@@ -25,6 +25,11 @@ public class NonWallsDatabase {
             current.wallType = "open door";
             current.colidable = false;
             current.state = false;
+        }
+        else if(current.wallType.equals("tall grass")){
+            if(Math.random()>.9){
+                adventurerework.startEncounter(new Moving(-1,-1,moving.board,"goblin",false)); //make this work
+            }
         }
         else if(current.wallType.equals("camp site") && moving.behavior.equals("player")){
             if (adventurerework.time > 22 || adventurerework.time < 5){

@@ -31,7 +31,7 @@ public class BoardDatabase {
         }
             board.movings.add(new Moving(11, 4, board, "yaun-ti holy guard", false));
         {
-            NonWalls boardDoor = NonWallsDatabase.makeNonWall(10, 0, 0, "board door");
+            NonWalls boardDoor = NonWallsDatabase.makeNonWall(10, 0, 0, "board door",board);
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
@@ -45,12 +45,12 @@ public class BoardDatabase {
             board.walls.get(0).deleteWall(4,0);
         }
         {
-            NonWalls boardDoor = NonWallsDatabase.makeNonWall(3, 9, 0, "board door");
+            NonWalls boardDoor = NonWallsDatabase.makeNonWall(3, 9, 0, "board door",board);
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
         {
-            NonWalls boardDoor = NonWallsDatabase.makeNonWall(4, 0, 0, "board door");
+            NonWalls boardDoor = NonWallsDatabase.makeNonWall(4, 0, 0, "board door",board);
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
@@ -67,10 +67,15 @@ public class BoardDatabase {
             board.walls.get(0).addSquare(7,6,3,3,true);
         }
         {
-            NonWalls boardDoor = NonWallsDatabase.makeNonWall(13, 11, 0, "board door");
+            NonWalls boardDoor = NonWallsDatabase.makeNonWall(13, 11, 0, "board door",board);
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
+        board.addNonWall(NonWallsDatabase.makeNonWall(4,4,0,"tall grass",board));
+        board.addNonWall(NonWallsDatabase.makeNonWall(4,5,0,"tall grass",board));
+        board.addNonWall(NonWallsDatabase.makeNonWall(5,5,0,"tall grass",board));
+        board.addNonWall(NonWallsDatabase.makeNonWall(5,4,0,"tall grass",board));
+        board.addNonWall(NonWallsDatabase.makeNonWall(6,6,0,"tall grass",board));
         return board;
     }
     public static Board spawn(){
@@ -80,15 +85,15 @@ public class BoardDatabase {
             board.walls.get(0).addSquare(5,7,5,5, false);
             board.walls.get(0).deleteWall(5,9);
             {
-                NonWalls door = NonWallsDatabase.makeNonWall(5, 9, 0, "closed door");
-                NonWalls pressurePlate = NonWallsDatabase.makeNonWall(8, 8, 0, "pressure plate");
+                NonWalls door = NonWallsDatabase.makeNonWall(5, 9, 0, "closed door",board);
+                NonWalls pressurePlate = NonWallsDatabase.makeNonWall(8, 8, 0, "pressure plate",board);
                 pressurePlate.link = door;
                 board.addNonWall(door);
                 board.addNonWall(pressurePlate);
             }
             {
-                NonWalls pressurePlate = NonWallsDatabase.makeNonWall(7, 2, 0, "pressure plate");
-                NonWalls dartTrap = NonWallsDatabase.makeNonWall(5, 2, 0, "dart trap");
+                NonWalls pressurePlate = NonWallsDatabase.makeNonWall(7, 2, 0, "pressure plate",board);
+                NonWalls dartTrap = NonWallsDatabase.makeNonWall(5, 2, 0, "dart trap",board);
                 dartTrap.board = board;
                 dartTrap.facing = 2;
                 pressurePlate.link = dartTrap;
@@ -96,16 +101,16 @@ public class BoardDatabase {
                 board.addNonWall(dartTrap);
             }
             {
-                NonWalls sign = NonWallsDatabase.makeNonWall(2,2,0,"sign");
+                NonWalls sign = NonWallsDatabase.makeNonWall(2,2,0,"sign",board);
                 sign.description = "This is a sign!";
                 board.addNonWall(sign);
             }
             {
-                NonWalls sign = NonWallsDatabase.makeNonWall(2,5,0,"sign");
+                NonWalls sign = NonWallsDatabase.makeNonWall(2,5,0,"sign", board);
                 sign.description = "This is a sign too!";
                 board.addNonWall(sign);
             }
-            board.addNonWall(NonWallsDatabase.makeNonWall(12,12,0,"camp site"));
+            board.addNonWall(NonWallsDatabase.makeNonWall(12,12,0,"camp site",board));
             Moving goblin = new Moving(7,12,board,"goblin",false);
             board.movings.add(goblin);
 
