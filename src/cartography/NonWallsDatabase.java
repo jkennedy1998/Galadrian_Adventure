@@ -5,7 +5,7 @@ public class NonWallsDatabase {
 
     public static NonWalls makeNonWall(int xPosition, int yPosition, int elevation, String wallType, Board board){ //needs inclusion of nonwall if presets are not true for desired nonwall object
 
-        NonWalls nonwall = new NonWalls(xPosition,yPosition,elevation,wallType);
+        NonWalls nonwall = new NonWalls(xPosition,yPosition,elevation,wallType,board);
         if(wallType.equals("sign")) nonwall.colidable = true;
         else if(wallType.equals("chest")) nonwall.colidable = true;
         else if(wallType.equals("closed door")) nonwall.colidable = true; //starts as a closed door
@@ -28,7 +28,7 @@ public class NonWallsDatabase {
         }
         else if(current.wallType.equals("tall grass")){
             if(Math.random()>.9){
-                adventurerework.startEncounter(new Moving(-1,-1,moving.board,"goblin",false)); //make this work
+                adventurerework.startEncounter(new Moving(-1,-1,moving.board,Battle.monsterSelection.selection(current.board),false)); //make this work
             }
         }
         else if(current.wallType.equals("camp site") && moving.behavior.equals("player")){

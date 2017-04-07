@@ -5,8 +5,9 @@ public class NonWalls extends Wall {
     String description = "";
     Board board;
     NonWalls link;
-public NonWalls (int xPosition, int yPosition, int elevation, String wallType) {
+public NonWalls (int xPosition, int yPosition, int elevation, String wallType, Board board) {
     super(xPosition, yPosition, elevation, wallType);
+    this.board = board;
     nonWall = true;
 }
 public void interact(Moving moving){

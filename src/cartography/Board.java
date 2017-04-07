@@ -7,6 +7,7 @@ public class Board {
     int yDimension;
     ArrayList<Walls> walls = new ArrayList<>();
     public ArrayList<Moving> movings = new ArrayList<>();
+    public String area = "forest";
 
 
     public Board(int x, int y){ //no walls
