@@ -9,7 +9,7 @@ public class NonWallsDatabase {
         if(wallType.equals("sign")) nonwall.colidable = true;
         else if(wallType.equals("chest")) nonwall.colidable = true;
         else if(wallType.equals("closed door")) nonwall.colidable = true; //starts as a closed door
-        else if(wallType.equals("dart trap")) { //needs to assighn a board to it after it is created.
+        else if(wallType.equals("dart trap")) {
             nonwall.colidable = true;
             nonwall.interactOnCollision = false;
         }
@@ -60,22 +60,23 @@ public class NonWallsDatabase {
                         if (choice2 == 0){
                             adventurerework.time += 2;
                             if (adventurerework.time>=24){
+                                System.out.println("reset time");
                                 adventurerework.time = adventurerework.time-24;
                                 adventurerework.day++;
                             }
-                            if (Math.random() * 10 > 9) { //10% chance of encounter
-                                adventurerework.startEncounter(new Moving(-1,-1,current.board,"goblin",false));
-                            }else {
+//                            if (Math.random() * 10 > 9) { //10% chance of encounter
+//                                adventurerework.startEncounter(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
+//                            }else {
                                 adventurerework.character1.setHealth(adventurerework.character1.getHealth() + Leveler.calculateRestingHealth(adventurerework.time));
                             if (adventurerework.character1.getHealth()>adventurerework.character1.getMaxHealth()) adventurerework.character1.setHealth(adventurerework.character1.getMaxHealth());
                             }
-                        }else{
+                        else{
                             if (adventurerework.time>=24){
                                 adventurerework.time = adventurerework.time-24;
                                 adventurerework.day++;
                             }
                             if (Math.random() * 10 > 6) { //40% chance of encounter
-                                adventurerework.startEncounter(new Moving(-1,-1,current.board,"goblin",false));
+                                adventurerework.startEncounter(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
                             }else {
                                 adventurerework.character1.setHealth(adventurerework.character1.getHealth() + Leveler.calculateRestingHealth(adventurerework.time));
                                 if (adventurerework.character1.getHealth()>adventurerework.character1.getMaxHealth()) adventurerework.character1.setHealth(adventurerework.character1.getMaxHealth());

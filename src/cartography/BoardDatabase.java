@@ -35,6 +35,12 @@ public class BoardDatabase {
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
+        board.addNonWall(NonWallsDatabase.makeNonWall(12,7,0,"camp site",board));
+        board.addNonWall(NonWallsDatabase.makeNonWall(10,7,0,"tall grass",board));
+        board.addNonWall(NonWallsDatabase.makeNonWall(10,8,0,"tall grass",board));
+        board.addNonWall(NonWallsDatabase.makeNonWall(9,7,0,"tall grass",board));
+        board.addNonWall(NonWallsDatabase.makeNonWall(6,6,0,"tall grass",board));
+
         return board;
     }
     public static Board yaunCave(){

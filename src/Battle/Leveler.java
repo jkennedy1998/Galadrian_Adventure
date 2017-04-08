@@ -14,7 +14,7 @@ public class Leveler {
         String[] buttons = {"Vitality", "Strength", "Aim", "Speed", "Armor efficiency", "Forgo practice and patch wounds"};
 
         int choice = JOptionPane.showOptionDialog(null, "You feel more experienced from past encounters!\n" +
-                        "You rest in your adventurerework to practice skills. \n" +
+                        "You rest in your adventure to practice skills. \n" +
                         "What skill would you like to practice?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         if (choice == 0) {
