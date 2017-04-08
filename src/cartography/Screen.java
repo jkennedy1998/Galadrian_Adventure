@@ -65,6 +65,20 @@ public class Screen extends JFrame {
             if (xClick > 725 && xClick < 1270 && yClick > 630 && yClick < 630+35){resetClicks();return 3;}
             if (xClick > 725 && xClick < 1270 && yClick > 670 && yClick < 670+35){resetClicks();return 4;}
         }
+        else if(buttons.size() ==6){
+            if (xClick > 725 && xClick < 992 && yClick > 505 && yClick < 505+65){resetClicks();return 0;}
+            if (xClick > 725 && xClick < 992 && yClick > 575 && yClick < 575+65){resetClicks();return 1;}
+            if (xClick > 725 && xClick < 992 && yClick > 645 && yClick < 645+65){resetClicks();return 2;}
+            if (xClick > 995 && xClick < 1270 && yClick > 505 && yClick < 505+65){resetClicks();return 3;}
+            if (xClick > 995 && xClick < 1270 && yClick > 575 && yClick < 575+65){resetClicks();return 4;}
+            if (xClick > 995 && xClick < 1270 && yClick > 645 && yClick < 645+65){resetClicks();return 5;}
+//            g.fillRect(725, 505, 267, 65);
+//            g.fillRect(725, 575, 267, 65);
+//            g.fillRect(725, 645, 267, 65);
+//            g.fillRect(995, 505, 264, 65);
+//            g.fillRect(995, 575, 264, 65);
+//            g.fillRect(995, 645, 264, 65);
+        }
             return -1;
         }
     public void voidButtons(){
@@ -122,6 +136,21 @@ public class Screen extends JFrame {
             g.drawString(buttons.get(2), 725 + (int) 540 / 2, 590 + (int) 38 / 2);
             g.drawString(buttons.get(3), 725 + (int) 540 / 2, 630 + (int) 38 / 2);
             g.drawString(buttons.get(4), 725 + (int) 540 / 2, 670 + (int) 38 / 2);
+        }
+        else if (buttons.size() == 6){
+            g.fillRect(725, 505, 267, 65);
+            g.fillRect(725, 575, 267, 65);
+            g.fillRect(725, 645, 267, 65);
+            g.fillRect(995, 505, 264, 65);
+            g.fillRect(995, 575, 264, 65);
+            g.fillRect(995, 645, 264, 65);
+            g.setColor(Color.black);
+            g.drawString(buttons.get(0), 725 + (int) 267 / 2, 505 + (int) 65 / 2);
+            g.drawString(buttons.get(1), 725 + (int) 267 / 2, 575 + (int) 65 / 2);
+            g.drawString(buttons.get(2), 725 + (int) 267 / 2, 645 + (int) 65 / 2);
+            g.drawString(buttons.get(3), 995 + (int) 267 / 2, 505 + (int) 65 / 2);
+            g.drawString(buttons.get(4), 995 + (int) 267 / 2, 575 + (int) 65 / 2);
+            g.drawString(buttons.get(5), 995 + (int) 267 / 2, 645 + (int) 65 / 2);
         }
         }
     public void drawCharacter(int xPosition, int yPosition, String name){

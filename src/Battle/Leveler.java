@@ -10,13 +10,26 @@ public class Leveler {
     public static String[] levelUp(int health, int maxHealth) {
         health += 5;
         maxHealth += 5;
+        adventurerework.window.print("You feel more experienced from past encounters!");
+        adventurerework.window.print("You rest in your adventure to practice skills.");
+        adventurerework.window.print("What skill would you like to practice?");
+
+
         String[] returningLevelStats = {"" + health, "" + maxHealth, "", ""};
         String[] buttons = {"Vitality", "Strength", "Aim", "Speed", "Armor efficiency", "Forgo practice and patch wounds"};
+        adventurerework.window.makeButtons(buttons);
+        adventurerework.window.drawButtons();
+        int choice = -1;
+        while(choice == -1){
+            System.out.print("");
+            choice = adventurerework.window.questionButtonClick();
+        }
+        adventurerework.window.voidButtons();
 
-        int choice = JOptionPane.showOptionDialog(null, "You feel more experienced from past encounters!\n" +
-                        "You rest in your adventure to practice skills. \n" +
-                        "What skill would you like to practice?", "",
-                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
+//        int choice = JOptionPane.showOptionDialog(null, "You feel more experienced from past encounters!\n" +
+//                        "You rest in your adventure to practice skills. \n" +
+//                        "What skill would you like to practice?", "",
+//                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         if (choice == 0) {
             returningLevelStats[2] = "max health";
             returningLevelStats[1] = "" + (maxHealth + 7);

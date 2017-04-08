@@ -44,9 +44,10 @@ public class NonWallsDatabase {
                 }
                 adventurerework.window.voidButtons();
                 if(choice == 0){
-                    while (adventurerework.character1.getExp()>= adventurerework.character1.getExpLim()){
+                    while (adventurerework.character1.getExp()>= adventurerework.character1.getExpLim()) {
                         adventurerework.levelUp();
                         adventurerework.time += 1;
+                    }
                         adventurerework.window.print("The rustling of beasts and critters alike fill the growing void around your camp.");
                         String[] buttons2 = {"Fortify your camp from the creatures of the black", "Take your chances with the surrounding inhabitants and sleep through your worries"};
                         adventurerework.window.makeButtons(buttons2);
@@ -58,33 +59,28 @@ public class NonWallsDatabase {
                         }
                         adventurerework.window.voidButtons();
                         if (choice2 == 0){
-                            adventurerework.time += 2;
+                            if (Math.random() * 10 > 9)  //10% chance of encounter
+                                adventurerework.startEncounter(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
                             if (adventurerework.time>=24){
-                                System.out.println("reset time");
                                 adventurerework.time = adventurerework.time-24;
                                 adventurerework.day++;
                             }
-//                            if (Math.random() * 10 > 9) { //10% chance of encounter
-//                                adventurerework.startEncounter(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
-//                            }else {
                                 adventurerework.character1.setHealth(adventurerework.character1.getHealth() + Leveler.calculateRestingHealth(adventurerework.time));
                             if (adventurerework.character1.getHealth()>adventurerework.character1.getMaxHealth()) adventurerework.character1.setHealth(adventurerework.character1.getMaxHealth());
                             }
                         else{
+                            if (Math.random() * 10 > 6)  //40% chance of encounter
+                                    adventurerework.startEncounter(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
                             if (adventurerework.time>=24){
                                 adventurerework.time = adventurerework.time-24;
                                 adventurerework.day++;
                             }
-                            if (Math.random() * 10 > 6) { //40% chance of encounter
-                                adventurerework.startEncounter(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
-                            }else {
                                 adventurerework.character1.setHealth(adventurerework.character1.getHealth() + Leveler.calculateRestingHealth(adventurerework.time));
                                 if (adventurerework.character1.getHealth()>adventurerework.character1.getMaxHealth()) adventurerework.character1.setHealth(adventurerework.character1.getMaxHealth());
-                            }
+
                         }
                     }
-                }
-                else if (choice == 2){
+                else if (choice == 1){
                     adventurerework.window.print("You brave the night with ignorance and brash.");
                 }
             }
