@@ -27,7 +27,7 @@ public class NonWallsDatabase {
             current.state = false;
         }
         else if(current.wallType.equals("tall grass")){
-            if(Math.random()>.9){
+            if(Math.random()>.9 && moving.behavior.equals("player")){
                 adventurerework.startEncounter(new Moving(-1,-1,moving.board,Battle.monsterSelection.selection(current.board),false)); //make this work
             }
         }
