@@ -28,7 +28,10 @@ public class NonWallsDatabase {
             current.colidable = false;
             current.state = false;
         }
-        else if(current.wallType.equals("mimic")&&moving.behavior.equals("player"))adventurerework.startEncounter(new Moving(-1,-1,current.board,"mimic",false));
+        else if(current.wallType.equals("mimic")&&moving.behavior.equals("player")){
+            current.board.removeNonwall(current);
+            adventurerework.startEncounter(new Moving(-1,-1,current.board,"mimic",false));
+        }
         else if(current.wallType.equals("mimic")&&!moving.behavior.equals("player"));
         else if(current.wallType.equals("tall grass")){
             if(Math.random()>.9 && moving.behavior.equals("player")){

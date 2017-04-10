@@ -61,6 +61,7 @@ public class BoardDatabase {
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
+        board.addNonWall(NonWallsDatabase.makeNonWall(2,2,0,"mimic",board));
         return board;
     }
     public static Board yaunCaveT(){
