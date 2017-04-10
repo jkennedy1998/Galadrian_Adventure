@@ -36,6 +36,8 @@ public class MovingTimer {
             board =adventurerework.adam.board.toString();
             movings = new ArrayList<>();
             System.out.println("changed boards");
+            System.out.println(adventurerework.adam.board);
+            System.out.println(adventurerework.hell);
             for(int scan = 0; scan < adventurerework.adam.board.movings.size(); scan++ ){
                 movings.add(adventurerework.adam.board.movings.get(scan));
             }
@@ -46,7 +48,6 @@ public class MovingTimer {
         if(movings.size() != adventurerework.adam.board.movings.size()){
             for(int scan = 0; scan < adventurerework.adam.board.movings.size(); scan++){
                 if (!movingInList(adventurerework.adam.board.movings.get(scan))) {
-                    System.out.println("added something");
                     movings.add(adventurerework.adam.board.movings.get(scan)); //if its not in the list but is on the board, add it to the list!(ez!)
                 }
             }
@@ -61,7 +62,6 @@ public class MovingTimer {
             for(int scan = notAccountedFor.length-1; scan >= 0; scan--){
 
                 if(notAccountedFor[scan]){
-                    System.out.println("removed something");
                     movings.remove(scan);
                 }
             }

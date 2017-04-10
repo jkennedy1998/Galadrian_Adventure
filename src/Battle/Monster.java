@@ -6,7 +6,6 @@ public class Monster {
     private int[] itemDrop = {0,0};
     private double accuracyMult,defenceMult,damageMult,speedMult;
     private double speed;
-    private String name = "";
     public String attack = "";
 
     public Monster(int h, String at1, String at2, String at3, int item, int dropRate, double spd, double daM,double spM, double acM, double deM)

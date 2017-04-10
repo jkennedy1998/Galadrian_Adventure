@@ -76,6 +76,7 @@ public void removeMoving(Moving moving){
         if(movings.get(scan).xPosition == moving.xPosition && movings.get(scan).yPosition == moving.yPosition && moving.name.equals(movings.get(scan).name))
             movings.remove(scan);
     }
+    if(!moving.behavior.equals("player"))
     moving.board = adventurerework.hell;
 }
     public void removeNonwall(NonWalls nonWalls){
