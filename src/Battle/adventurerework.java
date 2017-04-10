@@ -350,7 +350,8 @@ public class adventurerework {
             } else {
                 int tempMAttack2 = Integer.parseInt(tempMAttack);
                 character1.setHealth(-tempMAttack2);
-                window.print(tempBeastName +" uses "+ monsterRefresh.attack + " \nIt does "+ tempMAttack2 + " damage!\nYour current health is at " + (character1.getHealth()) + "");
+                window.print(tempBeastName +" uses "+ monsterRefresh.attack + " \nIt does "+ tempMAttack2 + " damage!");
+                window.print("Your current health is at " + (character1.getHealth()) + "");
                 questionArmorBreak(tempMAttack2);
 
             }
@@ -462,7 +463,7 @@ public class adventurerework {
     leveledStats = Leveler.levelUp(character1.getHealth(), character1.getMaxHealth());
     character1.permHealth(Integer.parseInt(leveledStats[0]));
     character1.permMaxHealth(Integer.parseInt(leveledStats[1]));
-    if (leveledStats[2].equalsIgnoreCase("damage")) attackMultiplierLocked += Double.parseDouble(leveledStats[3]);
+        if (leveledStats[2].equalsIgnoreCase("damage")) attackMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("accuracy")) accuracyMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("speed")) speedMultiplierLocked += Double.parseDouble(leveledStats[3]);
     if (leveledStats[2].equalsIgnoreCase("defence")) defensiveMultiplierLocked += Double.parseDouble(leveledStats[3]);
