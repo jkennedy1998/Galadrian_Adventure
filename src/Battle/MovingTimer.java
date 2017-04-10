@@ -35,6 +35,7 @@ public class MovingTimer {
         if(!adventurerework.adam.board.toString().equals(board)){ //validates if player has moved to a new board
             board =adventurerework.adam.board.toString();
             movings = new ArrayList<>();
+            System.out.println("changed boards");
             for(int scan = 0; scan < adventurerework.adam.board.movings.size(); scan++ ){
                 movings.add(adventurerework.adam.board.movings.get(scan));
             }
@@ -44,16 +45,25 @@ public class MovingTimer {
         }
         if(movings.size() != adventurerework.adam.board.movings.size()){
             for(int scan = 0; scan < adventurerework.adam.board.movings.size(); scan++){
-                if (!movingInList(adventurerework.adam.board.movings.get(scan))) movings.add(adventurerework.adam.board.movings.get(scan)); //if its not in the list but is on the board, add it to the list!(ez!)
+                if (!movingInList(adventurerework.adam.board.movings.get(scan))) {
+                    System.out.println("added something");
+                    movings.add(adventurerework.adam.board.movings.get(scan)); //if its not in the list but is on the board, add it to the list!(ez!)
+                }
             }
             boolean[] notAccountedFor = new boolean[movings.size()];
             for(int scan = 0; scan < movings.size(); scan++){//if its in the list but not the board, remove from list(not ez...)
-                for(int boardScan = 0; boardScan < adventurerework.adam.board.movings.size(); boardScan++){
-                    if(movings.get(scan).lastPosition.equals(adventurerework.adam.board.movings.get(boardScan).lastPosition)) notAccountedFor[scan] = false;
+
+                    if(movings.get(scan).board != adventurerework.hell){//always true because its a reference
+                        notAccountedFor[scan] = false;
+
                 }
             }
             for(int scan = notAccountedFor.length-1; scan >= 0; scan--){
-                if(notAccountedFor[scan])movings.remove(scan);
+
+                if(notAccountedFor[scan]){
+                    System.out.println("removed something");
+                    movings.remove(scan);
+                }
             }
 
         }

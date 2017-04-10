@@ -4,6 +4,8 @@ import cartography.*;
 
 public class adventurerework {
     public static Moving adam;
+    static int[] x = {0}, y = {0};
+    public static Board hell = new Board(1,1,new Walls(x,y));
     public static Screen window = new Screen();
     public static String keyPressed = "";
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;

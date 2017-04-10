@@ -19,6 +19,7 @@ public class BoardDatabase {
     //}
     //  then you must set their links in the Map class (equal to the nonwall its lnked to. use findNonWall and its coords that you wrote to find the other door).
 
+
     public static Board yaunCaveEntrance(){
         Board board = new Board(15,15);
         {
@@ -29,6 +30,7 @@ public class BoardDatabase {
             board.walls.get(0).addWall(x,y);
         }
             board.movings.add(new Moving(11, 4, board, "yaun-ti holy guard", false));
+        board.movings.add(new Moving(5,14,board,"goblin",false));
         {
             NonWalls boardDoor = NonWallsDatabase.makeNonWall(10, 0, 0, "board door",board);
             boardDoor.board = board;
