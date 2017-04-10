@@ -60,7 +60,7 @@ public class monsterSelection {
 
     public static String[] fetchBeastStats(String name){
 
-        adventurerework.window.print("\n\nYou have encountered a " + name + "!");
+        adventurerework.window.print("You have encountered a " + name + "!");
         beastNameGen.assighnName(name);
         if(name.equals("rabid dog"))selectDog();
         else if(name.equals("lesser snake")) selectSmallSnake();

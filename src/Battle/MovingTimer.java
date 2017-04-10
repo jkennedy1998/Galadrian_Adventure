@@ -35,8 +35,6 @@ public class MovingTimer {
         if(!adventurerework.adam.board.toString().equals(board)){ //validates if player has moved to a new board
             board =adventurerework.adam.board.toString();
             movings = new ArrayList<>();
-            System.out.println(adventurerework.adam.board);
-            System.out.println(adventurerework.hell);
             for(int scan = 0; scan < adventurerework.adam.board.movings.size(); scan++ ){
                 movings.add(adventurerework.adam.board.movings.get(scan));
             }

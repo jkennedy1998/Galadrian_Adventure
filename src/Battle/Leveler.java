@@ -32,7 +32,7 @@ public class Leveler {
 //                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         if (choice == 0) {
             returningLevelStats[2] = "max health";
-            returningLevelStats[1] = "" + (maxHealth + 7);
+            returningLevelStats[1] = "" + (maxHealth + 5);
             adventurerework.window.print("\nYou feel considerably more healthy!");
         }
         if (choice == 1) {

@@ -25,7 +25,6 @@ public class adventurerework {
         coins = 0;
         character1.race();
         character1.role();
-        Story.initialize(character1.getAttack1(), character1.getAttack2(), character1.getAttack3(), character1.getAttack4());
         KeyboardListener keyboardListener = new KeyboardListener();
         window.addKeyListener(keyboardListener);
         MouseListener mouseListener = new MouseListener();
@@ -37,6 +36,7 @@ public class adventurerework {
     }
     public static void run() { //make run by speed
         MovingTimer timer = new MovingTimer();
+        window.voidLines();
         while (true) {
 //            for (int scan = 0; scan < adam.board.movings.size(); scan++) {
 //                strive(adam.board.movings.get(scan));
@@ -78,19 +78,7 @@ public class adventurerework {
             time = time-24;
         }
         if (time > 22 || time < 5) { //between 10 pm and 5 am
-            System.out.println("its night time yo! should this code be doing something?");
-//            if (temp.equalsIgnoreCase("e")) {
-//                window.print("You have been ambushed in your sleep!");
-//                Board board = new Board(0,0);
-//                Moving moving = new Moving(0,0,board,"goblin",false);
-//                startEncounter(moving);
-//            }else {
-//                character1.setHealth(Integer.parseInt(temp));
-//                {
-//                    String[] strings = {"You wake up at around " + (int) Math.round(time) + ".", "You have regained " + temp + " health points by resting."};
-//                    window.print(strings);
-//                }
-//            }
+            window.print("The creatures of the night run rampant around you.");
         }
     }
 
