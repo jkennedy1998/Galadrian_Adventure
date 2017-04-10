@@ -1,7 +1,7 @@
 package cartography;
 import Battle.*;
 public class Moving {
-    public int xPosition, yPosition, range = 7, elevation = 0, speed = 60, initialX, intitialY;
+    public int xPosition, yPosition, range = 7, elevation = 0, speed = 60, initialX, intitialY, tick = 0;
     boolean playerCollide = true, wallCollide = true;
     public Board board, lastBoard;
     public String name, behavior;
@@ -15,10 +15,14 @@ public class Moving {
         this.board = board;
         this.name = name;
         lastPosition = new int[] {xPosition, yPosition};
-        if (player)
+        if (player) {
+            speed = adventurerework.character1.getSpeed();
             behavior = "player";
-        else
+        }
+        else {
+            speed = Integer.parseInt(monsterSelection.fetchBeastStats(name)[6]);
             behavior = BehaviorDatabase.getBehavior(this);
+        }
     }
 
     public String getNameAbbreviation(){

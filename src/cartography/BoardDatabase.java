@@ -3,7 +3,6 @@ package cartography;
 public class BoardDatabase {
 
     public static Board getBoard(String name){
-        if (name.equalsIgnoreCase("spawn")) return spawn();
         if(name.equals("yaun-ti cave entrance")) return yaunCaveEntrance();
         if(name.equals("yaun-ti cave")) return yaunCave();
         if(name.equals("yaun-ti cave t")) return yaunCaveT();
@@ -84,44 +83,6 @@ public class BoardDatabase {
         board.addNonWall(NonWallsDatabase.makeNonWall(6,6,0,"tall grass",board));
         return board;
     }
-    public static Board spawn(){
-        Board board = new Board(15,15);
-        {
-            board.walls.get(0).addSquare(0,0,15,15, false);
-            board.walls.get(0).addSquare(5,7,5,5, false);
-            board.walls.get(0).deleteWall(5,9);
-            {
-                NonWalls door = NonWallsDatabase.makeNonWall(5, 9, 0, "closed door",board);
-                NonWalls pressurePlate = NonWallsDatabase.makeNonWall(8, 8, 0, "pressure plate",board);
-                pressurePlate.link = door;
-                board.addNonWall(door);
-                board.addNonWall(pressurePlate);
-            }
-            {
-                NonWalls pressurePlate = NonWallsDatabase.makeNonWall(7, 2, 0, "pressure plate",board);
-                NonWalls dartTrap = NonWallsDatabase.makeNonWall(5, 2, 0, "dart trap",board);
-                dartTrap.board = board;
-                dartTrap.facing = 2;
-                pressurePlate.link = dartTrap;
-                board.addNonWall(pressurePlate);
-                board.addNonWall(dartTrap);
-            }
-            {
-                NonWalls sign = NonWallsDatabase.makeNonWall(2,2,0,"sign",board);
-                sign.description = "This is a sign!";
-                board.addNonWall(sign);
-            }
-            {
-                NonWalls sign = NonWallsDatabase.makeNonWall(2,5,0,"sign", board);
-                sign.description = "This is a sign too!";
-                board.addNonWall(sign);
-            }
-            board.addNonWall(NonWallsDatabase.makeNonWall(12,12,0,"camp site",board));
-            Moving goblin = new Moving(7,12,board,"goblin",false);
-            board.movings.add(goblin);
 
-        }
-        return board;
-    }
 
 }

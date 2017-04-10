@@ -32,14 +32,14 @@ public class adventurerework {
         adam = new Moving(3, 6, Map.currentBoard, "player", true);
         Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
         run(); //should replace strive
-
     }
-    public static void run() {
+    public static void run() { //make run by speed
+        MovingTimer timer = new MovingTimer();
         while (true) {
-            for (int scan = 0; scan < adam.board.movings.size(); scan++) {
-                strive(adam.board.movings.get(scan));
-            }
-
+//            for (int scan = 0; scan < adam.board.movings.size(); scan++) {
+//                strive(adam.board.movings.get(scan));
+//            }
+            strive(timer.findNextMove());
         }
     }
     public static void strive(Moving piece) {
