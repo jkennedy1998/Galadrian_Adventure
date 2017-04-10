@@ -20,6 +20,7 @@ public class NonWallsDatabase {
     public static void findInteraction(Moving moving, NonWalls current){//needs every single nonwall object and aditional nonplayer colide if its a player based object
         if(current.wallType.equals("stairs up")) moving.elevation++;
         else if(current.wallType.equals("stairs down")) moving.elevation-= 1;
+        else if(current.wallType.equals("trap door"))moving.elevation-= 1;
         else if(current.wallType.equals("open door"));
         else if(current.wallType.equals("closed door")){
             current.wallType = "open door";
