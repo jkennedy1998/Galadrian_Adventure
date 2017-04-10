@@ -84,6 +84,7 @@ public class monsterSelection {
         else if(name.equals("merrshaulk")) selectMerrshaulk();
         else if(name.equals("merrshaulk abomination")) selectMerrshaulkAbomination();
         else if(name.equals("yaun-ti pure blood")) selectYaunTiPureBlood();
+        else if(name.equals("mimic")) selectMimic();
 
         return beastStats;
     }
@@ -110,6 +111,22 @@ public class monsterSelection {
 
 
     }
+    public static void selectMimic(){
+        beast = "Mimic";
+        needsAnAn = false;
+        beastStats[0] = ""+40;
+        beastStats[1] = "bite";
+        beastStats[2] = "bite";
+        beastStats[3] = "fang peirce";
+        beastStats[4] = ""+(0);
+        beastStats[5] = ""+(0);
+        beastStats[6] = ""+(70);
+        beastStats[11] = ""+(7);
+        beastStats[12] = ""+(0);
+        beastStats[13] = "guard";
+
+
+    }
     public static void selectSmallSnake(){
         beast = "Lesser Snake";
         needsAnAn = false;
@@ -123,8 +140,6 @@ public class monsterSelection {
         beastStats[11] = ""+(7);
         beastStats[12] = ""+(0);
         beastStats[13] = "flee";
-
-
     }
     public static void selectLargeCat(){
         beast = "Large Cat";

@@ -8,6 +8,7 @@ public class NonWallsDatabase {
         NonWalls nonwall = new NonWalls(xPosition,yPosition,elevation,wallType,board);
         if(wallType.equals("sign")) nonwall.colidable = true;
         else if(wallType.equals("chest")) nonwall.colidable = true;
+        else if(wallType.equals("mimic"))nonwall.colidable = true;
         else if(wallType.equals("closed door")) nonwall.colidable = true; //starts as a closed door
         else if(wallType.equals("dart trap")) {
             nonwall.colidable = true;
@@ -27,6 +28,8 @@ public class NonWallsDatabase {
             current.colidable = false;
             current.state = false;
         }
+        else if(current.wallType.equals("mimic")&&moving.behavior.equals("player"))adventurerework.startEncounter(new Moving(-1,-1,current.board,"mimic",false));
+        else if(current.wallType.equals("mimic")&&!moving.behavior.equals("player"));
         else if(current.wallType.equals("tall grass")){
             if(Math.random()>.9 && moving.behavior.equals("player")){
                 adventurerework.startEncounter(new Moving(-1,-1,moving.board,Battle.monsterSelection.selection(current.board),false)); //make this work
