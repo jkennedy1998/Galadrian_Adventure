@@ -24,8 +24,6 @@ public class Inventory {
         return weight;
     }
     public boolean recieceItem(String itemName){//returns false if no items can be carries
-        System.out.println(itemName);
-        System.out.println(ItemDirectory.findItemValues(itemName)[12]);
         if(Integer.parseInt(ItemDirectory.findItemValues(itemName)[12])+getWeight() <= carryCapacity){
             items.add(itemName);
             adventurerework.window.print("you found a "+itemName+"!");
