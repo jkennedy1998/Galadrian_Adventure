@@ -310,7 +310,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "sting";
         beastStats[3] = "sting";
-        beastStats[4] = ""+("posion");
+        beastStats[4] = ""+("poison");
         beastStats[5] = ""+(70);
         beastStats[6] = ""+(67);
         beastStats[11] = ""+(7);

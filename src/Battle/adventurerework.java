@@ -161,11 +161,11 @@ public class adventurerework {
                         }
                     }
                 } else if (tempData[0].equalsIgnoreCase("I")) {
-                    beastStats[0] += Integer.parseInt(tempData[1]);
-                    beastStats[7] += Double.parseDouble(tempData[2]);
-                    beastStats[8] += Double.parseDouble(tempData[4]); //if you edit this data edit that one too! (see below)
-                    beastStats[9] += Double.parseDouble(tempData[3]);
-                    beastStats[10] += Double.parseDouble(tempData[5]);
+                    beastStats[0] = "" +( Integer.parseInt(beastStats[0]) + Integer.parseInt(tempData[1]));
+                    beastStats[7] = "" +( Double.parseDouble(beastStats[7]) + Double.parseDouble(tempData[2]));
+                    beastStats[8] = "" + (Double.parseDouble(beastStats[8]) + Double.parseDouble(tempData[4]));
+                    beastStats[9] = "" + (Double.parseDouble(beastStats[9]) + Double.parseDouble(tempData[3]));
+                    beastStats[10] = "" + (Double.parseDouble(beastStats[10]) + Double.parseDouble(tempData[5]));
                     if (monsterEffect != Integer.parseInt(tempData[6])) {
                         monsterEffect = Integer.parseInt(tempData[6]);
                         turnOfMonsterEffect = turn;
@@ -243,7 +243,7 @@ public class adventurerework {
                 if (monsterEffect != 0) {
                     if (turn - turnOfMonsterEffect <= Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[2])) {
                         int tempDam = Integer.parseInt(effectDatabase.getEffectData(monsterEffect)[1]);
-                        beastStats[0] += tempDam;
+                        beastStats[0] = ""+(Integer.parseInt(beastStats[0])+tempDam);
                         if (tempDam < 0)
                             window.print("The monsters " + effectDatabase.getEffectData(monsterEffect)[0] + " caused " + tempDam + " points of damage!");
                         if (tempDam > 0)
@@ -286,10 +286,10 @@ public class adventurerework {
                         }
                     } else {
                         monsterMultipliersChanged = false;
-                        beastStats[7] = ""+(Double.parseDouble(beastStats[7]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3]));
-                        beastStats[8] = ""+(Double.parseDouble(beastStats[8]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4]));
-                        beastStats[10] = ""+(Double.parseDouble(beastStats[10]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]));
-                        beastStats[9] = ""+(Double.parseDouble(beastStats[9]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6]));
+                        beastStats[7] = ""+((Double.parseDouble(beastStats[7]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[3])));
+                        beastStats[8] = ""+((Double.parseDouble(beastStats[8]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[4])));
+                        beastStats[10] = ""+((Double.parseDouble(beastStats[10]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[5]))) ;
+                        beastStats[9] = ""+((Double.parseDouble(beastStats[9]) -Double.parseDouble(effectDatabase.getEffectData(playerEffect)[6])));
                     }
                 }
             }

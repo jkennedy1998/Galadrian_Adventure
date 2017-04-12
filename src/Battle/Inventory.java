@@ -10,7 +10,7 @@ public class Inventory {
     public ArrayList<String> items = new ArrayList<>();
     public Inventory(){
         carryCapacity = (int)(adventurerework.character1.getAttackMultiplier()*adventurerework.character1.getDefensiveMultiplier()*25);
-
+        items.add("torch");
     }
     public void refreshCapacity(){
         carryCapacity = (int)(adventurerework.character1.getAttackMultiplier()*adventurerework.character1.getDefensiveMultiplier()*25);
