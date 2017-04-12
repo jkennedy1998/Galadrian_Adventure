@@ -9,11 +9,12 @@ public class NonWallsDatabase {
         if(wallType.equals("sign")) nonwall.colidable = true;
         else if(wallType.equals("chest")) nonwall.colidable = true;
         else if(wallType.equals("mimic"))nonwall.colidable = true;
-        else if(wallType.equals("closed door")) nonwall.colidable = true; //starts as a closed door
+        else if(wallType.equals("closed door")) nonwall.colidable = true;
         else if(wallType.equals("dart trap")) {
             nonwall.colidable = true;
             nonwall.interactOnCollision = false;
         }
+//        else if(wallType.equals("locked door")) nonwall.colidable = true;
         else if (wallType.equals("camp site")) nonwall.colidable = true;
 
         return nonwall;
@@ -28,6 +29,9 @@ public class NonWallsDatabase {
             current.colidable = false;
             current.state = false;
         }
+//        else if(current.wallType.equals("locked door")){
+//
+//        }
         else if(current.wallType.equals("mimic")&&moving.behavior.equals("player")){
             current.board.removeNonwall(current);
             adventurerework.startEncounter(new Moving(-1,-1,current.board,"mimic",false));
@@ -111,8 +115,10 @@ public class NonWallsDatabase {
             }
         }
         else if (current.wallType.equals("item")&& moving.behavior.equals("player")){
-            adventurerework.window.print("You have picked up a "+current.description+"!");
-            current.board.removeNonwall(current);
+            if(adventurerework.inventory.recieceItem(current.description)){
+                current.board.removeNonwall(current);
+            }
+
         }
         else if (current.wallType.equals("item")&& !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into an item
         else if(current.wallType.equals("dart trap")){

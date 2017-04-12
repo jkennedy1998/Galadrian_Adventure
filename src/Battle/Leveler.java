@@ -13,8 +13,6 @@ public class Leveler {
         adventurerework.window.print("You feel more experienced from past encounters!");
         adventurerework.window.print("You rest in your adventure to practice skills.");
         adventurerework.window.print("What skill would you like to practice?");
-
-
         String[] returningLevelStats = {"" + health, "" + maxHealth, "", ""};
         String[] buttons = {"Vitality", "Strength", "Aim", "Speed", "Armor efficiency", "Forgo practice and patch wounds"};
         adventurerework.window.makeButtons(buttons);
@@ -65,6 +63,7 @@ public class Leveler {
                 adventurerework.window.print("You bind your wounds.\nYou Have " + (health + 10) + " health points.");
             }
         }
+        adventurerework.inventory.refreshCapacity();
         return returningLevelStats;
     }
 

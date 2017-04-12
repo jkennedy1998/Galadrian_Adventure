@@ -101,7 +101,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "maul";
         beastStats[3] = "bite";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(0);
         beastStats[6] = ""+(60);
         beastStats[11] = ""+(7);
@@ -118,7 +118,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "bite";
         beastStats[3] = "fang peirce";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(0);
         beastStats[6] = ""+(70);
         beastStats[11] = ""+(7);
@@ -134,7 +134,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "bite";
         beastStats[3] = "fang peirce";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(0);
         beastStats[6] = ""+(70);
         beastStats[11] = ""+(7);
@@ -148,7 +148,7 @@ public class monsterSelection {
         beastStats[1] = "fang peirce";
         beastStats[2] = "maul";
         beastStats[3] = "claw swipe";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(0);
         beastStats[6] = ""+(79);
         beastStats[11] = ""+(27);
@@ -180,7 +180,7 @@ public class monsterSelection {
         beastStats[1] = "claw swipe";
         beastStats[2] = "tail sweep";
         beastStats[3] = "bite";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(0);
         beastStats[6] = ""+(48);
         beastStats[11] = ""+(22);
@@ -326,7 +326,7 @@ public class monsterSelection {
         beastStats[1] = "fang peirce";
         beastStats[2] = "tail sweep";
         beastStats[3] = "claw swipe";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(0);
         beastStats[6] = ""+(40);
         beastStats[11] = ""+(32);
@@ -341,7 +341,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "bite";
         beastStats[3] = "bite";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(100);
         beastStats[6] = ""+(35);
         beastStats[11] = ""+(16);
@@ -356,7 +356,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "fang peirce";
         beastStats[3] = "slash";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(100);
         beastStats[6] = ""+(70);
         beastStats[11] = ""+(19);
@@ -371,7 +371,7 @@ public class monsterSelection {
         beastStats[1] = "tail sweep";
         beastStats[2] = "fang peirce";
         beastStats[3] = "slash";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(100);
         beastStats[6] = ""+(80);
         beastStats[11] = ""+(23);
@@ -386,7 +386,7 @@ public class monsterSelection {
         beastStats[1] = "fang peirce";
         beastStats[2] = "tail sweep";
         beastStats[3] = "shield bash";
-        beastStats[4] = ""+(0);
+        beastStats[4] = ""+("");
         beastStats[5] = ""+(100);
         beastStats[6] = ""+(69);
         beastStats[11] = ""+(28);
@@ -401,7 +401,7 @@ public class monsterSelection {
         beastStats[1] = "tail sweep";
         beastStats[2] = "fang peirce";
         beastStats[3] = "hex";
-        beastStats[4] = ""+(0); //should make boss drop a cool item!
+        beastStats[4] = ""+(""); //should make boss drop a cool item!
         beastStats[5] = ""+(100);
         beastStats[6] = ""+(40);
         beastStats[11] = ""+(40);

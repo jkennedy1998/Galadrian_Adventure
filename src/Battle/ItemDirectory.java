@@ -98,6 +98,7 @@ public class ItemDirectory {
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "20";                  //base price for shops
         ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
+        ItemReturn[12] = "0";                  //weight (int grams)
 
         return ItemReturn;
     }
@@ -132,6 +133,7 @@ public class ItemDirectory {
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "10";                  //base price for shops
         ItemReturn[11] = "3";                  //number of uses before discard (one time use is 1)
+        ItemReturn[12] = "0";                  //weight (int grams)
 
         return ItemReturn;
     }
