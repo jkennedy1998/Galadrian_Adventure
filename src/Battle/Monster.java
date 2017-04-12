@@ -1,21 +1,21 @@
 package Battle;
 
 public class Monster {
-    private int health;
+    private int health, dropRate;
     private String attack1, attack2, attack3;
-    private int[] itemDrop = {0,0};
+    private String item;
     private double accuracyMult,defenceMult,damageMult,speedMult;
     private double speed;
     public String attack = "";
 
-    public Monster(int h, String at1, String at2, String at3, int item, int dropRate, double spd, double daM,double spM, double acM, double deM)
+    public Monster(int h, String at1, String at2, String at3, String item, int dropRate, double spd, double daM,double spM, double acM, double deM)
     {
         health = h;
         attack1 = at1;
         attack2 = at2;
         attack3 = at3;
-        itemDrop[0] = item;
-        itemDrop[1] = dropRate;
+        this.item = item;
+        this.dropRate = dropRate;
         speed = spd;
         damageMult = daM;
         speedMult = spM;
@@ -23,13 +23,11 @@ public class Monster {
         defenceMult = deM;
 
     }
-    public int questionItem(int item, int dropRate){
-        itemDrop[0] = item;
-        itemDrop[1] = dropRate;
-        if (itemDrop[1] >= Math.round(Math.random() * 100)){
-            return itemDrop[0];
+    public String questionItem(){
+        if (dropRate >= Math.round(Math.random() * 100)){
+            return item;
         } else {
-            return 0;
+            return "";
         }
     }
 

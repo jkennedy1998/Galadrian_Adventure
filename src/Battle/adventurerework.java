@@ -11,13 +11,13 @@ public class adventurerework {
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
     public static int roundCount = 1;
-    public static int[] armor = {0,8,0,0,9,0};
+    public static String[] armor = {"","peasant's blouse","","","peasant's rags",""};
     public static String tempBeastName = "";
     public static String tempUserString = "";
     public static double time;
     public static int day;
     public static CharacterCreation character1 = new CharacterCreation();
-    public static Items inventory = new Items(1,1,0,0,0);
+    public static Inventory inventory = new Inventory();
 
     public static void main(String args[]) {
         time =20.0;
@@ -306,8 +306,8 @@ public class adventurerework {
         String endEncounterDialog = "";
         endEncounterDialog += ("You have vanquished " + tempBeastName + "!");
         lifeStatus = false;
-        if (monsterTurn(beastStats, lifeStatus) != 0) {
-            endEncounterDialog += inventory.getItem (Integer.parseInt(beastStats[4]));
+        if (!monsterTurn(beastStats, lifeStatus).equals("")) {//if it drops an item
+            inventory.recieceItem(beastStats[4]);
         }
         if ((character1.getHealth() < character1.getMaxHealth()) && (roundCount % 5 == 0)) {
             int tempHealth = (int) (Math.round(Math.random() * 20));
@@ -338,10 +338,10 @@ public class adventurerework {
             adventurerework.live();
         }
 
-    private static int monsterTurn(String[] beastStats, boolean lifeStatus) {
+    private static String monsterTurn(String[] beastStats, boolean lifeStatus) {
 
 
-        Monster monsterRefresh = new Monster(Integer.parseInt(beastStats[0]), beastStats[1], beastStats[2], beastStats[3], Integer.parseInt(beastStats[4]), Integer.parseInt(beastStats[5]), Integer.parseInt(beastStats[6]), Double.parseDouble(beastStats[7]), Double.parseDouble(beastStats[8]), Double.parseDouble(beastStats[9]), Double.parseDouble(beastStats[10]));
+        Monster monsterRefresh = new Monster(Integer.parseInt(beastStats[0]), beastStats[1], beastStats[2], beastStats[3], (beastStats[4]), Integer.parseInt(beastStats[5]), Integer.parseInt(beastStats[6]), Double.parseDouble(beastStats[7]), Double.parseDouble(beastStats[8]), Double.parseDouble(beastStats[9]), Double.parseDouble(beastStats[10]));
         if (lifeStatus) {
             window.print(tempBeastName + " attacks!");
             String tempMAttack = monsterRefresh.calculateHit(getArmorStats());
@@ -359,19 +359,18 @@ public class adventurerework {
                 character1.permHealth(0);
                 adventurerework.death();
             }
-        } else return monsterRefresh.questionItem(Integer.parseInt(beastStats[4]),Integer.parseInt(beastStats[5]));
-        return 5318008; //returns but does nothing. such savagery
+        } else return monsterRefresh.questionItem();
+        return ""; //returns but does nothing. such savagery
     }
 
     private static String[] playerTurn() {
         String[] returningString = {"", "", "", "", "", "", "", ""};
 
-        String tempDialog = "";
         Player playerRefresh = new Player();
         playerRefresh.initialize(character1.getAttack1(), character1.getAttack2(), character1.getAttack3(), character1.getAttack4(),
                 character1.getAttackMultiplier(), character1.getAccuracyMultiplier());
         window.print("It's your turn to attack!\n");
-        String attackStorage[] = playerRefresh.PlayerAttack(tempDialog);
+        String attackStorage[] = playerRefresh.PlayerAttack();
         if (!(attackStorage[0].equalsIgnoreCase("item"))) { //not using item
             if (attackStorage[0].equalsIgnoreCase("Miss")) {
                 returningString[0] = "miss";
@@ -482,31 +481,31 @@ public class adventurerework {
 
     private static void questionArmorBreak(int attack){
     boolean questionChange = false;
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[0]!=0&&Math.random()>.8) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && !armor[0].equals("")&&Math.random()>.8) {
         window.print("Your "+ItemDirectory.findItemValues(armor[0])[0]+" has broken from incoming damage!");
-        armor[0] = 0;
+        armor[0] = "";
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[1]!=0&&Math.random()>.8) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && !armor[1].equals("")&&Math.random()>.8) {
         window.print("Your "+ItemDirectory.findItemValues(armor[1])[0]+" has broken from incoming damage!");
-        armor[1] = 0;
+        armor[1] = "";
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[2]!=0&&Math.random()>.8) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack &&!armor[2].equals("")&&Math.random()>.8) {
         window.print("Your "+ItemDirectory.findItemValues(armor[2])[0]+" has broken from incoming damage!");
-        armor[2] = 0;
+        armor[2] = "";
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[3]!=0&&Math.random()>.8) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && !armor[3].equals("")&&Math.random()>.8) {
         window.print("Your "+ItemDirectory.findItemValues(armor[3])[0]+" has broken from incoming damage!");
-        armor[3] = 0;
+        armor[3] = "";
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[4]!=0&&Math.random()>.8) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && !armor[4].equals("")&&Math.random()>.8) {
         window.print("Your "+ItemDirectory.findItemValues(armor[4])[0]+" has broken from incoming damage!");
-        armor[4] = 0;
+        armor[4] = "";
         questionChange = true;}
-    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && armor[5]!=0&&Math.random()>.8) {
+    if (Integer.parseInt(ItemDirectory.findItemValues(armor[0])[8])<= attack && !armor[5].equals("")&&Math.random()>.8) {
         window.print("Your "+ItemDirectory.findItemValues(armor[5])[0]+" has broken from incoming damage!");
-        armor[5] = 0;
+        armor[5] = "";
         questionChange = true;}
-    if (armor[0]==0&&armor[1]==0&&armor[4]==0&&armor[5]==0&&questionChange)
+    if (armor[0].equals("")&&armor[1].equals("")&&armor[4].equals("")&&armor[5].equals("")&&questionChange)
         window.print("You notice a cool breeze...");
 }
 

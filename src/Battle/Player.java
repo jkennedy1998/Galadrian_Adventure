@@ -11,8 +11,6 @@ public class Player {
     public String attackChoice;
     double damageMult = 1;
     double accuracyMult = 1;
-    String tempDialogStored = "";
-
     public void initialize(String a1, String a2, String a3, String a4, double damageMultiplier, double accuracyMultiplier) {
         attack1 = a1;
         attack2 = a2;
@@ -22,39 +20,41 @@ public class Player {
         accuracyMult = accuracyMultiplier;
 
     }
-    public String[] PlayerItem() {
-        String ItemReturn[] = {"0", "0", "0", "0", "10", "0", "0", "0"};
-        String Item1[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[0]);
-        String item1 = Item1[0];
-        String Item2[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[1]);
-        String item2 = Item2[0];
-        String Item3[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[2]);
-        String item3 = Item3[0];
-        String Item4[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[3]);
-        String item4 = Item4[0];
-        String Item5[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[4]);
-        String item5 = Item5[0];
+    public String[] PlayerItem() {//need to not hard code. make scan through items.
+        String ItemReturn[];
+//        String Item1[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[0]);
+//        String item1 = Item1[0];
+//        String Item2[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[1]);
+//        String item2 = Item2[0];
+//        String Item3[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[2]);
+//        String item3 = Item3[0];
+//        String Item4[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[3]);
+//        String item4 = Item4[0];
+//        String Item5[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[4]);
+//        String item5 = Item5[0];
+//
+//        String[] buttons = {item1, item2, item3, item4, item5};
+        String[] buttons = new String[adventurerework.inventory.items.size()];
+        for(int scan = 0; scan < adventurerework.inventory.items.size(); scan++){
+            buttons[scan] = adventurerework.inventory.items.get(scan);
+        }
 
-        String[] buttons = {item1, item2, item3, item4, item5};
-
+        System.out.println(buttons.length);
 
         int choice = JOptionPane.showOptionDialog(null, "\nWhich item would you like to use?", "",
                 JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
         boolean temp = true;
-        for (int x = 0; x<5; x++) {
-            if (choice == x) {
-                ItemReturn = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[x]);
-                adventurerework.inventory.updateItemUse(x);
-                temp = false;
-            }
-        }
 
-        if (temp) PlayerAttack(tempDialogStored);
+                ItemReturn = ItemDirectory.findItemValues(adventurerework.inventory.items.get(choice));
+                adventurerework.inventory.updateItemUse(choice);
+                temp = false;
+
+
+        if (temp) PlayerAttack();
         return ItemReturn;
     }
 
-    public String[] PlayerAttack(String tempDialog) {
-        tempDialogStored = tempDialog;
+    public String[] PlayerAttack() {
         String[] buttons = {attack1, attack2, attack3, attack4,"Items"};
         String[] returningData = {"","","","",""};
         adventurerework.window.makeButtons(buttons);
@@ -82,9 +82,12 @@ public class Player {
         else if (choice == 3) {
             attackData = attackDatabase.getAttackData(attack4);
             attackChoice = attack4;
-        }else if (choice ==4) {
+        }else if (choice ==4&&adventurerework.inventory.items.size()!=0) {
             returningData[0] = "Item";
             return returningData;
+        }
+        else if(choice ==4 && adventurerework.inventory.items.size()==0){
+            adventurerework.window.print("you have no items to use!");
         }
 
         returningData[0] = calculateHit(attackData[0], attackData[1], attackData[2]);

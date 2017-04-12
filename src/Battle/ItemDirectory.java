@@ -2,43 +2,31 @@ package Battle;
 
 public class ItemDirectory {
 
-    public static String ItemReturn[] = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","1"};
+    public static String ItemReturn[] = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","1","0"};
 
-    public static String[] findItemValues(int itemNumber) {
-        if (itemNumber == 0)
-            return noItem();
-        if (itemNumber == 1)
-            return healthPotion();
-        if (itemNumber == 2)
-            return poison();
-        if (itemNumber == 3)
-            return curse();
-        if (itemNumber == 4)
-            return mead();
-        if (itemNumber == 5)
-            return unknownFlesh();
-        if (itemNumber == 6)
-            return  nail();
-        if (itemNumber == 7)
-            return  torch();
-        if (itemNumber == 8)
-            return  peasantsBlouse();
-        if (itemNumber == 9)
-            return  peasantsRags();
-        if (itemNumber == 10)
-            return  spade();
-        if (itemNumber == 11)
-            return  forgottenChestPeice();
-        if (itemNumber == 12)
-            return  forgottenLegwear();
-        if (itemNumber == 13)
-            return  forgottenHelm();
-        if (itemNumber == 14)
-            return  forgottenGreives();
-        if (itemNumber == 15)
-            return mortumsAmulet();
-            return noItem();
-        }
+    public static String[] findItemValues(String itemName) {
+        if (itemName.equals("")) return noItem();
+        else if (itemName.equals("health potion")) return healthPotion();
+        else if (itemName.equals("poison")) return poison();
+        else if (itemName.equals("curse")) return curse();
+        else if (itemName.equals("mead")) return mead();
+        else if (itemName.equals("unknown flesh")) return unknownFlesh();
+        else if (itemName.equals("nail")) return nail();
+        else if (itemName.equals("torch")) return torch();
+        else if (itemName.equals("peasant's blouse")) return peasantsBlouse();
+        else if (itemName.equals("peasant's rags")) return peasantsRags();
+        else if (itemName.equals("spade")) return spade();
+        else if (itemName.equals("forgotten chest piece")) return forgottenChestPeice();
+        else if (itemName.equals("forgotten leg wear")) return forgottenLegwear();
+        else if (itemName.equals("forgotten helm")) return forgottenHelm();
+        else if (itemName.equals("forgotten grieves")) return forgottenGreives();
+        else if (itemName.equals("Mortum's Amulet")) return forgottenHelm();
+
+        System.out.println("error: ItemDirectory sent a invalid String. ("+itemName+")");
+        return null;
+
+
+    }
 
         //past this point should only be data values for items and rubrics
         //here be items!
@@ -61,7 +49,7 @@ public class ItemDirectory {
 
 
         public static String[] noItem () {
-            ItemReturn[0] = "No Items";           //name
+            ItemReturn[0] = "no items";           //name
             ItemReturn[1] = "0";                  //self as 0 or enemy as 1
             ItemReturn[2] = "0";                  //health modifier
             ItemReturn[3] = "0";                  //attack modifier
@@ -72,6 +60,10 @@ public class ItemDirectory {
             ItemReturn[8] = "0";                  //effect # on
             ItemReturn[9] = "0";                  //effect # off
             ItemReturn[10] = "0";                  //base price for shops
+            ItemReturn[11] = "0";                  //number of uses before discard
+            ItemReturn[12] = "0";                  //weight (int grams)
+
+
 
             return ItemReturn;
         }
@@ -88,11 +80,13 @@ public class ItemDirectory {
             ItemReturn[9] = "0";                  //effect # off
             ItemReturn[10] = "25";                  //base price for shops
             ItemReturn[11] = "2";                  //number of uses before discard (one time use is 1)
+            ItemReturn[12] = "0";                  //weight (int grams)
+
 
             return ItemReturn;
         }
     public static String[] poison () {
-        ItemReturn[0] = "Poison";           //name
+        ItemReturn[0] = "poison";           //name
         ItemReturn[1] = "1";                  //self as 0 or enemy as 1
         ItemReturn[2] = "-25";                  //health modifier
         ItemReturn[3] = "-.2";                  //attack modifier
@@ -108,7 +102,7 @@ public class ItemDirectory {
         return ItemReturn;
     }
     public static String[] curse (){
-        ItemReturn[0] = "Curse";           //name
+        ItemReturn[0] = "curse";           //name
         ItemReturn[1] = "0";                  //self as 0 or enemy as 1
         ItemReturn[2] = "0";                  //health modifier
         ItemReturn[3] = ".5";                  //attack modifier
@@ -120,11 +114,13 @@ public class ItemDirectory {
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "46";                  //base price for shops
         ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
     public static String[] mead () {
-        ItemReturn[0] = "Mead";           //name
+        ItemReturn[0] = "mead";           //name
         ItemReturn[1] = "0";                  //self as 0 or enemy as 1
         ItemReturn[2] = "20";                  //health modifier
         ItemReturn[3] = ".3";                  //attack modifier
@@ -140,7 +136,7 @@ public class ItemDirectory {
         return ItemReturn;
     }
     public static String[] unknownFlesh () {
-        ItemReturn[0] = "Unknown Flesh";           //name
+        ItemReturn[0] = "unknown flesh";           //name
         ItemReturn[1] = "0";                  //self as 0 or enemy as 1
         ItemReturn[2] = "25";                  //health modifier
         ItemReturn[3] = "-.1";                  //attack modifier
@@ -152,12 +148,14 @@ public class ItemDirectory {
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "13";                  //base price for shops
         ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
     public static String[] nail()
     {
-        ItemReturn[0] = "Nail";          //name
+        ItemReturn[0] = "nail";          //name
         ItemReturn[1] = "0";                  //self as 0 or enemy as 1
         ItemReturn[2] = "-10";                //health modifier
         ItemReturn[3] = ".2";                 //attack modifier
@@ -169,11 +167,13 @@ public class ItemDirectory {
         ItemReturn[9] = "0";                  // effects # off
         ItemReturn[10] = "5";                  //base price for shops
         ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
     public static String[] torch () {
-        ItemReturn[0] = "Torch";           //name
+        ItemReturn[0] = "torch";           //name
         ItemReturn[1] = "1";                 //self as 0 or enemy as 1
         ItemReturn[2] = "-13";                  //health modifier
         ItemReturn[3] = "0";                  //attack modifier
@@ -185,11 +185,13 @@ public class ItemDirectory {
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "42";                  //base price for shops
         ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
     public static String[] spade () {
-        ItemReturn[0] = "Spade";           //name
+        ItemReturn[0] = "spade";           //name
         ItemReturn[1] = "1";                 //self as 0 or enemy as 1
         ItemReturn[2] = "-7";                  //health modifier
         ItemReturn[3] = "0";                  //attack modifier
@@ -201,11 +203,13 @@ public class ItemDirectory {
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "49";                  //base price for shops
         ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
     public static String[] mortumsAmulet () { //boss item for merrshaulk.
-        ItemReturn[0] = "Mortum's Amulet";           //name
+        ItemReturn[0] = "Mortum's amulet";           //name
         ItemReturn[1] = "1";                  //self as 0 or enemy as 1
         ItemReturn[2] = "0";                  //health modifier
         ItemReturn[3] = "-.5";                  //attack modifier
@@ -217,6 +221,8 @@ public class ItemDirectory {
         ItemReturn[9] = "0";                  //effect # off
         ItemReturn[10] = "200";                  //base price for shops
         ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
@@ -249,8 +255,10 @@ public class ItemDirectory {
         ItemReturn[8] = "10";                  //defence breaking point (idk about this)
         ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
         ItemReturn[10] = "26";                  //base price for shops
+        ItemReturn[12] = "0";                  //weight (int grams)
 
-    return ItemReturn;
+
+        return ItemReturn;
 }
     public static String[] peasantsRags () {
         ItemReturn[0] = "peasant's rags";           //name
@@ -264,6 +272,8 @@ public class ItemDirectory {
         ItemReturn[8] = "10";                  //defence breaking point (idk about this)
         ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
         ItemReturn[10] = "28";                  //base price for shops
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
@@ -279,6 +289,8 @@ public class ItemDirectory {
         ItemReturn[8] = "40";                  //defence breaking point (idk about this)
         ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
         ItemReturn[10] = "70";                  //base price for shops
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
@@ -294,6 +306,8 @@ public class ItemDirectory {
         ItemReturn[8] = "40";                  //defence breaking point (idk about this)
         ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
         ItemReturn[10] = "80";                  //base price for shops
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
@@ -309,6 +323,8 @@ public class ItemDirectory {
         ItemReturn[8] = "37";                  //defence breaking point (idk about this)
         ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
         ItemReturn[10] = "67";                  //base price for shops
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }
@@ -324,6 +340,8 @@ public class ItemDirectory {
         ItemReturn[8] = "35";                  //defence breaking point (idk about this)
         ItemReturn[9] = "0";                  //effect deter (idk if i want this to be a thing. not implemented.)
         ItemReturn[10] = "72";                  //base price for shops
+        ItemReturn[12] = "0";                  //weight (int grams)
+
 
         return ItemReturn;
     }

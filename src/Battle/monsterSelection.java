@@ -164,7 +164,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "bombard";
         beastStats[3] = "bite";
-        beastStats[4] = ""+(2);
+        beastStats[4] = ""+("poison");
         beastStats[5] = ""+(30);
         beastStats[6] = ""+(70);
         beastStats[11] = ""+(5);
@@ -196,7 +196,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "bombard";
         beastStats[3] = "fang peirce";
-        beastStats[4] = ""+(2);
+        beastStats[4] = ""+("poison");
         beastStats[5] = ""+(40);
         beastStats[6] = ""+(58);
         beastStats[11] = ""+(13);
@@ -214,7 +214,7 @@ public class monsterSelection {
         beastStats[1] = "fang peirce";
         beastStats[2] = "club";
         beastStats[3] = "slash";
-        beastStats[4] = ""+(7);
+        beastStats[4] = ""+("torch");
         beastStats[5] = ""+(50);
         beastStats[6] = ""+(55);
         beastStats[11] = ""+(15);
@@ -230,7 +230,7 @@ public class monsterSelection {
         beastStats[1] = "hex";
         beastStats[2] = "sparks";
         beastStats[3] = "slash";
-        beastStats[4] = ""+(outOfTwo(1,3));
+        beastStats[4] = ""+(outOfTwo("health potion","curse"));
         beastStats[5] = ""+(40);
         beastStats[6] = ""+(56);
         beastStats[11] = ""+(17);
@@ -246,7 +246,7 @@ public class monsterSelection {
         beastStats[1] = "slash";
         beastStats[2] = "skull toss";
         beastStats[3] = "hex";
-        beastStats[4] = ""+(10);
+        beastStats[4] = ""+("spade");
         beastStats[5] = ""+(20);
         beastStats[6] = ""+(45);
         beastStats[11] = ""+(17);
@@ -262,7 +262,7 @@ public class monsterSelection {
         beastStats[1] = "fang peirce";
         beastStats[2] = "slash";
         beastStats[3] = "blood lust";
-        beastStats[4] = ""+(5);
+        beastStats[4] = ""+("unknown flesh");
         beastStats[5] = ""+(40);
         beastStats[6] = ""+(60);
         beastStats[11] = ""+(19);
@@ -278,7 +278,7 @@ public class monsterSelection {
         beastStats[1] = "hex";
         beastStats[2] = "slash";
         beastStats[3] = "bite";
-        beastStats[4] = ""+(3);
+        beastStats[4] = ""+("curse");
         beastStats[5] = ""+(50);
         beastStats[6] = ""+(60);
         beastStats[11] = ""+(16);
@@ -294,7 +294,7 @@ public class monsterSelection {
         beastStats[1] = "bombard";
         beastStats[2] = "punch";
         beastStats[3] = "stone toss";
-        beastStats[4] = ""+(outOfTwo(4,10));
+        beastStats[4] = ""+(outOfTwo("mead","spade"));
         beastStats[5] = ""+(95);
         beastStats[6] = ""+(30);
         beastStats[11] = ""+(19);
@@ -310,7 +310,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "sting";
         beastStats[3] = "sting";
-        beastStats[4] = ""+(2);
+        beastStats[4] = ""+("posion");
         beastStats[5] = ""+(70);
         beastStats[6] = ""+(67);
         beastStats[11] = ""+(7);
@@ -416,7 +416,7 @@ public class monsterSelection {
         beastStats[1] = "suffer";
         beastStats[2] = "suffer";
         beastStats[3] = "suffer";
-        beastStats[4] = ""+(5);
+        beastStats[4] = ""+("unknown flesh");
         beastStats[5] = ""+(100);
         beastStats[6] = ""+(10);
         beastStats[11] = ""+(5);
@@ -432,7 +432,7 @@ public class monsterSelection {
         beastStats[1] = "bite";
         beastStats[2] = "slash";
         beastStats[3] = "punch";
-        beastStats[4] = ""+(1);
+        beastStats[4] = ""+("health potion");
         beastStats[5] = ""+(15);
         beastStats[6] = ""+(60);
         beastStats[11] = ""+(16);
