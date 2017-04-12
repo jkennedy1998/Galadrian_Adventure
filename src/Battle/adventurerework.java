@@ -260,28 +260,28 @@ public class adventurerework {
                                     window.print("The monster seems stronger!");
                                 if (tempDaMod > 0)
                                     window.print("The monster's attacks seem lessened!");
-                                beastStats[7] += tempDaMod;
+                                beastStats[7] = ""+(Double.parseDouble(beastStats[7])+tempDaMod); //here is the error!!!!!!!!!!!!!!!
                             }
                             if (tempSpMod != 0) {
                                 if (tempSpMod > 0)
                                     window.print("The monster's lunges seem quicker!");
                                 if (tempSpMod < 0)
                                     window.print("You find yourself running laps around the beast!");
-                                beastStats[8] += tempSpMod;
+                                beastStats[8] = ""+(Double.parseDouble(beastStats[8])+tempSpMod);
                             }
                             if (tempDeMod != 0) {
                                 if (tempDeMod > 0)
                                     window.print("The beasts skin seems tougher!");
                                 if (tempDeMod < 0)
                                     window.print("You notice a small hole in the beasts armor!");
-                                beastStats[10] += tempDeMod;
+                                beastStats[10] = ""+(Double.parseDouble(beastStats[9])+tempDeMod);
                             }
                             if (tempAcMod != 0) {
                                 if (tempAcMod > 0)
                                     window.print("The monster is hitting consistent blows!");
                                 if (tempAcMod < 0)
                                     window.print("The monster is overwhelmed by the chaos of battle!");
-                                beastStats[9] += tempAcMod;
+                                beastStats[9] = ""+(Double.parseDouble(beastStats[9])+tempAcMod);
                             }
                         }
                     } else {
