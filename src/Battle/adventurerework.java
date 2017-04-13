@@ -23,8 +23,6 @@ public class adventurerework {
         time =20.0;
         day = 0;
         coins = 0;
-        character1.race();
-        character1.role();
         KeyboardListener keyboardListener = new KeyboardListener();
         window.addKeyListener(keyboardListener);
         MouseListener mouseListener = new MouseListener();
@@ -32,11 +30,13 @@ public class adventurerework {
         Map.initializeMaps();
         adam = new Moving(3, 6, Map.currentBoard, "player", true);
         Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
+        window.voidLines();
+        character1.race();
+        character1.role();
         run(); //should replace strive
     }
     public static void run() { //make run by speed
         MovingTimer timer = new MovingTimer();
-        window.voidLines();
         while (true) {
 //            for (int scan = 0; scan < adam.board.movings.size(); scan++) {
 //                strive(adam.board.movings.get(scan));

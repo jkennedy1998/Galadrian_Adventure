@@ -31,10 +31,14 @@ public class CharacterCreation {
 
     public void race() {
         String[] buttons = {"Human", "Orc", "Dwarf", "Elf", "Halfling"};
-
-        int choice = JOptionPane.showOptionDialog(null, "Which race would you like to play as?", "",
-                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-        String race = "";
+        adventurerework.window.makeButtons(buttons);
+        adventurerework.window.drawButtons();
+        int choice = -1;
+        while(choice == -1){
+            System.out.print("");
+            choice = adventurerework.window.questionButtonClick();
+        }
+        adventurerework.window.voidButtons();
         if (choice == 0) {//generic human. stats based on human
             this.race = "Human";
             setAttackMultiplier(0);
@@ -82,10 +86,14 @@ public class CharacterCreation {
 
     public void role() {//should change stats by plus two to three to keep balance
         String[] buttons = {"Swordsman", "Ranger", "Mage", "Berserker", "Monk"};
-
-        int choice = JOptionPane.showOptionDialog(null, "Which type of Savior would you like to play as?", "",
-                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-        String role = "";
+        adventurerework.window.makeButtons(buttons);
+        adventurerework.window.drawButtons();
+        int choice = -1;
+        while(choice == -1){
+            System.out.print("");
+            choice = adventurerework.window.questionButtonClick();
+        }
+        adventurerework.window.voidButtons();
         if (choice == 0) {
             this.role = "Warrior"; //blade and physical attacks
             setAttackMultiplier(.2);
