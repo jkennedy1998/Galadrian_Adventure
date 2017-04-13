@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-
 public class Screen extends JFrame {
     private static String[] log = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
     private final static String[] emptyLog = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
