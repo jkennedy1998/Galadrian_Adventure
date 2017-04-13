@@ -33,6 +33,8 @@ public class Inventory {
             adventurerework.window.print("you found a "+itemName+"!");
             return true;
         }
+        adventurerework.window.print("The "+itemName+" was too heavy to carry.");
+        adventurerework.window.print("You question the its importance over your current stash of items.");
         return false;
     }
     public void updateItemUse(int slot) {//for when you have used items
@@ -40,7 +42,7 @@ public class Inventory {
         itemUses.set(slot,itemUses.get(slot)-1);
         if(itemUses.get(slot) == 0){
             itemUses.remove(slot);
-            adventurerework.window.print("the "+items.get(slot)+" has been used up!");
+            adventurerework.window.print("the "+items.get(slot)+" has been destroyed in use!");
             items.remove(slot);
         }else{
             adventurerework.window.print("the "+items.get(slot)+" has "+itemUses.get(slot)+" more uses.");
