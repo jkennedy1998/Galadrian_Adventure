@@ -83,7 +83,8 @@ public class adventurerework {
     }
 
     public static void death() {
-        window.print("You have died while adventuring!\nHuh, quite the savior you are.");
+        window.print("You have died while adventuring!");
+        window.print("Huh, quite the savior you are.");
         System.out.println("you ended the game by dying.");
         System.exit(0);
     }
