@@ -4,8 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Screen extends JFrame {
-    private static String[] log = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
-    private final static String[] emptyLog = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "};
+    private static String[] log = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "};
+    private final static String[] emptyLog = {" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "};
     private ArrayList<String> buttons= new ArrayList <>();
     int xClick = 0;
     int yClick = 0;
@@ -179,7 +179,7 @@ public class Screen extends JFrame {
         }
         refreshLog();
     }
-    public void print (String[] multipleLines) { //sends a String array with null for no lines printed.
+    public void print (String[] multipleLines) {
     for(int scan = 0; scan < multipleLines.length; scan++){
         print(multipleLines[scan]);
     }
@@ -191,10 +191,10 @@ public class Screen extends JFrame {
         g.setColor(Color.darkGray);
         g.fillRect(720,0,560,500);
         g.setColor(Color.black);
-        g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
+        g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 18));
         for (int place =0;place < log.length;place++){
 
-            g.drawString(log[place],750,(30+place*30));
+            g.drawString(log[place],750,(40+place*25));
         }
 
     }

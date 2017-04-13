@@ -22,6 +22,19 @@ public class Player {
     }
     public String[] PlayerItem() {//need to not hard code. make scan through items.
         String ItemReturn[];
+        String[] buttons = new String[adventurerework.inventory.items.size()];
+        for(int scan = 0; scan < adventurerework.inventory.items.size(); scan++) {
+            buttons[scan] = adventurerework.inventory.items.get(scan);
+        }
+        adventurerework.window.makeButtons(buttons);
+        adventurerework.window.drawButtons();
+        int choice = -1;
+        while(choice == -1){
+            System.out.print("");
+            choice = adventurerework.window.questionButtonClick();
+        }
+
+        adventurerework.window.voidButtons();
 //        String Item1[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[0]);
 //        String item1 = Item1[0];
 //        String Item2[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[1]);
@@ -34,23 +47,9 @@ public class Player {
 //        String item5 = Item5[0];
 //
 //        String[] buttons = {item1, item2, item3, item4, item5};
-        String[] buttons = new String[adventurerework.inventory.items.size()];
-        for(int scan = 0; scan < adventurerework.inventory.items.size(); scan++){
-            buttons[scan] = adventurerework.inventory.items.get(scan);
-        }
-
-        System.out.println(buttons.length);
-
-        int choice = JOptionPane.showOptionDialog(null, "\nWhich item would you like to use?", "",
-                JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
-        boolean temp = true;
 
                 ItemReturn = ItemDirectory.findItemValues(adventurerework.inventory.items.get(choice));
                 adventurerework.inventory.updateItemUse(choice);
-                temp = false;
-
-
-        if (temp) PlayerAttack();
         return ItemReturn;
     }
 
