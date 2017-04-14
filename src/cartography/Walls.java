@@ -2,18 +2,30 @@ package cartography;
 import java.util.ArrayList;
 public class Walls {
      ArrayList<Wall> walls;
+     ArrayList<Floor> floors;
      int elevation = 0;
     public Walls(){//no walls
         walls = new ArrayList<Wall>();
+        floors = new ArrayList<Floor>();
     }
     public Walls(int[] wallX, int[] wallY){
 
         walls = new ArrayList<Wall>();
         for(int scan = 0; scan < wallX.length; scan++){
-            Wall wallObject = new Wall (wallX[scan], wallY[scan],elevation,"w");
+            Wall wallObject = new Wall (wallX[scan], wallY[scan],elevation,"wall");
             walls.add(wallObject);
         }
-        deleteDuplicates();
+        deleteWallDuplicates();
+    }
+    public Walls(int[] wallX, int[] wallY,int[] floorsX, int[] floorsY){
+
+       this(wallX,wallY);
+        floors = new ArrayList<Floor>();
+        for(int scan = 0; scan < floorsX.length; scan++){
+            Floor floorObject = new Floor (floorsX[scan], floorsY[scan],elevation,"floor");
+            floors.add(floorObject);
+        }
+        deleteFloorDuplicates();
     }
 
     public Walls (Walls walls){ // walls from another wall object
@@ -22,7 +34,28 @@ public class Walls {
 
     public void addWall (Wall wall){
         walls.add(wall);
-        deleteDuplicates();
+        deleteWallDuplicates();
+    }
+    public void addFloor (Floor floor){
+        floors.add(floor);
+        deleteFloorDuplicates();
+    }
+    public void addFloor (int[] floorXCoordinates, int[] floorYCoordinates){
+        if (floorXCoordinates.length!=floorYCoordinates.length) {
+            System.out.println("error: sent uneven floor arrays to addFloor()");
+            System.exit(1);
+        }
+        for(int scan = 0; scan < floorXCoordinates.length; scan++){
+            Floor floorObject = new Floor (floorXCoordinates[scan], floorYCoordinates[scan],elevation,"floor");
+            floors.add(floorObject);
+        }
+        deleteFloorDuplicates();
+    }
+    public void addFloor (int xPosition, int yPosition){
+        Floor floorObject = new Floor(xPosition,yPosition,elevation,"floor");
+        floors.add(floorObject);
+        deleteFloorDuplicates();
+
     }
     public void addSquare(int xPosition, int yPosition, int xDimension, int yDimension, boolean filled){
         ArrayList wallX = new ArrayList();
@@ -39,7 +72,7 @@ public class Walls {
             int[] x = new int[wallX.size()];
             int[] y = new int[wallX.size()];
             if(wallX.size() != wallY.size()){
-                System.out.println("error: walls not created with equal x and y coord lengths");
+                System.out.println("error: walls not created with equal x and y coord lengths when attempting to make a square");
             }
             for (int scan = 0; scan < wallX.size(); scan++) {
                 x[scan] = (int) wallX.get(scan);
@@ -63,26 +96,27 @@ public class Walls {
 
     }
     public void addWall (int[] wallXCoordinates, int[] wallYCoordinates){
-        if (wallXCoordinates.length!=wallYCoordinates.length)
-            //sent uneven wall arrays to addWall();
-            System.exit(1);
+        if (wallXCoordinates.length!=wallYCoordinates.length){
+            System.out.println("error: sent uneven wall arrays to addWall()");
+        System.exit(1);
+    }
         for(int scan = 0; scan < wallXCoordinates.length; scan++){
-            Wall wallObject = new Wall (wallXCoordinates[scan], wallYCoordinates[scan],elevation,"w");
+            Wall wallObject = new Wall (wallXCoordinates[scan], wallYCoordinates[scan],elevation,"wall");
             walls.add(wallObject);
         }
-        deleteDuplicates();
+        deleteWallDuplicates();
     }
     public void addWall (int xPosition, int yPosition){
-        Wall wallObject = new Wall(xPosition,yPosition,elevation,"w");
+        Wall wallObject = new Wall(xPosition,yPosition,elevation,"wall");
         walls.add(wallObject);
-        deleteDuplicates();
+        deleteWallDuplicates();
 
     }
-    public void addWall (ArrayList walls){ //two arrays of equal sizes.
+    public void addWall (ArrayList walls){
         this.walls.addAll(walls);
-        deleteDuplicates();
+        deleteWallDuplicates();
     }
-    private void deleteDuplicates() {
+    private void deleteWallDuplicates() {
 
         for (int scan = 0; scan < walls.size(); scan++) {
 
@@ -93,16 +127,34 @@ public class Walls {
                 }
             }
         }
+
+    }
+    private void deleteFloorDuplicates() {
+
+        for (int scan = 0; scan < floors.size(); scan++) {
+
+            for (int subScan = 0; subScan < floors.size(); subScan++){
+                if (floors.get(scan).xPosition == floors.get(subScan).xPosition && floors.get(scan).yPosition == floors.get(subScan).yPosition&& scan!=subScan){
+                    floors.remove(scan);
+                    subScan--;
+                }
+            }
+        }
+
     }
     public void deleteWall(int x, int y){
         for (int scan = 0; scan < walls.size(); scan++) {
-            if (walls.get(scan).xPosition == x && walls.get(scan).yPosition == y){
+            if (walls.get(scan).xPosition == x && walls.get(scan).yPosition == y&& !walls.get(scan).nonWall){
                     walls.remove(scan);
             }
         }
     }
-    public void deleteWall(ArrayList x, ArrayList y){
-        for (int scan = 0; scan < x.size(); scan++) deleteWall((int)x.get(scan),(int)y.get(scan));
+    public void deleteFloor(int x, int y) {
+        for (int scan = 0; scan < walls.size(); scan++) {
+            if (floors.get(scan).xPosition == x && floors.get(scan).yPosition == y) {
+                floors.remove(scan);
+            }
+        }
     }
     public boolean questionWall(int x, int y){
 
@@ -111,9 +163,16 @@ public class Walls {
                     return true;
         }return false;
     }
+    public boolean questionFloor(int x, int y){
+
+        for (int scan = 0; scan < floors.size(); scan++){
+            if (floors.get(scan).yPosition == y && floors.get(scan).xPosition == x)
+                return true;
+        }return false;
+    }
     public void getWallArrays(){ //used when writing code. outputs simplified array.
 
-        deleteDuplicates();
+        deleteWallDuplicates();
         System.out.print("int[] xOfWalls = {");
         for (int scan = 0; scan < walls.size(); scan++){
             System.out.print(walls.get(scan).xPosition);
