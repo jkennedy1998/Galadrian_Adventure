@@ -133,7 +133,6 @@ public class Board {
 //    }
 
         public void printBoard(){
-        adventurerework.window.refreshBoard();
         printFloors();
         printWalls(); //and nonwalls;
         printMovings();

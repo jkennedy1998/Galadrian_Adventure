@@ -163,6 +163,7 @@ public class NonWallsDatabase {
                 moving.board = current.link.board;
                 current.board.removeMoving(moving);
                 current.link.board.movings.add(moving);
+                adventurerework.window.refreshBoard();
             }
         }
         else if (current.wallType.equals("item")&& moving.behavior.equals("player")){
