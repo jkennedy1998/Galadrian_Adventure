@@ -25,13 +25,11 @@ public class Screen extends JFrame {
     public void drawCharacter(int xPosition, int yPosition, String name){
         System.out.println(name);
         Graphics g = getGraphics();
-        super.paint(g);
         g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
         g.drawString(name, (xPosition * 25) + 30, (yPosition * 25) + 100);
     }
     public void refreshBoard(){
         Graphics g = getGraphics();
-        super.paint(g);
         g.setColor(Color.gray);
         g.fillRect(0,0,60,60);
     }

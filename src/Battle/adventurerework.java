@@ -18,7 +18,6 @@ public class adventurerework {
     public static int day;
     public static CharacterCreation character1 = new CharacterCreation();
     public static Inventory inventory = new Inventory();
-
     public static void main(String args[]) {
         time =20.0;
         day = 0;

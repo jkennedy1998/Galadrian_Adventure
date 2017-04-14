@@ -70,12 +70,6 @@ public class Screen extends JFrame {
             if (xClick > 995 && xClick < 1270 && yClick > 505 && yClick < 505+65){resetClicks();return 3;}
             if (xClick > 995 && xClick < 1270 && yClick > 575 && yClick < 575+65){resetClicks();return 4;}
             if (xClick > 995 && xClick < 1270 && yClick > 645 && yClick < 645+65){resetClicks();return 5;}
-//            g.fillRect(725, 505, 267, 65);
-//            g.fillRect(725, 575, 267, 65);
-//            g.fillRect(725, 645, 267, 65);
-//            g.fillRect(995, 505, 264, 65);
-//            g.fillRect(995, 575, 264, 65);
-//            g.fillRect(995, 645, 264, 65);
         }
             return -1;
         }
@@ -158,10 +152,8 @@ public class Screen extends JFrame {
 }
 public void drawFloor(int xPosition, int yPosition, String name){
     Graphics g = getGraphics();
-
     g.setColor(Color.red);
     g.fillRect(xPosition*30+30,yPosition*30+80,30,30);
-
 }
     public  void voidLines(){log = emptyLog;}
     public  void print(String singleLine){

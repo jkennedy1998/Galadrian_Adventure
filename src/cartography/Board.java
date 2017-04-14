@@ -137,7 +137,7 @@ public class Board {
         for (int scan = 0; scan < walls.size(); scan++) if (walls.get(scan).elevation == elevation) wallsIndex = scan;
         while (yScan < yDimension) {
             while (xScan < xDimension) {
-                if(walls.get(wallsIndex).questionWall(xScan,yScan) != null)adventurerework.window.drawCharacter(xScan,yScan,walls.get(wallsIndex).questionWall(xScan,yScan));
+                if(walls.get(wallsIndex).questionWallAndNon(xScan,yScan) != null)adventurerework.window.drawCharacter(xScan,yScan,(String)walls.get(wallsIndex).questionWallAndNon(xScan,yScan).subSequence(0,1));
             xScan++;
             }
             xScan = 0;

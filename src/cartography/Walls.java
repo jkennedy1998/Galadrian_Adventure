@@ -161,6 +161,13 @@ public class Walls {
                     return walls.get(scan).wallType;
         }return null;
     }
+    public String questionWallAndNon(int x, int y){
+
+        for (int scan = 0; scan < walls.size(); scan++){
+            if (walls.get(scan).yPosition == y && walls.get(scan).xPosition == x)
+                return walls.get(scan).wallType;
+        }return null;
+    }
     public String questionFloor(int x, int y){
 
         for (int scan = 0; scan < floors.size(); scan++){
