@@ -50,7 +50,7 @@ public class adventurerework {
             boolean boundKey = false;
             while(!boundKey){
                 System.out.print(""); //idk why this fixed an infinite loop bug, but it does.
-                if (keyPressed.equals("W") || keyPressed.equals("A") || keyPressed.equals("S")|| keyPressed.equals("D") || keyPressed.equals("Space")){
+                if (keyPressed.equals("W") || keyPressed.equals("A") || keyPressed.equals("S")|| keyPressed.equals("D") || keyPressed.equals("Space") || keyPressed.equals("E")){
                     boundKey = true;
                 }
             }
@@ -58,8 +58,8 @@ public class adventurerework {
             else if (keyPressed.equals("S")) piece.moveDown();
             else if (keyPressed.equals("A")) piece.moveLeft();
             else if (keyPressed.equals("D")) piece.moveRight();
-            else if (keyPressed.equals(" ")) {
-            }
+            else if (keyPressed.equals(" "));
+            else if (keyPressed.equals("E")) piece.interact();
             keyPressed = "";
         } else {
             int temp = (int) Math.round(Math.random());

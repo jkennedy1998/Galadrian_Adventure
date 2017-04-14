@@ -21,6 +21,8 @@ public class ItemDirectory {
         else if (itemName.equals("forgotten helm")) return forgottenHelm();
         else if (itemName.equals("forgotten grieves")) return forgottenGreives();
         else if (itemName.equals("Mortum's Amulet")) return forgottenHelm();
+        else if (itemName.equals("wood axe")) return woodAxe();
+
 
         System.out.println("error: ItemDirectory sent a invalid String. ("+itemName+")");
         return null;
@@ -188,9 +190,27 @@ public class ItemDirectory {
         ItemReturn[7] = "50";                 //accuracy
         ItemReturn[8] = "3";                  //effect # on
         ItemReturn[9] = "0";                  //effect # off
-        ItemReturn[10] = "42";                  //base price for shops
+        ItemReturn[10] = "34";                  //base price for shops
         ItemReturn[11] = "1";                  //number of uses before discard (one time use is 1)
         ItemReturn[12] = "4";                  //weight (int grams)
+
+
+        return ItemReturn;
+    }
+    public static String[] woodAxe () {
+        ItemReturn[0] = "wood axe";           //name
+        ItemReturn[1] = "1";                 //self as 0 or enemy as 1
+        ItemReturn[2] = "-23";                  //health modifier
+        ItemReturn[3] = "0";                  //attack modifier
+        ItemReturn[4] = "0";                  //accuracy modifier
+        ItemReturn[5] = "-.2";                  //defence modifier
+        ItemReturn[6] = "0";                  //speed modifier
+        ItemReturn[7] = "60";                 //accuracy
+        ItemReturn[8] = "0";                  //effect # on
+        ItemReturn[9] = "0";                  //effect # off
+        ItemReturn[10] = "32";                  //base price for shops
+        ItemReturn[11] = "8";                  //number of uses before discard (one time use is 1)
+        ItemReturn[12] = "12";                  //weight (int grams)
 
 
         return ItemReturn;

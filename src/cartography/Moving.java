@@ -1,7 +1,7 @@
 package cartography;
 import Battle.*;
 public class Moving {
-    public int xPosition, yPosition, range = 7, elevation = 0, speed = 60, initialX, intitialY, tick = 0;
+    public int xPosition, yPosition, range = 7, elevation = 0, speed = 60, initialX, intitialY, tick = 0, facing = 2;
     boolean playerCollide = true, wallCollide = true, flying = false;
     public Board board, lastBoard;
     public String name, behavior;
@@ -40,6 +40,19 @@ public class Moving {
             }
         }
     }
+    public void interact(){
+        int x = xPosition, y = yPosition;
+        if(facing == 0) y--;
+        else if(facing == 1) x++;
+        else if(facing == 2) y++;
+        else if(facing == 3) x--;
+        if(board.findNonWall(x,y,elevation) != null){
+            board.findNonWall(x,y,elevation).interactOnUse(this);
+        }
+    }
+    public void openMenu(){
+        System.out.println("you should code a menu when you stop debugging.");
+    }
     private boolean questionFloor() {
         if (flying) return true;
         for (int scan = 0; scan < board.walls.size(); scan++) {
@@ -61,6 +74,7 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
+        facing = 0;
     }
 
     public void moveDown() {
@@ -71,6 +85,7 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
+        facing = 2;
     }
 
     public void moveLeft() {
@@ -81,6 +96,7 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
+        facing = 3;
     }
 
     public void moveRight() {
@@ -91,6 +107,7 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
+        facing = 1;
     }
     public boolean inBoardBounds(int xMove, int yMove){
         if (xMove+xPosition > board.xDimension-1 || xMove+xPosition < 0) return false;

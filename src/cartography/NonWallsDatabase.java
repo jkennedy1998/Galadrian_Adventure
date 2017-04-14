@@ -6,24 +6,52 @@ public class NonWallsDatabase {
     public static NonWalls makeNonWall(int xPosition, int yPosition, int elevation, String wallType, Board board){ //needs inclusion of nonwall if presets are not true for desired nonwall object
 
         NonWalls nonwall = new NonWalls(xPosition,yPosition,elevation,wallType,board);
-        if(wallType.equals("sign")) nonwall.colidable = true;
-        else if(wallType.equals("chest")) nonwall.colidable = true;
-        else if(wallType.equals("mimic"))nonwall.colidable = true;
-        else if(wallType.equals("closed door")) nonwall.colidable = true;
+        if(wallType.equals("sign")) {
+            nonwall.interactOnUse = true;
+            nonwall.colidable = true;
+        }
+        else if(wallType.equals("item")){
+            nonwall.interactOnUse = true;
+        }
+        else if(wallType.equals("chest")){
+            nonwall.colidable = true;
+            nonwall.interactOnUse = true;
+            nonwall.interactOnCollision = false;
+        }
+        else if(wallType.equals("mimic")){
+            nonwall.colidable = true;
+            nonwall.interactOnUse = true;
+            nonwall.interactOnCollision = false;
+        }
+        else if(wallType.equals("open door")){
+            nonwall.interactOnUse = true;
+        }
+        else if(wallType.equals("closed door")){
+            nonwall.colidable = true;
+            nonwall.interactOnUse = true;
+        }
         else if(wallType.equals("dart trap")) {
             nonwall.colidable = true;
             nonwall.interactOnCollision = false;
         }
-        else if(wallType.equals("button"))nonwall.colidable = true;
+        else if(wallType.equals("button")){
+            nonwall.interactOnUse = true;
+            nonwall.colidable = true;
+            nonwall.interactOnCollision = false;
+        }
 //        else if(wallType.equals("locked door")) nonwall.colidable = true;
-        else if (wallType.equals("camp site")) nonwall.colidable = true;
+        else if (wallType.equals("camp site")){
+            nonwall.colidable = true;
+            nonwall.interactOnUse = true;
+            nonwall.interactOnCollision = false;
+        }
 
         return nonwall;
     }
     public static void findInteraction(Moving moving, NonWalls current){//needs every single nonwall object and aditional nonplayer colide if its a player based object
         if(current.wallType.equals("stairs up")) moving.elevation++;
         else if(current.wallType.equals("stairs down")) moving.elevation-= 1;
-        else if(current.wallType.equals("trap door"))moving.elevation-= 1;
+        else if(current.wallType.equals("trap door"))moving.elevation-= 1; //make an open trap door. make one visible and the other not visible
         else if(current.wallType.equals("open door"));
         else if(current.wallType.equals("closed door")){
             current.wallType = "open door";
