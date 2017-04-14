@@ -82,6 +82,13 @@ public class BoardDatabase {
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
+        {
+            NonWalls door = NonWallsDatabase.makeNonWall(2,2,0,"closed door",board);
+            NonWalls button = NonWallsDatabase.makeNonWall(2,4,0,"button",board);
+            button.link = door;
+            board.addNonWall(door);
+            board.addNonWall(button);
+        }
         board.walls.get(0).addSquareFloor(0,0,21,13,true);
 
         board.addNonWall(NonWallsDatabase.makeNonWall(4,4,0,"tall grass",board));

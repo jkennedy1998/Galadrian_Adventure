@@ -29,6 +29,7 @@ public void interact(Moving moving){
 }
 public void checkState(){
     if (wallType.equals("pressure plate") && link != null) link.state = state;
+    else if (wallType.equals("button") && link != null) link.state = state;
     else if (wallType.equals("open door") || wallType.equals("closed door")){ //an open door is in a false state
         if (state){
             wallType = "open door";

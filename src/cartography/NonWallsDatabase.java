@@ -14,6 +14,7 @@ public class NonWallsDatabase {
             nonwall.colidable = true;
             nonwall.interactOnCollision = false;
         }
+        else if(wallType.equals("button"))nonwall.colidable = true;
 //        else if(wallType.equals("locked door")) nonwall.colidable = true;
         else if (wallType.equals("camp site")) nonwall.colidable = true;
 
@@ -32,6 +33,28 @@ public class NonWallsDatabase {
 //        else if(current.wallType.equals("locked door")){
 //
 //        }
+        else if(current.wallType.equals("button")){
+            if(current.facing == 0 && moving.lastPosition[1] == current.yPosition-1) {
+                current.state = !current.state;
+                current.checkState();
+                current.link.checkState();
+            }
+            if(current.facing == 1 && moving.lastPosition[0] == current.xPosition+1) {
+                current.state = !current.state;
+                current.checkState();
+                current.link.checkState();
+            }
+            if(current.facing == 2 && moving.lastPosition[1] == current.yPosition+1) {
+                current.state = !current.state;
+                current.checkState();
+                current.link.checkState();
+            }
+            if(current.facing == 3 && moving.lastPosition[0] == current.xPosition-1) {
+                current.state = !current.state;
+                current.checkState();
+                current.link.checkState();
+            }
+        }
         else if(current.wallType.equals("mimic")&&moving.behavior.equals("player")){
             current.board.removeNonwall(current);
             adventurerework.startEncounter(new Moving(-1,-1,current.board,"mimic",false));
