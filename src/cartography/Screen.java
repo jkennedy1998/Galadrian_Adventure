@@ -20,7 +20,6 @@ public class Screen extends JFrame {
     }
     public void refreshBoard(){
         Graphics g = getGraphics();
-        super.paint(g);
         g.setColor(Color.gray);
         g.fillRect(0,0,720,720);
     }
@@ -83,14 +82,12 @@ public class Screen extends JFrame {
     public void voidButtons(){
         buttons = new ArrayList<>();
         Graphics g = getGraphics();
-        super.paint(g);
         g.setColor(Color.black);
         g.fillRect(720,500,560,220);
     }
     public void drawButtons(){ //needs to be in the box 720, 500 to 1280, 720 (its 560 by 220)
         resetClicks();
         Graphics g = getGraphics();
-        super.paint(g);
         g.setColor(Color.darkGray);
         if(buttons.size() == 1){
             g.fillRect(725, 505, 580, 240);
@@ -154,9 +151,17 @@ public class Screen extends JFrame {
         }
     public void drawCharacter(int xPosition, int yPosition, String name){
         Graphics g = getGraphics();
-        super.paint(g);
+
         g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
         g.drawString(name, (xPosition * 30) + 30, (yPosition * 30) + 100);
+
+}
+public void drawFloor(int xPosition, int yPosition, String name){
+    Graphics g = getGraphics();
+
+    g.setColor(Color.red);
+    g.fillRect(xPosition*30+30,yPosition*30+60,30,30);
+
 }
     public  void voidLines(){log = emptyLog;}
     public  void print(String singleLine){
@@ -187,7 +192,6 @@ public class Screen extends JFrame {
 
     private void refreshLog(){
         Graphics g = getGraphics();
-        super.paint(g);
         g.setColor(Color.darkGray);
         g.fillRect(720,0,560,500);
         g.setColor(Color.black);

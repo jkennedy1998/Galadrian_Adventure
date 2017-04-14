@@ -154,19 +154,19 @@ public class Walls {
             }
         }
     }
-    public boolean questionWall(int x, int y){
+    public String questionWall(int x, int y){
 
         for (int scan = 0; scan < walls.size(); scan++){
                 if (walls.get(scan).yPosition == y && walls.get(scan).xPosition == x && !walls.get(scan).nonWall)
-                    return true;
-        }return false;
+                    return walls.get(scan).wallType;
+        }return null;
     }
-    public boolean questionFloor(int x, int y){
+    public String questionFloor(int x, int y){
 
         for (int scan = 0; scan < floors.size(); scan++){
             if (floors.get(scan).yPosition == y && floors.get(scan).xPosition == x)
-                return true;
-        }return false;
+                return floors.get(scan).floorType;
+        }return null;
     }
     public void getWallArrays(){ //used when writing code. outputs simplified array.
 

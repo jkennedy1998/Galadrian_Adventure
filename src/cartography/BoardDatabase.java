@@ -36,7 +36,7 @@ public class BoardDatabase {
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
-        board.walls.get(0).addSquareFloor(0,0,15,15,true);
+        board.walls.get(0).addSquareFloor(0,0,16,16,true);
         board.addNonWall(NonWallsDatabase.makeNonWall(12,7,0,"camp site",board));
         board.addNonWall(NonWallsDatabase.makeNonWall(10,7,0,"tall grass",board));
         board.addNonWall(NonWallsDatabase.makeNonWall(10,8,0,"tall grass",board));
@@ -62,7 +62,7 @@ public class BoardDatabase {
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
-        board.walls.get(0).addSquareFloor(0,0,6,10,true);
+        board.walls.get(0).addSquareFloor(0,0,7,11,true);
 
         board.addNonWall(NonWallsDatabase.makeNonWall(2,2,0,"mimic",board));
         return board;
@@ -82,7 +82,7 @@ public class BoardDatabase {
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
-        board.walls.get(0).addSquareFloor(0,0,20,12,true);
+        board.walls.get(0).addSquareFloor(0,0,21,13,true);
 
         board.addNonWall(NonWallsDatabase.makeNonWall(4,4,0,"tall grass",board));
         board.addNonWall(NonWallsDatabase.makeNonWall(4,5,0,"tall grass",board));
