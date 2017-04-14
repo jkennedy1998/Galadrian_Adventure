@@ -64,6 +64,7 @@ public class Moving {
                 }
             }
         }
+        System.out.println("no floor");
         return false;
     }
     public void moveUp() {
