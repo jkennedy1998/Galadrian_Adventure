@@ -160,7 +160,7 @@ public void drawFloor(int xPosition, int yPosition, String name){
     Graphics g = getGraphics();
 
     g.setColor(Color.red);
-    g.fillRect(xPosition*30+30,yPosition*30+60,30,30);
+    g.fillRect(xPosition*30+30,yPosition*30+80,30,30);
 
 }
     public  void voidLines(){log = emptyLog;}
