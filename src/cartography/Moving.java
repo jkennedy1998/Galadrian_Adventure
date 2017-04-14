@@ -30,14 +30,13 @@ public class Moving {
     }
 
     public void questionNonWalls(){
-        for (int scan = 0; scan < board.walls.size(); scan++){
-            if (board.walls.get(scan).elevation == elevation)
-                for(int subScan = 0; subScan < board.walls.get(scan).walls.size();subScan++){
-            if (board.walls.get(scan).walls.get(subScan).nonWall){
-                NonWalls temp = (NonWalls)board.walls.get(scan).walls.get(subScan);
+
+                for(int subScan = 0; subScan < board.getWalls(elevation).walls.size();subScan++){
+            if (board.getWalls(elevation).walls.get(subScan).nonWall){
+                NonWalls temp = (NonWalls)board.getWalls(elevation).walls.get(subScan);
                 temp.interact(this);
             }
-            }
+
         }
     }
     public void interact(){
@@ -55,16 +54,13 @@ public class Moving {
     }
     private boolean questionFloor() {
         if (flying) return true;
-        for (int scan = 0; scan < board.walls.size(); scan++) {
-            if (board.walls.get(scan).elevation == elevation) {
-                for (int subScan = 0; subScan < board.walls.get(scan).floors.size(); subScan++) {
-                    if (board.walls.get(scan).floors.get(subScan).xPosition == xPosition && board.walls.get(scan).floors.get(subScan).yPosition == yPosition) {
+
+                for (int subScan = 0; subScan < board.getWalls(elevation).floors.size(); subScan++) {
+                    if (board.getWalls(elevation).floors.get(subScan).xPosition == xPosition && board.getWalls(elevation).floors.get(subScan).yPosition == yPosition) {
                         return true;
                     }
-                }
+
             }
-        }
-        System.out.println("no floor");
         return false;
     }
     public void moveUp() {

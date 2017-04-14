@@ -3,9 +3,8 @@ import java.util.ArrayList;
 import Battle.adventurerework;
 
 public class Board {
-    int xDimension;
-    int yDimension;
-    ArrayList<Walls> walls = new ArrayList<>();
+    int xDimension, yDimension, levels = 1;
+    private ArrayList<Walls> walls = new ArrayList<>();
     public ArrayList<Moving> movings = new ArrayList<>();
     public String area = "forest";
 
@@ -34,6 +33,21 @@ public class Board {
         this.walls.addAll(board.walls);
     }
 
+    public void addWalls(Walls walls){
+        for(int scan = 0; scan < this.walls.size(); scan++)
+        if(walls.elevation == this.walls.get(scan).elevation){
+            System.out.println("error: walls added to the same board with equal elevations");
+        }
+        this.walls.add(walls);
+        levels++;
+    }
+    public Walls getWalls(int elevation){
+        for(int scan = 0; scan < walls.size(); scan++){
+            if (walls.get(scan).elevation == elevation) return walls.get(scan);
+        }
+        System.out.println("error: no walls available on board at called elevation");
+        return null;
+    }
     public boolean questionCollision(int xPosition, int yPosition, int elevtion) {
         for (int scan = 0; scan < walls.size(); scan++) {
             if (walls.get(scan).elevation == elevtion)

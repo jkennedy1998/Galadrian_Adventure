@@ -23,11 +23,11 @@ public class BoardDatabase {
     public static Board yaunCaveEntrance(){
         Board board = new Board(15,15);
         {
-            board.walls.get(0).addSquare(0,0,9,5,true);
-            board.walls.get(0).addSquare(12,0,3,6,true);
+            board.getWalls(0).addSquare(0,0,9,5,true);
+            board.getWalls(0).addSquare(12,0,3,6,true);
             int[] x = {10,11,9},
                     y = {4,0,4};
-            board.walls.get(0).addWall(x,y);
+            board.getWalls(0).addWall(x,y);
         }
             board.movings.add(new Moving(11, 4, board, "yaun-ti holy guard", false));
         board.movings.add(new Moving(5,14,board,"goblin",false));
@@ -36,7 +36,7 @@ public class BoardDatabase {
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
-        board.walls.get(0).addSquareFloor(0,0,16,16,true);
+        board.getWalls(0).addSquareFloor(0,0,16,16,true);
         board.addNonWall(NonWallsDatabase.makeNonWall(12,7,0,"camp site",board));
         board.addNonWall(NonWallsDatabase.makeNonWall(10,7,0,"tall grass",board));
         board.addNonWall(NonWallsDatabase.makeNonWall(10,8,0,"tall grass",board));
@@ -48,9 +48,9 @@ public class BoardDatabase {
     public static Board yaunCave(){
         Board board = new Board(6,10);
         {
-            board.walls.get(0).addSquare(0,0,6,10,false);
-            board.walls.get(0).deleteWall(3,9);
-            board.walls.get(0).deleteWall(4,0);
+            board.getWalls(0).addSquare(0,0,6,10,false);
+            board.getWalls(0).deleteWall(3,9);
+            board.getWalls(0).deleteWall(4,0);
         }
         {
             NonWalls boardDoor = NonWallsDatabase.makeNonWall(3, 9, 0, "board door",board);
@@ -62,7 +62,7 @@ public class BoardDatabase {
             boardDoor.board = board;
             board.addNonWall(boardDoor);
         }
-        board.walls.get(0).addSquareFloor(0,0,7,11,true);
+        board.getWalls(0).addSquareFloor(0,0,7,11,true);
 
         board.addNonWall(NonWallsDatabase.makeNonWall(2,2,0,"mimic",board));
         return board;
@@ -70,12 +70,12 @@ public class BoardDatabase {
     public static Board yaunCaveT(){
         Board board = new Board(20,12);
         {
-            board.walls.get(0).addSquare(0,0,20,12,false);
-            board.walls.get(0).addSquare(0,7,10,5,true);
-            board.walls.get(0).addSquare(16,8,4,4,true);
-            board.walls.get(0).deleteWall(13,11);
-            board.walls.get(0).addSquare(0,1,20,1,true);
-            board.walls.get(0).addSquare(7,6,3,3,true);
+            board.getWalls(0).addSquare(0,0,20,12,false);
+            board.getWalls(0).addSquare(0,7,10,5,true);
+            board.getWalls(0).addSquare(16,8,4,4,true);
+            board.getWalls(0).deleteWall(13,11);
+            board.getWalls(0).addSquare(0,1,20,1,true);
+            board.getWalls(0).addSquare(7,6,3,3,true);
         }
         {
             NonWalls boardDoor = NonWallsDatabase.makeNonWall(13, 11, 0, "board door",board);
@@ -83,7 +83,7 @@ public class BoardDatabase {
             board.addNonWall(boardDoor);
         }
 
-        board.walls.get(0).addSquareFloor(0,0,21,13,true);
+        board.getWalls(0).addSquareFloor(0,0,21,13,true);
 
         board.addNonWall(NonWallsDatabase.makeNonWall(4,4,0,"tall grass",board));
         board.addNonWall(NonWallsDatabase.makeNonWall(4,5,0,"tall grass",board));
@@ -94,7 +94,7 @@ public class BoardDatabase {
         secondFloor.elevation = 1;
         secondFloor.addSquareFloor(0,0,21,13,true);
         secondFloor.addSquare(0,0,20,12,false);
-        board.walls.add(secondFloor);
+        board.addWalls(secondFloor);
         {
             NonWalls stairsUp = NonWallsDatabase.makeNonWall(2,2,0,"stairs up",board);
             NonWalls stairsDown = NonWallsDatabase.makeNonWall(2,3,1,"stairs down",board);
