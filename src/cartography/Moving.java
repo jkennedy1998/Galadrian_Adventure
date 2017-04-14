@@ -2,7 +2,7 @@ package cartography;
 import Battle.*;
 public class Moving {
     public int xPosition, yPosition, range = 7, elevation = 0, speed = 60, initialX, intitialY, tick = 0;
-    boolean playerCollide = true, wallCollide = true;
+    boolean playerCollide = true, wallCollide = true, flying = false;
     public Board board, lastBoard;
     public String name, behavior;
     public int[] lastPosition;
@@ -40,13 +40,23 @@ public class Moving {
             }
         }
     }
-    public void moveUp() {
-        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1)&& inBoardBounds(0,-1))
-            yPosition--;
-        else if(name.equals("projectile")){
-
-            board.removeMoving(this); //if its a projectile it kills it self
+    private boolean questionFloor() {
+        if (flying) return true;
+        for (int scan = 0; scan < board.walls.size(); scan++) {
+            if (board.walls.get(scan).elevation == elevation) {
+                for (int subScan = 0; subScan < board.walls.get(scan).floors.size(); subScan++) {
+                    if (board.walls.get(scan).floors.get(subScan).xPosition == xPosition && board.walls.get(scan).floors.get(subScan).yPosition == yPosition) {
+                        return true;
+                    }
+                }
+            }
         }
+        return false;
+    }
+    public void moveUp() {
+        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1)&& inBoardBounds(0,-1)&& questionFloor())
+            yPosition--;
+        else if(name.equals("projectile"))board.removeMoving(this);
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
@@ -54,7 +64,7 @@ public class Moving {
     }
 
     public void moveDown() {
-        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1)&& inBoardBounds(0,1))
+        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1)&& inBoardBounds(0,1)&& questionFloor())
             yPosition++;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
@@ -64,7 +74,7 @@ public class Moving {
     }
 
     public void moveLeft() {
-        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0) && inBoardBounds(-1,0))
+        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0) && inBoardBounds(-1,0)&& questionFloor())
             xPosition--;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
@@ -74,7 +84,7 @@ public class Moving {
     }
 
     public void moveRight() {
-        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0)&& inBoardBounds(1,0))
+        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0)&& inBoardBounds(1,0)&& questionFloor())
             xPosition++;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
