@@ -27,11 +27,9 @@ public class Walls {
         }
         deleteFloorDuplicates();
     }
-
     public Walls (Walls walls){ // walls from another wall object
         this.walls = walls.walls; //hahaha
     }
-
     public void addWall (Wall wall){
         walls.add(wall);
         deleteWallDuplicates();
@@ -185,5 +183,43 @@ public class Walls {
             if (scan != walls.size()-1) System.out.print(", ");
         }
         System.out.println("};");
+    }
+    public void addSquareFloor(int xPosition, int yPosition, int xDimension, int yDimension, boolean filled){
+        ArrayList floorX = new ArrayList();
+        ArrayList floorY = new ArrayList();
+        if(!filled) {
+            for (int x = xPosition; x < xDimension + xPosition; x++) floorX.add(x);
+            for (int scan = 0; scan < xDimension; scan++) floorY.add(yPosition);
+            for (int x = xPosition; x < xDimension + xPosition; x++) floorX.add(x);
+            for (int scan = 0; scan < xDimension; scan++) floorY.add(yPosition + yDimension - 1);
+            for (int y = yPosition; y < yDimension + yPosition; y++) floorY.add(y);
+            for (int scan = 0; scan < yDimension; scan++) floorX.add(xPosition);
+            for (int y = yPosition; y < yDimension + yPosition; y++) floorY.add(y);
+            for (int scan = 0; scan < yDimension; scan++) floorX.add(xPosition + xDimension - 1);
+            int[] x = new int[floorX.size()];
+            int[] y = new int[floorX.size()];
+            if(floorX.size() != floorY.size()){
+                System.out.println("error: floors not created with equal x and y coord lengths when attempting to make a square");
+            }
+            for (int scan = 0; scan < floorX.size(); scan++) {
+                x[scan] = (int) floorX.get(scan);
+            }
+            for (int scan = 0; scan < floorY.size(); scan++) {
+                y[scan] = (int) floorY.get(scan);
+            }
+            addFloor(x, y);
+        }
+        else {
+            int x = xPosition,y = yPosition;
+            for(int scan = 0; scan < xDimension*yDimension; scan++){
+                addFloor(x,y);
+                x++;
+                if (x > xDimension+xPosition){
+                    x = xPosition;
+                    y++;
+                }
+            }
+        }
+
     }
 }
