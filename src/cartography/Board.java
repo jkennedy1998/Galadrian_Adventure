@@ -147,9 +147,6 @@ public class Board {
         int elevation = adventurerework.adam.elevation;
         int xScan = 0, yScan = 0, wallsIndex = 0;
         for (int scan = 0; scan < walls.size(); scan++) if (walls.get(scan).elevation == elevation) wallsIndex = scan;
-        System.out.println(adventurerework.adam.elevation == walls.get(wallsIndex).elevation);
-
-
         while (yScan < yDimension) {
             while (xScan < xDimension) {
                 if(walls.get(wallsIndex).questionFloor(xScan,yScan) != null)adventurerework.window.drawFloor(xScan,yScan,walls.get(wallsIndex).questionFloor(xScan,yScan));

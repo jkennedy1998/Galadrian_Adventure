@@ -91,7 +91,8 @@ public class BoardDatabase {
         board.addNonWall(NonWallsDatabase.makeNonWall(5,4,0,"tall grass",board));
         board.addNonWall(NonWallsDatabase.makeNonWall(6,6,0,"tall grass",board));
         Walls secondFloor = new Walls();
-        secondFloor.addSquareFloor(0,0,21,13,false);
+        secondFloor.elevation = 1;
+        secondFloor.addSquareFloor(0,0,21,13,true);
         secondFloor.addSquare(0,0,20,12,false);
         board.walls.add(secondFloor);
         {
