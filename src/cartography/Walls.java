@@ -50,7 +50,9 @@ public class Walls {
         deleteFloorDuplicates();
     }
     public void addFloor (int xPosition, int yPosition){
-        Floor floorObject = new Floor(xPosition,yPosition,elevation,"floor");
+        String name = "red";
+        if(elevation%2 == 1) name = "blue";
+        Floor floorObject = new Floor(xPosition,yPosition,elevation,name);
         floors.add(floorObject);
         deleteFloorDuplicates();
 
@@ -148,7 +150,7 @@ public class Walls {
         }
     }
     public void deleteFloor(int x, int y) {
-        for (int scan = 0; scan < walls.size(); scan++) {
+        for (int scan = 0; scan < floors.size(); scan++) {
             if (floors.get(scan).xPosition == x && floors.get(scan).yPosition == y) {
                 floors.remove(scan);
             }

@@ -52,10 +52,11 @@ public class Moving {
     public void openMenu(){
         System.out.println("you should code a menu when you stop debugging.");
     }
-    private boolean questionFloor() {
+    private boolean questionFloor(int xPosition, int yPosition) {
         if (flying) return true;
 
-                for (int subScan = 0; subScan < board.getWalls(elevation).floors.size(); subScan++) {
+                for (int subScan = 0; subScan < board.getWalls(elevation).floors.size(); subScan++) { //account for position you want to go in. not the position you are in
+
                     if (board.getWalls(elevation).floors.get(subScan).xPosition == xPosition && board.getWalls(elevation).floors.get(subScan).yPosition == yPosition) {
                         return true;
                     }
@@ -64,7 +65,7 @@ public class Moving {
         return false;
     }
     public void moveUp() {
-        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1)&& inBoardBounds(0,-1)&& questionFloor())
+        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1)&& inBoardBounds(0,-1)&& questionFloor(xPosition,yPosition-1))
             yPosition--;
         else if(name.equals("projectile"))board.removeMoving(this);
         questionNonWalls();
@@ -75,7 +76,7 @@ public class Moving {
     }
 
     public void moveDown() {
-        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1)&& inBoardBounds(0,1)&& questionFloor())
+        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1)&& inBoardBounds(0,1)&& questionFloor(xPosition, yPosition+1))
             yPosition++;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
@@ -86,7 +87,7 @@ public class Moving {
     }
 
     public void moveLeft() {
-        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0) && inBoardBounds(-1,0)&& questionFloor())
+        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0) && inBoardBounds(-1,0)&& questionFloor(xPosition-1, yPosition))
             xPosition--;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
@@ -97,7 +98,7 @@ public class Moving {
     }
 
     public void moveRight() {
-        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0)&& inBoardBounds(1,0)&& questionFloor())
+        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0)&& inBoardBounds(1,0)&& questionFloor(xPosition+1, yPosition))
             xPosition++;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
         questionNonWalls();
