@@ -101,6 +101,11 @@ public class BoardDatabase {
             board.addNonWall(stairsDown);
             board.addNonWall(stairsUp);
         }
+        {
+            NonWalls chest = NonWallsDatabase.makeNonWall(5,5,1,"chest",board);
+            chest.description = "wood axe";
+            board.addNonWall(chest);
+        }
         return board;
     }
 

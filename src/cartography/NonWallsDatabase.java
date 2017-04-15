@@ -1,4 +1,5 @@
 package cartography;
+import Battle.Inventory;
 import Battle.Leveler;
 import Battle.adventurerework;
 public class NonWallsDatabase {
@@ -9,6 +10,11 @@ public class NonWallsDatabase {
         if(wallType.equals("sign")) {
             nonwall.interactOnUse = true;
             nonwall.colidable = true;
+        }
+        else if(wallType.equals("small tree")){
+            nonwall.interactOnCollision = false;
+            nonwall.colidable = true;
+            nonwall.interactOnUse = true;
         }
         else if(wallType.equals("item")){
             nonwall.interactOnUse = true;
@@ -61,6 +67,9 @@ public class NonWallsDatabase {
 //        else if(current.wallType.equals("locked door")){
 //
 //        }
+        else if(current.wallType.equals("small tree")){
+            adventurerework.window.print("You could probably cut past this with the proper tools.");
+        }
         else if(current.wallType.equals("button")){
             if(current.facing == 0 && moving.lastPosition[1] == current.yPosition-1) {
                 current.state = !current.state;
@@ -188,7 +197,11 @@ public class NonWallsDatabase {
         }
         else if (current.wallType.equals("sign") && !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into a sign.
         else if(current.wallType.equals("chest") && moving.behavior.equals("player")){
-            adventurerework.window.print("You have found a "+current.description+"!");
+            if(current.description.equals("no item")) adventurerework.window.print("its empty");
+            else {
+                if(adventurerework.inventory.recieceItem(current.description)) current.description = "no item";
+
+            }
         }
         else if (current.wallType.equals("chest") && !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into a chest.
         else System.out.println("error: wallType isn't set to a legitimate type\nWalltype = ["+current.wallType+"]");
