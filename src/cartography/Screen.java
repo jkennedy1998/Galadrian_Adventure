@@ -1,6 +1,10 @@
 package cartography;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Screen extends JFrame {
@@ -151,12 +155,23 @@ public class Screen extends JFrame {
 
 }
 public void drawFloor(int xPosition, int yPosition, String name){
+BufferedImage tile = null;
+        try {
+            tile = ImageIO.read(new File("Images.grass[0,0].jpg"));
+        }
+        catch (IOException e){
+            System.out.println(e);
+        }
+
+
+
+
     Graphics g = getGraphics();
     g.setColor(Color.blue);
     if (name.equals("red"))
     g.setColor(Color.red);
-
     g.fillRect(xPosition*30+30,yPosition*30+80,30,30);
+    g.drawImage(tile,xPosition,yPosition,null);
 }
     public  void voidLines(){log = emptyLog;}
     public  void print(String singleLine){
