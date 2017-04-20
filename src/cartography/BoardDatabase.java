@@ -42,6 +42,7 @@ public class BoardDatabase {
         board.addNonWall(NonWallsDatabase.makeNonWall(10,8,0,"tall grass",board));
         board.addNonWall(NonWallsDatabase.makeNonWall(9,7,0,"tall grass",board));
         board.addNonWall(NonWallsDatabase.makeNonWall(6,6,0,"tall grass",board));
+        board.addNonWall(NonWallsDatabase.makeNonWall(6,7,0,"small tree",board));
 
         return board;
     }

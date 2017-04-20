@@ -69,7 +69,23 @@ public class NonWallsDatabase {
 //        }
         else if(current.wallType.equals("small tree")){
             adventurerework.window.print("You could probably cut past this with the proper tools.");
-            if(adventurerework.inventory.hasItem("wood axe")){
+            if(adventurerework.inventory.hasItem("wood axe") != -1){
+                adventurerework.window.print("you grip the handle of your wood axe.");
+
+                String[] buttons = {"chop down the small tree", "put away your wood axe"};
+                adventurerework.window.makeButtons(buttons);
+                adventurerework.window.drawButtons();
+                int choice = -1;
+                while(choice == -1){
+                    System.out.print("");
+                    choice = adventurerework.window.questionButtonClick();
+                }
+                adventurerework.window.voidButtons();
+                if(choice == 0){
+                    current.board.removeNonwall(current);
+                    adventurerework.inventory.updateItemUse(adventurerework.inventory.hasItem("wood axe"));
+                }
+
 
             }
         }
