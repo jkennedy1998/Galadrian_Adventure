@@ -69,6 +69,9 @@ public class NonWallsDatabase {
 //        }
         else if(current.wallType.equals("small tree")){
             adventurerework.window.print("You could probably cut past this with the proper tools.");
+            if(adventurerework.inventory.hasItem("wood axe")){
+
+            }
         }
         else if(current.wallType.equals("button")){
             if(current.facing == 0 && moving.lastPosition[1] == current.yPosition-1) {
@@ -181,7 +184,7 @@ public class NonWallsDatabase {
             }
 
         }
-        else if (current.wallType.equals("item")&& !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into an item
+            else if (current.wallType.equals("item")&& !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into an item
         else if(current.wallType.equals("dart trap")){
             Moving dart = new Moving(current.xPosition,current.yPosition, current.board, "projectile", false);
             current.board.movings.add(dart);

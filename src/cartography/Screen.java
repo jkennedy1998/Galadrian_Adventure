@@ -155,16 +155,13 @@ public class Screen extends JFrame {
 
 }
 public void drawFloor(int xPosition, int yPosition, String name){
-BufferedImage tile = null;
+        BufferedImage tile = null;
         try {
-            tile = ImageIO.read(new File("Images.grass[0,0].jpg"));
+            tile = ImageIO.read(new File("cartography/grass[0,0].jpg"));
         }
         catch (IOException e){
-            System.out.println(e);
+//            System.out.println(e);
         }
-
-
-
 
     Graphics g = getGraphics();
     g.setColor(Color.blue);
