@@ -16,6 +16,11 @@ public class NonWallsDatabase {
             nonwall.colidable = true;
             nonwall.interactOnUse = true;
         }
+        else if(wallType.equals("boulder")){
+            nonwall.interactOnCollision = false;
+            nonwall.colidable = true;
+            nonwall.interactOnUse = true;
+        }
         else if(wallType.equals("item")){
             nonwall.interactOnUse = true;
         }
@@ -73,6 +78,30 @@ public class NonWallsDatabase {
                 adventurerework.window.print("you grip the handle of your wood axe.");
 
                 String[] buttons = {"chop down the small tree", "put away your wood axe"};
+                adventurerework.window.makeButtons(buttons);
+                adventurerework.window.drawButtons();
+                int choice = -1;
+                while(choice == -1){
+                    System.out.print("");
+                    choice = adventurerework.window.questionButtonClick();
+                }
+                adventurerework.window.voidButtons();
+                if(choice == 0){
+                    current.board.removeNonwall(current);
+                    adventurerework.inventory.updateItemUse(adventurerework.inventory.hasItem("wood axe"));
+                }
+
+
+            }
+        }
+        else if(current.wallType.equals("boulder")){
+            adventurerework.window.print("You see a crack in the stone");
+            adventurerework.window.print("You could probably break it with the right tool");
+
+            if(adventurerework.inventory.hasItem("pick axe") != -1){
+                adventurerework.window.print("you grip the handle of your pick axe.");
+
+                String[] buttons = {"pick away at the rough", "put away your pick"};
                 adventurerework.window.makeButtons(buttons);
                 adventurerework.window.drawButtons();
                 int choice = -1;

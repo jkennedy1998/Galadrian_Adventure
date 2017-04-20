@@ -294,7 +294,7 @@ public class monsterSelection {
         beastStats[1] = "bombard";
         beastStats[2] = "punch";
         beastStats[3] = "stone toss";
-        beastStats[4] = ""+(outOfTwo("mead","spade"));
+        beastStats[4] = ""+outOfTwo(outOfTwo("mead","spade"),"pick axe");
         beastStats[5] = ""+(95);
         beastStats[6] = ""+(30);
         beastStats[11] = ""+(19);
