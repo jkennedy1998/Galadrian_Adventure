@@ -118,9 +118,8 @@ public class Moving {
         for(int scan = 0; scan < board.movings.size(); scan++){
             temp = board.movings.get(scan);
             if (xPosition+x == temp.xPosition&&yPosition+y == temp.yPosition&&temp.playerCollide &&!(temp.name.equals(name))&&elevation==temp.elevation){
-
-                if(behavior.equals("player"))adventurerework.startEncounter(temp);
-                else adventurerework.startEncounter(this);
+//                if(behavior.equals("player"))adventurerework.startEncounter(temp);
+//                else adventurerework.startEncounter(this);
                 return true;
             }
         }

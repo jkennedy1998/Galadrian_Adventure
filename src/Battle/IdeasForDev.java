@@ -13,12 +13,11 @@
 //    Making an object where all variables are tied to the single object to make it more condensed
 
 //enemies become enraged sometimes when the fall below 20% health. or become fearfull
-    //base off of their behavior in cartography? hat would be sick
+    //base off of their behavior in cartography? that would be sick
 
 //add more nonwalls to use in puzzles or to prevent players from going into an area that they are not ready for
 //  locked doors and linked keys
 //  lock picks?!?!
-//  breakable terrain (like small trees or boulders that you can break with axes or shovels)
 //  something players can collect
 
 //revamp items to go off of a weight based system

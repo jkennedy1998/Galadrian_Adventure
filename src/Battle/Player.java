@@ -1,5 +1,7 @@
 package Battle;
 
+import Battle.ItemStuffs.*;
+
 import javax.swing.*;
 
 public class Player {
@@ -20,11 +22,11 @@ public class Player {
         accuracyMult = accuracyMultiplier;
 
     }
-    public String[] PlayerItem() {//need to not hard code. make scan through items.
-        String ItemReturn[];
+    public Item PlayerItem() {
+        Item ItemReturn;
         String[] buttons = new String[adventurerework.inventory.items.size()];
         for(int scan = 0; scan < adventurerework.inventory.items.size(); scan++) {
-            buttons[scan] = adventurerework.inventory.items.get(scan);
+            buttons[scan] = adventurerework.inventory.items.get(scan).name;
         }
         adventurerework.window.makeButtons(buttons);
         adventurerework.window.drawButtons();
@@ -33,23 +35,9 @@ public class Player {
             System.out.print("");
             choice = adventurerework.window.questionButtonClick();
         }
-
         adventurerework.window.voidButtons();
-//        String Item1[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[0]);
-//        String item1 = Item1[0];
-//        String Item2[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[1]);
-//        String item2 = Item2[0];
-//        String Item3[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[2]);
-//        String item3 = Item3[0];
-//        String Item4[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[3]);
-//        String item4 = Item4[0];
-//        String Item5[] = ItemDirectory.findItemValues(adventurerework.inventory.itemStorage[4]);
-//        String item5 = Item5[0];
-//
-//        String[] buttons = {item1, item2, item3, item4, item5};
-
-                ItemReturn = ItemDirectory.findItemValues(adventurerework.inventory.items.get(choice));
-                adventurerework.inventory.updateItemUse(choice);
+        ItemReturn = ItemDatabase.makeItem(adventurerework.inventory.items.get(choice).name);
+        adventurerework.inventory.updateItemUse(ItemReturn);
         return ItemReturn;
     }
 

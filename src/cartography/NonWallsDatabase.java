@@ -41,6 +41,11 @@ public class NonWallsDatabase {
             nonwall.colidable = true;
             nonwall.interactOnUse = true;
         }
+
+        else if(wallType.equals("locked door")){
+            nonwall.colidable = true;
+            nonwall.interactOnUse = true;
+        }
         else if(wallType.equals("dart trap")) {
             nonwall.colidable = true;
             nonwall.interactOnCollision = false;
@@ -69,12 +74,19 @@ public class NonWallsDatabase {
             current.colidable = false;
             current.state = false;
         }
-//        else if(current.wallType.equals("locked door")){
-//
-//        }
+        else if(current.wallType.equals("locked door")&& moving.behavior.equals("player")) {
+            adventurerework.window.print("You turn the handle with no avail");
+            if(adventurerework.inventory.hasItem("key") != null){
+                current.wallType = "open door";
+                current.colidable = false;
+                current.state = false;
+            }
+
+        }
+        else if(current.wallType.equals("locked door")&&! moving.behavior.equals("player")) {}
         else if(current.wallType.equals("small tree")){
             adventurerework.window.print("You could probably cut past this with the proper tools.");
-            if(adventurerework.inventory.hasItem("wood axe") != -1){
+            if(adventurerework.inventory.hasItem("wood axe") != null){
                 adventurerework.window.print("you grip the handle of your wood axe.");
 
                 String[] buttons = {"chop down the small tree", "put away your wood axe"};
@@ -98,7 +110,7 @@ public class NonWallsDatabase {
             adventurerework.window.print("You see a crack in the stone");
             adventurerework.window.print("You could probably break it with the right tool");
 
-            if(adventurerework.inventory.hasItem("pick axe") != -1){
+            if(adventurerework.inventory.hasItem("pick axe") != null){
                 adventurerework.window.print("you grip the handle of your pick axe.");
 
                 String[] buttons = {"pick away at the rough", "put away your pick"};
@@ -142,12 +154,13 @@ public class NonWallsDatabase {
         }
         else if(current.wallType.equals("mimic")&&moving.behavior.equals("player")){
             current.board.removeNonwall(current);
-            adventurerework.startEncounter(new Moving(-1,-1,current.board,"mimic",false));
+            current.board.movings.add(new Moving(current.xPosition,current.yPosition,current.board,"mimic",false));
         }
         else if(current.wallType.equals("mimic")&&!moving.behavior.equals("player"));
         else if(current.wallType.equals("tall grass")){
             if(Math.random()>.9 && moving.behavior.equals("player")){
-                adventurerework.startEncounter(new Moving(-1,-1,moving.board,Battle.monsterSelection.selection(current.board),false)); //make this work
+//                adventurerework.startEncounter(new Moving(-1,-1,moving.board,Battle.monsterSelection.selection(current.board),false));
+                System.out.println("random grass encounter. what should be happening?");
             }
         }
         else if(current.wallType.equals("camp site") && moving.behavior.equals("player")){
@@ -179,7 +192,7 @@ public class NonWallsDatabase {
                         adventurerework.window.voidButtons();
                         if (choice2 == 0){
                             if (Math.random() * 10 > 9)  //10% chance of encounter
-                                adventurerework.startEncounter(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
+                                current.board.movings.add(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
                             if (adventurerework.time>=24){
                                 adventurerework.time = adventurerework.time-24;
                                 adventurerework.day++;
@@ -189,7 +202,7 @@ public class NonWallsDatabase {
                             }
                         else{
                             if (Math.random() * 10 > 6)  //40% chance of encounter
-                                    adventurerework.startEncounter(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
+                                    current.board.movings.add(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
                             if (adventurerework.time>=24){
                                 adventurerework.time = adventurerework.time-24;
                                 adventurerework.day++;

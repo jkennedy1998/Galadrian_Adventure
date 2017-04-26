@@ -17,7 +17,7 @@
 //        setItemsSold();
 //        setPrices();
 //        boolean done= false;
-//        String[] buttons = {ItemDirectory.findItemValues(itemsSold[0])[0] + " for " + itemPrices[0], ItemDirectory.findItemValues(itemsSold[1])[0] + " for " + itemPrices[1], ItemDirectory.findItemValues(itemsSold[2])[0] + " for " + itemPrices[2], ItemDirectory.findItemValues(itemsSold[3])[0] + " for " + itemPrices[3],"Leave the shop."};
+//        String[] buttons = {ItemDatabase.findItemValues(itemsSold[0])[0] + " for " + itemPrices[0], ItemDatabase.findItemValues(itemsSold[1])[0] + " for " + itemPrices[1], ItemDatabase.findItemValues(itemsSold[2])[0] + " for " + itemPrices[2], ItemDatabase.findItemValues(itemsSold[3])[0] + " for " + itemPrices[3],"Leave the shop."};
 //        do {
 //            int answer = JOptionPane.showOptionDialog(null, "Which items would you like to purchase?\nYou have "+ adventurerework.coins+" coins.", "",
 //                    JOptionPane.PLAIN_MESSAGE, 1, null, buttons, null);
