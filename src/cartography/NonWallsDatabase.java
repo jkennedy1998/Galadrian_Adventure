@@ -249,6 +249,7 @@ public class NonWallsDatabase {
                 current.link.board.movings.add(moving);
                 adventurerework.window.refreshBoard();
                 moving.board.printBoard();
+                moving.updateMovings();
 
             }
         }

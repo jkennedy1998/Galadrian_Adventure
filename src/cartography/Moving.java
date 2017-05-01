@@ -1,6 +1,6 @@
 package cartography;
 import Battle.*;
-public class Moving {
+public class Moving extends Thread {
     public int xPosition, yPosition, range = 7, elevation = 0, speed = 60, initialX, intitialY, tick = 0, facing = 2;
     boolean playerCollide = false, wallCollide = true, flying = false;
     public Board board, lastBoard;
@@ -38,6 +38,55 @@ public class Moving {
                 temp.interact(this);
             }
 
+        }
+    }
+    public void run(){
+        board.printTile(xPosition/30,yPosition/30,elevation);
+        if(behavior.equals("player")){
+            if(KeyboardListener.wPressed&&KeyboardListener.dPressed){
+                if(beat%2 == 0)moveUp();
+                else moveRight();
+            }
+            else if(KeyboardListener.wPressed&&KeyboardListener.aPressed){
+                if(beat%2 == 0)moveUp();
+                else moveLeft();
+            }
+            else if(KeyboardListener.sPressed&&KeyboardListener.dPressed){
+                if(beat%2 == 0)moveDown();
+                else moveRight();
+            }
+            else if(KeyboardListener.sPressed&&KeyboardListener.aPressed){
+                if(beat%2 == 0)moveDown();
+                else moveLeft();
+            }
+            else if (KeyboardListener.wPressed) moveUp();
+            else if (KeyboardListener.sPressed) moveDown();
+            else if (KeyboardListener.aPressed) moveLeft();
+            else if (KeyboardListener.dPressed) moveRight();
+            else if (KeyboardListener.ePressed) interact();
+        }
+        else{
+            int temp = (int) Math.round(Math.random());
+            int[] answer = BehaviorDatabase.respond(this);
+            if (answer[0] == 1 && (temp == 1 || answer[1] == 0)) moveRight();
+            else if (answer[0] == -1 && (temp == 1 || answer[1] == 0)) moveLeft();
+            else if (answer[1] == -1 && (temp == 0 || answer[0] == 0)) moveUp();
+            else if (answer[1] == 1 && (temp == 0 || answer[0] == 0)) moveDown();
+        }
+    }
+    public void updateMovings() {//should only call for adam!
+        for (int scan = 0; scan < board.movings.size(); scan++) {
+//            if(!board.movings.get(scan).behavior.equals("player"))
+            board.movings.get(scan).run();
+//        }
+        }
+        if(lastBoard != null)
+        for(int scan = 0; scan < lastBoard.movings.size(); scan++){
+            try {
+                lastBoard.movings.get(scan).join();
+            }catch (java.lang.InterruptedException e){
+                System.out.println(e);
+            }
         }
     }
     public void interact(){
