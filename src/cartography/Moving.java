@@ -41,7 +41,7 @@ public class Moving extends Thread {
         }
     }
     public void run(){
-        
+
         board.printTile(xPosition/30,yPosition/30,elevation);
         if(behavior.equals("player")){
             if(KeyboardListener.wPressed&&KeyboardListener.dPressed){
