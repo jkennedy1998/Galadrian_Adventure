@@ -155,13 +155,14 @@ public class Screen extends JFrame {
 
 }
     public void drawWall(int xPosition, int yPosition, String name){
-        Graphics g = getGraphics();
-        g.setColor(Color.gray);
-        g.fillRect(xPosition+30,yPosition+80,30,30);
-        g.setColor(Color.black);
-        g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
-        g.drawString(name, (xPosition) + 32, (yPosition) + 100);
-
+        if(name != null) {
+            Graphics g = getGraphics();
+            g.setColor(Color.gray);
+            g.fillRect(xPosition + 30, yPosition + 80, 30, 30);
+            g.setColor(Color.black);
+            g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
+            g.drawString(name.substring(0,1), (xPosition) + 32, (yPosition) + 100);
+        }
     }
 public void drawFloor(int xPosition, int yPosition, String name){
         BufferedImage tile = null;
@@ -173,10 +174,13 @@ public void drawFloor(int xPosition, int yPosition, String name){
         }
 
     Graphics g = getGraphics();
-    g.setColor(Color.blue);
-    if (name.equals("red"))
-    g.setColor(Color.red);
-    g.fillRect(xPosition+30,yPosition+80,30,30);
+        if(name != null) {
+            g.setColor(Color.blue);
+            if (name.equals("red"))
+                g.setColor(Color.red);
+            g.fillRect(xPosition + 30, yPosition + 80, 30, 30);
+        }
+
 //    g.drawImage(tile,xPosition,yPosition,null);
 }
     public  void voidLines(){log = emptyLog;}

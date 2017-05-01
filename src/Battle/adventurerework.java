@@ -39,11 +39,12 @@ public class adventurerework {
     }
     public static void run() { //make run by speed
         MovingTimer timer = new MovingTimer();
+        adam.board.printBoard();//this needs to change
         while (true) {
 //            for (int scan = 0; scan < adam.board.movings.size(); scan++) {
 //                strive(adam.board.movings.get(scan));
 //            }
-            try{Thread.sleep(7);}
+            try{Thread.sleep(2);}
             catch (java.lang.InterruptedException e){
                 System.out.println("oh no");//exeption should not happen
             }
@@ -51,9 +52,8 @@ public class adventurerework {
         }
     }
     public static void strive(Moving piece) {
+        piece.board.printTile(piece.xPosition/30,piece.yPosition/30,piece.elevation);
         if (piece.behavior.equals("player")) {
-
-            adam.board.printBoard();
 
             if (keyPressed.equals("W")) piece.moveUp();
             else if (keyPressed.equals("S")) piece.moveDown();

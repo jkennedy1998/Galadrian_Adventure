@@ -144,10 +144,24 @@ public class Board {
 //        }
 //    }
 
-        public void printBoard(){
+        public void printBoard(){//only called at the start of a new board.
         printFloors();
         printWalls(); //and nonwalls;
         printMovings();
+    }
+    public void printTile(int x, int y,int elevation){//called when things move or change.
+        //print floors per tile
+        adventurerework.window.drawFloor(x*30,y*30,getWalls(elevation).questionFloor(x*30,y*30));
+        //print walls per tile
+        adventurerework.window.drawWall(x*30,y*30,getWalls(elevation).questionWallAndNon(x*30,y*30));
+        //print movings per tile
+        for(int scan = 0; movings.size() > scan; scan++){
+            if(movings.get(scan).xPosition/30 == x && movings.get(scan).yPosition/30 == y){
+                adventurerework.window.drawCharacter(movings.get(scan).xPosition,movings.get(scan).yPosition,movings.get(scan).getNameAbbreviation());
+            }
+        }
+
+
     }
     private void printMovings(){
         int elevation = adventurerework.adam.elevation;

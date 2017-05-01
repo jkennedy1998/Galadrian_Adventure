@@ -225,7 +225,7 @@ public class NonWallsDatabase {
             current.checkState();
             current.link.checkState();
         }
-        else if(current.wallType.equals("board door")) {
+        else if(current.wallType.equals("board door")&&moving.behavior.equals("player")) {
             if (moving.board == moving.lastBoard) { //this makes sure it doesnt go through doors multiple times.
                 moving.xPosition = current.link.xPosition;
                 moving.yPosition = current.link.yPosition;
@@ -236,6 +236,7 @@ public class NonWallsDatabase {
                 adventurerework.window.refreshBoard();
             }
         }
+        else if(current.wallType.equals("board door")&&!moving.behavior.equals("player")) {}
         else if (current.wallType.equals("item")&& moving.behavior.equals("player")){
             if(adventurerework.inventory.recieceItem(current.description)){
                 current.board.removeNonwall(current);
