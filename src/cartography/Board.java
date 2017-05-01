@@ -151,9 +151,22 @@ public class Board {
     }
     public void printTile(int x, int y,int elevation){//called when things move or change.
         //print floors per tile
+        adventurerework.window.drawFloor(x*30-30,y*30,getWalls(elevation).questionFloor(x*30-30,y*30));
+        adventurerework.window.drawFloor(x*30+30,y*30,getWalls(elevation).questionFloor(x*30+30,y*30));
         adventurerework.window.drawFloor(x*30,y*30,getWalls(elevation).questionFloor(x*30,y*30));
+        adventurerework.window.drawFloor(x*30,y*30-30,getWalls(elevation).questionFloor(x*30,y*30-30));
+        adventurerework.window.drawFloor(x*30,y*30+30,getWalls(elevation).questionFloor(x*30,y*30+30));
+//        adventurerework.window.drawFloor(x*30+30,y*30+30,getWalls(elevation).questionFloor(x*30+30,y*30+30));
+//        adventurerework.window.drawFloor(x*30+30,y*30-30,getWalls(elevation).questionFloor(x*30+30,y*30-30));
+//        adventurerework.window.drawFloor(x*30-30,y*30+30,getWalls(elevation).questionFloor(x*30-10,y*30+30));
+//        adventurerework.window.drawFloor(x*30-30,y*30-30,getWalls(elevation).questionFloor(x*30-30,y*30-30));
         //print walls per tile
         adventurerework.window.drawWall(x*30,y*30,getWalls(elevation).questionWallAndNon(x*30,y*30));
+        adventurerework.window.drawWall(x*30+30,y*30,getWalls(elevation).questionWallAndNon(x*30+30,y*30));
+        adventurerework.window.drawWall(x*30-30,y*30,getWalls(elevation).questionWallAndNon(x*30-30,y*30));
+        adventurerework.window.drawWall(x*30,y*30+30,getWalls(elevation).questionWallAndNon(x*30,y*30+30));
+        adventurerework.window.drawWall(x*30,y*30-30,getWalls(elevation).questionWallAndNon(x*30,y*30-30));
+
         //print movings per tile
         for(int scan = 0; movings.size() > scan; scan++){
             if(movings.get(scan).xPosition/30 == x && movings.get(scan).yPosition/30 == y){
