@@ -61,15 +61,15 @@ public class adventurerework {
                 if(piece.beat%2 == 0)piece.moveUp();
                 else piece.moveRight();
             }
-            if(KeyboardListener.wPressed&&KeyboardListener.aPressed){
+            else if(KeyboardListener.wPressed&&KeyboardListener.aPressed){
                 if(piece.beat%2 == 0)piece.moveUp();
                 else piece.moveLeft();
             }
-            if(KeyboardListener.sPressed&&KeyboardListener.dPressed){
+            else if(KeyboardListener.sPressed&&KeyboardListener.dPressed){
                 if(piece.beat%2 == 0)piece.moveDown();
                 else piece.moveRight();
             }
-            if(KeyboardListener.sPressed&&KeyboardListener.aPressed){
+            else if(KeyboardListener.sPressed&&KeyboardListener.aPressed){
                 if(piece.beat%2 == 0)piece.moveDown();
                 else piece.moveLeft();
             }
