@@ -237,8 +237,12 @@ public class NonWallsDatabase {
         }
         else if(current.wallType.equals("board door")&&moving.behavior.equals("player")) {
             if (moving.board == moving.lastBoard) { //this makes sure it doesnt go through doors multiple times.
-                moving.xPosition = current.link.xPosition;
-                moving.yPosition = current.link.yPosition;
+                moving.xPosition = current.link.xPosition+15;
+                moving.yPosition = current.link.yPosition+15;
+                if(moving.facing == 0 )moving.yPosition-=30;
+                else if(moving.facing == 1)moving.xPosition+= 30;
+                else if(moving.facing == 2)moving.yPosition+= 30;
+                else moving.xPosition -= 30;
                 moving.elevation = current.link.elevation;
                 moving.board = current.link.board;
                 current.board.removeMoving(moving);
