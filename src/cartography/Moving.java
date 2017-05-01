@@ -2,14 +2,14 @@ package cartography;
 import Battle.*;
 public class Moving {
     public int xPosition, yPosition, range = 7, elevation = 0, speed = 60, initialX, intitialY, tick = 0, facing = 2;
-    boolean playerCollide = true, wallCollide = true, flying = false;
+    boolean playerCollide = false, wallCollide = true, flying = false;
     public Board board, lastBoard;
     public String name, behavior;
     public int[] lastPosition;
 
     public Moving(int xPosition, int yPosition, Board board, String name, boolean player) {
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
+        this.xPosition = 30*xPosition;
+        this.yPosition = 30*yPosition;
         intitialY = yPosition;
         initialX = xPosition;
         this.board = board;
@@ -56,8 +56,7 @@ public class Moving {
         if (flying) return true;
 
                 for (int subScan = 0; subScan < board.getWalls(elevation).floors.size(); subScan++) { //account for position you want to go in. not the position you are in
-
-                    if (board.getWalls(elevation).floors.get(subScan).xPosition == xPosition && board.getWalls(elevation).floors.get(subScan).yPosition == yPosition) {
+                    if (board.getWalls(elevation).floors.get(subScan).xPosition/30 == xPosition/30 && board.getWalls(elevation).floors.get(subScan).yPosition/30 == yPosition/30) {
                         return true;
                     }
 
@@ -112,12 +111,12 @@ public class Moving {
         if (yMove+yPosition > board.yDimension-1 || yMove+yPosition < 0) return false;
         return true;
     }
-    public boolean questionPlayerCollision(int x, int y){ //up down left right in respective order starting at 0
+    public boolean questionPlayerCollision(int x, int y){
         if (!playerCollide) return false;
         Moving temp;
         for(int scan = 0; scan < board.movings.size(); scan++){
             temp = board.movings.get(scan);
-            if (xPosition+x == temp.xPosition&&yPosition+y == temp.yPosition&&temp.playerCollide &&!(temp.name.equals(name))&&elevation==temp.elevation){
+            if ((xPosition+x)/30 == temp.xPosition/30&&(yPosition+y)/30 == temp.yPosition/30&&temp.playerCollide &&!(temp.name.equals(name))&&elevation==temp.elevation){
 //                if(behavior.equals("player"))adventurerework.startEncounter(temp);
 //                else adventurerework.startEncounter(this);
                 return true;
@@ -127,8 +126,10 @@ public class Moving {
     }
     public int questionWallCollision(int x, int y){ //0 if no collision, 1 if x collision in desired direction, 2 if y collision in desired direction
         boolean xCollide = false, yCollide = false;
-        if (board.questionCollision(xPosition+x, yPosition, elevation)) xCollide = true;
-        if (board.questionCollision(xPosition, yPosition+y, elevation)) yCollide = true;
+        if (board.questionCollision((xPosition+x)/30, yPosition/30, elevation)) xCollide = true;
+        if (board.questionCollision(xPosition/30, (yPosition+y)/30, elevation)) {
+            yCollide = true;
+        }
 
         if(xCollide == yCollide)
             return 0;

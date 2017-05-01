@@ -1,9 +1,7 @@
 package Battle;
 
-import Battle.ItemStuffs.Item;
 import cartography.*;
 
-import java.util.concurrent.TimeUnit;
 
 public class adventurerework {
     public static Moving adam;
@@ -11,10 +9,12 @@ public class adventurerework {
     public static Board hell = new Board(1,1,new Walls(x,y));
     public static Screen window = new Screen();
     public static String keyPressed = "";
+    public static boolean wPressed = false, aPressed = false, sPressed = false, dPressed = false;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
     public static int roundCount = 1;
-    public static String[] armor = {"","peasant's blouse","","","peasant's rags",""};
+    public static String[] armor =
+            {"","peasant's blouse","","","peasant's rags",""};
     public static String tempBeastName = "";
     public static String tempUserString = "";
     public static double time;
@@ -43,7 +43,7 @@ public class adventurerework {
 //            for (int scan = 0; scan < adam.board.movings.size(); scan++) {
 //                strive(adam.board.movings.get(scan));
 //            }
-            try{Thread.sleep(14);}
+            try{Thread.sleep(7);}
             catch (java.lang.InterruptedException e){
                 System.out.println("oh no");//exeption should not happen
             }

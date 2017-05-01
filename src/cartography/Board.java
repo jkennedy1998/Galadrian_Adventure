@@ -82,9 +82,21 @@ public class Board {
 
     public NonWalls findNonWall(int xPosition, int yPosition, int elevation) {
         for (int scan = 0; scan < walls.size(); scan++) {
+
             if (walls.get(scan).elevation == elevation)
                 for (int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++)
-                    if (walls.get(scan).walls.get(subScan).yPosition == yPosition && walls.get(scan).walls.get(subScan).xPosition == xPosition&&walls.get(scan).walls.get(subScan).nonWall) {
+                    if (walls.get(scan).walls.get(subScan).yPosition/30 == yPosition/30 && walls.get(scan).walls.get(subScan).xPosition/30 == xPosition/30&&walls.get(scan).walls.get(subScan).nonWall) {
+                        return (NonWalls) walls.get(scan).walls.get(subScan);
+                    }
+        }
+        return null;
+    }
+     public NonWalls findNonWallOnGrid(int xPosition, int yPosition, int elevation) {
+        for (int scan = 0; scan < walls.size(); scan++) {
+
+            if (walls.get(scan).elevation == elevation)
+                for (int subScan = 0; subScan < walls.get(scan).walls.size(); subScan++)
+                    if (walls.get(scan).walls.get(subScan).yPosition/30 == yPosition && walls.get(scan).walls.get(subScan).xPosition/30 == xPosition&&walls.get(scan).walls.get(subScan).nonWall) {
                         return (NonWalls) walls.get(scan).walls.get(subScan);
                     }
         }
@@ -149,7 +161,7 @@ public class Board {
         for (int scan = 0; scan < walls.size(); scan++) if (walls.get(scan).elevation == elevation) wallsIndex = scan;
         while (yScan < yDimension) {
             while (xScan < xDimension) {
-                if(walls.get(wallsIndex).questionWallAndNon(xScan,yScan) != null)adventurerework.window.drawCharacter(xScan,yScan,(String)walls.get(wallsIndex).questionWallAndNon(xScan,yScan).subSequence(0,1));
+                if(walls.get(wallsIndex).questionWallAndNon(xScan,yScan) != null)adventurerework.window.drawWall(xScan,yScan,(String)walls.get(wallsIndex).questionWallAndNon(xScan,yScan).subSequence(0,1));
             xScan++;
             }
             xScan = 0;

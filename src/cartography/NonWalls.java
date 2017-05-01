@@ -11,15 +11,15 @@ public NonWalls (int xPosition, int yPosition, int elevation, String wallType, B
     nonWall = true;
 }
 public void interact(Moving moving){
-    if (interactOnCollision&&!colidable&&xPosition == moving.xPosition && yPosition == moving.yPosition&& elevation == moving.elevation) {  //for if you need to walk on the object to interact with it
+    if (interactOnCollision&&!colidable&&xPosition/30 == moving.xPosition/30 && yPosition/30 == moving.yPosition/30&& elevation == moving.elevation) {  //for if you need to walk on the object to interact with it
         NonWallsDatabase.findInteraction(moving, this);
     }
-    else if (interactOnCollision&&colidable&&xPosition == moving.xPosition && yPosition == moving.yPosition&& elevation == moving.elevation){//for if you need to bump into the object to interact with it
+    else if (interactOnCollision&&colidable&&xPosition/30 == moving.xPosition/30 && yPosition/30 == moving.yPosition/30&& elevation == moving.elevation){//for if you need to bump into the object to interact with it
         moving.xPosition = moving.lastPosition[0];
         moving.yPosition = moving.lastPosition[1];
         NonWallsDatabase.findInteraction(moving, this);
     }
-    else if (!interactOnCollision && colidable && xPosition == moving.xPosition && yPosition == moving.yPosition&& elevation == moving.elevation){//if the nonwall is always active but playes cannot walk into it. (ie a dart trap)
+    else if (!interactOnCollision && colidable && xPosition/30 == moving.xPosition/30 && yPosition/30 == moving.yPosition/30&& elevation == moving.elevation){//if the nonwall is always active but playes cannot walk into it. (ie a dart trap)
         moving.xPosition = moving.lastPosition[0];
         moving.yPosition = moving.lastPosition[1];
     }

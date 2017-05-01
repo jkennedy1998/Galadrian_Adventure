@@ -5,8 +5,8 @@ public class Wall {
     String wallType;
 
     public Wall( int xPosition, int yPosition, int elevation, String wallType){
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
+        this.xPosition = xPosition*30;
+        this.yPosition = yPosition*30;
         this.elevation = elevation;
         this.wallType = wallType;
     }

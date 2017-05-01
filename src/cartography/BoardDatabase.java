@@ -6,6 +6,7 @@ public class BoardDatabase {
         if(name.equals("yaun-ti cave entrance")) return yaunCaveEntrance();
         if(name.equals("yaun-ti cave")) return yaunCave();
         if(name.equals("yaun-ti cave t")) return yaunCaveT();
+//        if(name.equals("spawn")) return spawn();
 
         System.out.println("error: getBoard called with an invalid name");
         return null;
@@ -20,8 +21,17 @@ public class BoardDatabase {
     //  then you must set their links in the Map class (equal to the nonwall its lnked to. use findNonWall and its coords that you wrote to find the other door).
 
 
+    public static Board spawn(){
+        Board board = new Board(300,300);
+        board.getWalls(0).addWall(2,0);
+        board.addNonWall(NonWallsDatabase.makeNonWall(4,0,0,"locked door",board));
+        board.getWalls(0).addSquareFloor(0,0,10,10,true);
+        board.movings.add(new Moving(9,9,board,"goblin",false));
+        return board;
+    }
     public static Board yaunCaveEntrance(){
-        Board board = new Board(15,15);
+        System.out.println("called");
+        Board board = new Board(15*30,15*30);
         {
             board.getWalls(0).addSquare(0,0,9,5,true);
             board.getWalls(0).addSquare(12,0,3,6,true);
@@ -47,7 +57,7 @@ public class BoardDatabase {
         return board;
     }
     public static Board yaunCave(){
-        Board board = new Board(6,10);
+        Board board = new Board(6*30,10*30);
         {
             board.getWalls(0).addSquare(0,0,6,10,false);
             board.getWalls(0).deleteWall(3,9);
@@ -69,7 +79,7 @@ public class BoardDatabase {
         return board;
     }
     public static Board yaunCaveT(){
-        Board board = new Board(20,12);
+        Board board = new Board(20*30,12*30);
         {
             board.getWalls(0).addSquare(0,0,20,12,false);
             board.getWalls(0).addSquare(0,7,10,5,true);

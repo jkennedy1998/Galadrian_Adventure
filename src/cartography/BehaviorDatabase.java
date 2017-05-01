@@ -25,7 +25,7 @@ public class BehaviorDatabase {
         }
         return lockedEntity;
     }
-    public static boolean inProximity (Moving entity,Moving actingEntity){return  (!(Math.sqrt(Math.pow(Math.abs(entity.xPosition - actingEntity.xPosition),2)+Math.pow(Math.abs(entity.yPosition - actingEntity.yPosition),2)) > actingEntity.range)&&entity.behavior.equals("player")&&entity.elevation == actingEntity.elevation);}
+    public static boolean inProximity (Moving entity,Moving actingEntity){return  (!(Math.sqrt(Math.pow(Math.abs(entity.xPosition - actingEntity.xPosition),2)+Math.pow(Math.abs(entity.yPosition - actingEntity.yPosition),2)) > actingEntity.range*30)&&entity.behavior.equals("player")&&entity.elevation == actingEntity.elevation);}
 
     private static int[] linear(Moving actingEntity){
         if(actingEntity.behavior.equals("linear up")) return new int[] {0,-1};

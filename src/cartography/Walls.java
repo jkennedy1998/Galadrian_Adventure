@@ -44,8 +44,7 @@ public class Walls {
             System.exit(1);
         }
         for(int scan = 0; scan < floorXCoordinates.length; scan++){
-            Floor floorObject = new Floor (floorXCoordinates[scan], floorYCoordinates[scan],elevation,"floor");
-            floors.add(floorObject);
+            addFloor(floorXCoordinates[scan],floorYCoordinates[scan]);
         }
         deleteFloorDuplicates();
     }
@@ -159,11 +158,11 @@ public class Walls {
     public String questionWall(int x, int y){
 
         for (int scan = 0; scan < walls.size(); scan++){
-                if (walls.get(scan).yPosition == y && walls.get(scan).xPosition == x && !walls.get(scan).nonWall)
+                if (walls.get(scan).yPosition/30 == y/30 && walls.get(scan).xPosition/30 == x/30 && !walls.get(scan).nonWall)
                     return walls.get(scan).wallType;
         }return null;
     }
-    public String questionWallAndNon(int x, int y){
+    public String questionWallAndNon(int x, int y){ //this has something to do with graphics
 
         for (int scan = 0; scan < walls.size(); scan++){
             if (walls.get(scan).yPosition == y && walls.get(scan).xPosition == x)
