@@ -41,10 +41,10 @@ public class Moving {
     }
     public void interact(){
         int x = xPosition, y = yPosition;
-        if(facing == 0) y--;
-        else if(facing == 1) x++;
-        else if(facing == 2) y++;
-        else if(facing == 3) x--;
+        if(facing == 0) y-=15;
+        else if(facing == 1) x+=15;
+        else if(facing == 2) y+=15;
+        else if(facing == 3) x-=15;
         if(board.findNonWall(x,y,elevation) != null){
             board.findNonWall(x,y,elevation).interactOnUse(this);
         }
