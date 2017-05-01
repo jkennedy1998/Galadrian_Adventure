@@ -234,6 +234,8 @@ public class NonWallsDatabase {
                 current.board.removeMoving(moving);
                 current.link.board.movings.add(moving);
                 adventurerework.window.refreshBoard();
+                moving.board.printBoard();
+
             }
         }
         else if(current.wallType.equals("board door")&&!moving.behavior.equals("player")) {}

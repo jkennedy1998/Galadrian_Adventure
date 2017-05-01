@@ -30,7 +30,6 @@ public class BoardDatabase {
         return board;
     }
     public static Board yaunCaveEntrance(){
-        System.out.println("called");
         Board board = new Board(15*30,15*30);
         {
             board.getWalls(0).addSquare(0,0,9,5,true);

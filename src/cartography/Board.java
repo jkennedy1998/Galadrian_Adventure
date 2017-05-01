@@ -122,28 +122,6 @@ public class Board {
         }
     }
 
-
-//    public void printBoard() { //use of Screen
-//        adventurerework.window.refreshBoard();
-//        int elevation = adventurerework.adam.elevation;
-//        int xScan = 0, yScan = 0;
-//        while (yScan < yDimension) {
-//            while (xScan < xDimension) {
-//                String tempCharacter;
-//                tempCharacter = questionWallCharacters(xScan, yScan, elevation);
-//                if (tempCharacter == null) adventurerework.window.drawCharacter(xScan, yScan, null);
-//                for (int characterScan = 0; characterScan < movings.size(); characterScan++)
-//                    if (movings.get(characterScan).xPosition == xScan && movings.get(characterScan).yPosition == yScan && movings.get(characterScan).elevation == elevation)
-//                        tempCharacter = movings.get(characterScan).getNameAbbreviation();
-//                adventurerework.window.drawCharacter(xScan, yScan, tempCharacter);
-//                adventurerework.window.removeAll();
-//                xScan++;
-//            }
-//            yScan++;
-//            xScan = 0;
-//        }
-//    }
-
         public void printBoard(){//only called at the start of a new board.
         printFloors();
         printWalls(); //and nonwalls;
@@ -156,17 +134,12 @@ public class Board {
         adventurerework.window.drawFloor(x*30,y*30,getWalls(elevation).questionFloor(x*30,y*30));
         adventurerework.window.drawFloor(x*30,y*30-30,getWalls(elevation).questionFloor(x*30,y*30-30));
         adventurerework.window.drawFloor(x*30,y*30+30,getWalls(elevation).questionFloor(x*30,y*30+30));
-//        adventurerework.window.drawFloor(x*30+30,y*30+30,getWalls(elevation).questionFloor(x*30+30,y*30+30));
-//        adventurerework.window.drawFloor(x*30+30,y*30-30,getWalls(elevation).questionFloor(x*30+30,y*30-30));
-//        adventurerework.window.drawFloor(x*30-30,y*30+30,getWalls(elevation).questionFloor(x*30-10,y*30+30));
-//        adventurerework.window.drawFloor(x*30-30,y*30-30,getWalls(elevation).questionFloor(x*30-30,y*30-30));
         //print walls per tile
         adventurerework.window.drawWall(x*30,y*30,getWalls(elevation).questionWallAndNon(x*30,y*30));
         adventurerework.window.drawWall(x*30+30,y*30,getWalls(elevation).questionWallAndNon(x*30+30,y*30));
         adventurerework.window.drawWall(x*30-30,y*30,getWalls(elevation).questionWallAndNon(x*30-30,y*30));
         adventurerework.window.drawWall(x*30,y*30+30,getWalls(elevation).questionWallAndNon(x*30,y*30+30));
         adventurerework.window.drawWall(x*30,y*30-30,getWalls(elevation).questionWallAndNon(x*30,y*30-30));
-
         //print movings per tile
         for(int scan = 0; movings.size() > scan; scan++){
             if(movings.get(scan).xPosition/30 == x && movings.get(scan).yPosition/30 == y){

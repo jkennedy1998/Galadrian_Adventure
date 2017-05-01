@@ -42,10 +42,10 @@ public class BehaviorDatabase {
         if (lockedEntity == null){
             if (actingEntity.initialX != actingEntity.xPosition || actingEntity.intitialY != actingEntity.yPosition){
                 int[] movement = {0,0};
-                if (actingEntity.initialX > actingEntity.xPosition) movement[0] = 1;
-                if (actingEntity.initialX < actingEntity.xPosition) movement[0] = -1;
-                if (actingEntity.intitialY > actingEntity.yPosition) movement[1] = 1;
-                if (actingEntity.intitialY < actingEntity.yPosition) movement[1] = -1;
+                if (actingEntity.initialX*30 > actingEntity.xPosition) movement[0] = 1;
+                if (actingEntity.initialX*30 < actingEntity.xPosition) movement[0] = -1;
+                if (actingEntity.intitialY*30 > actingEntity.yPosition) movement[1] = 1;
+                if (actingEntity.intitialY*30 < actingEntity.yPosition) movement[1] = -1;
                 int temp = actingEntity.questionWallCollision(movement[0], movement[1]);
                 if (temp == 1) movement[0] = 0;
                 else if (temp == 2) movement[1] = 0;

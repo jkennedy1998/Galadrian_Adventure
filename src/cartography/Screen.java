@@ -151,7 +151,7 @@ public class Screen extends JFrame {
         Graphics g = getGraphics();
         g.setColor(Color.green);
         g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
-        g.drawString(name, (xPosition) + 25, (yPosition) + 85);
+        g.drawString(name, (xPosition) + 25, (yPosition) + 83);
 
 }
     public void drawWall(int xPosition, int yPosition, String name){
