@@ -40,12 +40,8 @@ public class adventurerework {
     public static void run() { //make run by speed
         MovingTimer timer = new MovingTimer();
 
-        adam.board.printBoard();//this needs to change
+        adam.board.printBoard();
         while (true) {
-
-//            for (int scan = 0; scan < adam.board.movings.size(); scan++) {
-//                strive(adam.board.movings.get(scan));
-//            }
             try{Thread.sleep(2);}
             catch (java.lang.InterruptedException e){
                 System.out.println("oh no");//exeption should not happen
