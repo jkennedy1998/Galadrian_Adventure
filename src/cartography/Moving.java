@@ -64,6 +64,7 @@ public class Moving {
         return false;
     }
     public void moveUp() {
+        facing = 0;
         if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1)&& inBoardBounds(0,-1)&& questionFloor(xPosition,yPosition-1))
             yPosition--;
         else if(name.equals("projectile"))board.removeMoving(this);
@@ -71,10 +72,11 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
-        facing = 0;
+
     }
 
     public void moveDown() {
+        facing = 2;
         if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1)&& inBoardBounds(0,1)&& questionFloor(xPosition, yPosition+1))
             yPosition++;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
@@ -82,10 +84,11 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
-        facing = 2;
+
     }
 
     public void moveLeft() {
+        facing = 3;
         if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0) && inBoardBounds(-1,0)&& questionFloor(xPosition-1, yPosition))
             xPosition--;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
@@ -93,10 +96,11 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
-        facing = 3;
+
     }
 
     public void moveRight() {
+        facing = 1;
         if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0)&& inBoardBounds(1,0)&& questionFloor(xPosition+1, yPosition))
             xPosition++;
         else if(name.equals("projectile"))board.removeMoving(this); //if its a projectile it kills it self
@@ -104,7 +108,7 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
-        facing = 1;
+
     }
     public boolean inBoardBounds(int xMove, int yMove){
         if (xMove+xPosition > board.xDimension-1 || xMove+xPosition < 0) return false;
