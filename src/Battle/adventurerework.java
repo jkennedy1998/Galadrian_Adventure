@@ -8,10 +8,10 @@ public class adventurerework {
     static int[] x = {0}, y = {0};
     public static Board hell = new Board(1,1,new Walls(x,y));
     public static Screen window = new Screen();
-    public static String keyPressed = "";
-    public static boolean wPressed = false, aPressed = false, sPressed = false, dPressed = false;
     public static double attackMultiplierLocked, accuracyMultiplierLocked, defensiveMultiplierLocked, speedMultiplierLocked;
     public static int coins;
+    public static KeyboardListener keyboardListener = new KeyboardListener();
+
     public static int roundCount = 1;
     public static String[] armor =
             {"","peasant's blouse","","","peasant's rags",""};
@@ -25,7 +25,6 @@ public class adventurerework {
         time =20.0;
         day = 0;
         coins = 0;
-        KeyboardListener keyboardListener = new KeyboardListener();
         window.addKeyListener(keyboardListener);
         MouseListener mouseListener = new MouseListener();
         window.addMouseListener(mouseListener);
@@ -35,12 +34,15 @@ public class adventurerework {
         window.voidLines();
         character1.race();
         character1.role();
+        adam.speed = character1.getSpeed();
         run(); //should replace strive
     }
     public static void run() { //make run by speed
         MovingTimer timer = new MovingTimer();
+
         adam.board.printBoard();//this needs to change
         while (true) {
+
 //            for (int scan = 0; scan < adam.board.movings.size(); scan++) {
 //                strive(adam.board.movings.get(scan));
 //            }
@@ -55,11 +57,27 @@ public class adventurerework {
         piece.board.printTile(piece.xPosition/30,piece.yPosition/30,piece.elevation);
         if (piece.behavior.equals("player")) {
 
-            if (keyPressed.equals("W")) piece.moveUp();
-            else if (keyPressed.equals("S")) piece.moveDown();
-            else if (keyPressed.equals("A")) piece.moveLeft();
-            else if (keyPressed.equals("D")) piece.moveRight();
-            else if (keyPressed.equals("E")) piece.interact();
+            if(KeyboardListener.wPressed&&KeyboardListener.dPressed){
+                if(piece.beat%2 == 0)piece.moveUp();
+                else piece.moveRight();
+            }
+            if(KeyboardListener.wPressed&&KeyboardListener.aPressed){
+                if(piece.beat%2 == 0)piece.moveUp();
+                else piece.moveLeft();
+            }
+            if(KeyboardListener.sPressed&&KeyboardListener.dPressed){
+                if(piece.beat%2 == 0)piece.moveDown();
+                else piece.moveRight();
+            }
+            if(KeyboardListener.sPressed&&KeyboardListener.aPressed){
+                if(piece.beat%2 == 0)piece.moveDown();
+                else piece.moveLeft();
+            }
+            else if (KeyboardListener.wPressed) piece.moveUp();
+            else if (KeyboardListener.sPressed) piece.moveDown();
+            else if (KeyboardListener.aPressed) piece.moveLeft();
+            else if (KeyboardListener.dPressed) piece.moveRight();
+            else if (KeyboardListener.ePressed) piece.interact();
 
         } else {
             int temp = (int) Math.round(Math.random());

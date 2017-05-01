@@ -6,6 +6,7 @@ public class Moving {
     public Board board, lastBoard;
     public String name, behavior;
     public int[] lastPosition;
+    public byte beat = 0;
 
     public Moving(int xPosition, int yPosition, Board board, String name, boolean player) {
         this.xPosition = 30*xPosition;
@@ -72,6 +73,8 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
+        if(beat== 15) beat = 0;
+        else beat++;
 
     }
 
@@ -84,6 +87,8 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
+        if(beat== 15) beat = 0;
+        else beat++;
 
     }
 
@@ -96,6 +101,8 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
+        if(beat== 15) beat = 0;
+        else beat++;
 
     }
 
@@ -108,6 +115,8 @@ public class Moving {
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
         lastBoard = board;
+        if(beat== 15) beat = 0;
+        else beat++;
 
     }
     public boolean inBoardBounds(int xMove, int yMove){
