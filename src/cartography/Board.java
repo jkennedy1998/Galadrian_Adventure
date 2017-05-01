@@ -78,6 +78,7 @@ public class Board {
             if (nonWallObject.elevation == walls.get(scan).elevation)
                 walls.get(scan).addWall(nonWallObject);
         }
+        walls.get(nonWall.elevation).deleteWall(nonWall.xPosition,nonWall.yPosition);
     }
 
     public NonWalls findNonWall(int xPosition, int yPosition, int elevation) {

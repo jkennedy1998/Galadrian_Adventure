@@ -65,9 +65,19 @@ public class NonWallsDatabase {
         return nonwall;
     }
     public static void findInteraction(Moving moving, NonWalls current){//needs every single nonwall object and aditional nonplayer colide if its a player based object
-        if(current.wallType.equals("stairs up")) moving.elevation++;
-        else if(current.wallType.equals("stairs down")) moving.elevation--;
-        else if(current.wallType.equals("trap door"))moving.elevation-= 1; //make an open trap door. make one visible and the other not visible
+        if(current.wallType.equals("stairs up")){
+            moving.elevation++;
+            if(moving.behavior.equals("player"))moving.board.printBoard();
+        }
+        else if(current.wallType.equals("stairs down")){
+            moving.elevation--;
+            if(moving.behavior.equals("player"))moving.board.printBoard();
+        }
+
+        else if(current.wallType.equals("trap door")){
+            moving.elevation--;
+            if(moving.behavior.equals("player"))moving.board.printBoard();
+        } //make an open trap door. make one visible and the other not visible
         else if(current.wallType.equals("open door"));
         else if(current.wallType.equals("closed door")){
             current.wallType = "open door";
