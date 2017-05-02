@@ -67,16 +67,16 @@ public class NonWallsDatabase {
     public static void findInteraction(Moving moving, NonWalls current){//needs every single nonwall object and aditional nonplayer colide if its a player based object
         if(current.wallType.equals("stairs up")){
             moving.elevation++;
-            if(moving.behavior.equals("player"))moving.board.printBoard();
+            if(moving.name.equals("player"))moving.board.printBoard();
         }
         else if(current.wallType.equals("stairs down")){
             moving.elevation--;
-            if(moving.behavior.equals("player"))moving.board.printBoard();
+            if(moving.name.equals("player"))moving.board.printBoard();
         }
 
         else if(current.wallType.equals("trap door")){
             moving.elevation--;
-            if(moving.behavior.equals("player"))moving.board.printBoard();
+            if(moving.name.equals("player"))moving.board.printBoard();
         } //make an open trap door. make one visible and the other not visible
         else if(current.wallType.equals("open door"));
         else if(current.wallType.equals("closed door")){
@@ -84,7 +84,7 @@ public class NonWallsDatabase {
             current.colidable = false;
             current.state = false;
         }
-        else if(current.wallType.equals("locked door")&& moving.behavior.equals("player")) {
+        else if(current.wallType.equals("locked door")&& moving.name.equals("player")) {
             adventurerework.window.print("You turn the handle with no avail");
             if(adventurerework.inventory.hasItem("key") != null){
                 current.wallType = "open door";
@@ -93,7 +93,7 @@ public class NonWallsDatabase {
             }
 
         }
-        else if(current.wallType.equals("locked door")&&! moving.behavior.equals("player")) {}
+        else if(current.wallType.equals("locked door")&&! moving.name.equals("player")) {}
         else if(current.wallType.equals("small tree")){
             adventurerework.window.print("You could probably cut past this with the proper tools.");
             if(adventurerework.inventory.hasItem("wood axe") != null){
@@ -162,18 +162,18 @@ public class NonWallsDatabase {
                 current.link.checkState();
             }
         }
-        else if(current.wallType.equals("mimic")&&moving.behavior.equals("player")){
+        else if(current.wallType.equals("mimic")&&moving.name.equals("player")){
             current.board.removeNonwall(current);
-            current.board.movings.add(new Moving(current.xPosition,current.yPosition,current.board,"mimic",false));
+            current.board.movings.add(new Mob(current.xPosition*30+15,current.yPosition*30+15,current.board,"mimic"));
         }
-        else if(current.wallType.equals("mimic")&&!moving.behavior.equals("player"));
+        else if(current.wallType.equals("mimic")&&!moving.name.equals("player"));
         else if(current.wallType.equals("tall grass")){
-            if(Math.random()>.9 && moving.behavior.equals("player")){
+            if(Math.random()>.9 && moving.name.equals("player")){
 //                adventurerework.startEncounter(new Moving(-1,-1,moving.board,Battle.monsterSelection.selection(current.board),false));
                 System.out.println("random grass encounter. what should be happening?");
             }
         }
-        else if(current.wallType.equals("camp site") && moving.behavior.equals("player")){
+        else if(current.wallType.equals("camp site") && moving.name.equals("player")){
             if (adventurerework.time > 22 || adventurerework.time < 5){
                 adventurerework.window.print("You stumble apon a camp site.");
                 String[] buttons = {"sleep through the night", "Stumble your way through the darkness"};
@@ -202,8 +202,8 @@ public class NonWallsDatabase {
                         adventurerework.window.voidButtons();
                         if (choice2 == 0){
                             if (Math.random() * 10 > 9)  //10% chance of encounter
-                                current.board.movings.add(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
-                            if (adventurerework.time>=24){
+                                System.out.println("random encounter!");
+                                if (adventurerework.time>=24){
                                 adventurerework.time = adventurerework.time-24;
                                 adventurerework.day++;
                             }
@@ -212,7 +212,7 @@ public class NonWallsDatabase {
                             }
                         else{
                             if (Math.random() * 10 > 6)  //40% chance of encounter
-                                    current.board.movings.add(new Moving(-1,-1,current.board,Battle.monsterSelection.selection(current.board),false));
+                                System.out.println("random encounter!");
                             if (adventurerework.time>=24){
                                 adventurerework.time = adventurerework.time-24;
                                 adventurerework.day++;
@@ -229,16 +229,17 @@ public class NonWallsDatabase {
             else
                 adventurerework.window.print("A camp site calls to you, but it is too early to rest.");
         }
-        else  if (current.wallType.equals("camp site")  && !moving.behavior.equals("player")); //beasts do nothing at a camp site
+        else  if (current.wallType.equals("camp site")  && !moving.name.equals("player")); //beasts do nothing at a camp site
         else if(current.wallType.equals("pressure plate")){
             current.state = !current.state;
             current.checkState();
             current.link.checkState();
         }
-        else if(current.wallType.equals("board door")&&moving.behavior.equals("player")) {
+        else if(current.wallType.equals("board door")&&moving.name.equals("player")) {
             if (moving.board == moving.lastBoard) { //this makes sure it doesnt go through doors multiple times.
                 moving.xPosition = current.link.xPosition+15;
                 moving.yPosition = current.link.yPosition+15;
+
                 if(moving.facing == 0 )moving.yPosition-=30;
                 else if(moving.facing == 1)moving.xPosition+= 30;
                 else if(moving.facing == 2)moving.yPosition+= 30;
@@ -249,40 +250,40 @@ public class NonWallsDatabase {
                 current.link.board.movings.add(moving);
                 adventurerework.window.refreshBoard();
                 moving.board.printBoard();
-                moving.updateMovings();
-
+                ((Mob)adventurerework.adam).updateMovings();
             }
         }
-        else if(current.wallType.equals("board door")&&!moving.behavior.equals("player")) {}
-        else if (current.wallType.equals("item")&& moving.behavior.equals("player")){
+        else if(current.wallType.equals("board door")&&!moving.name.equals("player")) {}
+        else if (current.wallType.equals("item")&& moving.name.equals("player")){
             if(adventurerework.inventory.recieceItem(current.description)){
                 current.board.removeNonwall(current);
             }
 
         }
-            else if (current.wallType.equals("item")&& !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into an item
+            else if (current.wallType.equals("item")&& !moving.name.equals("player"));//does nothing. this is when an enemy runs into an item
         else if(current.wallType.equals("dart trap")){
-            Moving dart = new Moving(current.xPosition,current.yPosition, current.board, "projectile", false);
-            current.board.movings.add(dart);
-            if(current.facing == 0){ dart.behavior = "linear up";}
-            else if(current.facing == 2){ dart.behavior = "linear down";}
-            else if(current.facing == 1){ dart.behavior = "linear left";}
-            else if(current.facing == 3){ dart.behavior = "linear right";}
+//            Moving dart = new Moving(current.xPosition,current.yPosition, current.board, "projectile", false);
+//            current.board.movings.add(dart);
+//            if(current.facing == 0){ dart.behavior = "linear up";}
+//            else if(current.facing == 2){ dart.behavior = "linear down";}
+//            else if(current.facing == 1){ dart.behavior = "linear left";}
+//            else if(current.facing == 3){ dart.behavior = "linear right";}
 
+            System.out.println("make projectiles fire out of dart traps");
         }
         else if(current.wallType.equals("sign") && moving.name.equals("player")){
             String[] strings = {"The sign reads...",current.description};
             adventurerework.window.print(strings);
         }
-        else if (current.wallType.equals("sign") && !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into a sign.
-        else if(current.wallType.equals("chest") && moving.behavior.equals("player")){
+        else if (current.wallType.equals("sign") && !moving.name.equals("player"));//does nothing. this is when an enemy runs into a sign.
+        else if(current.wallType.equals("chest") && moving.name.equals("player")){
             if(current.description.equals("no item")) adventurerework.window.print("its empty");
             else {
                 if(adventurerework.inventory.recieceItem(current.description)) current.description = "no item";
 
             }
         }
-        else if (current.wallType.equals("chest") && !moving.behavior.equals("player"));//does nothing. this is when an enemy runs into a chest.
+        else if (current.wallType.equals("chest") && !moving.name.equals("player"));//does nothing. this is when an enemy runs into a chest.
         else System.out.println("error: wallType isn't set to a legitimate type\nWalltype = ["+current.wallType+"]");
     }
 }

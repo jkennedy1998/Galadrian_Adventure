@@ -109,7 +109,7 @@ public class Board {
             if (movings.get(scan).xPosition == moving.xPosition && movings.get(scan).yPosition == moving.yPosition && moving.name.equals(movings.get(scan).name))
                 movings.remove(scan);
         }
-        if (!moving.behavior.equals("player"))
+        if (!moving.name.equals("player"))
             moving.board = adventurerework.hell;
     }
 

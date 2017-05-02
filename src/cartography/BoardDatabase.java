@@ -26,7 +26,7 @@ public class BoardDatabase {
         board.getWalls(0).addWall(2,0);
         board.addNonWall(NonWallsDatabase.makeNonWall(4,0,0,"locked door",board));
         board.getWalls(0).addSquareFloor(0,0,10,10,true);
-        board.movings.add(new Moving(9,9,board,"goblin",false));
+        board.movings.add(new Mob(9,9,board,"goblin"));
         return board;
     }
     public static Board yaunCaveEntrance(){
@@ -38,8 +38,8 @@ public class BoardDatabase {
                     y = {4,0,4};
             board.getWalls(0).addWall(x,y);
         }
-            board.movings.add(new Moving(11, 4, board, "yaun-ti holy guard", false));
-        board.movings.add(new Moving(5,14,board,"goblin",false));
+            board.movings.add(new Mob(11*30+15, 4*30+15, board, "yaun-ti holy guard"));
+        board.movings.add(new Mob(5*30,14*30,board,"goblin"));
         {
             NonWalls boardDoor = NonWallsDatabase.makeNonWall(10, 0, 0, "board door",board);
             boardDoor.board = board;

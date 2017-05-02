@@ -29,7 +29,7 @@ public class adventurerework {
         MouseListener mouseListener = new MouseListener();
         window.addMouseListener(mouseListener);
         Map.initializeMaps();
-        adam = new Moving(3, 6, Map.currentBoard, "player", true);
+        adam = new Mob(3*30, 6*30, Map.currentBoard, "player");
         Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
         window.voidLines();
         character1.race();
@@ -48,7 +48,7 @@ public class adventurerework {
 //            }
 //            strive(timer.findNextMove());
 //            adam.start();
-            adam.updateMovings();
+            ((Mob)adam).updateMovings();
         }
     }
 //    public static void strive(Moving piece) {

@@ -1,10 +1,10 @@
 package cartography;
 import Battle.monsterSelection;
 public class BehaviorDatabase {
-    public static String getBehavior(Moving moving){
+    public static String getBehavior(Mob moving){
         return monsterSelection.fetchBeastStats(moving.name)[13];
     }
-    public static int[] respond(Moving actingEntity){//add random movement
+    public static int[] respond(Mob actingEntity){//add random movement
         if (actingEntity.behavior.equals("follow")) return follow(actingEntity);
         if (actingEntity.behavior.equals("flee")) return flee(actingEntity);
         if (actingEntity.behavior.equals("wander")) return wander();
@@ -15,19 +15,19 @@ public class BehaviorDatabase {
         System.out.println("error: behavior ("+actingEntity.behavior+") not valid for "+actingEntity.name);
         return null;
     }
-    public static Moving findVisibleEntity(Moving actingEntity){
-        Moving lockedEntity = null;
+    public static Moving findVisibleEntity(Mob actingEntity){
+        Mob lockedEntity = null;
         for (int scan = 0; scan < actingEntity.board.movings.size(); scan++){
-            if (inProximity(actingEntity.board.movings.get(scan), actingEntity)){
-                lockedEntity = actingEntity.board.movings.get(scan);
+            if (inProximity((Mob)actingEntity.board.movings.get(scan), actingEntity)){
+                lockedEntity = (Mob)actingEntity.board.movings.get(scan);
 
             }
         }
         return lockedEntity;
     }
-    public static boolean inProximity (Moving entity,Moving actingEntity){return  (!(Math.sqrt(Math.pow(Math.abs(entity.xPosition - actingEntity.xPosition),2)+Math.pow(Math.abs(entity.yPosition - actingEntity.yPosition),2)) > actingEntity.range*30)&&entity.behavior.equals("player")&&entity.elevation == actingEntity.elevation);}
+    public static boolean inProximity (Mob entity,Mob actingEntity){return  (!(Math.sqrt(Math.pow(Math.abs(entity.xPosition - actingEntity.xPosition),2)+Math.pow(Math.abs(entity.yPosition - actingEntity.yPosition),2)) > actingEntity.range*30)&&entity.behavior.equals("player")&&entity.elevation == actingEntity.elevation);}
 
-    private static int[] linear(Moving actingEntity){
+    private static int[] linear(Mob actingEntity){
         if(actingEntity.behavior.equals("linear up")) return new int[] {0,-1};
         if(actingEntity.behavior.equals("linear down")) return new int[] {0,1};
         if(actingEntity.behavior.equals("linear left")) return new int[] {-1,0};
@@ -35,7 +35,7 @@ public class BehaviorDatabase {
         System.out.println("error: linear movement not assigned correctly for Moving's behavior");
         return null;
     }
-    private static int[] guard( Moving actingEntity){
+    private static int[] guard( Mob actingEntity){
         actingEntity.range = 2;
 
         Moving lockedEntity = findVisibleEntity(actingEntity);
@@ -71,7 +71,7 @@ public class BehaviorDatabase {
 
         return movement;
     }
-    private static int[] follow(Moving actingEntity){
+    private static int[] follow(Mob actingEntity){
 
         Moving lockedEntity = findVisibleEntity(actingEntity);
         if (lockedEntity == null) if( Math.random()>.7) {return wander();} else return stand();
@@ -94,7 +94,7 @@ public class BehaviorDatabase {
         if (temp2 == 0) return -1;
         else return 1;
     }
-    private static int[] flee(Moving actingEntity){
+    private static int[] flee(Mob actingEntity){
         Moving lockedEntity = findVisibleEntity(actingEntity);
         if (lockedEntity.name.equals("empty")) if( Math.random()>.7) {return wander();} else return stand();
         int[] movement = {0,0};
