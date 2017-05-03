@@ -150,7 +150,7 @@ public class Screen extends JFrame {
     public void drawCharacter(int xPosition, int yPosition, String name){
         Graphics g = getGraphics();
         g.setColor(Color.green);
-        g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 20));
+        g.setFont(new Font("Serif", Font.BOLD + Font.PLAIN, 30));
         g.drawString(name, (xPosition) + 25, (yPosition) + 83);
 
 }

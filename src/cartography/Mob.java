@@ -22,8 +22,7 @@ public class Mob extends Moving {
         }
     }
     public void run(){
-            board.printTile(xPosition/30,yPosition/30,elevation);
-            if(behavior.equals("player")){
+        if(behavior.equals("player")){
                 if(KeyboardListener.wPressed&&KeyboardListener.dPressed){
                     if(beat%2 == 0)moveUp();
                     else moveRight();
@@ -94,6 +93,8 @@ public class Mob extends Moving {
         lastBoard = board;
         if(beat== 15) beat = 0;
         else beat++;
+        board.printTile(xPosition/30,yPosition/30,elevation);
+
     }
     public void moveDown() {
         facing = 2;
@@ -105,6 +106,8 @@ public class Mob extends Moving {
         lastBoard = board;
         if(beat== 15) beat = 0;
         else beat++;
+        board.printTile(xPosition/30,yPosition/30,elevation);
+
 
     }
     public void moveLeft() {
@@ -118,6 +121,8 @@ public class Mob extends Moving {
         lastBoard = board;
         if(beat== 15) beat = 0;
         else beat++;
+        board.printTile(xPosition/30,yPosition/30,elevation);
+
 
     }
     public void moveRight() {
@@ -130,6 +135,8 @@ public class Mob extends Moving {
         lastBoard = board;
         if(beat== 15) beat = 0;
         else beat++;
+        board.printTile(xPosition/30,yPosition/30,elevation);
+
 
     }
     public boolean questionPlayerCollision(int x, int y){
