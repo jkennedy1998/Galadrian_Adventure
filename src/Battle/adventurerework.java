@@ -38,54 +38,23 @@ public class adventurerework {
         run(); //should replace strive
     }
     public static void run() { //make run by speed
-        MovingTimer timer = new MovingTimer();
-
         adam.board.printBoard();
+
+//        byte tick = 0;
         while (true) {
+//            tick++;
+//            if(tick == 15) tick = 0;
+            ((Mob)adam).updateMovings();
 //            try{Thread.sleep(2);}
 //            catch (java.lang.InterruptedException e){
 //                System.out.println("oh no");//exeption should not happen
 //            }
 //            strive(timer.findNextMove());
 //            adam.start();
-            ((Mob)adam).updateMovings();
+
         }
     }
-//    public static void strive(Moving piece) {
-//        piece.board.printTile(piece.xPosition/30,piece.yPosition/30,piece.elevation);
-//        if (piece.behavior.equals("player")) {
 
-//            if(KeyboardListener.wPressed&&KeyboardListener.dPressed){
-//                if(piece.beat%2 == 0)piece.moveUp();
-//                else piece.moveRight();
-//            }
-//            else if(KeyboardListener.wPressed&&KeyboardListener.aPressed){
-//                if(piece.beat%2 == 0)piece.moveUp();
-//                else piece.moveLeft();
-//            }
-//            else if(KeyboardListener.sPressed&&KeyboardListener.dPressed){
-//                if(piece.beat%2 == 0)piece.moveDown();
-//                else piece.moveRight();
-//            }
-//            else if(KeyboardListener.sPressed&&KeyboardListener.aPressed){
-//                if(piece.beat%2 == 0)piece.moveDown();
-//                else piece.moveLeft();
-//            }
-//            else if (KeyboardListener.wPressed) piece.moveUp();
-//            else if (KeyboardListener.sPressed) piece.moveDown();
-//            else if (KeyboardListener.aPressed) piece.moveLeft();
-//            else if (KeyboardListener.dPressed) piece.moveRight();
-//            else if (KeyboardListener.ePressed) piece.interact();
-
-//        } else {
-//            int temp = (int) Math.round(Math.random());
-//            int[] answer = BehaviorDatabase.respond(piece);
-//            if (answer[0] == 1 && (temp == 1 || answer[1] == 0)) piece.moveRight();
-//            else if (answer[0] == -1 && (temp == 1 || answer[1] == 0)) piece.moveLeft();
-//            else if (answer[1] == -1 && (temp == 0 || answer[0] == 0)) piece.moveUp();
-//            else if (answer[1] == 1 && (temp == 0 || answer[0] == 0)) piece.moveDown();
-//        }
-//    }
 
     public static void live() {
         while (time >=24){

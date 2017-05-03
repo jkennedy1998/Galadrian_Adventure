@@ -219,7 +219,7 @@ public class monsterSelection {
         beastStats[6] = ""+(55);
         beastStats[11] = ""+(15);
         beastStats[12] = ""+(7);
-        beastStats[13] = "follow";
+        beastStats[13] = "flee";
 
 
     }

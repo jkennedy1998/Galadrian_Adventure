@@ -55,7 +55,7 @@ public abstract class Moving extends Thread {
         if (yMove+yPosition > board.yDimension-1 || yMove+yPosition < 0) return false;
         return true;
     }
-    public abstract boolean questionPlayerCollision(int x, int y);
+//    public abstract boolean questionPlayerCollision(int x, int y);
     public abstract int questionWallCollision(int x, int y);
 
 }

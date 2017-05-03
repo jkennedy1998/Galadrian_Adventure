@@ -26,7 +26,7 @@ public class BehaviorDatabase {
         return lockedEntity;
     }
     public static boolean inProximity (Mob entity,Mob actingEntity){return  (!(Math.sqrt(Math.pow(Math.abs(entity.xPosition - actingEntity.xPosition),2)+Math.pow(Math.abs(entity.yPosition - actingEntity.yPosition),2)) > actingEntity.range*30)&&entity.behavior.equals("player")&&entity.elevation == actingEntity.elevation);}
-
+    public static boolean inRange(Mob entity, Mob actingEntity){return (!(Math.sqrt(Math.pow(Math.abs(entity.xPosition - actingEntity.xPosition),2)+Math.pow(Math.abs(entity.yPosition - actingEntity.yPosition),2)) > 1*30)&&entity.behavior.equals("player")&&entity.elevation == actingEntity.elevation);}
     private static int[] linear(Mob actingEntity){
         if(actingEntity.behavior.equals("linear up")) return new int[] {0,-1};
         if(actingEntity.behavior.equals("linear down")) return new int[] {0,1};
@@ -42,10 +42,10 @@ public class BehaviorDatabase {
         if (lockedEntity == null){
             if (actingEntity.initialX != actingEntity.xPosition || actingEntity.intitialY != actingEntity.yPosition){
                 int[] movement = {0,0};
-                if (actingEntity.initialX*30 > actingEntity.xPosition) movement[0] = 1;
-                if (actingEntity.initialX*30 < actingEntity.xPosition) movement[0] = -1;
-                if (actingEntity.intitialY*30 > actingEntity.yPosition) movement[1] = 1;
-                if (actingEntity.intitialY*30 < actingEntity.yPosition) movement[1] = -1;
+                if (actingEntity.initialX > actingEntity.xPosition) movement[0] = 1;
+                else if (actingEntity.initialX < actingEntity.xPosition) movement[0] = -1;
+                if (actingEntity.intitialY > actingEntity.yPosition) movement[1] = 1;
+                else if (actingEntity.intitialY < actingEntity.yPosition) movement[1] = -1;
                 int temp = actingEntity.questionWallCollision(movement[0], movement[1]);
                 if (temp == 1) movement[0] = 0;
                 else if (temp == 2) movement[1] = 0;
@@ -59,9 +59,9 @@ public class BehaviorDatabase {
         }
         int[] movement = {0,0};
         if (lockedEntity.xPosition > actingEntity.xPosition) movement[0] = 1;
-        if (lockedEntity.xPosition < actingEntity.xPosition) movement[0] = -1;
+        else if (lockedEntity.xPosition < actingEntity.xPosition) movement[0] = -1;
         if (lockedEntity.yPosition > actingEntity.yPosition) movement[1] = 1;
-        if (lockedEntity.yPosition < actingEntity.yPosition) movement[1] = -1;
+        else if (lockedEntity.yPosition < actingEntity.yPosition) movement[1] = -1;
         int temp = actingEntity.questionWallCollision(movement[0], movement[1]);
         if (temp == 1) movement[0] = 0;
         else if (temp == 2) movement[1] = 0;
@@ -77,9 +77,9 @@ public class BehaviorDatabase {
         if (lockedEntity == null) if( Math.random()>.7) {return wander();} else return stand();
         int[] movement = {0,0};
             if (lockedEntity.xPosition > actingEntity.xPosition) movement[0] = 1;
-            if (lockedEntity.xPosition < actingEntity.xPosition) movement[0] = -1;
+            else if (lockedEntity.xPosition < actingEntity.xPosition) movement[0] = -1;
             if (lockedEntity.yPosition > actingEntity.yPosition) movement[1] = 1;
-            if (lockedEntity.yPosition < actingEntity.yPosition) movement[1] = -1;
+            else if (lockedEntity.yPosition < actingEntity.yPosition) movement[1] = -1;
         int temp = actingEntity.questionWallCollision(movement[0], movement[1]);
         if (temp == 1) movement[0] = 0;
         else if (temp == 2) movement[1] = 0;
@@ -96,12 +96,12 @@ public class BehaviorDatabase {
     }
     private static int[] flee(Mob actingEntity){
         Moving lockedEntity = findVisibleEntity(actingEntity);
-        if (lockedEntity.name.equals("empty")) if( Math.random()>.7) {return wander();} else return stand();
+        if(lockedEntity == null)if( Math.random()>.7) {return wander();} else return stand();
         int[] movement = {0,0};
         if (lockedEntity.xPosition > actingEntity.xPosition) movement[0] = -1;
-        if (lockedEntity.xPosition < actingEntity.xPosition) movement[0] = 1;
+        else if (lockedEntity.xPosition < actingEntity.xPosition) movement[0] = 1;
         if (lockedEntity.yPosition > actingEntity.yPosition) movement[1] = -1;
-        if (lockedEntity.yPosition < actingEntity.yPosition) movement[1] = 1;
+        else if (lockedEntity.yPosition < actingEntity.yPosition) movement[1] = 1;
         int temp = actingEntity.questionWallCollision(movement[0], movement[1]);
         if (temp == 1) movement[0] = 0;
         else if (temp == 2) movement[1] = 0;

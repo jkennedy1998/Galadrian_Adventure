@@ -22,6 +22,7 @@ public class Mob extends Moving {
         }
     }
     public void run(){
+        board.printTile(xPosition/30,yPosition/30,elevation);
         if(behavior.equals("player")){
                 if(KeyboardListener.wPressed&&KeyboardListener.dPressed){
                     if(beat%2 == 0)moveUp();
@@ -85,7 +86,7 @@ public class Mob extends Moving {
 
     public void moveUp(){
         facing = 0;
-        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1)&& inBoardBounds(0,-1)&& questionFloor(xPosition,yPosition-1))
+        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide && inBoardBounds(0,-1)&& questionFloor(xPosition,yPosition-1))
             yPosition--;
         questionNonWalls();
         lastPosition[0] = xPosition;
@@ -93,12 +94,11 @@ public class Mob extends Moving {
         lastBoard = board;
         if(beat== 15) beat = 0;
         else beat++;
-        board.printTile(xPosition/30,yPosition/30,elevation);
 
     }
     public void moveDown() {
         facing = 2;
-        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1)&& inBoardBounds(0,1)&& questionFloor(xPosition, yPosition+1))
+        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide && inBoardBounds(0,1)&& questionFloor(xPosition, yPosition+1))
             yPosition++;
         questionNonWalls();
         lastPosition[0] = xPosition;
@@ -106,13 +106,12 @@ public class Mob extends Moving {
         lastBoard = board;
         if(beat== 15) beat = 0;
         else beat++;
-        board.printTile(xPosition/30,yPosition/30,elevation);
 
 
     }
     public void moveLeft() {
         facing = 3;
-        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0) && inBoardBounds(-1,0)&& questionFloor(xPosition-1, yPosition))
+        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide && inBoardBounds(-1,0)&& questionFloor(xPosition-1, yPosition))
             xPosition--;
 
         questionNonWalls();
@@ -121,13 +120,12 @@ public class Mob extends Moving {
         lastBoard = board;
         if(beat== 15) beat = 0;
         else beat++;
-        board.printTile(xPosition/30,yPosition/30,elevation);
 
 
     }
     public void moveRight() {
         facing = 1;
-        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0)&& inBoardBounds(1,0)&& questionFloor(xPosition+1, yPosition))
+        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide && inBoardBounds(1,0)&& questionFloor(xPosition+1, yPosition))
             xPosition++;
         questionNonWalls();
         lastPosition[0] = xPosition;
@@ -135,21 +133,20 @@ public class Mob extends Moving {
         lastBoard = board;
         if(beat== 15) beat = 0;
         else beat++;
-        board.printTile(xPosition/30,yPosition/30,elevation);
 
 
     }
-    public boolean questionPlayerCollision(int x, int y){
-        if (!playerCollide) return false;
-        Moving temp;
-        for(int scan = 0; scan < board.movings.size(); scan++){
-            temp = board.movings.get(scan);
-            if ((xPosition+x)/30 == temp.xPosition/30&&(yPosition+y)/30 == temp.yPosition/30&&temp.playerCollide &&!(temp.name.equals(name))&&elevation==temp.elevation){
-                return true;
-            }
-        }
-        return false;
-    }
+//    public boolean questionPlayerCollision(int x, int y){
+//        if (!playerCollide) return false;
+//        Moving temp;
+//        for(int scan = 0; scan < board.movings.size(); scan++){
+//            temp = board.movings.get(scan);
+//            if ((xPosition+x)/30 == temp.xPosition/30&&(yPosition+y)/30 == temp.yPosition/30&&temp.playerCollide &&!(temp.name.equals(name))&&elevation==temp.elevation){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
     public int questionWallCollision(int x, int y){ //0 if no collision, 1 if x collision in desired direction, 2 if y collision in desired direction
         boolean xCollide = false, yCollide = false;
         if (board.questionCollision((xPosition+x)/30, yPosition/30, elevation)) xCollide = true;
