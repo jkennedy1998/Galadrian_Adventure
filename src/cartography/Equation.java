@@ -36,7 +36,7 @@ public class Equation {
         return (x-horizontalShift)*slope+verticalShift;
     }
     public int[] getNextMove(int x, int y){
-        if (Math.random()>.6)
+        if (Math.random()>.5)
         if((x/getY(x)) > x/y){ //if you need to move vertically
             if(direction.equals("up"))return new int[] {0,-1};
             else return new int[] {0,1};

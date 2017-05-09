@@ -22,5 +22,6 @@ public class MouseListener implements java.awt.event.MouseListener {
     public void mousePressed(MouseEvent mouseEvent){
         adventurerework.window.xClick = mouseEvent.getX();
         adventurerework.window.yClick = mouseEvent.getY();
+        (adventurerework.adam).attack();
     }
 }

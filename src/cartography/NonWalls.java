@@ -10,7 +10,7 @@ public NonWalls (int xPosition, int yPosition, int elevation, String wallType, B
     this.board = board;
     nonWall = true;
 }
-public void interact(Moving moving){
+public void interact(Mob moving){
     if (interactOnCollision&&!colidable&&xPosition/30 == moving.xPosition/30 && yPosition/30 == moving.yPosition/30&& elevation == moving.elevation) {  //for if you need to walk on the object to interact with it
         NonWallsDatabase.findInteraction(moving, this);
     }
@@ -27,7 +27,7 @@ public void interact(Moving moving){
 
     }
 }
-public void interactOnUse(Moving moving){
+public void interactOnUse(Mob moving){
     if(interactOnUse)
     NonWallsDatabase.findInteraction(moving,this);
 }

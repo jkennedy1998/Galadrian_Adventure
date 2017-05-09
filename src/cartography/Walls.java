@@ -170,7 +170,7 @@ public class Walls {
         }return null;
     }
     public String questionFloor(int x, int y){
-
+        if(floors!=null)
         for (int scan = 0; scan < floors.size(); scan++){
             if (floors.get(scan).yPosition == y && floors.get(scan).xPosition == x)
                 return floors.get(scan).floorType;

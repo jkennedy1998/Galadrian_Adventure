@@ -7,43 +7,65 @@ import Battle.monsterSelection;
  * Created by citim on 5/2/2017.
  */
 public class Projectile extends Moving {
-    int beatCounter, beatsAlive;
+    int beatCounter, beatsAlive, milisOfRecoil;
     Equation equation;
+    String projectileType;
 
-    public Projectile(int xPosition, int yPosition,int xDesired, int yDesired,int beatsAlive, Board board, String name){
-        super(xPosition,yPosition,board,name);
+    public Projectile(int xPosition, int yPosition, int elevation,int xDesired, int yDesired,int beatsAlive, Board board, String name, int milisOfRecoil){
+        super(xPosition,yPosition,elevation,board,"projectile");
         equation = new Equation(new int[] {xPosition,yPosition},new int[] {xDesired,yDesired});
         this.beatsAlive = beatsAlive;
+        this.milisOfRecoil = milisOfRecoil;
+        projectileType = name;
 
     }
 
 
 
+    public void questionNonWalls(){}
     public void run(){
         int[] temp = equation.getNextMove(xPosition,yPosition);
+        beatCounter++;
         if (temp[0] == 1) {
-            moveRight();
+            moveRight(5);
             board.printTile(xPosition/30,yPosition/30,elevation);
         }
         if (temp[0] == -1) {
-            moveLeft();
+            moveLeft(5);
             board.printTile(xPosition/30,yPosition/30,elevation);
         }
         if (temp[1] == 1) {
-            moveDown();
+            moveDown(5);
             board.printTile(xPosition/30,yPosition/30,elevation);
         }
         if (temp[1] == -1){
-            moveUp();
+            moveUp(5);
             board.printTile(xPosition/30,yPosition/30,elevation);
+        }
+        if(beatsAlive == beatCounter){
+            board.removeMoving(this);
+            board.printTile(xPosition,yPosition,elevation);
+            try{
+                join();
+            }catch (Exception e){
+                System.out.println(e);
+            }
         }
 
 
     }
-    public void moveUp(){
+    public void moveUp(int distance){
         facing = 0;
-        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide &&!questionPlayerCollision(0,-1)&& inBoardBounds(0,-1)&& questionFloor(xPosition,yPosition-1))
-            yPosition--;
+        if (!board.questionCollision(xPosition, yPosition - distance, elevation)&& wallCollide &&!questionPlayerCollision(0,-distance)&& inBoardBounds(0,-distance)&& questionFloor(xPosition,yPosition-distance))
+            yPosition-=distance;
+        else{
+            board.removeMoving(this);
+            try{
+                join();
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        }
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
@@ -51,10 +73,18 @@ public class Projectile extends Moving {
         if(beat== 15) beat = 0;
         else beat++;
     }
-    public void moveDown() {
+    public void moveDown(int distance) {
         facing = 2;
-        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide &&!questionPlayerCollision(0,1)&& inBoardBounds(0,1)&& questionFloor(xPosition, yPosition+1))
-            yPosition++;
+        if (!board.questionCollision(xPosition, yPosition + distance, elevation)&& wallCollide &&!questionPlayerCollision(0,distance)&& inBoardBounds(0,distance)&& questionFloor(xPosition, yPosition+distance))
+            yPosition+=distance;
+        else{
+            board.removeMoving(this);
+            try{
+                join();
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        }
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
@@ -63,11 +93,18 @@ public class Projectile extends Moving {
         else beat++;
 
     }
-    public void moveLeft() {
+    public void moveLeft(int distance) {
         facing = 3;
-        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-1,0) && inBoardBounds(-1,0)&& questionFloor(xPosition-1, yPosition))
-            xPosition--;
-
+        if (!board.questionCollision(xPosition - distance, yPosition, elevation)&& wallCollide &&!questionPlayerCollision(-distance,0) && inBoardBounds(-distance,0)&& questionFloor(xPosition-distance, yPosition))
+            xPosition-=distance;
+        else{
+            board.removeMoving(this);
+            try{
+                join();
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        }
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;
@@ -76,10 +113,18 @@ public class Projectile extends Moving {
         else beat++;
 
     }
-    public void moveRight() {
+    public void moveRight(int distance) {
         facing = 1;
-        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(1,0)&& inBoardBounds(1,0)&& questionFloor(xPosition+1, yPosition))
-            xPosition++;
+        if (!board.questionCollision(xPosition + distance, yPosition,elevation)&& wallCollide &&!questionPlayerCollision(distance,0)&& inBoardBounds(distance,0)&& questionFloor(xPosition+distance, yPosition))
+            xPosition+=distance;
+        else{
+            board.removeMoving(this);
+            try{
+                join();
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        }
         questionNonWalls();
         lastPosition[0] = xPosition;
         lastPosition[1] = yPosition;

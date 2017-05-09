@@ -18,6 +18,7 @@ public class BehaviorDatabase {
     public static Moving findVisibleEntity(Mob actingEntity){
         Mob lockedEntity = null;
         for (int scan = 0; scan < actingEntity.board.movings.size(); scan++){
+            if(!actingEntity.board.movings.get(scan).name.equals("projectile"))//what
             if (inProximity((Mob)actingEntity.board.movings.get(scan), actingEntity)){
                 lockedEntity = (Mob)actingEntity.board.movings.get(scan);
 

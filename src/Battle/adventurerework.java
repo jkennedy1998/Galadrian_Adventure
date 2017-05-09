@@ -4,7 +4,7 @@ import cartography.*;
 
 
 public class adventurerework {
-    public static Moving adam;
+    public static Mob adam;
     private static int[] x = {0}, y = {0};
     public static Board hell = new Board(1,1,new Walls(x,y));
     public static Screen window = new Screen();
@@ -29,7 +29,7 @@ public class adventurerework {
         MouseListener mouseListener = new MouseListener();
         window.addMouseListener(mouseListener);
         Map.initializeMaps();
-        adam = new Mob(3*30, 6*30, Map.currentBoard, "player");
+        adam = new Mob(3*30, 6*30,0, Map.currentBoard, "player");
         Map.currentBoard.movings.add(adam); //essential code to start maps and add a movable player!
         window.voidLines();
         character1.race();

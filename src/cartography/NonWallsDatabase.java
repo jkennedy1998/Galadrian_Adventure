@@ -64,7 +64,7 @@ public class NonWallsDatabase {
 
         return nonwall;
     }
-    public static void findInteraction(Moving moving, NonWalls current){//needs every single nonwall object and aditional nonplayer colide if its a player based object
+    public static void findInteraction(Mob moving, NonWalls current){//needs every single nonwall object and aditional nonplayer colide if its a player based object
         if(current.wallType.equals("stairs up")){
             moving.elevation++;
             if(moving.name.equals("player"))moving.board.printBoard();
@@ -164,7 +164,7 @@ public class NonWallsDatabase {
         }
         else if(current.wallType.equals("mimic")&&moving.name.equals("player")){
             current.board.removeNonwall(current);
-            current.board.movings.add(new Mob(current.xPosition*30+15,current.yPosition*30+15,current.board,"mimic"));
+            current.board.movings.add(new Mob(current.xPosition*30+15,current.yPosition*30+15,current.elevation,current.board,"mimic"));
         }
         else if(current.wallType.equals("mimic")&&!moving.name.equals("player"));
         else if(current.wallType.equals("tall grass")){

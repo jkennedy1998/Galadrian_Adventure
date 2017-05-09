@@ -8,7 +8,7 @@ public abstract class Moving extends Thread {
     public int[] lastPosition;
     public byte beat = 0;
 
-    public Moving(int xPosition, int yPosition, Board board, String name) {
+    public Moving(int xPosition, int yPosition,int elevation, Board board, String name) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         intitialY = yPosition;
@@ -23,16 +23,7 @@ public abstract class Moving extends Thread {
         return name.substring(0,1);
     }
 
-    public void questionNonWalls(){
-
-                for(int subScan = 0; subScan < board.getWalls(elevation).walls.size();subScan++){
-            if (board.getWalls(elevation).walls.get(subScan).nonWall){
-                NonWalls temp = (NonWalls)board.getWalls(elevation).walls.get(subScan);
-                temp.interact(this);
-            }
-
-        }
-    }
+    public abstract void questionNonWalls();
     public abstract void run();
 
     protected boolean questionFloor(int xPosition, int yPosition) {
@@ -46,10 +37,10 @@ public abstract class Moving extends Thread {
             }
         return false;
     }
-    public abstract  void moveUp();
-    public abstract void moveDown();
-    public abstract void moveLeft();
-    public abstract void moveRight();
+    public abstract  void moveUp(int distance);
+    public abstract void moveDown(int distance);
+    public abstract void moveLeft(int distance);
+    public abstract void moveRight(int distance);
     public boolean inBoardBounds(int xMove, int yMove){
         if (xMove+xPosition > board.xDimension-1 || xMove+xPosition < 0) return false;
         if (yMove+yPosition > board.yDimension-1 || yMove+yPosition < 0) return false;

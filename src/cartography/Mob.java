@@ -1,5 +1,6 @@
 package cartography;
 
+import Battle.ItemStuffs.EquiptableItem;
 import Battle.adventurerework;
 import Battle.monsterSelection;
 
@@ -9,50 +10,59 @@ import Battle.monsterSelection;
 public class Mob extends Moving {
     public int range = 7;
     public String behavior;
+    private ProjectileManager projectileManager = new ProjectileManager();
+    EquiptableItem equiptableItem;
 
-    public Mob(int xPosition, int yPosition, Board board, String name){
-        super(xPosition,yPosition,board,name);
+    public Mob(int xPosition, int yPosition,int elevation, Board board, String name){
+        super(xPosition,yPosition,elevation,board,name);
         if (name.equals("player")) {
             speed = adventurerework.character1.getSpeed();
             behavior = "player";
+            //make way to get equiptable item from inventory
         }
         else {
             speed = Integer.parseInt(monsterSelection.fetchBeastStats(name)[6]);
             behavior = BehaviorDatabase.getBehavior(this);
+            //get equiptable item from a database.
+        }
+    }
+    public void attack() {
+        if (name.equals("player") && !projectileManager.sleeping) {
+            projectileManager.project(new Projectile(xPosition, yPosition,elevation, adventurerework.window.xClick, adventurerework.window.yClick, 100, board, "arrow", 200));
         }
     }
     public void run(){
         board.printTile(xPosition/30,yPosition/30,elevation);
         if(behavior.equals("player")){
                 if(KeyboardListener.wPressed&&KeyboardListener.dPressed){
-                    if(beat%2 == 0)moveUp();
-                    else moveRight();
+                    if(beat%2 == 0)moveUp(1);
+                    else moveRight(1);
                 }
                 else if(KeyboardListener.wPressed&&KeyboardListener.aPressed){
-                    if(beat%2 == 0)moveUp();
-                    else moveLeft();
+                    if(beat%2 == 0)moveUp(1);
+                    else moveLeft(1);
                 }
                 else if(KeyboardListener.sPressed&&KeyboardListener.dPressed){
-                    if(beat%2 == 0)moveDown();
-                    else moveRight();
+                    if(beat%2 == 0)moveDown(1);
+                    else moveRight(1);
                 }
                 else if(KeyboardListener.sPressed&&KeyboardListener.aPressed){
-                    if(beat%2 == 0)moveDown();
-                    else moveLeft();
+                    if(beat%2 == 0)moveDown(1);
+                    else moveLeft(1);
                 }
-                else if (KeyboardListener.wPressed) moveUp();
-                else if (KeyboardListener.sPressed) moveDown();
-                else if (KeyboardListener.aPressed) moveLeft();
-                else if (KeyboardListener.dPressed) moveRight();
+                else if (KeyboardListener.wPressed) moveUp(1);
+                else if (KeyboardListener.sPressed) moveDown(1);
+                else if (KeyboardListener.aPressed) moveLeft(1);
+                else if (KeyboardListener.dPressed) moveRight(1);
                 else if (KeyboardListener.ePressed) interact();
             }
             else{
                 int temp = (int) Math.round(Math.random());
                 int[] answer = BehaviorDatabase.respond(this);
-                if (answer[0] == 1 && (temp == 1 || answer[1] == 0)) moveRight();
-                else if (answer[0] == -1 && (temp == 1 || answer[1] == 0)) moveLeft();
-                else if (answer[1] == -1 && (temp == 0 || answer[0] == 0)) moveUp();
-                else if (answer[1] == 1 && (temp == 0 || answer[0] == 0)) moveDown();
+                if (answer[0] == 1 && (temp == 1 || answer[1] == 0)) moveRight(1);
+                else if (answer[0] == -1 && (temp == 1 || answer[1] == 0)) moveLeft(1);
+                else if (answer[1] == -1 && (temp == 0 || answer[0] == 0)) moveUp(1);
+                else if (answer[1] == 1 && (temp == 0 || answer[0] == 0)) moveDown(1);
             }
     }
     public void updateMovings() {//should only call for adam!
@@ -70,6 +80,15 @@ public class Mob extends Moving {
                 }
             }
     }
+    public void questionNonWalls(){
+
+        for(int subScan = 0; subScan < board.getWalls(elevation).walls.size();subScan++){
+            if (board.getWalls(elevation).walls.get(subScan).nonWall){
+                NonWalls temp = (NonWalls)board.getWalls(elevation).walls.get(subScan);
+                temp.interact(this);
+            }
+        }
+    }
     public void interact(){
         int x = xPosition, y = yPosition;
         if(facing == 0) y-=15;
@@ -84,9 +103,9 @@ public class Mob extends Moving {
         System.out.println("you should code a menu when you stop debugging.");
     }
 
-    public void moveUp(){
+    public void moveUp(int distance){
         facing = 0;
-        if (!board.questionCollision(xPosition, yPosition - 1, elevation)&& wallCollide && inBoardBounds(0,-1)&& questionFloor(xPosition,yPosition-1))
+        if (!board.questionCollision(xPosition, yPosition - distance, elevation)&& wallCollide && inBoardBounds(0,-distance)&& questionFloor(xPosition,yPosition-distance))
             yPosition--;
         questionNonWalls();
         lastPosition[0] = xPosition;
@@ -96,9 +115,9 @@ public class Mob extends Moving {
         else beat++;
 
     }
-    public void moveDown() {
+    public void moveDown(int distance) {
         facing = 2;
-        if (!board.questionCollision(xPosition, yPosition + 1, elevation)&& wallCollide && inBoardBounds(0,1)&& questionFloor(xPosition, yPosition+1))
+        if (!board.questionCollision(xPosition, yPosition + distance, elevation)&& wallCollide && inBoardBounds(0,distance)&& questionFloor(xPosition, yPosition+distance))
             yPosition++;
         questionNonWalls();
         lastPosition[0] = xPosition;
@@ -109,9 +128,9 @@ public class Mob extends Moving {
 
 
     }
-    public void moveLeft() {
+    public void moveLeft(int distance) {
         facing = 3;
-        if (!board.questionCollision(xPosition - 1, yPosition, elevation)&& wallCollide && inBoardBounds(-1,0)&& questionFloor(xPosition-1, yPosition))
+        if (!board.questionCollision(xPosition - distance, yPosition, elevation)&& wallCollide && inBoardBounds(-distance,0)&& questionFloor(xPosition-distance, yPosition))
             xPosition--;
 
         questionNonWalls();
@@ -123,9 +142,9 @@ public class Mob extends Moving {
 
 
     }
-    public void moveRight() {
+    public void moveRight(int distace) {
         facing = 1;
-        if (!board.questionCollision(xPosition + 1, yPosition,elevation)&& wallCollide && inBoardBounds(1,0)&& questionFloor(xPosition+1, yPosition))
+        if (!board.questionCollision(xPosition + distace, yPosition,elevation)&& wallCollide && inBoardBounds(distace,0)&& questionFloor(xPosition+distace, yPosition))
             xPosition++;
         questionNonWalls();
         lastPosition[0] = xPosition;
